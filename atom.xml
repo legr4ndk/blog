@@ -76,14 +76,19 @@
     <link href="https://legr4ndk.github.io/2020/10/15/hello-world/"/>
     <id>https://legr4ndk.github.io/2020/10/15/hello-world/</id>
     <published>2020-10-15T14:30:10.810Z</published>
-    <updated>2020-10-15T14:30:10.810Z</updated>
+    <updated>2020-10-16T16:06:04.742Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<h3>Hello World</h3><p>哈哈哈今天布置了一个github上的Hexo静态站点</p><p>准备下次写个教程（flag插好）</p><p>这次我整了两个分部，gitee和github上面我都有布置</p><p>不得不吐槽一下gitee page 是真的难用，每次更新居然要去手动刷新，时效性还特么巨低</p><p>github就是GFW的锅了，太慢了太慢了，移动甚至都不让你上去</p><p>害，这边主要搬运一些之前写在别处的文章</p><p>还有随时想写的感想，所以不能算是纯技术类博客吧</p><p>（所以这站点名字叫QQ空间哈哈哈哈）</p><p>等我更新！</p><p><strong>宰🕊祭天</strong></p>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
+    <summary type="html">&lt;h3&gt;Hello World&lt;/h3&gt;
+
+&lt;p&gt;哈哈哈今天布置了一个github上的Hexo静态站点&lt;/p&gt;
+&lt;p&gt;准备下次写个教程（flag插好）&lt;/p&gt;
+&lt;p&gt;这次我整了两个分部，gitee和github上面我都有布置&lt;/p&gt;
+&lt;p&gt;不得不吐槽一下gitee page 是真</summary>
       
     
     
