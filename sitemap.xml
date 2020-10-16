@@ -2,14 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://legrandk.gitee.io/hexo_page/2020/10/15/Use-git-to-push-your-code-to-your-Githubs-repository/</loc>
+    <loc>https://legr4ndk.github.io/links/index.html</loc>
     
     <lastmod>2020-10-16</lastmod>
     
   </url>
   
   <url>
-    <loc>https://legrandk.gitee.io/hexo_page/2020/10/15/hello-world/</loc>
+    <loc>https://legr4ndk.github.io/about/index.html</loc>
+    
+    <lastmod>2020-10-16</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://legr4ndk.github.io/tags/index.html</loc>
+    
+    <lastmod>2020-10-16</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://legr4ndk.github.io/categories/index.html</loc>
+    
+    <lastmod>2020-10-16</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://legr4ndk.github.io/2020/10/15/Use-git-to-push-your-code-to-your-Githubs-repository/</loc>
+    
+    <lastmod>2020-10-16</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://legr4ndk.github.io/2020/10/15/hello-world/</loc>
     
     <lastmod>2020-10-15</lastmod>
     
@@ -17,7 +45,7 @@
   
 
   <url>
-    <loc>https://legrandk.gitee.io/hexo_page</loc>
+    <loc>https://legr4ndk.github.io/</loc>
     <lastmod>2020-10-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -25,7 +53,7 @@
 
   
   <url>
-    <loc>https://legrandk.gitee.io/hexo_page/tags/git/</loc>
+    <loc>https://legr4ndk.github.io/tags/git/</loc>
     <lastmod>2020-10-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -34,7 +62,7 @@
 
   
   <url>
-    <loc>https://legrandk.gitee.io/hexo_page/categories/Git/</loc>
+    <loc>https://legr4ndk.github.io/categories/Git/</loc>
     <lastmod>2020-10-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
