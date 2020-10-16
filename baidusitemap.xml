@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://legr4ndk.github.io/2020/10/15/Use-git-to-push-your-code-to-your-Githubs-repository/</loc>
+    <loc>https://legr4ndk.github.io/legr4ndk.github.io/2020/10/16/%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E4%B8%8E%E9%A9%BC%E5%B3%B0%E5%91%BD%E5%90%8D%E6%B3%95/</loc>
     <lastmod>2020-10-16</lastmod>
   </url>
   <url>
-    <loc>https://legr4ndk.github.io/2020/10/15/hello-world/</loc>
+    <loc>https://legr4ndk.github.io/legr4ndk.github.io/2020/10/15/Use-git-to-push-your-code-to-your-Githubs-repository/</loc>
+    <lastmod>2020-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://legr4ndk.github.io/legr4ndk.github.io/2020/10/15/hello-world/</loc>
     <lastmod>2020-10-15</lastmod>
   </url>
 </urlset> 
