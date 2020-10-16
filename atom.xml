@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Legrandk&#39;s Qzone</title>
+  
+  
+  <link href="https://legrandk.gitee.io/hexo_page/atom.xml" rel="self"/>
+  
+  <link href="https://legrandk.gitee.io/hexo_page/"/>
+  <updated>2020-10-16T04:05:51.994Z</updated>
+  <id>https://legrandk.gitee.io/hexo_page/</id>
+  
+  <author>
+    <name>Legrandk</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Use git to push your code to your Github&#39;s repository</title>
+    <link href="https://legrandk.gitee.io/hexo_page/2020/10/15/Use-git-to-push-your-code-to-your-Githubs-repository/"/>
+    <id>https://legrandk.gitee.io/hexo_page/2020/10/15/Use-git-to-push-your-code-to-your-Githubs-repository/</id>
+    <published>2020-10-15T15:45:05.000Z</published>
+    <updated>2020-10-16T04:05:51.994Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>First things first,install git.</p><p>——Stop BBing if you have not even installed the git.</p></blockquote><h3 id="Install-git-may-need-root-permission"><a href="#Install-git-may-need-root-permission" class="headerlink" title="Install git(may need root permission)"></a>Install git(may need root permission)</h3><ul><li>Ubuntu/Debian/Deepin: <strong>apt install git</strong></li><li>Arch/Manjaro:<strong>pacman -S git</strong></li><li>Free BSD:<strong>pkg install git</strong></li><li>macOS:<strong>brew install git</strong></li><li>Windows:Click <a href="https://git-scm.com/downloads">HERE</a> to download the installer</li></ul><p>Run <strong>git –version</strong> to make sure that git is installed on your device.</p><h3 id="Put-your-codes-to-a-folder-and-initialize"><a href="#Put-your-codes-to-a-folder-and-initialize" class="headerlink" title="Put your codes to a folder and initialize"></a>Put your codes to a folder and initialize</h3><p>Now you can copy+paste all your code that need to be pushed to the Github in your new folder.Then run a terminal in this folder.</p><p>Using <strong>git init</strong> to initial your local repository.</p><p>And do not forget to add a new repository in your Github account.Once you added a new repository to your Github,you will get a repository-link just like this:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">https:&#x2F;&#x2F;github.com&#x2F;YourGithubID&#x2F;YourRepoName.git<br></code></pre></td></tr></table></figure><p>Now,run <strong>git remote add origin $YourRepoLink</strong> to link your remote repository to the local one.</p><h3 id="Add-your-files-to-staging-area"><a href="#Add-your-files-to-staging-area" class="headerlink" title="Add your files to staging area"></a>Add your files to staging area</h3><p>Use <strong>git add $Filename</strong> to add the files you need to staging area. Or you can use <strong>git add .</strong> (THERE IS A DOT AT THE END) to add all your files。</p><p>Then run <strong>git status</strong> to check the files in your local repository.</p><p>Run <strong>git commit -m ‘$YourCommits’</strong> to add some commits to this submit.</p><h3 id="Push-your-code-to-Github"><a href="#Push-your-code-to-Github" class="headerlink" title="Push your code to Github"></a>Push your code to Github</h3><p>First of all,use <strong>git pull origin master</strong> to pull your online repository.</p><p>Use <strong>git push origin master</strong> to submit your files to Github.</p><p>There are some cases that you will meet the ERROR that <em>refusing to merge unrelated histories</em> when you pull.You can try <strong>git pull origin master –allow-unrelated-histories</strong> to allow merging two unrelated branches.(At the first time,the online repository is empty but the local one have some files,so of course they are unrelated).</p><p>Now you can check your new repository on the Github.</p><p>Done,enjoy.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;First things first,install git.&lt;/p&gt;
+&lt;p&gt;——Stop BBing if you have not even installed the git.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;Instal</summary>
+      
+    
+    
+    
+    <category term="Git" scheme="https://legrandk.gitee.io/hexo_page/categories/Git/"/>
+    
+    
+    <category term="git" scheme="https://legrandk.gitee.io/hexo_page/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://legrandk.gitee.io/hexo_page/2020/10/15/hello-world/"/>
+    <id>https://legrandk.gitee.io/hexo_page/2020/10/15/hello-world/</id>
+    <published>2020-10-15T14:30:10.810Z</published>
+    <updated>2020-10-15T14:30:10.810Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://legrandk.gitee.io/hexo_page/2020/10/15/Use-git-to-push-your-code-to-your-Githubs-repository/</loc>
+    
+    <lastmod>2020-10-16</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://legrandk.gitee.io/hexo_page/2020/10/15/hello-world/</loc>
+    
+    <lastmod>2020-10-15</lastmod>
+    
+  </url>
+  
+
+  <url>
+    <loc>https://legrandk.gitee.io/hexo_page</loc>
+    <lastmod>2020-10-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  
+  <url>
+    <loc>https://legrandk.gitee.io/hexo_page/tags/git/</loc>
+    <lastmod>2020-10-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+
+  
+  <url>
+    <loc>https://legrandk.gitee.io/hexo_page/categories/Git/</loc>
+    <lastmod>2020-10-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+</urlset>
