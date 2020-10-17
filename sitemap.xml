@@ -30,6 +30,13 @@
   </url>
   
   <url>
+    <loc>https://legr4ndk.github.io/2020/10/16/NameRuleAndCamelCase/</loc>
+    
+    <lastmod>2020-10-16</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://legr4ndk.github.io/about/index.html</loc>
     
     <lastmod>2020-10-16</lastmod>
@@ -67,6 +74,13 @@
   </url>
   
   <url>
+    <loc>https://legr4ndk.github.io/tags/CamelCase/</loc>
+    <lastmod>2020-10-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://legr4ndk.github.io/tags/C-C/</loc>
     <lastmod>2020-10-17</lastmod>
     <changefreq>daily</changefreq>
@@ -77,6 +91,13 @@
   
   <url>
     <loc>https://legr4ndk.github.io/categories/Git/</loc>
+    <lastmod>2020-10-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://legr4ndk.github.io/categories/Programming/</loc>
     <lastmod>2020-10-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
