@@ -3,11 +3,11 @@
   <title>Legrandk&#39;s Qzone</title>
   
   
-  <link href="https://legr4ndk.github.io/atom.xml" rel="self"/>
+  <link href="https://legrandk.gitee.io/hexo_page/atom.xml" rel="self"/>
   
-  <link href="https://legr4ndk.github.io/"/>
+  <link href="https://legrandk.gitee.io/hexo_page/"/>
   <updated>2020-10-16T16:38:50.689Z</updated>
-  <id>https://legr4ndk.github.io/</id>
+  <id>https://legrandk.gitee.io/hexo_page/</id>
   
   <author>
     <name>Legrandk</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>C语言数字、指针、布尔值灵活利用的典范</title>
-    <link href="https://legr4ndk.github.io/2020/10/17/C%E8%AF%AD%E8%A8%80%E6%95%B0%E5%AD%97%E3%80%81%E6%8C%87%E9%92%88%E3%80%81%E5%B8%83%E5%B0%94%E5%80%BC%E7%81%B5%E6%B4%BB%E5%88%A9%E7%94%A8%E7%9A%84%E5%85%B8%E8%8C%83/"/>
-    <id>https://legr4ndk.github.io/2020/10/17/C%E8%AF%AD%E8%A8%80%E6%95%B0%E5%AD%97%E3%80%81%E6%8C%87%E9%92%88%E3%80%81%E5%B8%83%E5%B0%94%E5%80%BC%E7%81%B5%E6%B4%BB%E5%88%A9%E7%94%A8%E7%9A%84%E5%85%B8%E8%8C%83/</id>
+    <link href="https://legrandk.gitee.io/hexo_page/2020/10/17/C%E8%AF%AD%E8%A8%80%E6%95%B0%E5%AD%97%E3%80%81%E6%8C%87%E9%92%88%E3%80%81%E5%B8%83%E5%B0%94%E5%80%BC%E7%81%B5%E6%B4%BB%E5%88%A9%E7%94%A8%E7%9A%84%E5%85%B8%E8%8C%83/"/>
+    <id>https://legrandk.gitee.io/hexo_page/2020/10/17/C%E8%AF%AD%E8%A8%80%E6%95%B0%E5%AD%97%E3%80%81%E6%8C%87%E9%92%88%E3%80%81%E5%B8%83%E5%B0%94%E5%80%BC%E7%81%B5%E6%B4%BB%E5%88%A9%E7%94%A8%E7%9A%84%E5%85%B8%E8%8C%83/</id>
     <published>2020-10-16T16:12:19.000Z</published>
     <updated>2020-10-16T16:38:50.689Z</updated>
     
@@ -35,17 +35,17 @@
     
     
     
-    <category term="C/C++" scheme="https://legr4ndk.github.io/categories/C-C/"/>
+    <category term="C/C++" scheme="https://legrandk.gitee.io/hexo_page/categories/C-C/"/>
     
     
-    <category term="C/C++" scheme="https://legr4ndk.github.io/tags/C-C/"/>
+    <category term="C/C++" scheme="https://legrandk.gitee.io/hexo_page/tags/C-C/"/>
     
   </entry>
   
   <entry>
     <title>命名规则与驼峰命名法</title>
-    <link href="https://legr4ndk.github.io/2020/10/16/%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E4%B8%8E%E9%A9%BC%E5%B3%B0%E5%91%BD%E5%90%8D%E6%B3%95/"/>
-    <id>https://legr4ndk.github.io/2020/10/16/%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E4%B8%8E%E9%A9%BC%E5%B3%B0%E5%91%BD%E5%90%8D%E6%B3%95/</id>
+    <link href="https://legrandk.gitee.io/hexo_page/2020/10/16/%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E4%B8%8E%E9%A9%BC%E5%B3%B0%E5%91%BD%E5%90%8D%E6%B3%95/"/>
+    <id>https://legrandk.gitee.io/hexo_page/2020/10/16/%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E4%B8%8E%E9%A9%BC%E5%B3%B0%E5%91%BD%E5%90%8D%E6%B3%95/</id>
     <published>2020-10-16T13:44:37.000Z</published>
     <updated>2020-10-16T14:03:21.625Z</updated>
     
@@ -62,17 +62,17 @@
     
     
     
-    <category term="Programming" scheme="https://legr4ndk.github.io/categories/Programming/"/>
+    <category term="Programming" scheme="https://legrandk.gitee.io/hexo_page/categories/Programming/"/>
     
     
-    <category term="CamelCase" scheme="https://legr4ndk.github.io/tags/CamelCase/"/>
+    <category term="CamelCase" scheme="https://legrandk.gitee.io/hexo_page/tags/CamelCase/"/>
     
   </entry>
   
   <entry>
     <title>Use git to push your code to your Github&#39;s repository</title>
-    <link href="https://legr4ndk.github.io/2020/10/15/Use-git-to-push-your-code-to-your-Githubs-repository/"/>
-    <id>https://legr4ndk.github.io/2020/10/15/Use-git-to-push-your-code-to-your-Githubs-repository/</id>
+    <link href="https://legrandk.gitee.io/hexo_page/2020/10/15/Use-git-to-push-your-code-to-your-Githubs-repository/"/>
+    <id>https://legrandk.gitee.io/hexo_page/2020/10/15/Use-git-to-push-your-code-to-your-Githubs-repository/</id>
     <published>2020-10-15T15:45:05.000Z</published>
     <updated>2020-10-16T04:05:51.994Z</updated>
     
@@ -90,17 +90,17 @@
     
     
     
-    <category term="Git" scheme="https://legr4ndk.github.io/categories/Git/"/>
+    <category term="Git" scheme="https://legrandk.gitee.io/hexo_page/categories/Git/"/>
     
     
-    <category term="git" scheme="https://legr4ndk.github.io/tags/git/"/>
+    <category term="git" scheme="https://legrandk.gitee.io/hexo_page/tags/git/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="https://legr4ndk.github.io/2020/10/15/hello-world/"/>
-    <id>https://legr4ndk.github.io/2020/10/15/hello-world/</id>
+    <link href="https://legrandk.gitee.io/hexo_page/2020/10/15/hello-world/"/>
+    <id>https://legrandk.gitee.io/hexo_page/2020/10/15/hello-world/</id>
     <published>2020-10-15T14:30:10.810Z</published>
     <updated>2020-10-16T16:06:04.742Z</updated>
     
