@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://legr4ndk.github.io/2020/10/18/MarkdownCourse/</loc>
+    
+    <lastmod>2020-10-22</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://legr4ndk.github.io/2020/10/18/HexoCourse/</loc>
     
     <lastmod>2020-10-18</lastmod>
@@ -74,7 +81,7 @@
 
   <url>
     <loc>https://legr4ndk.github.io/</loc>
-    <lastmod>2020-10-18</lastmod>
+    <lastmod>2020-10-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -82,28 +89,28 @@
   
   <url>
     <loc>https://legr4ndk.github.io/tags/git/</loc>
-    <lastmod>2020-10-18</lastmod>
+    <lastmod>2020-10-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://legr4ndk.github.io/tags/CamelCase/</loc>
-    <lastmod>2020-10-18</lastmod>
+    <lastmod>2020-10-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://legr4ndk.github.io/tags/C-C/</loc>
-    <lastmod>2020-10-18</lastmod>
+    <lastmod>2020-10-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://legr4ndk.github.io/tags/%E9%9A%8F%E6%83%B3/</loc>
-    <lastmod>2020-10-18</lastmod>
+    <lastmod>2020-10-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -112,28 +119,28 @@
   
   <url>
     <loc>https://legr4ndk.github.io/categories/Git/</loc>
-    <lastmod>2020-10-18</lastmod>
+    <lastmod>2020-10-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://legr4ndk.github.io/categories/Programming/</loc>
-    <lastmod>2020-10-18</lastmod>
+    <lastmod>2020-10-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://legr4ndk.github.io/categories/C-C/</loc>
-    <lastmod>2020-10-18</lastmod>
+    <lastmod>2020-10-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://legr4ndk.github.io/categories/Essay/</loc>
-    <lastmod>2020-10-18</lastmod>
+    <lastmod>2020-10-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
