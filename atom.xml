@@ -6,7 +6,7 @@
   <link href="https://legr4ndk.github.io/atom.xml" rel="self"/>
   
   <link href="https://legr4ndk.github.io/"/>
-  <updated>2020-10-23T13:41:34.465Z</updated>
+  <updated>2020-11-22T13:43:44.479Z</updated>
   <id>https://legr4ndk.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>C#常见控件（1）</title>
+    <link href="https://legr4ndk.github.io/2020/11/22/CsharpCommonControls/"/>
+    <id>https://legr4ndk.github.io/2020/11/22/CsharpCommonControls/</id>
+    <published>2020-11-22T10:48:47.000Z</published>
+    <updated>2020-11-22T13:43:44.479Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>C#的WinForm编程真的是和Visual Basic一毛一样的体验</p><p>——比隔壁C++的WinForm不知道高到哪里去了（</p></blockquote><p><strong>控件（Control）是WinForm的基本元素</strong></p><h3 id="Brief-Introduction"><a href="#Brief-Introduction" class="headerlink" title="Brief Introduction"></a>Brief Introduction</h3><p>Form控件有一个系统自动生成的一个类实例化的对象（默认叫Form1），该类自带Load事件的函数。此类定义于Form1.cs和Form1.Design.cs中。于Program.cs中另有Program.cs内定义了Main函数作为程序的起点。</p><p>常见的控件有几个基本共有的属性，如：</p><ul><li>Size：是一组共两个值，用于确定对象的宽度和高度</li><li>(Name)：相当于该对象在程序中的变量名</li><li>AutoSize：如果为True则可能造成控件某些维度的手动大小调整不可用</li><li>Location：是一组两个值，用于确定对象在窗体的位置(x,y)，窗体左上顶点为坐标原点，向右为+x，向下为+y</li></ul><h3 id="Label（标签）控件"><a href="#Label（标签）控件" class="headerlink" title="Label（标签）控件"></a>Label（标签）控件</h3><blockquote><p>为控件和窗体的其它组成部分提供标识，通常用于提供描述性文字</p></blockquote><p>Label控件由Label类描述，Label类继承自Control类，它在名字空间System.Windows.Forms中。</p><h4 id="Label常用属性"><a href="#Label常用属性" class="headerlink" title="Label常用属性"></a>Label常用属性</h4><ul><li>AutoElipsis：获取或者设定一个值，指示是否要在Label右边缘显示<strong>省略号</strong>表示文本超过指定长度，否则文本将被直接截断</li><li>AutoSize：获取或者设定一个值，指示是否自动调整控件大小以显示完整内容</li><li>BorderStyle：获取或设置控件的边框样式</li><li>Image：获取或设置显示在Label上的图像</li><li>Text：获取或设置与此控件相关联的文本，即显示在Label上的文本</li><li>TextAlign：获取或设置Label中文本的对齐方式</li></ul><h3 id="TextBox（文本框）控件"><a href="#TextBox（文本框）控件" class="headerlink" title="TextBox（文本框）控件"></a>TextBox（文本框）控件</h3><p>TextBox中的文本可以被编辑，而Label中的不行。</p><p>TextBox类所在的名字空间为System.Windows.Forms。</p><h4 id="TextBox常用属性"><a href="#TextBox常用属性" class="headerlink" title="TextBox常用属性"></a>TextBox常用属性</h4><ul><li>AcceptsReturn：获取或设置一个值，该值指示在多行TextBox控件中按Enter键时，是在控件中创建一行新文本还是激活窗体的默认按钮，比如用于选择按回车是输入完了还是换一行</li><li>AcceptsTab：获取或设置一个值，该值指示在多行TextBox控件中按Tab键时，是在控件中键入一个Tab字符还是按选项卡的顺序将焦点移动到下一个控件</li><li>BackColor：获取或设置控件的背景色</li><li>Focused：获取一个值，该值指示控件是否有输入焦点</li><li>Font：获取或设置控件显示的文字的字体</li><li>Multiline：获取或设置一个值，该值指示此控件是否为多行TextBox控件</li><li>PasswordChar：获取或设置字符，该字符用于屏蔽单行TextBox控件中的密码字符</li><li>ReadOnly：获取或设置一个值，该值指示文本框中的文本是否为只读</li><li>RightToLeft：获取或设置一个值，该值指示是否将控件的元素对齐以支持从右向左的字体的区域设置</li><li>SelectedText：获取或设置一个值，该值指示控件中当前选定的文本</li><li>Text：字符串，获取或设置TextBox中的当前文本</li><li>TextAlign：获取或设置控件中文本的对齐方式</li><li>TextLength：获取或设置控件中文本的长度</li><li>WordWrap：指示多行文本框控件在必要时是否自动换行到下一行开始</li></ul><h4 id="TextBox常用事件"><a href="#TextBox常用事件" class="headerlink" title="TextBox常用事件"></a>TextBox常用事件</h4><ul><li>Click：鼠标单击控件时发生</li><li>Enter：鼠标进入控件区域时发生</li><li>GotFocus：在控件得到焦点时发生</li><li>KeyDown：在控件有焦点时按下按键时发生</li><li>KeyUp：在控件有焦点时释放按键时发生</li><li>Leave：在控件失去焦点时发生</li><li>LostFocus：在控件失去焦点时发生</li><li>TextChanged：在控件的Text属性值更改时发生（文本被改变</li></ul><h3 id="Button（按钮）控件"><a href="#Button（按钮）控件" class="headerlink" title="Button（按钮）控件"></a>Button（按钮）控件</h3><p>用户可以单机按钮控件触发程序动作。</p><p>Button继承自ButtonBase类，ButtonBase继承自ContentControl类，ContentControl类继承自Control类。</p><h4 id="Button常用属性"><a href="#Button常用属性" class="headerlink" title="Button常用属性"></a>Button常用属性</h4><ul><li>ClickMode：获取或设置Click事件何时发生，ClickMode有3种<ul><li>悬停，鼠标悬停在该按钮上时激发此按钮</li><li>按下，鼠标在该按钮上按下时激发此按钮</li><li>释放，鼠标在该按钮上按下后，释放时激发此按钮</li></ul></li><li>IsCancel：获取或设置一个值，指示该Button控件是否为取消按钮。用户可以通过ESC键激活取消按钮</li><li>IsDefault：获取或设置一个值，指示该Button控件是否为默认按钮。用户可以通过Enter键调用默认按钮</li></ul><p><strong>Button最常用的事件为Click事件</strong></p><hr><p><strong>待续~</strong></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;C#的WinForm编程真的是和Visual Basic一毛一样的体验&lt;/p&gt;
+&lt;p&gt;——比隔壁C++的WinForm不知道高到哪里去了（&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;控件（Control）是WinForm的基本元素&lt;</summary>
+      
+    
+    
+    
+    <category term="Programming" scheme="https://legr4ndk.github.io/categories/Programming/"/>
+    
+    
+    <category term="C#" scheme="https://legr4ndk.github.io/tags/C/"/>
+    
+  </entry>
   
   <entry>
     <title>Cpp中的多态</title>
