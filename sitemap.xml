@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://legr4ndk.github.io/about/index.html</loc>
+    
+    <lastmod>2020-11-24</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://legr4ndk.github.io/2020/11/24/masensei/</loc>
     
     <lastmod>2020-11-24</lastmod>
@@ -73,13 +80,6 @@
   
   <url>
     <loc>https://legr4ndk.github.io/2020/10/16/NamingRuleAndCamelCase/</loc>
-    
-    <lastmod>2020-10-16</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://legr4ndk.github.io/about/index.html</loc>
     
     <lastmod>2020-10-16</lastmod>
     
