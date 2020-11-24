@@ -26,7 +26,7 @@
 <meta property="og:description" content="C#的WinForm编程真的是和Visual Basic一毛一样的体验 ——比隔壁C++的WinForm不知道高到哪里去了（  控件（Control）是WinForm的基本元素 Brief IntroductionForm控件有一个系统自动生成的一个类实例化的对象（默认叫Form1），该类自带Load事件的函数。此类定义于Form1.cs和Form1.Design.cs中。于Program.cs">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-11-22T10:48:47.000Z">
-<meta property="article:modified_time" content="2020-11-24T08:43:53.160Z">
+<meta property="article:modified_time" content="2020-11-24T09:06:35.264Z">
 <meta property="article:author" content="Legrandk">
 <meta property="article:tag" content="C#">
 <meta name="twitter:card" content="summary">
@@ -473,7 +473,12 @@
 <li>Text：设定该CheckBox旁边的文本内容</li>
 <li>CheckAlign：设定控件按钮与文本的位置关系（对齐方式）</li>
 <li>Checked：由它设定CheckBox的状态（bool类型，True-被选中，False-未被选中（缺省设置））</li>
-<li>CheckState：指示CheckBox目前的状态，有三个取值：Checked、Unchecked、Indeterminate，分别表示被选中状态，未被选中状态、不可用状态（此状态当ThreeState属性为True时有效）</li>
+<li>CheckState：指示CheckBox目前的状态，有三个取值<ul>
+<li>Checked：表示被选中状态</li>
+<li>Unchecked，表示未被选中状态</li>
+<li>Indeterminate，表示不可用状态（此状态当ThreeState属性为True时有效）</li>
+</ul>
+</li>
 </ul>
 <h5 id="CheckBox常用事件"><a href="#CheckBox常用事件" class="headerlink" title="CheckBox常用事件"></a>CheckBox常用事件</h5><ul>
 <li>CheckedChanged：Checked属性改变时发生（默认事件）</li>
