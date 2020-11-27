@@ -3,11 +3,11 @@
   <title>Legrandk&#39;s Qzone</title>
   
   
-  <link href="https://legr4ndk.github.io/atom.xml" rel="self"/>
+  <link href="https://blog.legr4ndk.top/atom.xml" rel="self"/>
   
-  <link href="https://legr4ndk.github.io/"/>
+  <link href="https://blog.legr4ndk.top/"/>
   <updated>2020-11-26T15:04:02.727Z</updated>
-  <id>https://legr4ndk.github.io/</id>
+  <id>https://blog.legr4ndk.top/</id>
   
   <author>
     <name>Legrandk</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>马宝国日语版脚本</title>
-    <link href="https://legr4ndk.github.io/2020/11/24/masensei/"/>
-    <id>https://legr4ndk.github.io/2020/11/24/masensei/</id>
+    <link href="https://blog.legr4ndk.top/2020/11/24/masensei/"/>
+    <id>https://blog.legr4ndk.top/2020/11/24/masensei/</id>
     <published>2020-11-24T13:36:30.000Z</published>
     <updated>2020-11-26T15:04:02.727Z</updated>
     
@@ -37,17 +37,17 @@
     
     
     
-    <category term="Essay" scheme="https://legr4ndk.github.io/categories/Essay/"/>
+    <category term="Essay" scheme="https://blog.legr4ndk.top/categories/Essay/"/>
     
     
-    <category term="fun" scheme="https://legr4ndk.github.io/tags/fun/"/>
+    <category term="fun" scheme="https://blog.legr4ndk.top/tags/fun/"/>
     
   </entry>
   
   <entry>
     <title>C#常见控件</title>
-    <link href="https://legr4ndk.github.io/2020/11/22/CsharpCommonControls/"/>
-    <id>https://legr4ndk.github.io/2020/11/22/CsharpCommonControls/</id>
+    <link href="https://blog.legr4ndk.top/2020/11/22/CsharpCommonControls/"/>
+    <id>https://blog.legr4ndk.top/2020/11/22/CsharpCommonControls/</id>
     <published>2020-11-22T10:48:47.000Z</published>
     <updated>2020-11-24T13:35:27.618Z</updated>
     
@@ -65,17 +65,17 @@
     
     
     
-    <category term="Programming" scheme="https://legr4ndk.github.io/categories/Programming/"/>
+    <category term="Programming" scheme="https://blog.legr4ndk.top/categories/Programming/"/>
     
     
-    <category term="C#" scheme="https://legr4ndk.github.io/tags/C/"/>
+    <category term="C#" scheme="https://blog.legr4ndk.top/tags/C/"/>
     
   </entry>
   
   <entry>
     <title>Cpp中的多态</title>
-    <link href="https://legr4ndk.github.io/2020/10/23/CppPolymorphism/"/>
-    <id>https://legr4ndk.github.io/2020/10/23/CppPolymorphism/</id>
+    <link href="https://blog.legr4ndk.top/2020/10/23/CppPolymorphism/"/>
+    <id>https://blog.legr4ndk.top/2020/10/23/CppPolymorphism/</id>
     <published>2020-10-23T12:02:51.000Z</published>
     <updated>2020-10-23T13:41:34.465Z</updated>
     
@@ -93,17 +93,17 @@
     
     
     
-    <category term="C/C++" scheme="https://legr4ndk.github.io/categories/C-C/"/>
+    <category term="C/C++" scheme="https://blog.legr4ndk.top/categories/C-C/"/>
     
     
-    <category term="C/C++" scheme="https://legr4ndk.github.io/tags/C-C/"/>
+    <category term="C/C++" scheme="https://blog.legr4ndk.top/tags/C-C/"/>
     
   </entry>
   
   <entry>
     <title>Markdown语法教程</title>
-    <link href="https://legr4ndk.github.io/2020/10/18/MarkdownCourse/"/>
-    <id>https://legr4ndk.github.io/2020/10/18/MarkdownCourse/</id>
+    <link href="https://blog.legr4ndk.top/2020/10/18/MarkdownCourse/"/>
+    <id>https://blog.legr4ndk.top/2020/10/18/MarkdownCourse/</id>
     <published>2020-10-18T14:11:22.000Z</published>
     <updated>2020-10-22T12:43:35.903Z</updated>
     
@@ -123,15 +123,15 @@
     
     
     
-    <category term="Programming" scheme="https://legr4ndk.github.io/categories/Programming/"/>
+    <category term="Programming" scheme="https://blog.legr4ndk.top/categories/Programming/"/>
     
     
   </entry>
   
   <entry>
     <title>用Hexo配合GitHub快速上线自己的个人博客</title>
-    <link href="https://legr4ndk.github.io/2020/10/18/HexoCourse/"/>
-    <id>https://legr4ndk.github.io/2020/10/18/HexoCourse/</id>
+    <link href="https://blog.legr4ndk.top/2020/10/18/HexoCourse/"/>
+    <id>https://blog.legr4ndk.top/2020/10/18/HexoCourse/</id>
     <published>2020-10-18T09:05:41.000Z</published>
     <updated>2020-10-18T11:28:24.855Z</updated>
     
@@ -148,17 +148,17 @@
     
     
     
-    <category term="Git" scheme="https://legr4ndk.github.io/categories/Git/"/>
+    <category term="Git" scheme="https://blog.legr4ndk.top/categories/Git/"/>
     
     
-    <category term="git" scheme="https://legr4ndk.github.io/tags/git/"/>
+    <category term="git" scheme="https://blog.legr4ndk.top/tags/git/"/>
     
   </entry>
   
   <entry>
     <title>Essay1</title>
-    <link href="https://legr4ndk.github.io/2020/10/17/Essay1/"/>
-    <id>https://legr4ndk.github.io/2020/10/17/Essay1/</id>
+    <link href="https://blog.legr4ndk.top/2020/10/17/Essay1/"/>
+    <id>https://blog.legr4ndk.top/2020/10/17/Essay1/</id>
     <published>2020-10-17T13:19:02.000Z</published>
     <updated>2020-10-18T05:27:20.687Z</updated>
     
@@ -174,17 +174,17 @@
     
     
     
-    <category term="Essay" scheme="https://legr4ndk.github.io/categories/Essay/"/>
+    <category term="Essay" scheme="https://blog.legr4ndk.top/categories/Essay/"/>
     
     
-    <category term="随想" scheme="https://legr4ndk.github.io/tags/%E9%9A%8F%E6%83%B3/"/>
+    <category term="随想" scheme="https://blog.legr4ndk.top/tags/%E9%9A%8F%E6%83%B3/"/>
     
   </entry>
   
   <entry>
     <title>C语言数字、指针、布尔值灵活利用的典范</title>
-    <link href="https://legr4ndk.github.io/2020/10/17/TheCLanguageIsSoNB/"/>
-    <id>https://legr4ndk.github.io/2020/10/17/TheCLanguageIsSoNB/</id>
+    <link href="https://blog.legr4ndk.top/2020/10/17/TheCLanguageIsSoNB/"/>
+    <id>https://blog.legr4ndk.top/2020/10/17/TheCLanguageIsSoNB/</id>
     <published>2020-10-16T16:12:19.000Z</published>
     <updated>2020-11-24T09:12:33.124Z</updated>
     
@@ -200,17 +200,17 @@
     
     
     
-    <category term="C/C++" scheme="https://legr4ndk.github.io/categories/C-C/"/>
+    <category term="C/C++" scheme="https://blog.legr4ndk.top/categories/C-C/"/>
     
     
-    <category term="C/C++" scheme="https://legr4ndk.github.io/tags/C-C/"/>
+    <category term="C/C++" scheme="https://blog.legr4ndk.top/tags/C-C/"/>
     
   </entry>
   
   <entry>
     <title>Use git to push your code to your Github&#39;s repository</title>
-    <link href="https://legr4ndk.github.io/2020/10/16/GitPushBriefIntroduction/"/>
-    <id>https://legr4ndk.github.io/2020/10/16/GitPushBriefIntroduction/</id>
+    <link href="https://blog.legr4ndk.top/2020/10/16/GitPushBriefIntroduction/"/>
+    <id>https://blog.legr4ndk.top/2020/10/16/GitPushBriefIntroduction/</id>
     <published>2020-10-16T15:45:05.000Z</published>
     <updated>2020-10-17T12:34:49.666Z</updated>
     
@@ -228,17 +228,17 @@
     
     
     
-    <category term="Git" scheme="https://legr4ndk.github.io/categories/Git/"/>
+    <category term="Git" scheme="https://blog.legr4ndk.top/categories/Git/"/>
     
     
-    <category term="git" scheme="https://legr4ndk.github.io/tags/git/"/>
+    <category term="git" scheme="https://blog.legr4ndk.top/tags/git/"/>
     
   </entry>
   
   <entry>
     <title>命名规则与驼峰命名法</title>
-    <link href="https://legr4ndk.github.io/2020/10/16/NamingRuleAndCamelCase/"/>
-    <id>https://legr4ndk.github.io/2020/10/16/NamingRuleAndCamelCase/</id>
+    <link href="https://blog.legr4ndk.top/2020/10/16/NamingRuleAndCamelCase/"/>
+    <id>https://blog.legr4ndk.top/2020/10/16/NamingRuleAndCamelCase/</id>
     <published>2020-10-16T13:44:37.000Z</published>
     <updated>2020-10-16T14:03:21.625Z</updated>
     
@@ -255,17 +255,17 @@
     
     
     
-    <category term="Programming" scheme="https://legr4ndk.github.io/categories/Programming/"/>
+    <category term="Programming" scheme="https://blog.legr4ndk.top/categories/Programming/"/>
     
     
-    <category term="CamelCase" scheme="https://legr4ndk.github.io/tags/CamelCase/"/>
+    <category term="CamelCase" scheme="https://blog.legr4ndk.top/tags/CamelCase/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="https://legr4ndk.github.io/2020/10/15/HelloWorld/"/>
-    <id>https://legr4ndk.github.io/2020/10/15/HelloWorld/</id>
+    <link href="https://blog.legr4ndk.top/2020/10/15/HelloWorld/"/>
+    <id>https://blog.legr4ndk.top/2020/10/15/HelloWorld/</id>
     <published>2020-10-15T14:30:10.810Z</published>
     <updated>2020-10-16T16:06:04.742Z</updated>
     
