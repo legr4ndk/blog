@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.legr4ndk.top/2020/10/18/MarkdownCourse/</loc>
+    
+    <lastmod>2020-11-28</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.legr4ndk.top/about/index.html</loc>
     
     <lastmod>2020-11-28</lastmod>
@@ -47,13 +54,6 @@
     <loc>https://blog.legr4ndk.top/2020/10/23/CppPolymorphism/</loc>
     
     <lastmod>2020-10-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.legr4ndk.top/2020/10/18/MarkdownCourse/</loc>
-    
-    <lastmod>2020-10-22</lastmod>
     
   </url>
   
