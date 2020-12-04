@@ -2,14 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.legr4ndk.top/2020/11/24/Masensei/</loc>
+    <loc>https://blog.legr4ndk.top/2020/10/15/HelloWorld/</loc>
     
     <lastmod>2020-12-04</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.legr4ndk.top/2020/10/15/HelloWorld/</loc>
+    <loc>https://blog.legr4ndk.top/2020/10/17/TheCLanguageIsSoNB/</loc>
+    
+    <lastmod>2020-12-04</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.legr4ndk.top/2020/10/16/NamingRuleAndCamelCase/</loc>
+    
+    <lastmod>2020-12-04</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.legr4ndk.top/2020/10/23/CppPolymorphism/</loc>
+    
+    <lastmod>2020-12-04</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.legr4ndk.top/2020/11/22/CsharpCommonControls/</loc>
     
     <lastmod>2020-12-04</lastmod>
     
@@ -23,9 +44,30 @@
   </url>
   
   <url>
+    <loc>https://blog.legr4ndk.top/2020/11/24/Masensei/</loc>
+    
+    <lastmod>2020-12-04</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.legr4ndk.top/2020/10/18/MarkdownCourse/</loc>
     
-    <lastmod>2020-11-28</lastmod>
+    <lastmod>2020-12-04</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.legr4ndk.top/2020/10/16/GitPushBriefIntroduction/</loc>
+    
+    <lastmod>2020-12-04</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.legr4ndk.top/2020/10/18/HexoCourse/</loc>
+    
+    <lastmod>2020-12-04</lastmod>
     
   </url>
   
@@ -37,51 +79,9 @@
   </url>
   
   <url>
-    <loc>https://blog.legr4ndk.top/2020/11/22/CsharpCommonControls/</loc>
-    
-    <lastmod>2020-11-24</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.legr4ndk.top/2020/10/17/TheCLanguageIsSoNB/</loc>
-    
-    <lastmod>2020-11-24</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.legr4ndk.top/2020/10/23/CppPolymorphism/</loc>
-    
-    <lastmod>2020-10-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.legr4ndk.top/2020/10/18/HexoCourse/</loc>
-    
-    <lastmod>2020-10-18</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.legr4ndk.top/2020/10/16/GitPushBriefIntroduction/</loc>
-    
-    <lastmod>2020-10-17</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.legr4ndk.top/links/index.html</loc>
     
     <lastmod>2020-10-17</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.legr4ndk.top/2020/10/16/NamingRuleAndCamelCase/</loc>
-    
-    <lastmod>2020-10-16</lastmod>
     
   </url>
   
@@ -116,42 +116,21 @@
 
   
   <url>
-    <loc>https://blog.legr4ndk.top/tags/git/</loc>
-    <lastmod>2020-12-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.legr4ndk.top/tags/CamelCase/</loc>
-    <lastmod>2020-12-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.legr4ndk.top/tags/C-C/</loc>
-    <lastmod>2020-12-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.legr4ndk.top/tags/C/</loc>
-    <lastmod>2020-12-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.legr4ndk.top/tags/fun/</loc>
-    <lastmod>2020-12-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.legr4ndk.top/tags/%E6%96%87%E8%89%BA/</loc>
+    <lastmod>2020-12-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.legr4ndk.top/tags/%E5%81%9A%E4%B8%AA%E5%A5%BD%E7%A0%81%E5%86%9C/</loc>
+    <lastmod>2020-12-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.legr4ndk.top/tags/Developer%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/</loc>
     <lastmod>2020-12-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -160,28 +139,28 @@
 
   
   <url>
-    <loc>https://blog.legr4ndk.top/categories/Git/</loc>
+    <loc>https://blog.legr4ndk.top/categories/Poet/</loc>
     <lastmod>2020-12-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.legr4ndk.top/categories/Programming/</loc>
+    <loc>https://blog.legr4ndk.top/categories/Technical/</loc>
     <lastmod>2020-12-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.legr4ndk.top/categories/C-C/</loc>
+    <loc>https://blog.legr4ndk.top/categories/Misc/</loc>
     <lastmod>2020-12-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.legr4ndk.top/categories/Essay/</loc>
+    <loc>https://blog.legr4ndk.top/categories/Fun/</loc>
     <lastmod>2020-12-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
