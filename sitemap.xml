@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.legr4ndk.top/2020/12/09/IncludeBootstrap/</loc>
+    
+    <lastmod>2020-12-09</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.legr4ndk.top/2020/11/22/CsharpCommonControls/</loc>
     
     <lastmod>2020-12-05</lastmod>
@@ -109,7 +116,7 @@
 
   <url>
     <loc>https://blog.legr4ndk.top/</loc>
-    <lastmod>2020-12-05</lastmod>
+    <lastmod>2020-12-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -117,21 +124,21 @@
   
   <url>
     <loc>https://blog.legr4ndk.top/tags/%E6%96%87%E8%89%BA/</loc>
-    <lastmod>2020-12-05</lastmod>
+    <lastmod>2020-12-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.legr4ndk.top/tags/%E5%81%9A%E4%B8%AA%E5%A5%BD%E7%A0%81%E5%86%9C/</loc>
-    <lastmod>2020-12-05</lastmod>
+    <lastmod>2020-12-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.legr4ndk.top/tags/Developer%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/</loc>
-    <lastmod>2020-12-05</lastmod>
+    <lastmod>2020-12-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -140,28 +147,28 @@
   
   <url>
     <loc>https://blog.legr4ndk.top/categories/Poet/</loc>
-    <lastmod>2020-12-05</lastmod>
+    <lastmod>2020-12-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.legr4ndk.top/categories/Technical/</loc>
-    <lastmod>2020-12-05</lastmod>
+    <lastmod>2020-12-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.legr4ndk.top/categories/Misc/</loc>
-    <lastmod>2020-12-05</lastmod>
+    <lastmod>2020-12-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.legr4ndk.top/categories/Fun/</loc>
-    <lastmod>2020-12-05</lastmod>
+    <lastmod>2020-12-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
