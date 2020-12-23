@@ -19,21 +19,21 @@
   <meta name="google-site-verification" content="EsvUwzVMQTFU8fJLM8qzjSX2Lzh4msii_Tj8W4EjcSk" />
   
   
-  <title>用Hexo配合GitHub快速上线自己的个人博客 | Legrandk&#39;s Qzone</title>
-  <meta name="description" content="不想买服务器却又想创造属于自己的网站？Hexo可以帮你。  啥是HexoHexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。 本教程可以让你快速上线属于你自己的博客。 事前准备你需要安装两个东西：Git和Node.js Git的安装教程在这儿。 Node.js可以直接在这儿下载，不要忘记把它加到环境变量">
+  <title>JDBC提供的SQL操作API解析 | Legrandk&#39;s Qzone</title>
+  <meta name="description" content="DriveManager类DriveManager类有两个作用：注册驱动与获得数据库连接。 注册驱动使用registerDrive()方法实现，建立连接使用getConnection()方法实现。 registerDriver()在此类中有一段静态代码使用DriverManager.registerDriver(new Driver());完成了驱动的注册，所以已经无须手动调用此方法注册。 get">
 <meta property="og:type" content="article">
-<meta property="og:title" content="用Hexo配合GitHub快速上线自己的个人博客">
-<meta property="og:url" content="https://blog.legr4ndk.top/2020/10/18/HexoCourse/index.html">
+<meta property="og:title" content="JDBC提供的SQL操作API解析">
+<meta property="og:url" content="https://blog.legr4ndk.top/2020/12/23/JDBCexecuteCourse/index.html">
 <meta property="og:site_name" content="Legrandk&#39;s Qzone">
-<meta property="og:description" content="不想买服务器却又想创造属于自己的网站？Hexo可以帮你。  啥是HexoHexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。 本教程可以让你快速上线属于你自己的博客。 事前准备你需要安装两个东西：Git和Node.js Git的安装教程在这儿。 Node.js可以直接在这儿下载，不要忘记把它加到环境变量">
+<meta property="og:description" content="DriveManager类DriveManager类有两个作用：注册驱动与获得数据库连接。 注册驱动使用registerDrive()方法实现，建立连接使用getConnection()方法实现。 registerDriver()在此类中有一段静态代码使用DriverManager.registerDriver(new Driver());完成了驱动的注册，所以已经无须手动调用此方法注册。 get">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-10-18T09:05:41.000Z">
-<meta property="article:modified_time" content="2020-12-04T12:11:04.900Z">
+<meta property="article:published_time" content="2020-12-23T10:55:28.000Z">
+<meta property="article:modified_time" content="2020-12-23T14:30:57.157Z">
 <meta property="article:author" content="Legrandk">
-<meta property="article:tag" content="Developer的自我修养">
+<meta property="article:tag" content="后端">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://blog.legr4ndk.top/2020/10/18/HexoCourse/index.html">
+  <link rel="canonical" href="https://blog.legr4ndk.top/2020/12/23/JDBCexecuteCourse/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Legrandk&#39;s Qzone" type="application/atom+xml">
   
@@ -314,14 +314,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-HexoCourse" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-JDBCexecuteCourse" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      用Hexo配合GitHub快速上线自己的个人博客
+      JDBC提供的SQL操作API解析
     </h1>
   
 
@@ -329,8 +329,8 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2020/10/18/HexoCourse/" class="article-date">
-	  <time datetime="2020-10-18T09:05:41.000Z" itemprop="datePublished">2020-10-18</time>
+	<a href="/2020/12/23/JDBCexecuteCourse/" class="article-date">
+	  <time datetime="2020-12-23T10:55:28.000Z" itemprop="datePublished">2020-12-23</time>
 	</a>
 </span>
         
@@ -342,7 +342,7 @@
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/Developer%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/" rel="tag">Developer的自我修养</a>
+	<a class="article-tag-link-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a>
   </span>
 
 
@@ -355,81 +355,63 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/10/18/HexoCourse/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/12/23/JDBCexecuteCourse/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.5k(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 990(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 5(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3(分)</span>
 	
 
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <blockquote>
-<p>不想买服务器却又想创造属于自己的网站？Hexo可以帮你。</p>
-</blockquote>
-<h2 id="啥是Hexo"><a href="#啥是Hexo" class="headerlink" title="啥是Hexo"></a>啥是Hexo</h2><p><strong>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</strong></p>
-<p>本教程可以让你快速上线属于你自己的博客。</p>
-<h2 id="事前准备"><a href="#事前准备" class="headerlink" title="事前准备"></a>事前准备</h2><p>你需要安装两个东西：Git和Node.js</p>
-<p>Git的安装教程<a target="_blank" rel="noopener" href="https://legr4ndk.github.io/2020/10/16/GitPushBriefIntroduction/#Install-git-may-need-root-permission">在这儿</a>。</p>
-<p>Node.js可以直接<a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/">在这儿</a>下载，不要忘记把它加到环境变量中去。</p>
-<p>安装完之后可以在命令行中输入</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">➜ git --version #输入这个，下面是显示的内容<br>git version 2.28.0.windows.1<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">➜ npm --version #输入这个，下面是显示的内容<br>6.14.8<br></code></pre></td></tr></table></figure>
-
-<p>如果均有回显版本号（可能你的版本和我的不一样），那么就说明安装成功了。</p>
-<p>接下来因为要用到npm这个包管理器，所以先给npm的镜像站点换成国内的淘宝源，命令如下：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">➜ npm config set registry https://registry.npm.taobao.org<br></code></pre></td></tr></table></figure>
-
-<p>然后准备工作就全部完成了。</p>
-<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><p>需要以下几个命名，按顺序执行就行了：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">➜ npm install hexo -g #安装hexo<br>➜ npm install hexo-deployer-git --save #安装hexo的一个插件包，用于Git部署<br></code></pre></td></tr></table></figure>
-
-<p>安装完之后，你需要建立一个文件夹专门用来存放你的博客的文件，然后打开那个文件夹，在该文件夹里打开命令行窗口（Windows用户可以选择通过按住Shift并在文件夹窗口空白地区右键来打开PowerShell），现在需要初始化你的网站，命令行输入：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">➜ hexo init #初始化hexo站点，init=initialize<br></code></pre></td></tr></table></figure>
-
-<p>此命令会从远程仓库克隆基础的Hexo站点模板，视你的网络条件（你懂）此过程可能持续数分钟，然后你的文件夹里会多很多文件，主文件夹结构大致如下：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">├─node_modules #太大了不展开了<br>├─scaffolds<br>├─source #要展示在网页上的资源文件<br>│  └─_posts #存放博客内的博文和媒体文件，博文以markdown存储<br>└─themes #存放主题文件，自带一个landscape主题，此处以它为例，如果要用其他主题也请放入这边<br>    └─landscape #主题存放文件夹，此处有主题的配置文件_config.yml<br>        ├─languages<br>        ├─layout<br>        │  ├─_partial<br>        │  │  └─post<br>        │  └─_widget<br>        ├─scripts<br>        └─source<br>            ├─css<br>            │  ├─fonts<br>            │  ├─images<br>            │  ├─_partial<br>            │  └─_util<br>            ├─fancybox<br>            │  └─helpers<br>            └─js<br></code></pre></td></tr></table></figure>
-
-<p>然后，你可以在命令行执行以下语句来清理已有网站内容</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">➜ hexo clean<br></code></pre></td></tr></table></figure>
-
-<h2 id="正式使用Hexo"><a href="#正式使用Hexo" class="headerlink" title="正式使用Hexo"></a>正式使用Hexo</h2><p>先介绍几个Hexo使用的基本命令：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">➜ hexo generate #或者 hexo g，用来跟据你写好的md博文生成新的网页文件并链接<br>➜ hexo server #或者hexo s,用于在本地的4000端口（127.0.0.1:4000）实时预览你的网页<br>➜ hexo new &#x27;xxx&#x27; #新建博文，会在主文件夹/source/_posts文件夹下创建xxx.md与同名媒体文件夹<br></code></pre></td></tr></table></figure>
-
-<p>编辑博文请在md文件内，博文的资源文件（如图片）请放到同名文件夹中并在md文件中使用相对地址链接来完成（比如./xxx/233.jpg)。</p>
-<p><strong>——————那么做到这步我就假定你已经在刚刚生成的.md文件中写完文章了——————</strong></p>
-<h2 id="部署Hexo博客到GitHub"><a href="#部署Hexo博客到GitHub" class="headerlink" title="部署Hexo博客到GitHub"></a>部署Hexo博客到GitHub</h2><p>毫无疑问你得先注册个GitHub，如果还没有的话，<a target="_blank" rel="noopener" href="https://github.com/">点这里去注册</a>。</p>
-<p>然后新建一个仓库，注意这个仓库必须是开源的，而且名字有一定要求：<strong>必须是 用户名.github.io</strong></p>
-<p>例如我的GitHub的id是legr4ndk，那么我的仓库名就是legr4ndk.github.io。</p>
-<p>新建仓库之后，你可以在仓库里找到你仓库的链接，就像这样：</p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/YourGithubID/</span>YourRepoName.git<br></code></pre></td></tr></table></figure>
-
-<p>然后打开你的本地Hexo文件夹，有个_config.yml文件（注意不是主题文件夹里的那个），使用你的代码编辑器打开它，划到最下面有个deploy标签，你需要编辑一下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs _config.yml">#原来是这样的<br>deploy:<br>  type: &#39;&#39;<br>  <br>#你需要把它改成<br>deploy:<br>  type: &#39;git&#39;<br>  repository: https:&#x2F;&#x2F;github.com&#x2F;YourGithubID&#x2F;YourRepoName.git #这边写的是你的仓库链接，我这个只是范例<br> <br> #注意冒号之后有空格<br></code></pre></td></tr></table></figure>
-
-<p>第16行还有个标签叫url，你需要把后面的值改成你的仓库名称，比如这样：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs _config.yml">url: http:&#x2F;&#x2F;YourGithubID.github.io<br></code></pre></td></tr></table></figure>
-
-<p>然后保存即可。</p>
-<p>在部署前你必须使用<strong>hexo g</strong>重新生成网页文件。你可以运行<strong>hexo s</strong>命令先在本地检查你的网站还有没有问题。</p>
-<p>部署使用一个命令：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">➜ hexo deploy #或者hexo d，把本地生成的文件部署到GitHub上<br></code></pre></td></tr></table></figure>
-
-<p>如果你是第一次在命令行上面使用GitHub，那么将会有一个弹窗要求你登录你的GitHub，之后，你的网站将会被推送到GitHub上。过几分钟你就可以通过你的仓库名作为URL访问你的网站了。比如我的网站的地址就是<a target="_blank" rel="noopener" href="https://legr4ndk.github.io/">legr4ndk.github.io</a>。</p>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
-<li>GitHub因为国内特殊环境可能出现无法访问，这个需要魔法上网。</li>
-<li>每次deploy之后都需要几分钟后才能刷新观察到变化，切勿心急</li>
-<li>每次写完新文章或者更换主题什么的之后，必须使用<em>hexo g</em>重新生成文件之后再部署</li>
-<li>主题可以去<a target="_blank" rel="noopener" href="https://hexo.io/themes/">这里</a>寻找自己喜欢的，点击主题名字可以直接跳转主题的GitHub页面，跟据上面的教程安装即可。更改主题请去本地Hexo主文件夹的_config.yml内的theme标签更改。</li>
-<li>主题内可能有部分依赖，建议换主题后在主题文件夹的命令行内运行<strong>npm install</strong>一键安装依赖（有的主题可能不行，建议查看主题的项目下的安装教程）。</li>
-</ol>
-<p>到此为止你已经可以上线一个基础的个人网站了，接下来就是跟据主题的README.md文件介绍的那样去自己订制网页了。</p>
-<p>Have fun~</p>
+        <h2 id="DriveManager类"><a href="#DriveManager类" class="headerlink" title="DriveManager类"></a>DriveManager类</h2><p>DriveManager类有两个作用：注册驱动与获得数据库连接。</p>
+<p>注册驱动使用<code>registerDrive()</code>方法实现，建立连接使用<code>getConnection()</code>方法实现。</p>
+<h3 id="registerDriver"><a href="#registerDriver" class="headerlink" title="registerDriver()"></a>registerDriver()</h3><p>在此类中有一段静态代码使用<code>DriverManager.registerDriver(new Driver());</code>完成了驱动的注册，所以已经无须手动调用此方法注册。</p>
+<h3 id="getConnection"><a href="#getConnection" class="headerlink" title="getConnection()"></a>getConnection()</h3><p>此方法有三个String类型参数：</p>
+<ul>
+<li>url：与数据库连接的路径 </li>
+<li>user：与数据库连接的用户名 </li>
+<li>password：与数据库连接的密码</li>
+</ul>
+<p>此处主要涉及URL的写法，比较特殊：<code>jdbc:mysql://localhost:3306/$DB_NAME</code>。其中：</p>
+<ul>
+<li>jdbc：连接数据库的协议 </li>
+<li>mysql：jdbc的子协议 </li>
+<li>localhost：连接的MySQL数据库服务器的主机地址。连接是本机就可以写成localhost，如果连接不是本机的，就需要写上连接主机的IP地址或域名。 </li>
+<li>3306：MySQL数据库服务器的端口号 </li>
+<li>$DB_NAME：数据库名称</li>
+</ul>
+<p>该函数将会与数据库连接，如果连接成功则返回一个<code>Connection</code>类的数据库连接对象，若连接失败则返回null。</p>
+<h2 id="Connection类"><a href="#Connection类" class="headerlink" title="Connection类"></a>Connection类</h2><p>Connection类即数据库连接对象，有两大功能：创建用于执行SQL语句的对象和管理事务</p>
+<p>以下三个方法可以创建用于执行SQL语句的对象：</p>
+<ul>
+<li>createStatement()：返回一个Statement对象，用于执行SQL</li>
+<li>prepareCall()：返回一个CallableStatement对象，用于调用数据库中存储过程</li>
+<li>prepareStatement()：返回一个PreparedStatement对象，用于执行SQL并对SQL进行预处理以解决SQL注入漏洞。</li>
+</ul>
+<p>以下三个无返回值的方法用于管理数据库事务：</p>
+<ul>
+<li>getAutoCommit()：将此连接的自动提交模式设定为给定状态</li>
+<li>commit()：使所有上一次提交/回滚后进行的更改成为永久更改，并释放此Connection对象当前的数据库锁</li>
+<li>rollback()：取消在当前事务中进行的所有更改，并释放此Connection对象当前的数据库锁</li>
+</ul>
+<h2 id="Statement接口"><a href="#Statement接口" class="headerlink" title="Statement接口"></a>Statement接口</h2><p>Statement 接口提供了三种执行 SQL 语句的方法：</p>
+<ul>
+<li>executeQuery()</li>
+<li>executeUpdate() </li>
+<li>execute()</li>
+</ul>
+<p>我们需要针对不同的SQL语句使用这三种方法</p>
+<h3 id="executeQuery"><a href="#executeQuery" class="headerlink" title="executeQuery()"></a>executeQuery()</h3><p><code>executeQuery()</code>返回一个<code>ResultSet</code>类的对象，该对象是一个结果集。这个方法只能被用于查询语句，比如用的最多的<code>SELECT</code>语句，执行完语句后会返回代表查询结果的<code>ResultSet</code>对象。随后可以通过<code>ResultSet</code>类中的getString()方法来获取读到的数据。</p>
+<h3 id="executeUpdate"><a href="#executeUpdate" class="headerlink" title="executeUpdate()"></a>executeUpdate()</h3><p><code>executeUpdate()</code>常用于执行<code>INSERT</code>、<code>UPDATE</code>、<code>DELETE</code>、<code>CREATE TABLE</code>等非查询类语句。常用于数据库与数据表的增删改。它返回一个int类型的值，对于<code>INSERT</code>、<code>UPDATE</code>、<code>DELETE</code>等操作，会返回数据表中受影响的行数；对于<code>CREATE TABLE</code>等的操作，它的返回值总为0。</p>
+<h3 id="execute"><a href="#execute" class="headerlink" title="execute()"></a>execute()</h3><p><code>execute()</code>可以用于执行任何SQL语句。它的返回值是一个bool类型的值，来表明该SQL语句是否返回了<code>ResultSet</code>对象。如果执行后得到的第一个结果是<code>ResultSet</code>则返回true，否则返回false。返回为true后可以利用<code>getResultSet()</code>方法来获取对应的<code>ResultSet</code>类的结果集对象。此函数更复杂，推荐仅当不知道SQL语句的具体类型时使用此函数来执行。</p>
+<h2 id="ResultSet接口"><a href="#ResultSet接口" class="headerlink" title="ResultSet接口"></a>ResultSet接口</h2><p><code>ResultSet</code>类是查询的结果集。主要使用两个方法来进行操作：getString()和next()。</p>
+<h3 id="getString"><a href="#getString" class="headerlink" title="getString()"></a>getString()</h3><p><code>getString()</code>方法接受一个String类型的参数，作为要获得的字段的字段名。它会返回一个String类型的值，就是<code>ResultSet</code>对象当前指向行的所求字段的值。此方法多用于处理查询所得值。</p>
+<h3 id="next"><a href="#next" class="headerlink" title="next()"></a>next()</h3><p><code>next()</code>方法会将该<code>ResultSet</code>对象所指向行的光标向下移动一行。它返回一个bool类型的值，当光标已经不能下移时会返回false，否则返回true并下移光标。此方法可以用于遍历查询所得数据或者判断查询是否有查到值。</p>
 
       
     </div>
@@ -439,7 +421,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://blog.legr4ndk.top/2020/10/18/HexoCourse/" title="用Hexo配合GitHub快速上线自己的个人博客" target="_blank" rel="external">https://blog.legr4ndk.top/2020/10/18/HexoCourse/</a>
+      <a href="https://blog.legr4ndk.top/2020/12/23/JDBCexecuteCourse/" title="JDBC提供的SQL操作API解析" target="_blank" rel="external">https://blog.legr4ndk.top/2020/12/23/JDBCexecuteCourse/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -485,13 +467,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2020/10/18/MarkdownCourse/" title="Markdown语法教程"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2020/10/17/TheCLanguageIsSoNB/" title="C语言数字、指针、布尔值灵活利用的典范"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2020/12/20/iKnowTwoPartsOfYou/" title="我认识两个你（Lyrics付）"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     

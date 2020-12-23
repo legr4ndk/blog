@@ -6,7 +6,7 @@
   <link href="https://blog.legr4ndk.top/atom.xml" rel="self"/>
   
   <link href="https://blog.legr4ndk.top/"/>
-  <updated>2020-12-20T15:42:23.065Z</updated>
+  <updated>2020-12-23T14:30:57.157Z</updated>
   <id>https://blog.legr4ndk.top/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JDBC提供的SQL操作API解析</title>
+    <link href="https://blog.legr4ndk.top/2020/12/23/JDBCexecuteCourse/"/>
+    <id>https://blog.legr4ndk.top/2020/12/23/JDBCexecuteCourse/</id>
+    <published>2020-12-23T10:55:28.000Z</published>
+    <updated>2020-12-23T14:30:57.157Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="DriveManager类"><a href="#DriveManager类" class="headerlink" title="DriveManager类"></a>DriveManager类</h2><p>DriveManager类有两个作用：注册驱动与获得数据库连接。</p><p>注册驱动使用<code>registerDrive()</code>方法实现，建立连接使用<code>getConnection()</code>方法实现。</p><h3 id="registerDriver"><a href="#registerDriver" class="headerlink" title="registerDriver()"></a>registerDriver()</h3><p>在此类中有一段静态代码使用<code>DriverManager.registerDriver(new Driver());</code>完成了驱动的注册，所以已经无须手动调用此方法注册。</p><h3 id="getConnection"><a href="#getConnection" class="headerlink" title="getConnection()"></a>getConnection()</h3><p>此方法有三个String类型参数：</p><ul><li>url：与数据库连接的路径 </li><li>user：与数据库连接的用户名 </li><li>password：与数据库连接的密码</li></ul><p>此处主要涉及URL的写法，比较特殊：<code>jdbc:mysql://localhost:3306/$DB_NAME</code>。其中：</p><ul><li>jdbc：连接数据库的协议 </li><li>mysql：jdbc的子协议 </li><li>localhost：连接的MySQL数据库服务器的主机地址。连接是本机就可以写成localhost，如果连接不是本机的，就需要写上连接主机的IP地址或域名。 </li><li>3306：MySQL数据库服务器的端口号 </li><li>$DB_NAME：数据库名称</li></ul><p>该函数将会与数据库连接，如果连接成功则返回一个<code>Connection</code>类的数据库连接对象，若连接失败则返回null。</p><h2 id="Connection类"><a href="#Connection类" class="headerlink" title="Connection类"></a>Connection类</h2><p>Connection类即数据库连接对象，有两大功能：创建用于执行SQL语句的对象和管理事务</p><p>以下三个方法可以创建用于执行SQL语句的对象：</p><ul><li>createStatement()：返回一个Statement对象，用于执行SQL</li><li>prepareCall()：返回一个CallableStatement对象，用于调用数据库中存储过程</li><li>prepareStatement()：返回一个PreparedStatement对象，用于执行SQL并对SQL进行预处理以解决SQL注入漏洞。</li></ul><p>以下三个无返回值的方法用于管理数据库事务：</p><ul><li>getAutoCommit()：将此连接的自动提交模式设定为给定状态</li><li>commit()：使所有上一次提交/回滚后进行的更改成为永久更改，并释放此Connection对象当前的数据库锁</li><li>rollback()：取消在当前事务中进行的所有更改，并释放此Connection对象当前的数据库锁</li></ul><h2 id="Statement接口"><a href="#Statement接口" class="headerlink" title="Statement接口"></a>Statement接口</h2><p>Statement 接口提供了三种执行 SQL 语句的方法：</p><ul><li>executeQuery()</li><li>executeUpdate() </li><li>execute()</li></ul><p>我们需要针对不同的SQL语句使用这三种方法</p><h3 id="executeQuery"><a href="#executeQuery" class="headerlink" title="executeQuery()"></a>executeQuery()</h3><p><code>executeQuery()</code>返回一个<code>ResultSet</code>类的对象，该对象是一个结果集。这个方法只能被用于查询语句，比如用的最多的<code>SELECT</code>语句，执行完语句后会返回代表查询结果的<code>ResultSet</code>对象。随后可以通过<code>ResultSet</code>类中的getString()方法来获取读到的数据。</p><h3 id="executeUpdate"><a href="#executeUpdate" class="headerlink" title="executeUpdate()"></a>executeUpdate()</h3><p><code>executeUpdate()</code>常用于执行<code>INSERT</code>、<code>UPDATE</code>、<code>DELETE</code>、<code>CREATE TABLE</code>等非查询类语句。常用于数据库与数据表的增删改。它返回一个int类型的值，对于<code>INSERT</code>、<code>UPDATE</code>、<code>DELETE</code>等操作，会返回数据表中受影响的行数；对于<code>CREATE TABLE</code>等的操作，它的返回值总为0。</p><h3 id="execute"><a href="#execute" class="headerlink" title="execute()"></a>execute()</h3><p><code>execute()</code>可以用于执行任何SQL语句。它的返回值是一个bool类型的值，来表明该SQL语句是否返回了<code>ResultSet</code>对象。如果执行后得到的第一个结果是<code>ResultSet</code>则返回true，否则返回false。返回为true后可以利用<code>getResultSet()</code>方法来获取对应的<code>ResultSet</code>类的结果集对象。此函数更复杂，推荐仅当不知道SQL语句的具体类型时使用此函数来执行。</p><h2 id="ResultSet接口"><a href="#ResultSet接口" class="headerlink" title="ResultSet接口"></a>ResultSet接口</h2><p><code>ResultSet</code>类是查询的结果集。主要使用两个方法来进行操作：getString()和next()。</p><h3 id="getString"><a href="#getString" class="headerlink" title="getString()"></a>getString()</h3><p><code>getString()</code>方法接受一个String类型的参数，作为要获得的字段的字段名。它会返回一个String类型的值，就是<code>ResultSet</code>对象当前指向行的所求字段的值。此方法多用于处理查询所得值。</p><h3 id="next"><a href="#next" class="headerlink" title="next()"></a>next()</h3><p><code>next()</code>方法会将该<code>ResultSet</code>对象所指向行的光标向下移动一行。它返回一个bool类型的值，当光标已经不能下移时会返回false，否则返回true并下移光标。此方法可以用于遍历查询所得数据或者判断查询是否有查到值。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;DriveManager类&quot;&gt;&lt;a href=&quot;#DriveManager类&quot; class=&quot;headerlink&quot; title=&quot;DriveManager类&quot;&gt;&lt;/a&gt;DriveManager类&lt;/h2&gt;&lt;p&gt;DriveManager类有两个作用：注册驱动与获得</summary>
+      
+    
+    
+    
+    <category term="Technical" scheme="https://blog.legr4ndk.top/categories/Technical/"/>
+    
+    
+    <category term="后端" scheme="https://blog.legr4ndk.top/tags/%E5%90%8E%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>我认识两个你（Lyrics付）</title>
