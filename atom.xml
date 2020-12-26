@@ -3,11 +3,11 @@
   <title>Legrandk&#39;s Qzone</title>
   
   
-  <link href="https://blog.legr4ndk.top/atom.xml" rel="self"/>
+  <link href="http://blog.legr4ndk.top/atom.xml" rel="self"/>
   
-  <link href="https://blog.legr4ndk.top/"/>
+  <link href="http://blog.legr4ndk.top/"/>
   <updated>2020-12-23T14:30:57.157Z</updated>
-  <id>https://blog.legr4ndk.top/</id>
+  <id>http://blog.legr4ndk.top/</id>
   
   <author>
     <name>Legrandk</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>JDBC提供的SQL操作API解析</title>
-    <link href="https://blog.legr4ndk.top/2020/12/23/JDBCexecuteCourse/"/>
-    <id>https://blog.legr4ndk.top/2020/12/23/JDBCexecuteCourse/</id>
+    <link href="http://blog.legr4ndk.top/2020/12/23/JDBCexecuteCourse/"/>
+    <id>http://blog.legr4ndk.top/2020/12/23/JDBCexecuteCourse/</id>
     <published>2020-12-23T10:55:28.000Z</published>
     <updated>2020-12-23T14:30:57.157Z</updated>
     
@@ -33,17 +33,17 @@
     
     
     
-    <category term="Technical" scheme="https://blog.legr4ndk.top/categories/Technical/"/>
+    <category term="Technical" scheme="http://blog.legr4ndk.top/categories/Technical/"/>
     
     
-    <category term="后端" scheme="https://blog.legr4ndk.top/tags/%E5%90%8E%E7%AB%AF/"/>
+    <category term="后端" scheme="http://blog.legr4ndk.top/tags/%E5%90%8E%E7%AB%AF/"/>
     
   </entry>
   
   <entry>
     <title>我认识两个你（Lyrics付）</title>
-    <link href="https://blog.legr4ndk.top/2020/12/20/iKnowTwoPartsOfYou/"/>
-    <id>https://blog.legr4ndk.top/2020/12/20/iKnowTwoPartsOfYou/</id>
+    <link href="http://blog.legr4ndk.top/2020/12/20/iKnowTwoPartsOfYou/"/>
+    <id>http://blog.legr4ndk.top/2020/12/20/iKnowTwoPartsOfYou/</id>
     <published>2020-12-20T14:56:11.000Z</published>
     <updated>2020-12-20T15:42:23.065Z</updated>
     
@@ -65,17 +65,17 @@
     
     
     
-    <category term="Poet" scheme="https://blog.legr4ndk.top/categories/Poet/"/>
+    <category term="Poet" scheme="http://blog.legr4ndk.top/categories/Poet/"/>
     
     
-    <category term="文艺" scheme="https://blog.legr4ndk.top/tags/%E6%96%87%E8%89%BA/"/>
+    <category term="文艺" scheme="http://blog.legr4ndk.top/tags/%E6%96%87%E8%89%BA/"/>
     
   </entry>
   
   <entry>
     <title>NPUCTF HappyCheckInVerification WP</title>
-    <link href="https://blog.legr4ndk.top/2020/12/17/HappyCheckinNPUWP/"/>
-    <id>https://blog.legr4ndk.top/2020/12/17/HappyCheckinNPUWP/</id>
+    <link href="http://blog.legr4ndk.top/2020/12/17/HappyCheckinNPUWP/"/>
+    <id>http://blog.legr4ndk.top/2020/12/17/HappyCheckinNPUWP/</id>
     <published>2020-12-17T15:39:52.000Z</published>
     <updated>2020-12-20T15:43:38.036Z</updated>
     
@@ -92,17 +92,17 @@
     
     
     
-    <category term="Technical" scheme="https://blog.legr4ndk.top/categories/Technical/"/>
+    <category term="Technical" scheme="http://blog.legr4ndk.top/categories/Technical/"/>
     
     
-    <category term="CTF" scheme="https://blog.legr4ndk.top/tags/CTF/"/>
+    <category term="CTF" scheme="http://blog.legr4ndk.top/tags/CTF/"/>
     
   </entry>
   
   <entry>
     <title>实现网页登陆的逻辑</title>
-    <link href="https://blog.legr4ndk.top/2020/12/17/BackEndLoginCourse/"/>
-    <id>https://blog.legr4ndk.top/2020/12/17/BackEndLoginCourse/</id>
+    <link href="http://blog.legr4ndk.top/2020/12/17/BackEndLoginCourse/"/>
+    <id>http://blog.legr4ndk.top/2020/12/17/BackEndLoginCourse/</id>
     <published>2020-12-17T14:46:26.000Z</published>
     <updated>2020-12-20T15:08:02.909Z</updated>
     
@@ -120,17 +120,17 @@
     
     
     
-    <category term="Technical" scheme="https://blog.legr4ndk.top/categories/Technical/"/>
+    <category term="Technical" scheme="http://blog.legr4ndk.top/categories/Technical/"/>
     
     
-    <category term="后端" scheme="https://blog.legr4ndk.top/tags/%E5%90%8E%E7%AB%AF/"/>
+    <category term="后端" scheme="http://blog.legr4ndk.top/tags/%E5%90%8E%E7%AB%AF/"/>
     
   </entry>
   
   <entry>
     <title>在JSP上连接MySQL数据库</title>
-    <link href="https://blog.legr4ndk.top/2020/12/16/JSPconnectMySQL/"/>
-    <id>https://blog.legr4ndk.top/2020/12/16/JSPconnectMySQL/</id>
+    <link href="http://blog.legr4ndk.top/2020/12/16/JSPconnectMySQL/"/>
+    <id>http://blog.legr4ndk.top/2020/12/16/JSPconnectMySQL/</id>
     <published>2020-12-16T12:53:36.000Z</published>
     <updated>2020-12-16T13:27:03.384Z</updated>
     
@@ -144,17 +144,17 @@
     
     
     
-    <category term="Technical" scheme="https://blog.legr4ndk.top/categories/Technical/"/>
+    <category term="Technical" scheme="http://blog.legr4ndk.top/categories/Technical/"/>
     
     
-    <category term="后端" scheme="https://blog.legr4ndk.top/tags/%E5%90%8E%E7%AB%AF/"/>
+    <category term="后端" scheme="http://blog.legr4ndk.top/tags/%E5%90%8E%E7%AB%AF/"/>
     
   </entry>
   
   <entry>
     <title>于Ubuntu 18.04上配置Java Server Pages运行环境</title>
-    <link href="https://blog.legr4ndk.top/2020/12/11/JSPenvironment/"/>
-    <id>https://blog.legr4ndk.top/2020/12/11/JSPenvironment/</id>
+    <link href="http://blog.legr4ndk.top/2020/12/11/JSPenvironment/"/>
+    <id>http://blog.legr4ndk.top/2020/12/11/JSPenvironment/</id>
     <published>2020-12-11T10:16:45.000Z</published>
     <updated>2020-12-11T10:18:50.207Z</updated>
     
@@ -168,17 +168,17 @@
     
     
     
-    <category term="Technical" scheme="https://blog.legr4ndk.top/categories/Technical/"/>
+    <category term="Technical" scheme="http://blog.legr4ndk.top/categories/Technical/"/>
     
     
-    <category term="后端" scheme="https://blog.legr4ndk.top/tags/%E5%90%8E%E7%AB%AF/"/>
+    <category term="后端" scheme="http://blog.legr4ndk.top/tags/%E5%90%8E%E7%AB%AF/"/>
     
   </entry>
   
   <entry>
     <title>在网页文件中引入Bootstrap</title>
-    <link href="https://blog.legr4ndk.top/2020/12/09/IncludeBootstrap/"/>
-    <id>https://blog.legr4ndk.top/2020/12/09/IncludeBootstrap/</id>
+    <link href="http://blog.legr4ndk.top/2020/12/09/IncludeBootstrap/"/>
+    <id>http://blog.legr4ndk.top/2020/12/09/IncludeBootstrap/</id>
     <published>2020-12-09T15:27:58.000Z</published>
     <updated>2020-12-21T04:57:22.777Z</updated>
     
@@ -195,17 +195,17 @@
     
     
     
-    <category term="Technical" scheme="https://blog.legr4ndk.top/categories/Technical/"/>
+    <category term="Technical" scheme="http://blog.legr4ndk.top/categories/Technical/"/>
     
     
-    <category term="前端" scheme="https://blog.legr4ndk.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    <category term="前端" scheme="http://blog.legr4ndk.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
   <entry>
     <title>注 入 怨 念</title>
-    <link href="https://blog.legr4ndk.top/2020/11/27/EssayP/"/>
-    <id>https://blog.legr4ndk.top/2020/11/27/EssayP/</id>
+    <link href="http://blog.legr4ndk.top/2020/11/27/EssayP/"/>
+    <id>http://blog.legr4ndk.top/2020/11/27/EssayP/</id>
     <published>2020-11-27T15:23:06.000Z</published>
     <updated>2020-12-04T12:12:36.849Z</updated>
     
@@ -222,17 +222,17 @@
     
     
     
-    <category term="Poet" scheme="https://blog.legr4ndk.top/categories/Poet/"/>
+    <category term="Poet" scheme="http://blog.legr4ndk.top/categories/Poet/"/>
     
     
-    <category term="文艺" scheme="https://blog.legr4ndk.top/tags/%E6%96%87%E8%89%BA/"/>
+    <category term="文艺" scheme="http://blog.legr4ndk.top/tags/%E6%96%87%E8%89%BA/"/>
     
   </entry>
   
   <entry>
     <title>马保国日语版</title>
-    <link href="https://blog.legr4ndk.top/2020/11/24/masensei/"/>
-    <id>https://blog.legr4ndk.top/2020/11/24/masensei/</id>
+    <link href="http://blog.legr4ndk.top/2020/11/24/masensei/"/>
+    <id>http://blog.legr4ndk.top/2020/11/24/masensei/</id>
     <published>2020-11-24T13:36:30.000Z</published>
     <updated>2020-12-05T04:08:40.957Z</updated>
     
@@ -250,17 +250,17 @@
     
     
     
-    <category term="Fun" scheme="https://blog.legr4ndk.top/categories/Fun/"/>
+    <category term="Fun" scheme="http://blog.legr4ndk.top/categories/Fun/"/>
     
     
-    <category term="文艺" scheme="https://blog.legr4ndk.top/tags/%E6%96%87%E8%89%BA/"/>
+    <category term="文艺" scheme="http://blog.legr4ndk.top/tags/%E6%96%87%E8%89%BA/"/>
     
   </entry>
   
   <entry>
     <title>C#常见控件</title>
-    <link href="https://blog.legr4ndk.top/2020/11/22/CsharpCommonControls/"/>
-    <id>https://blog.legr4ndk.top/2020/11/22/CsharpCommonControls/</id>
+    <link href="http://blog.legr4ndk.top/2020/11/22/CsharpCommonControls/"/>
+    <id>http://blog.legr4ndk.top/2020/11/22/CsharpCommonControls/</id>
     <published>2020-11-22T10:48:47.000Z</published>
     <updated>2020-12-05T12:48:07.827Z</updated>
     
@@ -278,17 +278,17 @@
     
     
     
-    <category term="Technical" scheme="https://blog.legr4ndk.top/categories/Technical/"/>
+    <category term="Technical" scheme="http://blog.legr4ndk.top/categories/Technical/"/>
     
     
-    <category term="做个好码农" scheme="https://blog.legr4ndk.top/tags/%E5%81%9A%E4%B8%AA%E5%A5%BD%E7%A0%81%E5%86%9C/"/>
+    <category term="做个好码农" scheme="http://blog.legr4ndk.top/tags/%E5%81%9A%E4%B8%AA%E5%A5%BD%E7%A0%81%E5%86%9C/"/>
     
   </entry>
   
   <entry>
     <title>Cpp中的多态</title>
-    <link href="https://blog.legr4ndk.top/2020/10/23/CppPolymorphism/"/>
-    <id>https://blog.legr4ndk.top/2020/10/23/CppPolymorphism/</id>
+    <link href="http://blog.legr4ndk.top/2020/10/23/CppPolymorphism/"/>
+    <id>http://blog.legr4ndk.top/2020/10/23/CppPolymorphism/</id>
     <published>2020-10-23T12:02:51.000Z</published>
     <updated>2020-12-04T12:13:14.448Z</updated>
     
@@ -306,17 +306,17 @@
     
     
     
-    <category term="Technical" scheme="https://blog.legr4ndk.top/categories/Technical/"/>
+    <category term="Technical" scheme="http://blog.legr4ndk.top/categories/Technical/"/>
     
     
-    <category term="做个好码农" scheme="https://blog.legr4ndk.top/tags/%E5%81%9A%E4%B8%AA%E5%A5%BD%E7%A0%81%E5%86%9C/"/>
+    <category term="做个好码农" scheme="http://blog.legr4ndk.top/tags/%E5%81%9A%E4%B8%AA%E5%A5%BD%E7%A0%81%E5%86%9C/"/>
     
   </entry>
   
   <entry>
     <title>Markdown语法教程</title>
-    <link href="https://blog.legr4ndk.top/2020/10/18/MarkdownCourse/"/>
-    <id>https://blog.legr4ndk.top/2020/10/18/MarkdownCourse/</id>
+    <link href="http://blog.legr4ndk.top/2020/10/18/MarkdownCourse/"/>
+    <id>http://blog.legr4ndk.top/2020/10/18/MarkdownCourse/</id>
     <published>2020-10-18T14:11:22.000Z</published>
     <updated>2020-12-26T08:49:36.668Z</updated>
     
@@ -336,17 +336,17 @@
     
     
     
-    <category term="Technical" scheme="https://blog.legr4ndk.top/categories/Technical/"/>
+    <category term="Technical" scheme="http://blog.legr4ndk.top/categories/Technical/"/>
     
     
-    <category term="Developer的自我修养" scheme="https://blog.legr4ndk.top/tags/Developer%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/"/>
+    <category term="Developer的自我修养" scheme="http://blog.legr4ndk.top/tags/Developer%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/"/>
     
   </entry>
   
   <entry>
     <title>用Hexo配合GitHub快速上线自己的个人博客</title>
-    <link href="https://blog.legr4ndk.top/2020/10/18/HexoCourse/"/>
-    <id>https://blog.legr4ndk.top/2020/10/18/HexoCourse/</id>
+    <link href="http://blog.legr4ndk.top/2020/10/18/HexoCourse/"/>
+    <id>http://blog.legr4ndk.top/2020/10/18/HexoCourse/</id>
     <published>2020-10-18T09:05:41.000Z</published>
     <updated>2020-12-04T12:11:04.900Z</updated>
     
@@ -363,17 +363,17 @@
     
     
     
-    <category term="Technical" scheme="https://blog.legr4ndk.top/categories/Technical/"/>
+    <category term="Technical" scheme="http://blog.legr4ndk.top/categories/Technical/"/>
     
     
-    <category term="Developer的自我修养" scheme="https://blog.legr4ndk.top/tags/Developer%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/"/>
+    <category term="Developer的自我修养" scheme="http://blog.legr4ndk.top/tags/Developer%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/"/>
     
   </entry>
   
   <entry>
     <title>C语言数字、指针、布尔值灵活利用的典范</title>
-    <link href="https://blog.legr4ndk.top/2020/10/17/TheCLanguageIsSoNB/"/>
-    <id>https://blog.legr4ndk.top/2020/10/17/TheCLanguageIsSoNB/</id>
+    <link href="http://blog.legr4ndk.top/2020/10/17/TheCLanguageIsSoNB/"/>
+    <id>http://blog.legr4ndk.top/2020/10/17/TheCLanguageIsSoNB/</id>
     <published>2020-10-16T16:12:19.000Z</published>
     <updated>2020-12-04T12:13:54.722Z</updated>
     
@@ -389,17 +389,17 @@
     
     
     
-    <category term="Technical" scheme="https://blog.legr4ndk.top/categories/Technical/"/>
+    <category term="Technical" scheme="http://blog.legr4ndk.top/categories/Technical/"/>
     
     
-    <category term="做个好码农" scheme="https://blog.legr4ndk.top/tags/%E5%81%9A%E4%B8%AA%E5%A5%BD%E7%A0%81%E5%86%9C/"/>
+    <category term="做个好码农" scheme="http://blog.legr4ndk.top/tags/%E5%81%9A%E4%B8%AA%E5%A5%BD%E7%A0%81%E5%86%9C/"/>
     
   </entry>
   
   <entry>
     <title>Use git to push your code to your Github&#39;s repository</title>
-    <link href="https://blog.legr4ndk.top/2020/10/16/GitPushBriefIntroduction/"/>
-    <id>https://blog.legr4ndk.top/2020/10/16/GitPushBriefIntroduction/</id>
+    <link href="http://blog.legr4ndk.top/2020/10/16/GitPushBriefIntroduction/"/>
+    <id>http://blog.legr4ndk.top/2020/10/16/GitPushBriefIntroduction/</id>
     <published>2020-10-16T15:45:05.000Z</published>
     <updated>2020-12-04T12:11:31.677Z</updated>
     
@@ -417,17 +417,17 @@
     
     
     
-    <category term="Technical" scheme="https://blog.legr4ndk.top/categories/Technical/"/>
+    <category term="Technical" scheme="http://blog.legr4ndk.top/categories/Technical/"/>
     
     
-    <category term="Developer的自我修养" scheme="https://blog.legr4ndk.top/tags/Developer%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/"/>
+    <category term="Developer的自我修养" scheme="http://blog.legr4ndk.top/tags/Developer%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/"/>
     
   </entry>
   
   <entry>
     <title>命名规则与驼峰命名法</title>
-    <link href="https://blog.legr4ndk.top/2020/10/16/NamingRuleAndCamelCase/"/>
-    <id>https://blog.legr4ndk.top/2020/10/16/NamingRuleAndCamelCase/</id>
+    <link href="http://blog.legr4ndk.top/2020/10/16/NamingRuleAndCamelCase/"/>
+    <id>http://blog.legr4ndk.top/2020/10/16/NamingRuleAndCamelCase/</id>
     <published>2020-10-16T13:44:37.000Z</published>
     <updated>2020-12-04T12:13:40.548Z</updated>
     
@@ -444,17 +444,17 @@
     
     
     
-    <category term="Technical" scheme="https://blog.legr4ndk.top/categories/Technical/"/>
+    <category term="Technical" scheme="http://blog.legr4ndk.top/categories/Technical/"/>
     
     
-    <category term="Developer的自我修养" scheme="https://blog.legr4ndk.top/tags/Developer%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/"/>
+    <category term="Developer的自我修养" scheme="http://blog.legr4ndk.top/tags/Developer%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="https://blog.legr4ndk.top/2020/10/15/HelloWorld/"/>
-    <id>https://blog.legr4ndk.top/2020/10/15/HelloWorld/</id>
+    <link href="http://blog.legr4ndk.top/2020/10/15/HelloWorld/"/>
+    <id>http://blog.legr4ndk.top/2020/10/15/HelloWorld/</id>
     <published>2020-10-15T13:36:30.000Z</published>
     <updated>2020-12-04T12:15:14.791Z</updated>
     
@@ -473,10 +473,10 @@
     
     
     
-    <category term="Misc" scheme="https://blog.legr4ndk.top/categories/Misc/"/>
+    <category term="Misc" scheme="http://blog.legr4ndk.top/categories/Misc/"/>
     
     
-    <category term="文艺" scheme="https://blog.legr4ndk.top/tags/%E6%96%87%E8%89%BA/"/>
+    <category term="文艺" scheme="http://blog.legr4ndk.top/tags/%E6%96%87%E8%89%BA/"/>
     
   </entry>
   
