@@ -28,7 +28,7 @@
 <meta property="og:description" content="恁诸位新年好哇！  记录一下怎么在JSP中使用JavaBean来避免写重复代码。 什么是JavaBean JavaBean 是特殊的 Java 类，使用 Java 语言书写，并且遵守 JavaBean API 规范。 接下来给出的是 JavaBean 与其它 Java 类相比而言独一无二的特征：  提供一个默认的无参构造函数。 需要被序列化并且实现了 Serializable 接口。 可能有一系">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-01-07T07:54:53.000Z">
-<meta property="article:modified_time" content="2021-01-07T08:31:02.155Z">
+<meta property="article:modified_time" content="2021-01-07T08:39:54.276Z">
 <meta property="article:author" content="Legrandk">
 <meta property="article:tag" content="后端">
 <meta name="twitter:card" content="summary">
@@ -400,7 +400,7 @@
 <p>其中，id代表Bean生成的对象的脚本变量的名字，class代表class文件所在的包和类名。</p>
 <p>然后，你就可以在JSP中使用<code>对象名（id）.方法名</code>的方式来使用Bean内的方法了，例如我想使用上文的Bean中的execute方法，我可以使用<code>MySQL.execute(&quot;&quot;);</code>。</p>
 <h4 id="特殊的getter、setter使用方法"><a href="#特殊的getter、setter使用方法" class="headerlink" title="特殊的getter、setter使用方法"></a>特殊的getter、setter使用方法</h4><p>JavaBean中对于getter，setter函数使用特殊的标签来调用：</p>
-<figure class="highlight jsp"><table><tr><td class="code"><pre><code class="hljs jsp">&lt;jsp:setProperty name=<span class="hljs-string">&quot;bean的id&quot;</span> property=<span class="hljs-string">&quot;属性名&quot;</span> value=<span class="hljs-string">&quot;value&quot;</span>/&gt; <span class="hljs-comment">//调用setter()</span><br>&lt;jsp:getProperty name=<span class="hljs-string">&quot;bean的id&quot;</span> property=<span class="hljs-string">&quot;属性名&quot;</span>/&gt; 			   <span class="hljs-comment">//调用getter()</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight jsp"><table><tr><td class="code"><pre><code class="hljs jsp">&lt;jsp:setProperty name=<span class="hljs-string">&quot;bean的id&quot;</span> property=<span class="hljs-string">&quot;属性名&quot;</span> value=<span class="hljs-string">&quot;value&quot;</span>/&gt; <span class="hljs-comment">//调用setter()</span><br>&lt;jsp:getProperty name=<span class="hljs-string">&quot;bean的id&quot;</span> property=<span class="hljs-string">&quot;属性名&quot;</span>/&gt; <span class="hljs-comment">//调用getter()</span><br></code></pre></td></tr></table></figure>
 
 <p>上面那个类我没写getter和setter，就不演示了~</p>
 <hr>
