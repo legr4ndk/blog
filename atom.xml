@@ -6,7 +6,7 @@
   <link href="http://www.legr4ndk.top/atom.xml" rel="self"/>
   
   <link href="http://www.legr4ndk.top/"/>
-  <updated>2021-01-07T08:39:54.276Z</updated>
+  <updated>2021-02-08T13:47:34.253Z</updated>
   <id>http://www.legr4ndk.top/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>解决Servlet页面中中文乱码</title>
+    <link href="http://www.legr4ndk.top/2021/02/08/ServletHandleWithChinese/"/>
+    <id>http://www.legr4ndk.top/2021/02/08/ServletHandleWithChinese/</id>
+    <published>2021-02-08T13:44:47.000Z</published>
+    <updated>2021-02-08T13:47:34.253Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>年前诈尸再来记一笔。</p></blockquote><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">resp.setCharacterEncoding(<span class="hljs-string">&quot;utf-8&quot;</span>);<br>resp.setContentType(<span class="hljs-string">&quot;text/html&quot;</span>);<br></code></pre></td></tr></table></figure><p>Servlet页面中文乱码的解法。</p><hr><p><strong>新年快乐，武运昌隆。</strong></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;年前诈尸再来记一笔。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;resp.se</summary>
+      
+    
+    
+    
+    <category term="Technical" scheme="http://www.legr4ndk.top/categories/Technical/"/>
+    
+    
+    <category term="后端" scheme="http://www.legr4ndk.top/tags/%E5%90%8E%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>在JSP上使用JavaBean</title>
