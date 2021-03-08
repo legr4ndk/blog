@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  <meta name="google-site-verification" content="EsvUwzVMQTFU8fJLM8qzjSX2Lzh4msii_Tj8W4EjcSk" />
+  
+  
+  <title>NginxCrashCourse | Legrandk&#39;s Qzone</title>
+  <meta name="description" content="一篇文章解决Nginx基础操作 本文基于Debian操作系统演示。（不要问我服务器为啥不用CentOS，问就是它无了 【恶 灵 退 散】前方灵魂画手出没  啥是Nginx比如你写了个HTML丢在服务器上，你输入这个服务器的域名去访问，服务器不知道要拿什么给你，也就不能访问到页面。Nginx就跟Apache一样，会监听服务器的80端口（就是http协议浏览器默认端口），有人发请求，它就把它一个特殊">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NginxCrashCourse">
+<meta property="og:url" content="http://www.legr4ndk.top/2021/03/08/NginxCrashCourse/index.html">
+<meta property="og:site_name" content="Legrandk&#39;s Qzone">
+<meta property="og:description" content="一篇文章解决Nginx基础操作 本文基于Debian操作系统演示。（不要问我服务器为啥不用CentOS，问就是它无了 【恶 灵 退 散】前方灵魂画手出没  啥是Nginx比如你写了个HTML丢在服务器上，你输入这个服务器的域名去访问，服务器不知道要拿什么给你，也就不能访问到页面。Nginx就跟Apache一样，会监听服务器的80端口（就是http协议浏览器默认端口），有人发请求，它就把它一个特殊">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://www.legr4ndk.top/img/nginx/nginx_op.png">
+<meta property="og:image" content="http://www.legr4ndk.top/img/nginx/proxy.png">
+<meta property="og:image" content="http://www.legr4ndk.top/img/nginx/reversed.png">
+<meta property="article:published_time" content="2021-03-08T12:21:10.000Z">
+<meta property="article:modified_time" content="2021-03-08T12:21:49.367Z">
+<meta property="article:author" content="Legrandk">
+<meta property="article:tag" content="后端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.legr4ndk.top/img/nginx/nginx_op.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://www.legr4ndk.top/2021/03/08/NginxCrashCourse/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Legrandk&#39;s Qzone" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/legr4ndk" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Legrandk</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Developer &amp; Student</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Hangzhou, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/legr4ndk" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/7526194755/profile" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/legrandk13" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>当全世界都在沉睡，你的梦想扬帆起航。</p><iframe src="http://music.163.com/outchain/player?type=2&amp;id=18660395&amp;auto=0&amp;height=430" width="100%" height="100%" frameborder="no" marginwidth="0" marginheight="0"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Fun/">Fun</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Misc/">Misc</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Poet/">Poet</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Summary/">Summary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technical/">Technical</a><span class="category-list-count">17</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/CTF/" style="font-size: 13px;">CTF</a> <a href="/tags/Developer%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/" style="font-size: 13.5px;">Developer的自我修养</a> <a href="/tags/%E5%81%9A%E4%B8%AA%E5%A5%BD%E7%A0%81%E5%86%9C/" style="font-size: 13.5px;">做个好码农</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 13px;">前端</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 14px;">后端</a> <a href="/tags/%E6%96%87%E8%89%BA/" style="font-size: 13.5px;">文艺</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Technical/">Technical</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/03/08/NginxCrashCourse/" class="title">NginxCrashCourse</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-03-08T12:21:10.000Z" itemprop="datePublished">2021-03-08</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Technical/">Technical</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/03/07/JavaScriptCrashCourse/" class="title">一篇文章快速上手JavaScript</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-03-07T14:53:45.000Z" itemprop="datePublished">2021-03-07</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Summary/">Summary</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/02/12/S3Solve/" class="title">鼠年的年终总结</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-02-12T05:43:31.000Z" itemprop="datePublished">2021-02-12</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Technical/">Technical</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/02/08/ServletHandleWithChinese/" class="title">解决Servlet页面中文乱码问题</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-02-08T13:44:47.000Z" itemprop="datePublished">2021-02-08</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Technical/">Technical</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/01/07/JSPuseJavaBean/" class="title">在JSP上使用JavaBean</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-01-07T07:54:53.000Z" itemprop="datePublished">2021-01-07</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-NginxCrashCourse" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      NginxCrashCourse
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2021/03/08/NginxCrashCourse/" class="article-date">
+	  <time datetime="2021-03-08T12:21:10.000Z" itemprop="datePublished">2021-03-08</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Technical/">Technical</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/03/08/NginxCrashCourse/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3.4k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 13(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <blockquote>
+<p>一篇文章解决Nginx基础操作</p>
+<p>本文基于Debian操作系统演示。（不要问我服务器为啥不用CentOS，问就是它无了</p>
+<p>【恶 灵 退 散】前方灵魂画手出没</p>
+</blockquote>
+<h1 id="啥是Nginx"><a href="#啥是Nginx" class="headerlink" title="啥是Nginx"></a>啥是Nginx</h1><p>比如你写了个HTML丢在服务器上，你输入这个服务器的域名去访问，服务器不知道要拿什么给你，也就不能访问到页面。Nginx就跟Apache一样，会监听服务器的80端口（就是http协议浏览器默认端口），有人发请求，它就把它一个特殊文件夹里的网页文件返回回去。也就是说，它是一个Web服务器应用。</p>
+<p>Nginx的并发量非常大，能达到50000左右，是Tomcat的很多倍，在部署JavaWeb服务的时候，一个Tomcat处理的并发量有限，如果想要同时处理更多的请求，就需要有一个中间的服务器作为转发。Nginx很强（它是老毛子写的），它有两个很重要的功能，就是<strong>负载均衡</strong>和<strong>反向代理</strong>。这俩后面再说。</p>
+<h1 id="怎么安装"><a href="#怎么安装" class="headerlink" title="怎么安装"></a>怎么安装</h1><p>我用的Debian。（CentOS变成Red Hat的上游版了，不可能再用了的~）</p>
+<p>这次咱从源代码手动编译出Nginx，相对于直接下载得到的Nginx，自己编译的不容易有依赖问题。</p>
+<p>你需要系统里先有C语言编译器，比如Debian类Linux可以这样：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">apt install build-essential <span class="hljs-comment"># 需要权限，这玩意里面包括了编译要用的一堆东西</span><br></code></pre></td></tr></table></figure>
+
+<p>先去<a target="_blank" rel="noopener" href="http://nginx.org/en/download.html%E4%B8%8B%E8%BD%BDNginx%EF%BC%8C%E6%98%AF%E4%B8%AAtar.gz%E5%8C%85%EF%BC%8C%E7%84%B6%E5%90%8E%E8%A7%A3%E5%8E%8B%EF%BC%9A">http://nginx.org/en/download.html下载Nginx，是个tar.gz包，然后解压：</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">tar -xzvf nginx-xxx.tar.gz<br></code></pre></td></tr></table></figure>
+
+<p>解压完进入文件夹：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> nginx-xxx<br><span class="hljs-comment"># 目录结构如下</span><br>drwxr-xr-x 6 1001 1001   4096 Mar  8 16:21 auto<br>-rw-r--r-- 1 1001 1001 302863 Apr 21  2020 CHANGES<br>-rw-r--r-- 1 1001 1001 462213 Apr 21  2020 CHANGES.ru<br>drwxr-xr-x 2 1001 1001   4096 Mar  8 16:21 conf<br>-rwxr-xr-x 1 1001 1001   2502 Apr 21  2020 configure<br>drwxr-xr-x 4 1001 1001   4096 Mar  8 16:21 contrib<br>drwxr-xr-x 2 1001 1001   4096 Mar  8 16:21 html<br>-rw-r--r-- 1 1001 1001   1397 Apr 21  2020 LICENSE<br>drwxr-xr-x 2 1001 1001   4096 Mar  8 16:21 man<br>-rw-r--r-- 1 1001 1001     49 Apr 21  2020 README<br>drwxr-xr-x 9 1001 1001   4096 Mar  8 16:21 src<br></code></pre></td></tr></table></figure>
+
+<p>执行目录下的configure文件来配置make与依赖，然后使用make来编译、安装：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">./configure<br>make<br>make install<br><br><span class="hljs-comment"># 注意：以下是可能会需要的依赖，make不成功就把下面的也装了（yum包管理器用户自己找去）</span><br>apt install libpcre3 libpcre3-dev<br>apt install openssl libssl-dev<br>apt install zlib1g<br>apt install zlib1g.dev<br></code></pre></td></tr></table></figure>
+
+<p>然后查找Nginx在哪：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">whereis nginx<br><span class="hljs-comment"># 得到 nginx: /usr/local/nginx</span><br></code></pre></td></tr></table></figure>
+
+<p>这样就装完了Nginx。</p>
+<h1 id="Nginx文件结构"><a href="#Nginx文件结构" class="headerlink" title="Nginx文件结构"></a>Nginx文件结构</h1><p>我们可以得到以下文件树：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">.<br>├── conf <span class="hljs-comment"># 配置文件目录</span><br>│   ├── fastcgi.conf<br>│   ├── fastcgi.conf.default<br>│   ├── fastcgi_params<br>│   ├── fastcgi_params.default<br>│   ├── koi-utf<br>│   ├── koi-win<br>│   ├── mime.types<br>│   ├── mime.types.default<br>│   ├── nginx.conf<br>│   ├── nginx.conf.default<br>│   ├── scgi_params<br>│   ├── scgi_params.default<br>│   ├── uwsgi_params<br>│   ├── uwsgi_params.default<br>│   └── win-utf<br>├── html <span class="hljs-comment"># 网页文件存放目录</span><br>│   ├── 50x.html<br>│   └── index.html<br>├── logs <span class="hljs-comment"># 日志文件存放目录</span><br>└── sbin <span class="hljs-comment"># 编译所得的nginx二进制文件存放目录</span><br>    └── nginx<br></code></pre></td></tr></table></figure>
+
+<p>以下介绍一下四大文件夹</p>
+<h2 id="conf-配置文件目录"><a href="#conf-配置文件目录" class="headerlink" title="conf 配置文件目录"></a>conf 配置文件目录</h2><p>主要有一个文件：<code>nginx.conf</code>，已经去除了所有的注释以及一些非必须的内容。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">worker_processes  1; <span class="hljs-comment">#工作进程的数量</span><br><br>events &#123;<br>    worker_connections  1024; <span class="hljs-comment"># 每个工作进程的最大连接数</span><br>&#125;<br><br><span class="hljs-comment"># 代表此处配置的是http规则</span><br>http &#123; <br>    include       mime.types; <span class="hljs-comment"># 定义mine类型</span><br>    default_type  application/octet-stream;<br><br>    sendfile        on; <br>    <span class="hljs-comment"># 是否使用sendfile函数来实现文件输出，一般网页建议为on，下载服务器，可以设置为off来降低系统压力</span><br><br>    keepalive_timeout  65; <span class="hljs-comment"># 响应超时时间</span><br><br>    server &#123;<br>        listen       80; <span class="hljs-comment"># http协议监听端口为80</span><br>        server_name  localhost; <span class="hljs-comment"># 配置访问域名</span><br><br>        location / &#123; <span class="hljs-comment"># 访问 / 路径时展示</span><br>            root   html; <span class="hljs-comment"># 网站的网页存放路径，可以改到别处</span><br>            index  index.html index.htm; <span class="hljs-comment"># 默认主页文件</span><br>        &#125;<br><br>        error_page   500 502 503 504  /50x.html; <span class="hljs-comment"># 错误网页，包含50x的错误</span><br>        location = /50x.html &#123; <span class="hljs-comment"># 50x错误时返回的网页的路径</span><br>            root   html;<br>        &#125;<br><br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="html-网页文件目录"><a href="#html-网页文件目录" class="headerlink" title="html 网页文件目录"></a>html 网页文件目录</h2><p>此目录存放了该服务器受到http请求时返回给浏览器的网页文件，你可以在这边放html、css、js甚至php等网页文件（如果你的系统支持的话），以及服务器报错时显示的文件（比如50x、404等）。</p>
+<h2 id="logs-日志文件目录"><a href="#logs-日志文件目录" class="headerlink" title="logs 日志文件目录"></a>logs 日志文件目录</h2><p>这边会有几个日志文件。</p>
+<p>access.log会记录Nginx每次被访问的信息，包括访问地址，时间、设备、内容等信息。</p>
+<p>error.log会记录Nginx每次出错的时间，内容等信息。</p>
+<p>nginx.pid会记录Nginx在系统中的进程ID（即PID）。</p>
+<h2 id="sbin-二进制文件目录"><a href="#sbin-二进制文件目录" class="headerlink" title="sbin 二进制文件目录"></a>sbin 二进制文件目录</h2><p>这边只有一个文件，执行它，没有任何反应，就代表你启动了Nginx。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo ./nginx<br></code></pre></td></tr></table></figure>
+
+<p>然后你去用域名或者ip地址什么的访问你的服务器的80端口，就可以看到这个：</p>
+<p><img src="http://www.legr4ndk.top/img/nginx/nginx_op.png" alt="Welcome to nginx!"></p>
+<p>看到这个就说明你成功打开Nginx了。</p>
+<p>关于nginx有一些命令行操作：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">nginx -s stop <span class="hljs-comment"># 立即停止Nginx</span><br>nginx -s quit <span class="hljs-comment"># 关闭Nginx的所有服务再关闭Nginx</span><br>nginx -s reload <span class="hljs-comment">#改变Nginx的配置文件后重新加载配置文件，无需重启Nginx，用户无感操作</span><br>ps aux|grep nginx <span class="hljs-comment"># 查看Nginx的进程</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="Nginx可以做什么"><a href="#Nginx可以做什么" class="headerlink" title="Nginx可以做什么"></a>Nginx可以做什么</h1><h2 id="直接拿Nginx做PHP应用服务器"><a href="#直接拿Nginx做PHP应用服务器" class="headerlink" title="直接拿Nginx做PHP应用服务器"></a>直接拿Nginx做PHP应用服务器</h2><p>你可以直接在web服务器上安装PHP解释器与MySQL数据库，然后你可以在html内放入你写好的Web程序（包括html、css、js与php文件等）。默认访问这个服务器时，它会自动打开文件里的index.html。若要自动打开PHP文件，你需要在Nginx的配置文件中改动一处：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">location / &#123; <span class="hljs-comment"># 访问 / 路径时展示</span><br>            root   html; <br>            index  index.html index.htm index.php; <span class="hljs-comment"># 默认主页文件，在此处添加index.php</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="反向代理（Reverse-Proxy）"><a href="#反向代理（Reverse-Proxy）" class="headerlink" title="反向代理（Reverse Proxy）"></a>反向代理（Reverse Proxy）</h2><p><img src="http://www.legr4ndk.top/img/nginx/proxy.png" alt="Proxy"></p>
+<p>这是正向代理的示意图，客户端无法直接访问到目标服务器的时候，可以使用一个可以访问到目标服务器的中间服务器作为代理，来为客户端提供流量转发的服务。</p>
+<p>那反向代理是怎么回事呢？</p>
+<p>比如我们有3台服务器运行着我们的网站的服务，每个服务器都有着各自不同的ip地址。让我们假设每台服务器最多让100人同时访问。那么，当我们有200人同时访问这个网站时，用户要如何才能知道哪台服务器是有余力处理的，而又有哪台是被挤满了即将宕机的？用户当然没法知道，因为大家访问网站都是用同一个域名，比如百度，大家都只知道baidu.com，可是它实际上有很多很多的服务器架设在各地，每次访问我们都用的是同一个域名，没有人专门去访问百度1号，百度2号等服务器，这就是反向代理的作用。反向代理服务器把客户端的请求分给多个服务器，再由这个代理服务器将应用服务器上的返回包返回给客户。这样，客户只访问了一个域名，却不会导致大家都访问了一个服务器从而把服务器搞炸。示意图如下：</p>
+<p><img src="http://www.legr4ndk.top/img/nginx/reversed.png" alt="Reverse Proxy"></p>
+<p>这就是反向代理的作用，使用反向代理可以很方便的构建服务器集群，而这对于用户来说是无感的。</p>
+<h2 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h2><p>负载均衡就是Nginx反向代理时为后台的Web服务器分配请求的策略。</p>
+<p>Nginx有很多种策略来进行负载均衡，以下简单介绍几种。</p>
+<h3 id="轮询"><a href="#轮询" class="headerlink" title="轮询"></a>轮询</h3><p>轮询适用于在后端的Web服务器的性能都差不多的时候，Nginx会把反向代理的流量均匀分配给后台每一个服务器。像上面反向代理的图片一样，服务器1，2，3号收到的代理的数量大致一样。这样可以确保大量访问到来的时候各个服务器的负载压力都相近，不至于使某个服务器压力过大。</p>
+<h3 id="加权轮询"><a href="#加权轮询" class="headerlink" title="加权轮询"></a>加权轮询</h3><p>理解了上面那个轮询之后，加权轮询就比较好理解了。不同于上面那一个，加权轮询更适用于后端Web服务器的性能有差异的情况下。Nginx会跟据配置文件中设置好的权重比例分配代理流量到不同的服务器上去，以实现不同性能的服务器各司其职都能最大化性能利用的功能。比如上图的1，2，3号服务器，分别最多能负载的请求数为1：2：3，那么在Nginx中配置好后，Nginx会把大约50%的流量转发到服务器3上，大约33%的流量转发到服务器2上，约17%的流量则会被转发到服务器1上。使用加权轮询策略可以尽量使服务器集群的性能最大化。（能力越大，责任越大）</p>
+<h3 id="IP-Hash"><a href="#IP-Hash" class="headerlink" title="IP Hash"></a>IP Hash</h3><p>轮询与流量转发带来的一个很重要的问题就是一个用户两次访问这个网站，他的流量可能会被转发到不同的服务器上，之前在那个服务器上进行过的操作、存留的Session在这个新服务器上并没有，而要实现服务器集群的Session共享又十分麻烦。一个好方法是使用Redis，但是Nginx的内置IP Hash策略其实可以帮我们完美解决一个问题。当第一次你从一个IP地址访问这个网站时，Nginx会算你的IP的Hash值，然后跟据留存的Hash结果，每次来自同一IP的请求，均交给同一个服务器来执行，就可以解决Session不共享的问题了。</p>
+<h2 id="URL重写（rewrite）"><a href="#URL重写（rewrite）" class="headerlink" title="URL重写（rewrite）"></a>URL重写（rewrite）</h2><p>该指令通过正则表达式的使用来改变URL。可以同时存在一个或者多个指令，按照顺序一次对URL进行匹配和处理。该指令可以在<code>server</code>块后者<code>location</code>块中使用<code>rewrite</code>关键字配置。</p>
+<p>  语法：<code>rewrite regex replacement [flag];</code></p>
+<p>定义如下</p>
+<ul>
+<li><strong>rewrite</strong>：指令关键字。 　</li>
+<li><strong>regex</strong>：用来匹配URI的正则表达式。</li>
+<li><strong>replacement</strong>：匹配成功后用来替换URI中被截取内容的字符串，默认情况如果该字符串包含“http://”、”https://“开头，则不会继续向下对URI进行其他处理，直接返回重写的URI给客户端。</li>
+<li><strong>flag</strong>：用来设置rewrite对URI的处理行为,包含如下数据：<ul>
+<li>last：终止在本location块中处理接收到的URI，并将此处重写的URI作为新的URI使用其他location进行处理（只是终止当前location的处理）。</li>
+<li>break：将此处重写的URI作为一个新的URI在当前location中继续执行，并不会将新的URI转向其他location。</li>
+<li>redirect：将重写后的URI返回个客户端，状态码是302，表明临时重定向，主要用在replacement字符串不以“http://”，“ https://”或“ $scheme” 开头。</li>
+<li>permanent    将重写的URI返回客户端，状态码为301,指明是永久重定向。</li>
+</ul>
+</li>
+</ul>
+<h1 id="反向代理与负载均衡的实现"><a href="#反向代理与负载均衡的实现" class="headerlink" title="反向代理与负载均衡的实现"></a>反向代理与负载均衡的实现</h1><p>这边只实现一个最简单的http协议下80端口的反向代理与转发。</p>
+<p>此处假设的情况是于<code>127.0.0.1:8080</code>与<code>127.0.0.1:8081</code>上均运行着同一个WebApp，需要把从<code>80端口</code>入口的流量以1：2的权重转发给这两个服务。</p>
+<p>在<code>nginx.conf</code>文件下进行配置即可。（配置的部分参见上面以及下文代码的注释）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">http &#123; <br>    server &#123;<br>        listen       80; <br>        server_name  localhost; <br><br>        location / &#123; <br>            root   html;<br>            index  index.html index.htm; <br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这个代码块我省去了外围的全局配置，只留下了http那一块（实际上被我省去的不能删）</p>
+<h3 id="负载均衡的实现"><a href="#负载均衡的实现" class="headerlink" title="负载均衡的实现"></a>负载均衡的实现</h3><p>反向代理的实现需要先实现负载均衡。负载均衡的配置需要在<code>http协议</code>的配置区域内配置，使用关键字<code>upstream</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">http &#123; <br>    <span class="hljs-comment"># 此处使用upstram关键字配置负载均衡，balance1为负载均衡的自定义策略名，可任意指定</span><br>    upstrean balance1&#123;<br>        server 127.0.0.1:8080 weight=1; <span class="hljs-comment"># 每台服务器均使用server关键词声明</span><br>        server 127.0.0.1:8081 weight=1; <span class="hljs-comment"># 使用weight来声明每个服务器的权值，这边实现了轮询</span><br>    &#125;<br>    <span class="hljs-comment"># 这边实现了加权轮询的负载均衡策略，两台服务器收到的请求数大致为1:2</span><br>    upstrean balance2&#123;<br>        server 127.0.0.1:8080 weight=1;<br>        server 127.0.0.1:8081 weight=2;<br>    &#125;<br>    <br>    server &#123;<br>        <span class="hljs-comment"># 节省篇幅，这边省去</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="反向代理实现"><a href="#反向代理实现" class="headerlink" title="反向代理实现"></a>反向代理实现</h3><p>反向代理需要在<code>http协议</code>的配置区域的<code>location</code>域内配置，使用关键字<code>proxy pass</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">location / &#123; <br>            root   html;<br>            index  index.html index.htm; <br>            <br>            <span class="hljs-comment"># 此处使用proxy pass关键字进行反向代理，使用上文声明的balance2策略</span><br>            proxy pass http://balance2; <span class="hljs-comment"># 以此方法实现Nginx对80端口的访问 / 目录的流量的反向代理</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="URL重写的实现（以http请求转https为例）"><a href="#URL重写的实现（以http请求转https为例）" class="headerlink" title="URL重写的实现（以http请求转https为例）"></a>URL重写的实现（以http请求转https为例）</h1><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">http &#123; <br>    server &#123;<br>        listen       80; <br>        server_name  localhost; <br>        <br>        rewrite ^(.*)$ https://<span class="hljs-variable">$host</span><span class="hljs-variable">$1</span> permanent; <span class="hljs-comment"># 把所有的请求，转发到https的同域名下</span><br>        <span class="hljs-comment"># 或者有另一种写法，使用return实现</span><br>        <span class="hljs-built_in">return</span> 301 https://127.0.0.1<span class="hljs-variable">$request_uri</span>; <span class="hljs-comment"># 发送301 再转新的地址</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="Final"><a href="#Final" class="headerlink" title="Final"></a>Final</h1><p>Nginx是个配置坑。可以配置的地方真的是，太太太太多了，性能调优也有很多骚操作。本文只是帮助你快速理解Nginx的一些工作的原理以及如何用它最主要的功能。很多其他的功能，例如动静分离（提供静态文件服务器）等操作在本文中还没有涉及，希望后面能再自己学学。</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://www.legr4ndk.top/2021/03/08/NginxCrashCourse/" title="NginxCrashCourse" target="_blank" rel="external">http://www.legr4ndk.top/2021/03/08/NginxCrashCourse/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="external">CC BY-NC-SA 4.0协议</a> 与 <a href="https://github.com/996icu/996.ICU/blob/master/LICENSE" target="_blank" rel="external">"Anti 996" License</a> 两者合并的<a href="http://www.legr4ndk.top/LICENSE.html" target="_blank" rel="external">许可协议</a>。转载请注明出处。
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/legr4ndk" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/legr4ndk" target="_blank"><span class="text-dark">Legrandk</span><small class="ml-1x">Developer &amp; Student</small></a></h3>
+        <div>活在福尔马林里，也一样是永垂不朽。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2021/03/07/JavaScriptCrashCourse/" title="一篇文章快速上手JavaScript"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>お金</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone,wechat"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您对我的支持，我会继续努力的!！</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="打钱！" title="打钱！" />
+              </div>
+              <p class="text-muted mv">扫个码，请我喝杯奶茶~</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="打钱！" title="打钱！" />
+              </div>
+              <p class="text-muted mv">扫个码，请我喝杯奶茶~</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+    
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/legr4ndk" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/7526194755/profile" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/legrandk13" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+ 
+    
+    <div class="copyright">
+        <div class="support">
+            <a target="_blank" rel="noopener" href="https://creativecommons.org"><img src="http://www.legr4ndk.top/img/cc.png" alt="CreativeCommons" /></a>
+            <a target="_blank" rel="noopener" href="https://996.icu"><img src="http://www.legr4ndk.top/img/link-996.icu-red.svg" alt="996.icu" /></a>
+            <br/>
+        </div>
+
+    	
+        &copy; 2019-2021 By <a href="http://www.legr4ndk.top">Legrandk</a>
+        
+        
+        <div class="publishby">
+        	Theme based on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+        <div class="ICP">
+            <a href="http://beian.miit.gov.cn/" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备20009661号-2</a>
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'Mk3cri9aryQ9dJEueK5hrTy5-gzGzoHsz',
+    appKey: 'L0FXbseweKTJxmSu2SoU2wxC',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+
+</body>
+</html>
