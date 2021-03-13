@@ -6,7 +6,7 @@
   <link href="http://www.legr4ndk.top/atom.xml" rel="self"/>
   
   <link href="http://www.legr4ndk.top/"/>
-  <updated>2021-03-13T04:32:20.679Z</updated>
+  <updated>2021-03-13T10:06:00.255Z</updated>
   <id>http://www.legr4ndk.top/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Knuth洗牌算法</title>
+    <link href="http://www.legr4ndk.top/2021/03/13/KnuthShuffle/"/>
+    <id>http://www.legr4ndk.top/2021/03/13/KnuthShuffle/</id>
+    <published>2021-03-13T04:54:52.000Z</published>
+    <updated>2021-03-13T10:06:00.255Z</updated>
+    
+    <content type="html"><![CDATA[<p>Knuth算法是一种非常常见的洗牌算法。洗牌其实是一种取随机的算法，只有每一面牌在序列中的任意位置出现的概率都相同的时候，我们才可以说一个随机算法是公平的。</p><blockquote><p>本文需要一定的概率论知识，包括排列组合、古典概型和条件概率</p></blockquote><h1 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h1><p>最容易想到的洗牌方式大概是这种：有n张牌，这n张牌自由组合共有<code>n!</code>个组合，每次只要随机且等可能地从这<code>n!</code>种情况内选取一项，就可以得到一种随机的排列，也就是一次洗牌。那么问题就来了，n在小的时候，<code>n！</code>的数值大小仍可计算，而当n逐渐增大到一定值的时候，<code>n!</code>就会变得不可计算了起来，要随机取得一个情况要耗费的开支太大，时间复杂度打到了<code>o(n!)</code>。</p><p>那么，有没有别的方法可以保证一次洗牌开销没那么大而每张牌在任一位置的概率都相等呢？</p><h1 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h1><p>我们可以借鉴下插入排序的思想。</p><p>比如有5张牌需要我去打乱位置，我就直接留五个空位，然后从第一个空位开始，从原来五张牌中随机选择一张，填到1号空位中，然后在原来的五张牌中抹去那张，还剩下4张。接下来来到二号空位，继续从剩下的4张牌中随机选择一张，放入第二个空位中，再在剩余的四张牌中抹去被选中的那一张……依次类推，你会得到一个序列，那就是洗牌的结果。那么，它是公平的吗？让我们来算算它的概率。</p><ul><li>任一牌出现在第一个位置的概率，即为它第一次就被选中的概率，为<code>1/5</code>。</li><li>任一牌出现在第二个位置的概率，即为它第一次落选，但它在第二次被选中的概率，为<code>4/5 * 1/4 = 1/5</code>。</li><li>任一牌出现在第三个位置的概率，即为它第一、二次落选，但在第三次被选中的概率，为<code>4/5 * 3/4 * 1/3 = 1/5</code>。</li><li>……</li></ul><p>依此类推，跟据条件概率公式推导，你可以发现一张牌出现在任一位置的概率都为<code>1/5</code>即<code>1/n</code>，说明此洗牌算法是公平的。我们分析这个算法的时间复杂度，可以发现其时间复杂度为<code>o(n)</code>，也就是说他遍历一遍牌，就能实现洗牌的操作。但是我们发现，我们仍需要请求额外的存储空间来存储洗完的牌，空间复杂度方面还可以优化，而且，如何标记已经被选择过的牌，也是一个问题，这些都会带来额外的开支。</p><h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><p>那么我们如何优化它的效率呢？我们注意到，每次随机选完牌之后，下一次选牌仍是随机的，那么在洗牌前的数据组中，牌的顺序是无关紧要的。我们完全可以把取数据然后放数据的过程，改为交换数据的过程。从第一个位置开始洗牌，从整个数组里所有元素中随机选择一个位置的内容与1号位置的元素交换，完成第一轮的洗牌。第二轮的时候，我们默认1号位置已经完成洗牌，从2~n号位置中选择一个元素与2号位置的元素交换位置，这样二号位置的洗牌也完成了……依此类推，把每个位置的牌都遍历一次，即可完成一次洗牌。这就是Knuth Shuffle洗牌算法。</p><p>使用条件概率公式，你可以很轻易地算出，每一张牌出现于任一位置的概率均为<code>1/n</code>，而且，Knuth算法每次会把排完序的数据排除在下一次循环之外，完美解决了已经洗完的部分的标记问题，它不需要额外的存储空间，只需要在交换两个数据的时候使用一个临时变量作为中间交换量即可，效率与空间利用率比之前高了很多。</p><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>以下是使用C#实现的Knuth算法，可以把{1, 2, 3, 4, 5}五张牌乱序洗牌后输出。</p><figure class="highlight c#"><table><tr><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">using</span> System;<br><br><span class="hljs-keyword">namespace</span> <span class="hljs-title">KnuthShuffle</span><br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-keyword">string</span>[] args</span>)</span><br><span class="hljs-function"></span>        &#123;<br>            <span class="hljs-keyword">int</span>[] arr = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;;<br>            <span class="hljs-comment">//随机数生成法千千万，这个用的是Unix时间戳做种子</span><br>            <span class="hljs-comment">//你要是想搞事，完全可以换成随机性更强的随机数生成方法</span><br>            Random random = <span class="hljs-keyword">new</span> Random(); <br>            <br>            <span class="hljs-comment">//Knuth洗牌算法其实就下面这么三行，非常简单</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; arr.Length; i++)<br>            &#123;<br>                Swap(<span class="hljs-keyword">ref</span> arr[i], <span class="hljs-keyword">ref</span> arr[random.Next(i, arr.Length)]);<br>            &#125;<br>            <span class="hljs-comment">//其实你要极致优化的话，听说从后面开始向前洗牌效率更高（这个是玄学我不确定）</span><br>            <span class="hljs-keyword">foreach</span> (<span class="hljs-keyword">var</span> variable <span class="hljs-keyword">in</span> arr)<br>            &#123;<br>                Console.WriteLine(variable);<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Swap</span>(<span class="hljs-params"><span class="hljs-keyword">ref</span> <span class="hljs-keyword">int</span> x, <span class="hljs-keyword">ref</span> <span class="hljs-keyword">int</span> y</span>)</span><br><span class="hljs-function"></span>        &#123;<br>            <span class="hljs-keyword">int</span> temp = x;<br>            x = y;<br>            y = temp;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="它有什么用？"><a href="#它有什么用？" class="headerlink" title="它有什么用？"></a>它有什么用？</h1><p>最简单且直观的用途就是：他能帮我们洗牌，然后实现牌类游戏的洗牌操作。</p><p>比如对于经典牌类游戏斗地主，你可以把54张牌的牌面塞到一个容器内，然后通过Knuth算法实现洗牌，然后抽出3张作为地主牌后按次序分成3组，每个人拿到的与地主牌就都是随机的，完美的符合随机洗牌的要求，再配合排序算法，可以快速地把牌按顺序排列完毕，就可以来一把紧张刺激的斗地主了。</p><p>那么一维的可以，二维的可以吗？事实上当然可以，比如我们同样很熟悉的小游戏扫雷，把雷和空格均匀地洗开之后，再按二维堆叠，就可以形成一幅随机的雷图了，接下来就是跟据数据来判断要在空白格子里填的数据了。</p><p>事实上，我们最常见的Knuth Shuffle的运用，还是在我们听歌的那件事上。市场上几乎所有的音乐播放软件的“随机播放”功能，其实都是“伪随机”，就是通过Knuth算法实现的乱序播放歌曲。这类音乐软件会在你打开随机播放功能后对你的歌单进行一次Knuth Shuffle，然后按序播放这个“洗牌后”的歌单里的歌，但是对于用户来说，确实是看起来像随机播放的了。</p><p>那么问题来啦，我们怎么判断你的音乐App是使用的“真随机播放”还是“伪随机播放”呢？很简单，打开你的音乐软件的随机播放功能，音乐开始播放后，轻按“下一首”按钮，再轻按“上一首”功能，如果它回到了原来的那首歌，那它毫无疑问是“伪随机播放”了。“真随机播放”的话，切歌时它会随机跳到下一首去，你是回不去的了~</p><p>不过话说回来，如果我是要开发“真随机播放”功能的程序员的话，我可能会选择在“随机播放”模式下，把“上一首”按钮和“下一首”按钮的功能都设置成洗完牌后的随机打乱的歌单里的下一首。永远都往下一首播放的话，你也回不去原来那首歌了，体验上来说，因为都是切到下一首没被听过的音乐，应该与每次都生成随机数然后去随机找歌的“真随机播放”体验一致了，而且感觉这种处理方法的开销好像比每次生成随机数的情况要小。（<strong>发现华点😏</strong></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Knuth算法是一种非常常见的洗牌算法。洗牌其实是一种取随机的算法，只有每一面牌在序列中的任意位置出现的概率都相同的时候，我们才可以说一个随机算法是公平的。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本文需要一定的概率论知识，包括排列组合、古典概型和条件概率&lt;/p&gt;
+&lt;/bl</summary>
+      
+    
+    
+    
+    <category term="算法" scheme="http://www.legr4ndk.top/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="algorithm" scheme="http://www.legr4ndk.top/tags/algorithm/"/>
+    
+  </entry>
   
   <entry>
     <title>一篇文章快速上手Nginx服务器</title>
@@ -524,33 +551,6 @@
     
     
     <category term="git" scheme="http://www.legr4ndk.top/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>命名规则与驼峰命名法</title>
-    <link href="http://www.legr4ndk.top/2020/10/16/NamingRuleAndCamelCase/"/>
-    <id>http://www.legr4ndk.top/2020/10/16/NamingRuleAndCamelCase/</id>
-    <published>2020-10-16T13:44:37.000Z</published>
-    <updated>2021-03-13T04:32:12.248Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>还在使用x，y，z，a，b，c等无意义字符做变量名嘛？还因为把变量命名位g，s，b而遭到同学的嘲笑嘛？还因为不知道怎么命名变量能做的更直观嘛？</p><p>——Introducing Camel-Case：驼峰命名法</p></blockquote><p>我们现在先来看看一个例子：</p><p>假如我们想要定义一个变量存储我们的名字，该怎么命名呢？</p><figure class="highlight ebnf"><table><tr><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">mylastname</span><br></code></pre></td></tr></table></figure><p>构成这个变量名的所有字母都通过小写被粗暴地整合在了一起，很难一眼看清，对吧？这种变量命名方法明显地降低了代码的可读性。要不，我们拆分一下单词？</p><figure class="highlight ebnf"><table><tr><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">my_last_mane</span><br></code></pre></td></tr></table></figure><p>显而易见地，这个变量名的可读性比上面那种高了很多，我们可以轻易地读出它的各个单词并且很清楚地知道它的意思。但是很显然，这不够紧凑，我们还得多打两个字符（吐槽下这下划线真的不是很好按）。</p><h3 id="驼峰命名法"><a href="#驼峰命名法" class="headerlink" title="驼峰命名法"></a>驼峰命名法</h3><p>驼峰命名法的命名规格极为形象，通过大小写像驼峰一样变换来实现单词的区分，更方便直观地表示变量名。</p><p>那我们来看看驼峰命名法该怎么用：</p><figure class="highlight ebnf"><table><tr><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">myLastName</span><br></code></pre></td></tr></table></figure><p>相比于前两种，驼峰命名法既直观又紧凑，保证了代码可读性的同时也兼顾了效率。</p><p>驼峰命名法的规则是这样的： 当变量名或函数名是由多个单词连结在一起，构成的唯一识别字时，每一节个单词的首字母都采用大写来区分，单词与单词之间不额外添加下划线。</p><p>而以第一个单词的首字母是否要大写为区分，我们又可以分成大驼峰法和小驼峰法。</p><h4 id="大驼峰法："><a href="#大驼峰法：" class="headerlink" title="大驼峰法："></a>大驼峰法：</h4><p>包括第一个单词在内的所有单词的首字母全部大写，如：</p><ul><li>MyLastName</li><li>DataBaseUser</li></ul><h4 id="小驼峰法："><a href="#小驼峰法：" class="headerlink" title="小驼峰法："></a>小驼峰法：</h4><p>第一个单词的首字母不大写，其余每个单词的首字母均大写，如：</p><ul><li>myLastName</li><li>studentsAverageGrades</li></ul><p>驼峰命名法就介绍到这里。</p><hr><p>接下来再讲讲我使用的一种命名规则。</p><blockquote><p>强烈建议使用英文命名！！！</p></blockquote><h3 id="变量的命名规则"><a href="#变量的命名规则" class="headerlink" title="变量的命名规则"></a>变量的命名规则</h3><p>变量名的命名，首先应该是这个变量要储存的内容的英文意思。借助你强大的英文水平，先把你想好的中文变量名翻译成英文，不会的话就借助翻译软件吧。</p><p>然后，如果你翻译出来的内容仅由1个英文单词构成，请直接以这个单词的<strong>完全小写</strong>的形式命名这个变量。如果是由多个单词组成的词组，应该使用<strong>小驼峰法</strong>的方式为这个变量命名。 记住，它应该是个名词或者名词性词组。 例如：</p><figure class="highlight autohotkey"><table><tr><td class="code"><pre><code class="hljs autohotkey"><span class="hljs-built_in">salary,</span>tax,carSum,taxRate<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure><p><strong>特殊地，给布尔类型的变量命名，建议使用 is + 属性名的方法，依照具体的语境，也可以用can，have，should等前缀代替is，同样使用小驼峰法。同时要记得避免使用否定词。</strong>例如：</p><figure class="highlight autohotkey"><table><tr><td class="code"><pre><code class="hljs autohotkey"><span class="hljs-built_in">isReal,</span>isHigh<span class="hljs-comment">;(√)</span><br><span class="hljs-built_in">isNotTall,</span>isError<span class="hljs-comment">;(×)</span><br></code></pre></td></tr></table></figure><h3 id="常量的命名规则"><a href="#常量的命名规则" class="headerlink" title="常量的命名规则"></a>常量的命名规则</h3><p>常量一般是指使用const关键字修饰定义的数据，有时也只使用预处理宏#define定义的数据。</p><h4 id="使用const关键字定义的常量"><a href="#使用const关键字定义的常量" class="headerlink" title="使用const关键字定义的常量"></a>使用const关键字定义的常量</h4><p>它的命名规则和变量类似，但是要使用<strong>大驼峰法</strong>，即第一个单词的首字母也要大写。例如：</p><figure class="highlight gauss"><table><tr><td class="code"><pre><code class="hljs gauss"><span class="hljs-keyword">Line</span>,SavingAccount,<span class="hljs-built_in">Pi</span>;<br></code></pre></td></tr></table></figure><h4 id="使用-define关键字宏定义的常量"><a href="#使用-define关键字宏定义的常量" class="headerlink" title="使用#define关键字宏定义的常量"></a>使用#define关键字宏定义的常量</h4><p>它的所有字母都应该采用<strong>大写</strong>，同时，若是由多个单词组成的变量名，为了区分每个单词，在<strong>每两个单词之间应该添加下划线</strong>。例如：</p><figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade"><span class="hljs-literal">PI</span>,MAX_SIZE;<br></code></pre></td></tr></table></figure><h3 id="函数-方法的命名规则"><a href="#函数-方法的命名规则" class="headerlink" title="函数/方法的命名规则"></a>函数/方法的命名规则</h3><p>函数的名称应该是一个动词或者一个动词词组。如果函数名仅由单个单词构成，那么请以这个单词的<strong>完全小写形式</strong>命名这个函数。如果这个函数名是一个动词词组，请以<strong>小驼峰法</strong>的方式命名这个函数。例如：</p><figure class="highlight autohotkey"><table><tr><td class="code"><pre><code class="hljs autohotkey"><span class="hljs-built_in">getArea,</span>setPath,takeSteps<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure><h3 id="名字空间的命名规则（C-）"><a href="#名字空间的命名规则（C-）" class="headerlink" title="名字空间的命名规则（C++）"></a>名字空间的命名规则（C++）</h3><p>对于名字空间，请以一个英文单词完成对它的命名，而且，应该使用它的<strong>完全小写形式</strong>。例如：</p><figure class="highlight armasm"><table><tr><td class="code"><pre><code class="hljs armasm"><span class="hljs-symbol">model</span>,<span class="hljs-meta">common</span><span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure><h3 id="结构、类（C-）的命名规则"><a href="#结构、类（C-）的命名规则" class="headerlink" title="结构、类（C++）的命名规则"></a>结构、类（C++）的命名规则</h3><p>结构体和类的名称应该是一个名词或者名词性词组。若使用单个单词命名，请首字母大写；若使用词组，应使用<strong>大驼峰法</strong>命名。例如：</p><figure class="highlight crmsh"><table><tr><td class="code"><pre><code class="hljs crmsh"><span class="hljs-keyword">Node</span><span class="hljs-title">,SomeClass</span>;<br></code></pre></td></tr></table></figure><p>但是，命名结构和类形成的实例（结构体和对象）时，应该依照一般的变量的命名法进行命名。</p><h3 id="对于枚举类型（以enum关键词声明）"><a href="#对于枚举类型（以enum关键词声明）" class="headerlink" title="对于枚举类型（以enum关键词声明）"></a>对于枚举类型（以enum关键词声明）</h3><p>同样建议使用名词或者名词性词组，以首字母大写或者大驼峰法命名。</p><p>而对于枚举类型的枚举常量，建议以全部大写字母+下划线分割单词的方式命名,同时应尽量使用共同的类型名作为前缀。</p><p>例如：</p><figure class="highlight crystal"><table><tr><td class="code"><pre><code class="hljs crystal"><span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">Color</span> &#123; <span class="hljs-title">COLOR_RED</span>, <span class="hljs-title">COLOR_GREEN</span>, <span class="hljs-title">COLOR_BLUE</span> &#125;;</span><br><span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">ColorType</span> &#123; <span class="hljs-title">COLOR_TYPE_WARM</span>, <span class="hljs-title">COLOR_TYPE_COLD</span> &#125;;</span><br></code></pre></td></tr></table></figure><hr><p><strong>额外再提几个用于命名的关键字以及技巧，让代码更直观</strong></p><ul><li>get应该用在直接取得已设定值的函数中。</li><li>set应该用在直接为变量设定值的函数中。</li><li>compute应该用在用于进行计算的函数中。</li><li>find应该用在用于查找的函数中。</li><li>init/initialize应该使用在用于初始化的函数中。</li><li>在需要标识序号的变量名中，使用No + 序号比较合适。</li><li>布尔变量的命名应使用is，has等前缀，并且尽量避免否定词。</li><li>循环变量建议设置为i，j，k，并且建议优先使用i而把j，k用于循环嵌套。</li><li>对于缩略词我们有两种态度：1、对于那种缩写了人家可能就看不懂了的，比如cmd，init，请不要用缩写代替他们。2、对于那种缩写认识展开别人就看不懂的，比如HTML，CPU，老老实实写缩写。</li></ul><p><strong>另外，对于自己写的头文件的命名，推荐使用大驼峰命名法。例如</strong></p><figure class="highlight reasonml"><table><tr><td class="code"><pre><code class="hljs reasonml"><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">MyClass</span>.</span></span>h<br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">CppFunction</span>.</span></span>h<br></code></pre></td></tr></table></figure><p>OK,有关命名方法先写这么多。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;还在使用x，y，z，a，b，c等无意义字符做变量名嘛？还因为把变量命名位g，s，b而遭到同学的嘲笑嘛？还因为不知道怎么命名变量能做的更直观嘛？&lt;/p&gt;
-&lt;p&gt;——Introducing Camel-Case：驼峰命名法&lt;/p&gt;
-&lt;/blockquo</summary>
-      
-    
-    
-    
-    <category term="个人感悟" scheme="http://www.legr4ndk.top/categories/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%82%9F/"/>
-    
-    
-    <category term="misc" scheme="http://www.legr4ndk.top/tags/misc/"/>
     
   </entry>
   

@@ -19,21 +19,21 @@
   <meta name="google-site-verification" content="EsvUwzVMQTFU8fJLM8qzjSX2Lzh4msii_Tj8W4EjcSk" />
   
   
-  <title>Cpp中的多态 | Legrandk&#39;s Qzone</title>
-  <meta name="description" content="多态是面向对象编程内极为重要的一种特征，它能极大的简化我们的代码  先来看一段类的原型 class Animal &#x2F;&#x2F;基类&amp;#123;public:    void voice()	&amp;#123;        std::cout &lt;&lt; &quot;Voiceless&quot; &lt;&lt; std::endl; &#x2F;&#x2F;不知道该叫啥    &amp;#125;;&amp;#125;;class D">
+  <title>Knuth洗牌算法 | Legrandk&#39;s Qzone</title>
+  <meta name="description" content="Knuth算法是一种非常常见的洗牌算法。洗牌其实是一种取随机的算法，只有每一面牌在序列中的任意位置出现的概率都相同的时候，我们才可以说一个随机算法是公平的。  本文需要一定的概率论知识，包括排列组合、古典概型和条件概率  问题分析最容易想到的洗牌方式大概是这种：有n张牌，这n张牌自由组合共有n!个组合，每次只要随机且等可能地从这n!种情况内选取一项，就可以得到一种随机的排列，也就是一次洗牌。那么问">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Cpp中的多态">
-<meta property="og:url" content="http://www.legr4ndk.top/2020/10/23/CppPolymorphism/index.html">
+<meta property="og:title" content="Knuth洗牌算法">
+<meta property="og:url" content="http://www.legr4ndk.top/2021/03/13/KnuthShuffle/index.html">
 <meta property="og:site_name" content="Legrandk&#39;s Qzone">
-<meta property="og:description" content="多态是面向对象编程内极为重要的一种特征，它能极大的简化我们的代码  先来看一段类的原型 class Animal &#x2F;&#x2F;基类&amp;#123;public:    void voice()	&amp;#123;        std::cout &lt;&lt; &quot;Voiceless&quot; &lt;&lt; std::endl; &#x2F;&#x2F;不知道该叫啥    &amp;#125;;&amp;#125;;class D">
+<meta property="og:description" content="Knuth算法是一种非常常见的洗牌算法。洗牌其实是一种取随机的算法，只有每一面牌在序列中的任意位置出现的概率都相同的时候，我们才可以说一个随机算法是公平的。  本文需要一定的概率论知识，包括排列组合、古典概型和条件概率  问题分析最容易想到的洗牌方式大概是这种：有n张牌，这n张牌自由组合共有n!个组合，每次只要随机且等可能地从这n!种情况内选取一项，就可以得到一种随机的排列，也就是一次洗牌。那么问">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-10-23T12:02:51.000Z">
-<meta property="article:modified_time" content="2021-03-13T03:27:09.058Z">
+<meta property="article:published_time" content="2021-03-13T04:54:52.000Z">
+<meta property="article:modified_time" content="2021-03-13T10:06:00.255Z">
 <meta property="article:author" content="Legrandk">
-<meta property="article:tag" content="cpp">
+<meta property="article:tag" content="algorithm">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://www.legr4ndk.top/2020/10/23/CppPolymorphism/index.html">
+  <link rel="canonical" href="http://www.legr4ndk.top/2021/03/13/KnuthShuffle/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Legrandk&#39;s Qzone" type="application/atom+xml">
   
@@ -320,14 +320,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-CppPolymorphism" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-KnuthShuffle" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Cpp中的多态
+      Knuth洗牌算法
     </h1>
   
 
@@ -335,20 +335,20 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2020/10/23/CppPolymorphism/" class="article-date">
-	  <time datetime="2020-10-23T12:02:51.000Z" itemprop="datePublished">2020-10-23</time>
+	<a href="/2021/03/13/KnuthShuffle/" class="article-date">
+	  <time datetime="2021-03-13T04:54:52.000Z" itemprop="datePublished">2021-03-13</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/cpp/" rel="tag">cpp</a>
+	<a class="article-tag-link-link" href="/tags/algorithm/" rel="tag">algorithm</a>
   </span>
 
 
@@ -361,72 +361,45 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/10/23/CppPolymorphism/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/03/13/KnuthShuffle/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.3k(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2k(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 7(分)</span>
 	
 
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <blockquote>
-<p>多态是面向对象编程内极为重要的一种特征，它能极大的简化我们的代码</p>
+        <p>Knuth算法是一种非常常见的洗牌算法。洗牌其实是一种取随机的算法，只有每一面牌在序列中的任意位置出现的概率都相同的时候，我们才可以说一个随机算法是公平的。</p>
+<blockquote>
+<p>本文需要一定的概率论知识，包括排列组合、古典概型和条件概率</p>
 </blockquote>
-<p>先来看一段类的原型</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span> //基类</span><br><span class="hljs-class">&#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">voice</span><span class="hljs-params">()</span></span><br><span class="hljs-function">	</span>&#123;<br>        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;Voiceless&quot;</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>; <span class="hljs-comment">//不知道该叫啥</span><br>    &#125;;<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span> :</span> <span class="hljs-keyword">public</span> Animal <span class="hljs-comment">//狗派生类，继承了Animal</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">voice</span><span class="hljs-params">()</span></span><br><span class="hljs-function">	</span>&#123;<br>        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;Woof&quot;</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>; <span class="hljs-comment">//汪汪叫</span><br>    &#125;<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat</span> :</span> <span class="hljs-keyword">public</span> Animal <span class="hljs-comment">//猫派生类，继承了Animal</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">voice</span><span class="hljs-params">()</span></span><br><span class="hljs-function">	</span>&#123;<br>        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;Meow&quot;</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>; <span class="hljs-comment">//喵喵叫</span><br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-
-<p>我们可以看到，基类和派生类中都有函数voice()，它可以让不同的动物发出不同的叫声，其中，Dog类和Cat类的voice()函数是覆写了基类中的同名函数。</p>
-<p>当然，还可以有很多基于Animal类的派生类，都可以有叫声，但是我们如果想统一一下让它们叫的方法，比如用个train函数，传入对象或者它的指针就可以自动调用它的voice函数。虽然Cpp支持重载函数，但是为每个不同的类各写一个这样的函数，工作量不仅大，而且枯燥。多态就是帮我们解决这个问题的。</p>
-<p><strong>多态</strong> <em>Polymorphism</em></p>
-<p>表现方式有两种</p>
+<h1 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h1><p>最容易想到的洗牌方式大概是这种：有n张牌，这n张牌自由组合共有<code>n!</code>个组合，每次只要随机且等可能地从这<code>n!</code>种情况内选取一项，就可以得到一种随机的排列，也就是一次洗牌。那么问题就来了，n在小的时候，<code>n！</code>的数值大小仍可计算，而当n逐渐增大到一定值的时候，<code>n!</code>就会变得不可计算了起来，要随机取得一个情况要耗费的开支太大，时间复杂度打到了<code>o(n!)</code>。</p>
+<p>那么，有没有别的方法可以保证一次洗牌开销没那么大而每张牌在任一位置的概率都相等呢？</p>
+<h1 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h1><p>我们可以借鉴下插入排序的思想。</p>
+<p>比如有5张牌需要我去打乱位置，我就直接留五个空位，然后从第一个空位开始，从原来五张牌中随机选择一张，填到1号空位中，然后在原来的五张牌中抹去那张，还剩下4张。接下来来到二号空位，继续从剩下的4张牌中随机选择一张，放入第二个空位中，再在剩余的四张牌中抹去被选中的那一张……依次类推，你会得到一个序列，那就是洗牌的结果。那么，它是公平的吗？让我们来算算它的概率。</p>
 <ul>
-<li>重载多态，比如函数重载（本文不介绍了），属于静态联编</li>
-<li>子类型多态，属于动态联编，就是我接下来要说的那些</li>
+<li>任一牌出现在第一个位置的概率，即为它第一次就被选中的概率，为<code>1/5</code>。</li>
+<li>任一牌出现在第二个位置的概率，即为它第一次落选，但它在第二次被选中的概率，为<code>4/5 * 1/4 = 1/5</code>。</li>
+<li>任一牌出现在第三个位置的概率，即为它第一、二次落选，但在第三次被选中的概率，为<code>4/5 * 3/4 * 1/3 = 1/5</code>。</li>
+<li>……</li>
 </ul>
-<p>子类型多态有两个要点：</p>
-<ol>
-<li>虚函数</li>
-<li>函数覆写<sub>override</sub></li>
-</ol>
-<p>我们来区分涉及继承链情况下的两种联编：</p>
-<ol>
-<li>通过派生类对象访问同名函数，是静态联编</li>
-<li>通过基类对象的指针访问同名函数，是静态联编</li>
-<li>通过基类对象的指针或引用访问同名虚函数，是动态联编</li>
-</ol>
-<p>那我们现在改一下原来的类的定义让它符合子类型多态的要求</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span></span><br><span class="hljs-class">&#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">voice</span><span class="hljs-params">()</span> <span class="hljs-comment">//此函数声明为虚函数后，派生类中无须再注明</span></span><br><span class="hljs-function">	</span>&#123;<br>        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;Voiceless&quot;</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;<br>    &#125;;<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span> :</span> <span class="hljs-keyword">public</span> Animal<br>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">voice</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span> <span class="hljs-comment">//覆写了voice函数</span></span><br><span class="hljs-function">	</span>&#123;<br>        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;Woof&quot;</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;<br>    &#125;<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat</span> :</span> <span class="hljs-keyword">public</span> Animal<br>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">voice</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span> <span class="hljs-comment">//覆写了voice函数</span></span><br><span class="hljs-function">	</span>&#123;<br>        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;Meow&quot;</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>依此类推，跟据条件概率公式推导，你可以发现一张牌出现在任一位置的概率都为<code>1/5</code>即<code>1/n</code>，说明此洗牌算法是公平的。我们分析这个算法的时间复杂度，可以发现其时间复杂度为<code>o(n)</code>，也就是说他遍历一遍牌，就能实现洗牌的操作。但是我们发现，我们仍需要请求额外的存储空间来存储洗完的牌，空间复杂度方面还可以优化，而且，如何标记已经被选择过的牌，也是一个问题，这些都会带来额外的开支。</p>
+<h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><p>那么我们如何优化它的效率呢？我们注意到，每次随机选完牌之后，下一次选牌仍是随机的，那么在洗牌前的数据组中，牌的顺序是无关紧要的。我们完全可以把取数据然后放数据的过程，改为交换数据的过程。从第一个位置开始洗牌，从整个数组里所有元素中随机选择一个位置的内容与1号位置的元素交换，完成第一轮的洗牌。第二轮的时候，我们默认1号位置已经完成洗牌，从2~n号位置中选择一个元素与2号位置的元素交换位置，这样二号位置的洗牌也完成了……依此类推，把每个位置的牌都遍历一次，即可完成一次洗牌。这就是Knuth Shuffle洗牌算法。</p>
+<p>使用条件概率公式，你可以很轻易地算出，每一张牌出现于任一位置的概率均为<code>1/n</code>，而且，Knuth算法每次会把排完序的数据排除在下一次循环之外，完美解决了已经洗完的部分的标记问题，它不需要额外的存储空间，只需要在交换两个数据的时候使用一个临时变量作为中间交换量即可，效率与空间利用率比之前高了很多。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>以下是使用C#实现的Knuth算法，可以把{1, 2, 3, 4, 5}五张牌乱序洗牌后输出。</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">using</span> System;<br><br><span class="hljs-keyword">namespace</span> <span class="hljs-title">KnuthShuffle</span><br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-keyword">string</span>[] args</span>)</span><br><span class="hljs-function"></span>        &#123;<br>            <span class="hljs-keyword">int</span>[] arr = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;;<br>            <span class="hljs-comment">//随机数生成法千千万，这个用的是Unix时间戳做种子</span><br>            <span class="hljs-comment">//你要是想搞事，完全可以换成随机性更强的随机数生成方法</span><br>            Random random = <span class="hljs-keyword">new</span> Random(); <br>            <br>            <span class="hljs-comment">//Knuth洗牌算法其实就下面这么三行，非常简单</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; arr.Length; i++)<br>            &#123;<br>                Swap(<span class="hljs-keyword">ref</span> arr[i], <span class="hljs-keyword">ref</span> arr[random.Next(i, arr.Length)]);<br>            &#125;<br>            <span class="hljs-comment">//其实你要极致优化的话，听说从后面开始向前洗牌效率更高（这个是玄学我不确定）</span><br>            <span class="hljs-keyword">foreach</span> (<span class="hljs-keyword">var</span> variable <span class="hljs-keyword">in</span> arr)<br>            &#123;<br>                Console.WriteLine(variable);<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Swap</span>(<span class="hljs-params"><span class="hljs-keyword">ref</span> <span class="hljs-keyword">int</span> x, <span class="hljs-keyword">ref</span> <span class="hljs-keyword">int</span> y</span>)</span><br><span class="hljs-function"></span>        &#123;<br>            <span class="hljs-keyword">int</span> temp = x;<br>            x = y;<br>            y = temp;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>那么还是刚刚那个例子，我们设计一个train函数</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">train</span><span class="hljs-params">(Animal animal)</span></span><br><span class="hljs-function"></span>&#123;<br>    animal.voice();<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>使用这个函数，你会发现无论你往参数里塞了什么阿猫阿狗的对象，输出的永远是“Voiceless”，这便是静态联编的问题了，它使用的是基类的对象而非基类对象的指针或引用，你需要把train修改成这样：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">train</span><span class="hljs-params">(Animal&amp; animal)</span></span><br><span class="hljs-function"></span>&#123;<br>    animal.voice();<br>&#125;<br><span class="hljs-comment">//或者这样</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">train</span><span class="hljs-params">(Animal* animal)</span></span><br><span class="hljs-function"></span>&#123;<br>    animal-&gt;voice();<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>然后你的子类对象在调用这个train函数之后就可以正常发出正确的声音了</p>
-<p><strong>需要注意的是，如果voice函数不是<em>虚函数</em>，那么即使你用了派生类对象的指针、引用，只要那个进入函数的东西的类型是基类，它就会调用基类的函数</strong></p>
-<p>一句话总结一下，就是：<strong>函数虚，看对象；函数实，看类型。</strong></p>
-<p>但是，这个东西它也有问题，就是你使用基类的指针（或者引用）指向了派生类的对象的时候，你只能调用派生类的虚函数，无法调用非虚函数，例如我改一下Dog类的定义：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span> :</span> <span class="hljs-keyword">public</span> Animal<br>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">voice</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span></span><br><span class="hljs-function">	</span>&#123;<br>        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;Woof&quot;</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">foo</span><span class="hljs-params">()</span> <span class="hljs-comment">//这个不是虚函数了</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;Foo!&quot;</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-
-<p>但是我在main函数里这样定义：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++">Animal ptr;<br>Dog dog = <span class="hljs-keyword">new</span> Dog();<br>ptr = &amp;dog;<br>ptr-&gt;voice(); <span class="hljs-comment">//调用的是dog对象的voice函数</span><br>ptr-&gt;foo(); <span class="hljs-comment">//无法调用，No member named foo in Animal</span><br></code></pre></td></tr></table></figure>
-
-<p>Animal类的指针虽然指向了dog，但是它将无法调用dog的非虚函数，但是如果我们偏要调用属于子类的非虚函数呢？</p>
-<p><strong>Introducing dynamic_cast!</strong></p>
-<p>Cpp的dynamic_cast&lt;&gt;运算符可以把基类类型的指针转换为派生类的类型的指针，就可以使调用子类的非虚函数称为可能，方法如下</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++">ptr-&gt;foo(); <span class="hljs-comment">//它出了问题</span><br><span class="hljs-keyword">dynamic_cast</span>&lt;Dog*&gt;(ptr)-&gt;foo(); <span class="hljs-comment">//正常调用！</span><br></code></pre></td></tr></table></figure>
-
-<p>虽然建议在任何基类与派生类间的指针、引用的类型转换都使用dynamic_cast运算符，但是实际上，派生类的指针（引用）转为基类类型的指针（引用）可以不使用该运算符而隐式转换，而基类的指针（引用）转为派生类类型的指针（引用）<strong>必须</strong>显式使用该运算符以完成类型转换。</p>
-<p>比如我们有：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++">Animal animal;<br>Animal* pa;<br>Cat cat;<br>Cat* pc;<br><br>pa = &amp;cat; <span class="hljs-comment">//可以隐式转换（下转上）</span><br>pc = <span class="hljs-keyword">dynamic_cast</span>&lt;Cat*&gt;(animal); <span class="hljs-comment">//必须显式转换（上转下）</span><br></code></pre></td></tr></table></figure>
-
-<p>多态就先写这么多~</p>
+<h1 id="它有什么用？"><a href="#它有什么用？" class="headerlink" title="它有什么用？"></a>它有什么用？</h1><p>最简单且直观的用途就是：他能帮我们洗牌，然后实现牌类游戏的洗牌操作。</p>
+<p>比如对于经典牌类游戏斗地主，你可以把54张牌的牌面塞到一个容器内，然后通过Knuth算法实现洗牌，然后抽出3张作为地主牌后按次序分成3组，每个人拿到的与地主牌就都是随机的，完美的符合随机洗牌的要求，再配合排序算法，可以快速地把牌按顺序排列完毕，就可以来一把紧张刺激的斗地主了。</p>
+<p>那么一维的可以，二维的可以吗？事实上当然可以，比如我们同样很熟悉的小游戏扫雷，把雷和空格均匀地洗开之后，再按二维堆叠，就可以形成一幅随机的雷图了，接下来就是跟据数据来判断要在空白格子里填的数据了。</p>
+<p>事实上，我们最常见的Knuth Shuffle的运用，还是在我们听歌的那件事上。市场上几乎所有的音乐播放软件的“随机播放”功能，其实都是“伪随机”，就是通过Knuth算法实现的乱序播放歌曲。这类音乐软件会在你打开随机播放功能后对你的歌单进行一次Knuth Shuffle，然后按序播放这个“洗牌后”的歌单里的歌，但是对于用户来说，确实是看起来像随机播放的了。</p>
+<p>那么问题来啦，我们怎么判断你的音乐App是使用的“真随机播放”还是“伪随机播放”呢？很简单，打开你的音乐软件的随机播放功能，音乐开始播放后，轻按“下一首”按钮，再轻按“上一首”功能，如果它回到了原来的那首歌，那它毫无疑问是“伪随机播放”了。“真随机播放”的话，切歌时它会随机跳到下一首去，你是回不去的了~</p>
+<p>不过话说回来，如果我是要开发“真随机播放”功能的程序员的话，我可能会选择在“随机播放”模式下，把“上一首”按钮和“下一首”按钮的功能都设置成洗完牌后的随机打乱的歌单里的下一首。永远都往下一首播放的话，你也回不去原来那首歌了，体验上来说，因为都是切到下一首没被听过的音乐，应该与每次都生成随机数然后去随机找歌的“真随机播放”体验一致了，而且感觉这种处理方法的开销好像比每次生成随机数的情况要小。（<strong>发现华点😏</strong></p>
 
       
     </div>
@@ -436,7 +409,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://www.legr4ndk.top/2020/10/23/CppPolymorphism/" title="Cpp中的多态" target="_blank" rel="external">http://www.legr4ndk.top/2020/10/23/CppPolymorphism/</a>
+      <a href="http://www.legr4ndk.top/2021/03/13/KnuthShuffle/" title="Knuth洗牌算法" target="_blank" rel="external">http://www.legr4ndk.top/2021/03/13/KnuthShuffle/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -482,13 +455,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2020/11/22/CsharpCommonControls/" title="C#常见控件（WPF平台）"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2020/10/18/MarkdownCourse/" title="Markdown语法教程"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2021/03/08/NginxCrashCourse/" title="一篇文章快速上手Nginx服务器"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
