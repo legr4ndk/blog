@@ -28,7 +28,7 @@
 <meta property="og:description" content="Knuth算法是一种非常常见的洗牌算法。洗牌其实是一种取随机的算法，只有每一面牌在序列中的任意位置出现的概率都相同的时候，我们才可以说一个随机算法是公平的。  本文需要一定的概率论知识，包括排列组合、古典概型和条件概率  问题分析最容易想到的洗牌方式大概是这种：有n张牌，这n张牌自由组合共有n!个组合，每次只要随机且等可能地从这n!种情况内选取一项，就可以得到一种随机的排列，也就是一次洗牌。那么问">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-13T04:54:52.000Z">
-<meta property="article:modified_time" content="2021-03-13T10:06:00.255Z">
+<meta property="article:modified_time" content="2021-03-13T10:09:52.405Z">
 <meta property="article:author" content="Legrandk">
 <meta property="article:tag" content="algorithm">
 <meta name="twitter:card" content="summary">
@@ -378,7 +378,7 @@
 <blockquote>
 <p>本文需要一定的概率论知识，包括排列组合、古典概型和条件概率</p>
 </blockquote>
-<h1 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h1><p>最容易想到的洗牌方式大概是这种：有n张牌，这n张牌自由组合共有<code>n!</code>个组合，每次只要随机且等可能地从这<code>n!</code>种情况内选取一项，就可以得到一种随机的排列，也就是一次洗牌。那么问题就来了，n在小的时候，<code>n！</code>的数值大小仍可计算，而当n逐渐增大到一定值的时候，<code>n!</code>就会变得不可计算了起来，要随机取得一个情况要耗费的开支太大，时间复杂度打到了<code>o(n!)</code>。</p>
+<h1 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h1><p>最容易想到的洗牌方式大概是这种：有n张牌，这n张牌自由组合共有<code>n!</code>个组合，每次只要随机且等可能地从这<code>n!</code>种情况内选取一项，就可以得到一种随机的排列，也就是一次洗牌。那么问题就来了，n在小的时候，<code>n!</code>的数值大小仍可计算，而当n逐渐增大到一定值的时候，<code>n!</code>就会变得不可计算了起来，要随机取得一个情况要耗费的开支太大，时间复杂度打到了<code>o(n!)</code>。</p>
 <p>那么，有没有别的方法可以保证一次洗牌开销没那么大而每张牌在任一位置的概率都相等呢？</p>
 <h1 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h1><p>我们可以借鉴下插入排序的思想。</p>
 <p>比如有5张牌需要我去打乱位置，我就直接留五个空位，然后从第一个空位开始，从原来五张牌中随机选择一张，填到1号空位中，然后在原来的五张牌中抹去那张，还剩下4张。接下来来到二号空位，继续从剩下的4张牌中随机选择一张，放入第二个空位中，再在剩余的四张牌中抹去被选中的那一张……依次类推，你会得到一个序列，那就是洗牌的结果。那么，它是公平的吗？让我们来算算它的概率。</p>
