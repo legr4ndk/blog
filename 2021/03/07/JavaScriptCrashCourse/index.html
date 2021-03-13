@@ -28,7 +28,7 @@
 <meta property="og:description" content="观此文，你仍需有C语言、HTML、CSS基础之基础。 本文规范基本上基于ECMAScript2015（就是ES6）。 你需要认识C语言的分支与循环处理、HTML的常见标签以及CSS的基础选择器。如果你对C语言的函数指针或者函数式编程常用的lambda表达式有所理解的话，将有助你快速上手JavaScript。 （事件那边你要是懂一点WPF的event原理就更好了……不过没人学C#吧……  如何输出">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-07T14:53:45.000Z">
-<meta property="article:modified_time" content="2021-03-08T07:42:10.898Z">
+<meta property="article:modified_time" content="2021-03-13T03:23:54.677Z">
 <meta property="article:author" content="Legrandk">
 <meta property="article:tag" content="做个好码农">
 <meta name="twitter:card" content="summary">
@@ -364,10 +364,10 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/03/07/JavaScriptCrashCourse/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3.5k(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3.6k(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 13(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 14(分)</span>
 	
 
       </div>
@@ -476,14 +476,17 @@
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>如果你给一个变量赋值为<code>null</code>，那么你用<code>typeof</code>运算符查看这个量的类型的时候，会发现它是<code>object</code>类型。</p>
 <p>只定义了而未初始化的变量，它的默认值是<code>undefined</code>。</p>
 <p>其他待补充。</p>
-<h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><h2 id="如何选择元素？"><a href="#如何选择元素？" class="headerlink" title="如何选择元素？"></a>如何选择元素？</h2><p>使用<code>document.querySelector()</code>和<code>document.querySelectorAll()</code>来选择HTML上的标签。</p>
+<h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><h2 id="如何选择元素"><a href="#如何选择元素" class="headerlink" title="如何选择元素"></a>如何选择元素</h2><p>使用<code>document.querySelector()</code>和<code>document.querySelectorAll()</code>来选择HTML上的标签。</p>
 <p>前者用来选择单个元素，后者可以选择多个元素并将其组入一个<code>NodeList</code>，它类似于数组，可以进行数组的一些操作（比如<code>forEach()</code>遍历和<code>NodeList.children[]</code>来选择第几个元素）。这两个函数的参数是一个字符串，字符串是选择器，形式同CSS的标签选择器、class选择器（加<code>.</code>）和id选择器（加<code>#</code>），例如：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> elem1 = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;#id&#x27;</span>); <span class="hljs-comment">//如果实际可选的元素不止一个，则选择第一个</span><br><span class="hljs-keyword">const</span> elem2 = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">&#x27;.item&#x27;</span>); <span class="hljs-comment">//选中了所有.item标记的元素</span><br></code></pre></td></tr></table></figure>
 
 <h2 id="删除页面元素"><a href="#删除页面元素" class="headerlink" title="删除页面元素"></a>删除页面元素</h2><p>可以使用<code>页面元素.remove()</code>方法完成。</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">elem1.remove(); <span class="hljs-comment">//移除页面上的以#id标记的元素</span><br>elem2.remove(); <span class="hljs-comment">//移除页面上的所有的.item标记的元素</span><br>elem2.lastElementChild.remove(); <span class="hljs-comment">//移除elem2组合中的最后一个元素</span><br></code></pre></td></tr></table></figure>
 
-<h2 id="获取与编辑页面元素的内容"><a href="#获取与编辑页面元素的内容" class="headerlink" title="获取与编辑页面元素的内容"></a>获取与编辑页面元素的内容</h2><p>使用元素对象的<code>textContent</code>、<code>innerText</code>、<code>innerHTML</code>属性可以方便的获取或者更改元素的内容。</p>
+<h2 id="添加页面元素"><a href="#添加页面元素" class="headerlink" title="添加页面元素"></a>添加页面元素</h2><p>可以通过<code>document.createElement()</code>方法来创建一个元素。此方法的参数为你要创建的元素的标签名，它的返回值为新创建好的元素DOM对象。要往元素内添加元素，可以使用元素的<code>appendChild()</code>方法，参数为你要插入的元素。特殊地，若要插入文字，参数可以设置为<code>document.createTextNode()</code>，此方法的参数为元素内的字符串。例如：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//在一个ul内插入一个li，li的内容为2333</span><br><span class="hljs-keyword">const</span> ul = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;ul&#x27;</span>) <span class="hljs-comment">//选中ul</span><br><span class="hljs-keyword">const</span> li = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;li&#x27;</span>); <span class="hljs-comment">//创建li</span><br>li.appendChild(<span class="hljs-built_in">document</span>.createTextNode(<span class="hljs-string">&#x27;2333&#x27;</span>)); <span class="hljs-comment">//li内插入字符</span><br>ul.appendChild(li); <span class="hljs-comment">//把li加入ul</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="获取与编辑页面元素的内容试试"><a href="#获取与编辑页面元素的内容试试" class="headerlink" title="获取与编辑页面元素的内容试试"></a>获取与编辑页面元素的内容试试</h2><p>使用元素对象的<code>textContent</code>、<code>innerText</code>、<code>innerHTML</code>属性可以方便的获取或者更改元素的内容。</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">elem2.firstElementChild.textContent = <span class="hljs-string">&#x27;Hello&#x27;</span>; <span class="hljs-comment">//修改elem2集合中的第一个元素的标签中的文本内容</span><br>elem2.firstElementChild.innerText = <span class="hljs-string">&#x27;Hello&#x27;</span>; <span class="hljs-comment">//效果同上</span><br>elem1.innerHTML = <span class="hljs-string">&#x27;&lt;a href=&quot;xxx&quot;&gt;233&lt;/a&gt;&#x27;</span>; <span class="hljs-comment">//修改elem1的内嵌html代码</span><br><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;h1&#x27;</span>).textContent); <span class="hljs-comment">//输出的是文本</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;h1&#x27;</span>).innerText); <span class="hljs-comment">//同上</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;h1&#x27;</span>).innerHTML); <span class="hljs-comment">//输出的是该元素的内嵌的所有HTML代码与文本</span><br></code></pre></td></tr></table></figure>
 
 <p>输入框里面的内容，可以通过元素对象的<code>value</code>属性来获取。</p>
