@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://greenhateam.top/wp-content/uploads/2020/05/hcv3.png">
 <meta property="og:image" content="http://greenhateam.top/wp-content/uploads/2020/05/hcv.png">
 <meta property="article:published_time" content="2020-12-17T15:39:52.000Z">
-<meta property="article:modified_time" content="2021-03-13T10:49:23.977Z">
+<meta property="article:modified_time" content="2021-03-14T10:17:28.590Z">
 <meta property="article:author" content="Legrandk">
 <meta property="article:tag" content="ctf">
 <meta name="twitter:card" content="summary">
@@ -54,7 +54,9 @@
     <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
   
   
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 5.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
@@ -369,7 +371,7 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/12/17/HappyCheckinNPUWP/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 720(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 718(字)</span>
 	
 	
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2(分)</span>
@@ -395,13 +397,13 @@
 <p>再来看二维码：</p>
 <p><img src="http://greenhateam.top/wp-content/uploads/2020/05/hcv3.png" alt="img"></p>
 <p>这是获取的二维码图像，可见二维码的三个定位符均被抹去，所以无法扫描。通过PS添加三个定位符，得到一个二维码。扫描得到以下文字：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs rawtext">flag&#123;this_is_not_flag&#125;<br>三曳所諳陀怯耶南夜缽得醯怯勝數不知喝盧瑟侄盡遠故隸怯薩不娑羯涅冥伊盧耶諳提度奢道盧冥以朋罰所即栗諳蒙集皤夷夜集諳利顛呐寫無怯依奢竟<br>#￥#%<br>E68BBFE4BD9BE68B89E6A0BCE79A84E5A7BFE58ABFE59CA8E69C80E5908E32333333<br>||<br>254333254242254338254342254231254338254345254432254238254643254236254145254239254441254437254234254232254131254236254245253244253244254343254438254330254341254336254435<br>…sadwq#asdsadasf faf$use$dasdasdafafa_$ba##se64$<br></code></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><code class="hljs rawtext">flag{this_is_not_flag}<br>三曳所諳陀怯耶南夜缽得醯怯勝數不知喝盧瑟侄盡遠故隸怯薩不娑羯涅冥伊盧耶諳提度奢道盧冥以朋罰所即栗諳蒙集皤夷夜集諳利顛呐寫無怯依奢竟<br>#￥#%<br>E68BBFE4BD9BE68B89E6A0BCE79A84E5A7BFE58ABFE59CA8E69C80E5908E32333333<br>||<br>254333254242254338254342254231254338254345254432254238254643254236254145254239254441254437254234254232254131254236254245253244253244254343254438254330254341254336254435<br>…sadwq#asdsadasf faf$use$dasdasdafafa_$ba##se64$<br></code></pre></td></tr></tbody></table></figure>
 
 <p>this is not flag 后面的第一部分哪些诡异的文字，是“与佛论禅”编码。最前面加上“佛曰：”，得到一句话：“都说了这不是佛拉格了”。</p>
 <p>第二部分是一段十六进制数，把它转成字符串，得到：“拿佛拉格的姿势在最后”。</p>
 <p>第三段也是一串十六进制数，把它转成字符串，得到：%C3%BB%C8%CB%B1%C8%CE%D2%B8%FC%B6%AE%B9%DA%D7%B4%B2%A1%B6%BE%2D%2D%CC%D8%C0%CA%C6%D5 肉眼可见它是url编码，直接转换，得到一串字符：“没人比我更懂冠状病毒–特朗普”。</p>
 <p>最后一段没啥花头了，就是看到了use base64，是时候把刚刚从拨号音得到的电话号码用BASE64编码发到公众号，得到一段诡异的音频。</p>
-<p><audio controls src="http://greenhateam.top/wp-content/uploads/2020/05/%E9%AB%98%E6%B8%85%E9%87%8D%E7%BD%AE.mp3" style="box-sizing: inherit; display: inline-block; width: 660.25px; min-width: 300px;"></audio><br>这是一段sstv的音频，里面有个图，直接使用软件MMSSTV，播放这段音频给电脑听（推荐电脑内录），你就可以看到孙狗的笑容（天皇遗照）。flag就写在孙🐕的胸上。</p>
+<p><audio controls="" src="http://greenhateam.top/wp-content/uploads/2020/05/%E9%AB%98%E6%B8%85%E9%87%8D%E7%BD%AE.mp3" style="box-sizing: inherit; display: inline-block; width: 660.25px; min-width: 300px;"></audio><br>这是一段sstv的音频，里面有个图，直接使用软件MMSSTV，播放这段音频给电脑听（推荐电脑内录），你就可以看到孙狗的笑容（天皇遗照）。flag就写在孙🐕的胸上。</p>
 <p><img src="http://greenhateam.top/wp-content/uploads/2020/05/hcv.png" alt="img"></p>
 <hr>
 <p><strong>结束</strong></p>
