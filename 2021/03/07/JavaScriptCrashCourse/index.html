@@ -1,507 +1,355 @@
-<!DOCTYPE html>
-<html lang=zh>
-<head>
-  <meta charset="utf-8">
-  
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="Cache-Control" content="no-transform" />
-  <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="format-detection" content="telephone=no,email=no,adress=no">
-  <!-- Color theme for statusbar -->
-  <meta name="theme-color" content="#000000" />
-  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
-  <meta http-equiv="window-target" content="_top" />
-  
-  <meta name="google-site-verification" content="EsvUwzVMQTFU8fJLM8qzjSX2Lzh4msii_Tj8W4EjcSk" />
-  
-  
-  <title>一篇文章快速上手JavaScript | Legrandk&#39;s Qzone</title>
-  <meta name="description" content="观此文，你仍需有C语言、HTML、CSS基础之基础。 本文规范基本上基于ECMAScript2015（就是ES6）。 你需要认识C语言的分支与循环处理、HTML的常见标签以及CSS的基础选择器。如果你对C语言的函数指针或者函数式编程常用的lambda表达式有所理解的话，将有助你快速上手JavaScript。 （事件那边你要是懂一点WPF的event原理就更好了……不过没人学C#吧……  如何输出">
-<meta property="og:type" content="article">
-<meta property="og:title" content="一篇文章快速上手JavaScript">
-<meta property="og:url" content="http://www.legr4ndk.top/2021/03/07/JavaScriptCrashCourse/index.html">
-<meta property="og:site_name" content="Legrandk&#39;s Qzone">
-<meta property="og:description" content="观此文，你仍需有C语言、HTML、CSS基础之基础。 本文规范基本上基于ECMAScript2015（就是ES6）。 你需要认识C语言的分支与循环处理、HTML的常见标签以及CSS的基础选择器。如果你对C语言的函数指针或者函数式编程常用的lambda表达式有所理解的话，将有助你快速上手JavaScript。 （事件那边你要是懂一点WPF的event原理就更好了……不过没人学C#吧……  如何输出">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-03-07T14:53:45.000Z">
-<meta property="article:modified_time" content="2021-03-14T10:17:28.603Z">
-<meta property="article:author" content="Legrandk">
-<meta property="article:tag" content="javascript">
-<meta name="twitter:card" content="summary">
-  <!-- Canonical links -->
-  <link rel="canonical" href="http://www.legr4ndk.top/2021/03/07/JavaScriptCrashCourse/index.html">
-  
-    <link rel="alternate" href="/atom.xml" title="Legrandk&#39;s Qzone" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png" type="image/x-icon">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
 
-  
-  
-  
-    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
-  
-  
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>一篇文章快速上手JavaScript - Legrandk&#39;s Qzone</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Legrandk,"> 
+    <meta name="description" content="
+观此文，你仍需有C语言、HTML、CSS基础之基础。
+本文规范基本上基于ECMAScript2015（就是ES6）。
+你需要认识C语言的分支与循环处理、HTML的常见标签以及CSS的基础选择器。如,"> 
+    <meta name="author" content="Legrandk"> 
+    <link rel="alternative" href="atom.xml" title="Legrandk&#39;s Qzone" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+    
 <meta name="generator" content="Hexo 5.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 
-<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
-  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-  <div class="slimContent">
-    <div class="navbar-header">
-      
-      
-      <div class="profile-block text-center">
-        <a id="avatar" href="https://github.com/legr4ndk" target="_blank">
-          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
-        </a>
-        <h2 id="name" class="hidden-xs hidden-sm">Legrandk</h2>
-        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Developer &amp; Student</h3>
-        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Hangzhou, China</small>
-      </div>
-      
-      <div class="search" id="search-form-wrap">
-
-    <form class="search-form sidebar-form">
-        <div class="input-group">
-            <input type="text" class="search-form-input form-control" placeholder="搜索" />
-            <span class="input-group-btn">
-                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
-            </span>
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
-    </form>
-    <div class="ins-search">
-  <div class="ins-search-mask"></div>
-  <div class="ins-search-container">
-    <div class="ins-input-wrapper">
-      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
-      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
     </div>
-    <div class="ins-section-wrapper">
-      <div class="ins-section-container"></div>
-    </div>
-  </div>
-</div>
-
-
-</div>
-      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
-      <ul class="nav navbar-nav main-nav menu-highlight">
-        
-        
-        <li class="menu-item menu-item-home">
-          <a href="/.">
-            
-            <i class="icon icon-home-fill"></i>
-            
-            <span class="menu-title">首页</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives">
-            
-            <i class="icon icon-archives-fill"></i>
-            
-            <span class="menu-title">归档</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories">
-            
-            <i class="icon icon-folder"></i>
-            
-            <span class="menu-title">分类</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags">
-            
-            <i class="icon icon-tags"></i>
-            
-            <span class="menu-title">标签</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-links">
-          <a href="/links">
-            
-            <i class="icon icon-friendship"></i>
-            
-            <span class="menu-title">友链</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about">
-            
-            <i class="icon icon-cup-fill"></i>
-            
-            <span class="menu-title">关于</span>
-          </a>
-        </li>
-        
-      </ul>
-      
-	
-    <ul class="social-links">
-    	
-        <li><a href="https://github.com/legr4ndk" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
-        
-        <li><a href="https://weibo.com/7526194755/profile" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
-        
-        <li><a href="https://twitter.com/legrandk13" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
-        
-        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
-        
-    </ul>
-
-    </nav>
-  </div>
-</header>
-
-  
-    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
-  <div class="slimContent">
-    
-      <div class="widget">
-    <h3 class="widget-title">一言</h3>
-    <div class="widget-body">
-        <div id="board">
-            <div class="content">
-                <p id="hitokoto">获取中...</p><script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script><iframe src="http://music.163.com/outchain/player?type=2&amp;id=441835088&amp;auto=0&amp;height=430" width="100%" height="100%" frameborder="no" marginwidth="0" marginheight="0"></iframe>
+    <span id="config-title" style="display:none">Legrandk&#39;s Qzone</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://www.legr4ndk.top">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">一篇文章快速上手JavaScript</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%82%9F/">个人感悟</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%A2%E6%88%B7%E7%AB%AF/">客户端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%8D/">耍</a><span class="category-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget-body tagcloud">
-      <a href="/tags/algorithm/" style="font-size: 13.33px;">algorithm</a> <a href="/tags/bootstrap/" style="font-size: 13px;">bootstrap</a> <a href="/tags/cpp/" style="font-size: 13px;">cpp</a> <a href="/tags/csharp/" style="font-size: 13px;">csharp</a> <a href="/tags/ctf/" style="font-size: 13px;">ctf</a> <a href="/tags/git/" style="font-size: 13px;">git</a> <a href="/tags/hexo/" style="font-size: 13px;">hexo</a> <a href="/tags/java/" style="font-size: 13.67px;">java</a> <a href="/tags/javascript/" style="font-size: 13px;">javascript</a> <a href="/tags/markdown/" style="font-size: 13px;">markdown</a> <a href="/tags/misc/" style="font-size: 14px;">misc</a> <a href="/tags/server/" style="font-size: 13.33px;">server</a> <a href="/tags/sql/" style="font-size: 13px;">sql</a>
-    </div>
-  </div>
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">7</span></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget-body">
-      <ul class="recent-post-list list-unstyled no-thumbnail">
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-              </p>
-              <p class="item-title">
-                <a href="/2021/03/13/KnuthShuffle/" class="title">Knuth洗牌算法</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2021-03-13T04:54:52.000Z" itemprop="datePublished">2021-03-13</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
-              </p>
-              <p class="item-title">
-                <a href="/2021/03/08/NginxCrashCourse/" class="title">一篇文章快速上手Nginx服务器</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2021-03-08T12:21:10.000Z" itemprop="datePublished">2021-03-08</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-              </p>
-              <p class="item-title">
-                <a href="/2021/03/07/JavaScriptCrashCourse/" class="title">一篇文章快速上手JavaScript</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2021-03-07T14:53:45.000Z" itemprop="datePublished">2021-03-07</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%82%9F/">个人感悟</a>
-              </p>
-              <p class="item-title">
-                <a href="/2021/02/12/S3Solve/" class="title">鼠年的年终总结</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2021-02-12T05:43:31.000Z" itemprop="datePublished">2021-02-12</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
-              </p>
-              <p class="item-title">
-                <a href="/2021/02/08/ServletHandleWithChinese/" class="title">解决Servlet页面中文乱码问题</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2021-02-08T13:44:47.000Z" itemprop="datePublished">2021-02-08</time>
-              </p>
-            </div>
-          </li>
-          
-      </ul>
-    </div>
-  </div>
-  
-
-    
-  </div>
-</aside>
-
-  
-  
-<main class="main" role="main">
-  <div class="content">
-  <article id="post-JavaScriptCrashCourse" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-    
+    <div class="section">
+        <div class=article-header-wrapper>
     <div class="article-header">
-      
-        
-  
-    <h1 class="article-title" itemprop="name">
-      一篇文章快速上手JavaScript
-    </h1>
-  
-
-      
-      <div class="article-meta">
-        <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2021/03/07/JavaScriptCrashCourse/" class="article-date">
-	  <time datetime="2021-03-07T14:53:45.000Z" itemprop="datePublished">2021-03-07</time>
-	</a>
-</span>
-        
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-  </span>
-
-        
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/javascript/" rel="tag">javascript</a>
-  </span>
-
-
-        
-	<span class="article-read hidden-xs">
-	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
-	    <span id="busuanzi_container_page_pv">
-			<span id="busuanzi_value_page_pv">0</span>
-		</span>
-	</span>
-
-
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/03/07/JavaScriptCrashCourse/#comments" class="article-comment-link">评论</a></span>
-        
-	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3.4k(字)</span>
-	
-	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 13(分)</span>
-	
-
-      </div>
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/前端"><b>「
+                    </b>前端<b> 」</b></a>
+                
+                三月 07, 2021
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/03/07/JavaScriptCrashCourse/" title="一篇文章快速上手JavaScript" class="">一篇文章快速上手JavaScript</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    13k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    12 mins.
+                </span>
+                
+                
+                <span id="/2021/03/07/JavaScriptCrashCourse/" class="leancloud_visitors" data-flag-title="一篇文章快速上手JavaScript">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <span class="leancloud-visitors-count">1000000</span>
+                </span>
+                
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/javascript/" rel="tag">javascript</a></li></ul>
+            
+        </div>
     </div>
-    <div class="article-entry marked-body" itemprop="articleBody">
-      
-        <blockquote>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <blockquote>
 <p>观此文，你仍需有C语言、HTML、CSS基础之基础。</p>
 <p>本文规范基本上基于ECMAScript2015（就是ES6）。</p>
 <p>你需要认识C语言的分支与循环处理、HTML的常见标签以及CSS的基础选择器。如果你对C语言的函数指针或者函数式编程常用的lambda表达式有所理解的话，将有助你快速上手JavaScript。</p>
 <p>（事件那边你要是懂一点WPF的event原理就更好了……不过没人学C#吧……</p>
 </blockquote>
-<h1 id="如何输出"><a href="#如何输出" class="headerlink" title="如何输出"></a>如何输出</h1><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(); <span class="hljs-comment">//输出信息</span><br><span class="hljs-built_in">console</span>.warn(); <span class="hljs-comment">//输出警告，是黄色的</span><br><span class="hljs-built_in">console</span>.error(); <span class="hljs-comment">//输出报错，是红色的（虽然也不会导致程序中止</span><br></code></pre></td></tr></tbody></table></figure>
-
+<h1 id="如何输出"><a href="#如何输出" class="headerlink" title="如何输出"></a>如何输出</h1><pre><code class="javascript">console.log(); //输出信息
+console.warn(); //输出警告，是黄色的
+console.error(); //输出报错，是红色的（虽然也不会导致程序中止</code></pre>
 <p>它们可以通过传入多个参数来实现一次性输出更多数据。</p>
 <h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><p><strong>通过let声明/定义变量，通过const声明常量。（不再推荐使用var）</strong></p>
 <p>例如：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> name = <span class="hljs-string">'Alfred'</span>; <span class="hljs-comment">//name是常量，必须直接初始化，之后不可变</span><br><span class="hljs-keyword">let</span> age = <span class="hljs-number">19</span>; <span class="hljs-comment">//age是变量，仍可变</span><br></code></pre></td></tr></tbody></table></figure>
-
+<pre><code class="javascript">const name = 'Alfred'; //name是常量，必须直接初始化，之后不可变
+let age = 19; //age是变量，仍可变</code></pre>
 <p>你可与使用typeof运算符来输出一个量的数据类型，例如：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> age); <span class="hljs-comment">//向控制台输出age的类型（输出number）</span><br></code></pre></td></tr></tbody></table></figure>
-
+<pre><code class="javascript">console.log(typeof age); //向控制台输出age的类型（输出number）</code></pre>
 <h2 id="string"><a href="#string" class="headerlink" title="string"></a>string</h2><p>用单引号或者双引号包围的字符串。</p>
 <p>例子中我们有：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> s = <span class="hljs-string">'Hello World'</span>;<br></code></pre></td></tr></tbody></table></figure>
-
+<pre><code class="javascript">const s = 'Hello World';</code></pre>
 <h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><p>使用加号可以连接字符串。</p>
 <p>可以使用模板字符串来往字符串里面填入数据（使用反引号）。</p>
 <p>例如：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> info1 = <span class="hljs-string">'My name is '</span> + name + <span class="hljs-string">', and I am '</span> + age + <span class="hljs-string">' years old.'</span>; <span class="hljs-comment">//使用加法连接</span><br><span class="hljs-keyword">let</span> info2 = <span class="hljs-string">`My name is <span class="hljs-subst">${name}</span>, and I am <span class="hljs-subst">${age}</span> years old.`</span>; <span class="hljs-comment">//使用模板字符串</span><br><span class="hljs-comment">//info1 和 info2 两个字符串的内容一致</span><br></code></pre></td></tr></tbody></table></figure>
-
+<pre><code class="javascript">let info1 = 'My name is ' + name + ', and I am ' + age + ' years old.'; //使用加法连接
+let info2 = `My name is ${name}, and I am ${age} years old.`; //使用模板字符串
+//info1 和 info2 两个字符串的内容一致</code></pre>
 <h3 id="获取长度"><a href="#获取长度" class="headerlink" title="获取长度"></a>获取长度</h3><p>使用字符串的<code>length</code>属性获取字符串长度。</p>
 <p>例如：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(s.length); <span class="hljs-comment">//向控制台输出字符串s的长度（输出11）</span><br></code></pre></td></tr></tbody></table></figure>
-
+<pre><code class="javascript">console.log(s.length); //向控制台输出字符串s的长度（输出11）</code></pre>
 <h3 id="转变字符"><a href="#转变字符" class="headerlink" title="转变字符"></a>转变字符</h3><p>使用字符串的<code>toUpperCase()</code>方法把字符串里的字母都转成大写，使用<code>toLowerCase()</code>方法把字符串里的字母都转成小写。注意，返回值才是所求的字符串，原字符串并不会改变。</p>
 <p>例如：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(s.toUpperCase()); <span class="hljs-comment">//向控制台输出全为大写字母的字符串s（输出为HELLO WORLD）</span><br><span class="hljs-built_in">console</span>.log(s.toLowerCase()); <span class="hljs-comment">//向控制台输出全为小写字母的字符串s（输出为hello world）</span><br></code></pre></td></tr></tbody></table></figure>
-
+<pre><code class="javascript">console.log(s.toUpperCase()); //向控制台输出全为大写字母的字符串s（输出为HELLO WORLD）
+console.log(s.toLowerCase()); //向控制台输出全为小写字母的字符串s（输出为hello world）</code></pre>
 <h3 id="获取子字符串"><a href="#获取子字符串" class="headerlink" title="获取子字符串"></a>获取子字符串</h3><p>使用字符串的<code>substring()</code>方法获取字符串的子串。该方法有两个参数，第一个参数代表子串从原字符串的第几个开始（下标从0开始），第二个参数代表子串在父串的第几个字符前结束。注意，第一个参数所指的字符会被包含在子串中而第二个参数所指的不会。</p>
 <p>例如：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(s.substring(<span class="hljs-number">2</span>,<span class="hljs-number">5</span>));<br>    <span class="hljs-comment">//向控制台输出s的自下标为2的字符开始，自下标为5的字符结束的子串（输出为llo）</span><br></code></pre></td></tr></tbody></table></figure>
-
+<pre><code class="javascript">console.log(s.substring(2,5));
+    //向控制台输出s的自下标为2的字符开始，自下标为5的字符结束的子串（输出为llo）</code></pre>
 <h3 id="将字符串分割到数组中"><a href="#将字符串分割到数组中" class="headerlink" title="将字符串分割到数组中"></a>将字符串分割到数组中</h3><p>使用字符串的<code>split()</code>方法将字符串分割到数组中。该方法有一个参数，为分割的分隔符，此方法将按此分隔符分割该字符串到数组。如果要分割每个字符，请使用参数<code>''</code>（空字符串）。注意，参数将不出现在分割完的字符串中。</p>
 <p>例如：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(s.split(<span class="hljs-string">''</span>));<br>    <span class="hljs-comment">//输出["H", "e", "l", "l", "o", " ", "W", "o", "r", "l", "d"]</span><br><span class="hljs-built_in">console</span>.log(s.split(<span class="hljs-string">' '</span>));<br>    <span class="hljs-comment">//输出["Hello", "World"]</span><br><span class="hljs-built_in">console</span>.log(s.split(<span class="hljs-string">'ell'</span>));<br>    <span class="hljs-comment">//输出["H", "o World"]</span><br></code></pre></td></tr></tbody></table></figure>
-
+<pre><code class="javascript">console.log(s.split(''));
+    //输出["H", "e", "l", "l", "o", " ", "W", "o", "r", "l", "d"]
+console.log(s.split(' '));
+    //输出["Hello", "World"]
+console.log(s.split('ell'));
+    //输出["H", "o World"]</code></pre>
 <h2 id="object"><a href="#object" class="headerlink" title="object"></a>object</h2><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>一个数组内可以有多个数据，这些数据可以是不同类型的。</p>
 <p>数组下标从0开始，逐项递增。</p>
 <p>即使数组被定义为const，但仍可改变数组，只是不能给该量赋值其他数组。</p>
 <h4 id="创建数组"><a href="#创建数组" class="headerlink" title="创建数组"></a>创建数组</h4><p>有多种方法创建数组：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> array1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>); <span class="hljs-comment">//使用构造函数创建，括号内可以传入一些值以初始化数组（也可以不传）</span><br><span class="hljs-keyword">const</span> array2 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-string">'233'</span>]; <span class="hljs-comment">//直接创建</span><br></code></pre></td></tr></tbody></table></figure>
-
+<pre><code class="javascript">const array1 = new Array(1, 2); //使用构造函数创建，括号内可以传入一些值以初始化数组（也可以不传）
+const array2 = [1, 2, '233']; //直接创建</code></pre>
 <h4 id="访问数组元素"><a href="#访问数组元素" class="headerlink" title="访问数组元素"></a>访问数组元素</h4><p>直接使用<code>[]</code>即可。</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(array1[<span class="hljs-number">0</span>]); <span class="hljs-comment">//向控制台输出array1数组的第一项（下标为0）（输出1）</span><br></code></pre></td></tr></tbody></table></figure>
-
+<pre><code class="javascript">console.log(array1[0]); //向控制台输出array1数组的第一项（下标为0）（输出1）</code></pre>
 <h4 id="给数组添加元素"><a href="#给数组添加元素" class="headerlink" title="给数组添加元素"></a>给数组添加元素</h4><p>虽然array1只有两个元素，但是要想给它加元素，直接<code>array1[2] = 3</code>即可。注意，如果添加的位置比较不和原来的贴在一起，中间会用empty填充。</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript">array1[<span class="hljs-number">2</span>] = <span class="hljs-number">3</span>;<br><span class="hljs-built_in">console</span>.log(array1); <span class="hljs-comment">//输出[1, 2, 3]，长度为3</span><br>array1[<span class="hljs-number">6</span>] = <span class="hljs-number">7</span>;<br><span class="hljs-built_in">console</span>.log(array1); <span class="hljs-comment">//输出[1, 2, 3, empty × 3, 7]，长度为7（empty也算长度）</span><br><br><span class="hljs-comment">//特殊情况：</span><br><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>];<br>arr[<span class="hljs-number">-2</span>] = <span class="hljs-number">5</span>;<br><span class="hljs-built_in">console</span>.log(arr); <span class="hljs-comment">//输出 [1, 2, -2: 5]，长度为2</span><br><span class="hljs-comment">//要访问下标为-2的元素，可以使用arr[-2]或者arr['-2']</span><br></code></pre></td></tr></tbody></table></figure>
+<pre><code class="javascript">array1[2] = 3;
+console.log(array1); //输出[1, 2, 3]，长度为3
+array1[6] = 7;
+console.log(array1); //输出[1, 2, 3, empty × 3, 7]，长度为7（empty也算长度）
 
+//特殊情况：
+const arr = [1, 2];
+arr[-2] = 5;
+console.log(arr); //输出 [1, 2, -2: 5]，长度为2
+//要访问下标为-2的元素，可以使用arr[-2]或者arr['-2']</code></pre>
 <p>向末尾追加，可以使用数组的<code>push()</code>方法，例如：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript">array2.push(<span class="hljs-number">666</span>);<br><span class="hljs-built_in">console</span>.log(array2); <span class="hljs-comment">//输出[1, 2, '233', 666]</span><br></code></pre></td></tr></tbody></table></figure>
-
+<pre><code class="javascript">array2.push(666);
+console.log(array2); //输出[1, 2, '233', 666]</code></pre>
 <p>向开头添加，可以使用数组的<code>unshift()</code>方法，例如：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript">array2.unshift(<span class="hljs-number">9</span>);<br><span class="hljs-built_in">console</span>.log(array2); <span class="hljs-comment">//输出[9, 1, 2, '233', 666]</span><br></code></pre></td></tr></tbody></table></figure>
-
+<pre><code class="javascript">array2.unshift(9);
+console.log(array2); //输出[9, 1, 2, '233', 666]</code></pre>
 <h4 id="去除数组中的元素"><a href="#去除数组中的元素" class="headerlink" title="去除数组中的元素"></a>去除数组中的元素</h4><p>使用数组的<code>pop()</code>方法，可以去除数组的最后一个元素，同时，此方法会返回被去除的元素。（类似于其他语音的<code>pushBack()</code>方法。）例如：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> x = array2.pop();<br><span class="hljs-built_in">console</span>.log(array2); <span class="hljs-comment">//输出[9, 1, 2, '233']</span><br><span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">//输出666</span><br></code></pre></td></tr></tbody></table></figure>
-
+<pre><code class="javascript">let x = array2.pop();
+console.log(array2); //输出[9, 1, 2, '233']
+console.log(x); //输出666</code></pre>
 <h4 id="检查某个量是不是数组"><a href="#检查某个量是不是数组" class="headerlink" title="检查某个量是不是数组"></a>检查某个量是不是数组</h4><p>使用<code>Array.isArray()</code>方法可以检查一个量是不是数组，如果传入的参数是数组，它会返回true；否则，它会返回false。</p>
 <h4 id="获取数组中某个值的下标"><a href="#获取数组中某个值的下标" class="headerlink" title="获取数组中某个值的下标"></a>获取数组中某个值的下标</h4><p>使用数组的<code>indexOf()</code>方法可以获取数组中该元素（由参数传入）的下标。如果参数内容不存在于数组中，该函数会返回<code>-1</code>。例如：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(array2.indexOf(<span class="hljs-number">2</span>)); <span class="hljs-comment">//输出2</span><br><span class="hljs-built_in">console</span>.log(array2.indexOf(<span class="hljs-number">999</span>)); <span class="hljs-comment">//输出-1</span><br></code></pre></td></tr></tbody></table></figure>
-
+<pre><code class="javascript">console.log(array2.indexOf(2)); //输出2
+console.log(array2.indexOf(999)); //输出-1</code></pre>
 <h4 id="遍历数组"><a href="#遍历数组" class="headerlink" title="遍历数组"></a>遍历数组</h4><p>可以通过<code>for...of</code>循环遍历数组的值，例如：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> x <span class="hljs-keyword">of</span> array2) {<br>    <span class="hljs-built_in">console</span>.log(x);<br>}<br><span class="hljs-comment">//控制台会依次输出9, 1, 2, 233</span><br></code></pre></td></tr></tbody></table></figure>
-
+<pre><code class="javascript">for(let x of array2) {
+    console.log(x);
+}
+//控制台会依次输出9, 1, 2, 233</code></pre>
 <p>或者使用数组的<code>forEach()</code>方法进行遍历。该方法需要传入一个参数作为回调函数，该回调函数有一个参数，即为每次遍历时代表的数组的内容，每次遍历执行一次回调函数。例如：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript">array2.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x</span>) </span>{ <span class="hljs-built_in">console</span>.log(x); }); <span class="hljs-comment">//参数为回调匿名函数</span><br>array2.forEach(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(x) ); <span class="hljs-comment">//使用λ表达式的匿名函数</span><br><span class="hljs-comment">//控制台会依次输出9, 1, 2, 233</span><br></code></pre></td></tr></tbody></table></figure>
-
+<pre><code class="javascript">array2.forEach(function(x) { console.log(x); }); //参数为回调匿名函数
+array2.forEach(x =&gt; console.log(x) ); //使用λ表达式的匿名函数
+//控制台会依次输出9, 1, 2, 233</code></pre>
 <h4 id="取出数组中对象的特定属性值并生成新数组"><a href="#取出数组中对象的特定属性值并生成新数组" class="headerlink" title="取出数组中对象的特定属性值并生成新数组"></a>取出数组中对象的特定属性值并生成新数组</h4><p>可以通过数组的<code>map()</code>方法实现。该方法需要传入一个参数作为回调函数，该回调函数有一个参数，即为每次遍历时代表的数组的内容，每次遍历执行一次回调函数，该回调函数需要返回特定的属性值。此方法的返回值为所求的数组。例如：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//获取数组中所有对象的id</span><br><span class="hljs-keyword">const</span> x = [<br>    {<br>        id: <span class="hljs-number">1</span>,<br>        name: <span class="hljs-string">'Alfred'</span><br>    },<br>    {<br>        id: <span class="hljs-number">2</span>,<br>        name: <span class="hljs-string">'John'</span><br>    }<br>]<br><span class="hljs-keyword">const</span> ids = x.map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">i</span>) </span>{ <span class="hljs-keyword">return</span> i.id; });<br><span class="hljs-keyword">const</span> ids = x.map(<span class="hljs-function"><span class="hljs-params">i</span> =&gt;</span> i.id); <span class="hljs-comment">//λ表达式版</span><br><span class="hljs-built_in">console</span>.log(ids);<br><span class="hljs-comment">//控制台会输出[1, 2]</span><br></code></pre></td></tr></tbody></table></figure>
-
+<pre><code class="javascript">//获取数组中所有对象的id
+const x = [
+    {
+        id: 1,
+        name: 'Alfred'
+    },
+    {
+        id: 2,
+        name: 'John'
+    }
+]
+const ids = x.map(function(i) { return i.id; });
+const ids = x.map(i =&gt; i.id); //λ表达式版
+console.log(ids);
+//控制台会输出[1, 2]</code></pre>
 <h4 id="筛选数组中满足特定属性值要求的对象并生成新对象数组"><a href="#筛选数组中满足特定属性值要求的对象并生成新对象数组" class="headerlink" title="筛选数组中满足特定属性值要求的对象并生成新对象数组"></a>筛选数组中满足特定属性值要求的对象并生成新对象数组</h4><p>可以通过数组的<code>filter()</code>方法实现。该方法需要传入一个参数作为回调函数，该回调函数有一个参数，即为每次遍历时代表的数组的内容，每次遍历执行一次回调函数，该回调函数需要返回一个布尔值，为真的情况下此对象会被加入新数组。此方法的返回值为所求的数组。例如：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//筛选所有id=2的对象</span><br><span class="hljs-keyword">const</span> x = [<br>    {<br>        id: <span class="hljs-number">1</span>,<br>        name: <span class="hljs-string">'Alfred'</span><br>    },<br>    {<br>        id: <span class="hljs-number">2</span>,<br>        name: <span class="hljs-string">'John'</span><br>    }<br>]<br><span class="hljs-keyword">const</span> id2 = x.filter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">i</span>) </span>{ <span class="hljs-keyword">return</span> i.id === <span class="hljs-number">2</span>; });<br><span class="hljs-keyword">const</span> id2 = x.filter(<span class="hljs-function"><span class="hljs-params">i</span> =&gt;</span> i.id === <span class="hljs-number">2</span>); <span class="hljs-comment">//λ表达式版</span><br><span class="hljs-built_in">console</span>.log(id2);<br><span class="hljs-comment">//控制台会输出[{id: 2, name: "John"}]</span><br></code></pre></td></tr></tbody></table></figure>
-
+<pre><code class="javascript">//筛选所有id=2的对象
+const x = [
+    {
+        id: 1,
+        name: 'Alfred'
+    },
+    {
+        id: 2,
+        name: 'John'
+    }
+]
+const id2 = x.filter(function(i) { return i.id === 2; });
+const id2 = x.filter(i =&gt; i.id === 2); //λ表达式版
+console.log(id2);
+//控制台会输出[{id: 2, name: "John"}]</code></pre>
 <h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><p>对象实际上就是大括号包围的键值对。（<code>{key: value}</code>)</p>
 <p>即使对象被定义为const，但仍可改变对象的内容，只是不能给该量赋值其他对象。</p>
 <p>例子中，有：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> person = {<br>    name: <span class="hljs-string">'Alfred'</span>,<br>    age: <span class="hljs-number">19</span>,<br>    address: {<br>        province: <span class="hljs-string">'Zhejiang'</span>,<br>        city: <span class="hljs-string">'Hangzhou'</span><br>    }<br>};<br></code></pre></td></tr></tbody></table></figure>
-
+<pre><code class="javascript">const person = {
+    name: 'Alfred',
+    age: 19,
+    address: {
+        province: 'Zhejiang',
+        city: 'Hangzhou'
+    }
+};</code></pre>
 <h4 id="访问对象的单个值"><a href="#访问对象的单个值" class="headerlink" title="访问对象的单个值"></a>访问对象的单个值</h4><p>使用<code>.</code>运算符来方位对象的单个值。例如：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(person.age); <span class="hljs-comment">//输出19</span><br></code></pre></td></tr></tbody></table></figure>
-
+<pre><code class="javascript">console.log(person.age); //输出19</code></pre>
 <h4 id="解构对象"><a href="#解构对象" class="headerlink" title="解构对象"></a>解构对象</h4><p>可以通过解构对象的方式从对象中取出一定数量的值。例如：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> { name, age, <span class="hljs-attr">address</span>: {city} } = person; <span class="hljs-comment">//现在有3个const量分别为name、age和city</span><br></code></pre></td></tr></tbody></table></figure>
-
+<pre><code class="javascript">const { name, age, address: {city} } = person; //现在有3个const量分别为name、age和city</code></pre>
 <h4 id="添加属性"><a href="#添加属性" class="headerlink" title="添加属性"></a>添加属性</h4><p>可以直接为对象添加新的键值对，例如：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript">person.email = <span class="hljs-string">'person@me.com'</span>;<br><span class="hljs-comment">//那么person现在是</span><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">{ </span><br><span class="hljs-comment">	name: 'Alfred', </span><br><span class="hljs-comment">	age: 19, </span><br><span class="hljs-comment">	address: {</span><br><span class="hljs-comment">		province: 'Zhejiang', </span><br><span class="hljs-comment">		city: 'Hangzhou' },</span><br><span class="hljs-comment">	email: 'person@me.com'</span><br><span class="hljs-comment">}</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></tbody></table></figure>
-
+<pre><code class="javascript">person.email = 'person@me.com';
+//那么person现在是
+/*
+{ 
+    name: 'Alfred', 
+    age: 19, 
+    address: {
+        province: 'Zhejiang', 
+        city: 'Hangzhou' },
+    email: 'person@me.com'
+}
+*/</code></pre>
 <h4 id="遍历对象的属性"><a href="#遍历对象的属性" class="headerlink" title="遍历对象的属性"></a>遍历对象的属性</h4><p>可以通过<code>for...in</code>循环遍历对象的属性，例如：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">for</span> (x <span class="hljs-keyword">in</span> person) {<br>    <span class="hljs-built_in">console</span>.log(x);<br>}<br><span class="hljs-comment">//遍历属性的名字（键），控制台会依次输出name, age, address, email</span><br><span class="hljs-keyword">for</span> (x <span class="hljs-keyword">in</span> person){<br>    <span class="hljs-built_in">console</span>.log(person[x]);<br>}<br><span class="hljs-comment">//遍历属性的值，控制台会依次输出Alfred, 19, {province: "Zhejiang", city: "Hangzhou"}, person@me.com</span><br></code></pre></td></tr></tbody></table></figure>
-
+<pre><code class="javascript">for (x in person) {
+    console.log(x);
+}
+//遍历属性的名字（键），控制台会依次输出name, age, address, email
+for (x in person){
+    console.log(person[x]);
+}
+//遍历属性的值，控制台会依次输出Alfred, 19, {province: "Zhejiang", city: "Hangzhou"}, person@me.com</code></pre>
 <h3 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h3><p>JSON是一种数据格式，长得很像JavaScript的对象，经常用于传输数据。</p>
 <p>使用<code>JSON.stringify()</code>函数可以把JavaScript的object类型数据转换为JSON字符串。例如：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> a = <span class="hljs-built_in">JSON</span>.stringify(person);<br><span class="hljs-built_in">console</span>.log(a);<br><span class="hljs-comment">/*输出</span><br><span class="hljs-comment">{	"name":"Alfred",</span><br><span class="hljs-comment">    "age":19,</span><br><span class="hljs-comment">    "address":{"province":"Zhejiang","city":"Hangzhou"},</span><br><span class="hljs-comment">    "email":"person@me.com"</span><br><span class="hljs-comment">}</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></tbody></table></figure>
-
+<pre><code class="javascript">const a = JSON.stringify(person);
+console.log(a);
+/*输出
+{    "name":"Alfred",
+    "age":19,
+    "address":{"province":"Zhejiang","city":"Hangzhou"},
+    "email":"person@me.com"
+}
+*/</code></pre>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>如果你给一个变量赋值为<code>null</code>，那么你用<code>typeof</code>运算符查看这个量的类型的时候，会发现它是<code>object</code>类型。</p>
 <p>只定义了而未初始化的变量，它的默认值是<code>undefined</code>。</p>
 <p>其他待补充。</p>
 <h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><h2 id="如何选择元素"><a href="#如何选择元素" class="headerlink" title="如何选择元素"></a>如何选择元素</h2><p>使用<code>document.querySelector()</code>和<code>document.querySelectorAll()</code>来选择HTML上的标签。</p>
 <p>前者用来选择单个元素，后者可以选择多个元素并将其组入一个<code>NodeList</code>，它类似于数组，可以进行数组的一些操作（比如<code>forEach()</code>遍历和<code>NodeList.children[]</code>来选择第几个元素）。这两个函数的参数是一个字符串，字符串是选择器，形式同CSS的标签选择器、class选择器（加<code>.</code>）和id选择器（加<code>#</code>），例如：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> elem1 = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'#id'</span>); <span class="hljs-comment">//如果实际可选的元素不止一个，则选择第一个</span><br><span class="hljs-keyword">const</span> elem2 = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'.item'</span>); <span class="hljs-comment">//选中了所有.item标记的元素</span><br></code></pre></td></tr></tbody></table></figure>
-
+<pre><code class="javascript">const elem1 = document.querySelector('#id'); //如果实际可选的元素不止一个，则选择第一个
+const elem2 = document.querySelectorAll('.item'); //选中了所有.item标记的元素</code></pre>
 <h2 id="删除页面元素"><a href="#删除页面元素" class="headerlink" title="删除页面元素"></a>删除页面元素</h2><p>可以使用<code>页面元素.remove()</code>方法完成。</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript">elem1.remove(); <span class="hljs-comment">//移除页面上的以#id标记的元素</span><br>elem2.remove(); <span class="hljs-comment">//移除页面上的所有的.item标记的元素</span><br>elem2.lastElementChild.remove(); <span class="hljs-comment">//移除elem2组合中的最后一个元素</span><br></code></pre></td></tr></tbody></table></figure>
-
+<pre><code class="javascript">elem1.remove(); //移除页面上的以#id标记的元素
+elem2.remove(); //移除页面上的所有的.item标记的元素
+elem2.lastElementChild.remove(); //移除elem2组合中的最后一个元素</code></pre>
 <h2 id="添加页面元素"><a href="#添加页面元素" class="headerlink" title="添加页面元素"></a>添加页面元素</h2><p>可以通过<code>document.createElement()</code>方法来创建一个元素。此方法的参数为你要创建的元素的标签名，它的返回值为新创建好的元素DOM对象。要往元素内添加元素，可以使用元素的<code>appendChild()</code>方法，参数为你要插入的元素。特殊地，若要插入文字，参数可以设置为<code>document.createTextNode()</code>，此方法的参数为元素内的字符串。例如：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//在一个ul内插入一个li，li的内容为2333</span><br><span class="hljs-keyword">const</span> ul = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'ul'</span>) <span class="hljs-comment">//选中ul</span><br><span class="hljs-keyword">const</span> li = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'li'</span>); <span class="hljs-comment">//创建li</span><br>li.appendChild(<span class="hljs-built_in">document</span>.createTextNode(<span class="hljs-string">'2333'</span>)); <span class="hljs-comment">//li内插入字符</span><br>ul.appendChild(li); <span class="hljs-comment">//把li加入ul</span><br></code></pre></td></tr></tbody></table></figure>
-
+<pre><code class="javascript">//在一个ul内插入一个li，li的内容为2333
+const ul = document.querySelector('ul') //选中ul
+const li = document.createElement('li'); //创建li
+li.appendChild(document.createTextNode('2333')); //li内插入字符
+ul.appendChild(li); //把li加入ul</code></pre>
 <h2 id="获取与编辑页面元素的内容试试"><a href="#获取与编辑页面元素的内容试试" class="headerlink" title="获取与编辑页面元素的内容试试"></a>获取与编辑页面元素的内容试试</h2><p>使用元素对象的<code>textContent</code>、<code>innerText</code>、<code>innerHTML</code>属性可以方便的获取或者更改元素的内容。</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript">elem2.firstElementChild.textContent = <span class="hljs-string">'Hello'</span>; <span class="hljs-comment">//修改elem2集合中的第一个元素的标签中的文本内容</span><br>elem2.firstElementChild.innerText = <span class="hljs-string">'Hello'</span>; <span class="hljs-comment">//效果同上</span><br>elem1.innerHTML = <span class="hljs-string">'&lt;a href="xxx"&gt;233&lt;/a&gt;'</span>; <span class="hljs-comment">//修改elem1的内嵌html代码</span><br><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'h1'</span>).textContent); <span class="hljs-comment">//输出的是文本</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'h1'</span>).innerText); <span class="hljs-comment">//同上</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'h1'</span>).innerHTML); <span class="hljs-comment">//输出的是该元素的内嵌的所有HTML代码与文本</span><br></code></pre></td></tr></tbody></table></figure>
+<pre><code class="javascript">elem2.firstElementChild.textContent = 'Hello'; //修改elem2集合中的第一个元素的标签中的文本内容
+elem2.firstElementChild.innerText = 'Hello'; //效果同上
+elem1.innerHTML = '&lt;a href="xxx"&gt;233&lt;/a&gt;'; //修改elem1的内嵌html代码
 
+console.log(document.querySelector('h1').textContent); //输出的是文本
+console.log(document.querySelector('h1').innerText); //同上
+console.log(document.querySelector('h1').innerHTML); //输出的是该元素的内嵌的所有HTML代码与文本</code></pre>
 <p>输入框里面的内容，可以通过元素对象的<code>value</code>属性来获取。</p>
 <h2 id="获取与编辑页面元素的HTML属性与CSS样式"><a href="#获取与编辑页面元素的HTML属性与CSS样式" class="headerlink" title="获取与编辑页面元素的HTML属性与CSS样式"></a>获取与编辑页面元素的HTML属性与CSS样式</h2><p>直接使用元素对象的相应属性并赋值即可。</p>
 <p>给HTML元素添加新类使用元素的<code>classList.add()</code>方法实现，该函数接受一个字符串参数，即为要添加的class名；另外有一个方法叫<code>classList.remove()</code>，可以去除元素的某个class。</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript">elem1.style.background = <span class="hljs-string">'red'</span>; <span class="hljs-comment">//把elem1元素的背景改成红色的（CSS）</span><br>elem1.href = <span class="hljs-string">'https://www.baidu.com'</span>; <span class="hljs-comment">//把elem的href属性设为百度（之前没设置的会新指定）</span><br><span class="hljs-built_in">console</span>.log(elem1.target); <span class="hljs-comment">//输出elem1元素的target属性的内容</span><br><br>elem1.classList.add(<span class="hljs-string">'container'</span>); <span class="hljs-comment">//给elem1的class属性添加一个 container 类（可用于CSS选择）</span><br></code></pre></td></tr></tbody></table></figure>
+<pre><code class="javascript">elem1.style.background = 'red'; //把elem1元素的背景改成红色的（CSS）
+elem1.href = 'https://www.baidu.com'; //把elem的href属性设为百度（之前没设置的会新指定）
+console.log(elem1.target); //输出elem1元素的target属性的内容
 
+elem1.classList.add('container'); //给elem1的class属性添加一个 container 类（可用于CSS选择）</code></pre>
 <h1 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h1><p>以一个按钮元素为例。</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript">btn = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.btn'</span>);<br></code></pre></td></tr></tbody></table></figure>
-
+<pre><code class="javascript">btn = document.querySelector('.btn');</code></pre>
 <h2 id="为一个元素添加监听事件"><a href="#为一个元素添加监听事件" class="headerlink" title="为一个元素添加监听事件"></a>为一个元素添加监听事件</h2><p>使用元素的<code>addEventListener()</code>方法可以为特定的元素添加监听事件。该函数有两个参数，第一个参数是一个字符串，代表要监听的事件；第二个参数为在目标元素上监听到该事件时所触发的回调函数。关于这个回调函数，它接受一个参数，这个参数是被监听方法自动传入的事件对象，函数体即该事件触发时执行的行为。该事件对象的<code>target</code>属性即为触发本事件的元素本身。例如，我给这个按钮添加单击按下时的监听事件：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript">btn.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-params">e</span> =&gt;</span> {<br>    e.preventDefault(); <span class="hljs-comment">//阻止该行为的默认事件，比如提交表单、跳转网页等</span><br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'clicked!'</span>);<br>});<br></code></pre></td></tr></tbody></table></figure>
-
+<pre><code class="javascript">btn.addEventListener('click', e =&gt; {
+    e.preventDefault(); //阻止该行为的默认事件，比如提交表单、跳转网页等
+    console.log('clicked!');
+});</code></pre>
 <p>常用事件有：</p>
 <ul>
 <li>click：单击</li>
@@ -518,271 +366,295 @@
 <p>Good luck, and good night!</p>
 </blockquote>
 
-      
-    </div>
-    <div class="article-footer">
-      <blockquote class="mt-2x">
-  <ul class="post-copyright list-unstyled">
-    
-    <li class="post-copyright-link hidden-xs">
-      <strong>本文链接：</strong>
-      <a href="http://www.legr4ndk.top/2021/03/07/JavaScriptCrashCourse/" title="一篇文章快速上手JavaScript" target="_blank" rel="external">http://www.legr4ndk.top/2021/03/07/JavaScriptCrashCourse/</a>
-    </li>
-    
-    <li class="post-copyright-license">
-      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="external">CC BY-NC-SA 4.0协议</a> 与 <a href="https://github.com/996icu/996.ICU/blob/master/LICENSE" target="_blank" rel="external">"Anti 996" License</a> 两者合并的<a href="http://www.legr4ndk.top/LICENSE.html" target="_blank" rel="external">许可协议</a>。转载请注明出处。
-    </li>
-  </ul>
-</blockquote>
-
-
-<div class="panel panel-default panel-badger">
-  <div class="panel-body">
-    <figure class="media">
-      <div class="media-left">
-        <a href="https://github.com/legr4ndk" target="_blank" class="img-burn thumb-sm visible-lg">
-          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
-        </a>
-      </div>
-      <div class="media-body">
-        <h3 class="media-heading"><a href="https://github.com/legr4ndk" target="_blank"><span class="text-dark">Legrandk</span><small class="ml-1x">Developer &amp; Student</small></a></h3>
-        <div>所以我松开拳头用手握紧笔，作为自己作为人类也作为你。</div>
-      </div>
-    </figure>
-  </div>
-</div>
-
-
-    </div>
-  </article>
-  
-    
-  <section id="comments">
-  	
-      <div id="vcomments"></div>
-    
-  </section>
-
-
-  
-</div>
-
-  <nav class="bar bar-footer clearfix" data-stick-bottom>
-  <div class="bar-inner">
-  
-  <ul class="pager pull-left">
-    
-    <li class="prev">
-      <a href="/2021/03/08/NginxCrashCourse/" title="一篇文章快速上手Nginx服务器"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
-    
-    <li class="next">
-      <a href="/2021/02/12/S3Solve/" title="鼠年的年终总结"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
-    </li>
-    
-    
-  </ul>
-  
-  
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>🤑</span></button>
-  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
-    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
-  </div> -->
-  
-  
-  <div class="bar-right">
-    
-    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone,wechat"></div>
-    
-  </div>
-  </div>
-</nav>
-  
-<!-- Modal -->
-<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content donate">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <div class="modal-body">
-        <div class="donate-box">
-          <div class="donate-head">
-            <p>感谢您对我的支持，我会继续努力的!！</p>
-          </div>
-          <div class="tab-content">
-            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
-              <div class="donate-payimg">
-                <img src="/images/donate/alipayimg.png" alt="打钱！" title="打钱！" />
-              </div>
-              <p class="text-muted mv">请我喝杯奶茶~</p>
-              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
-            </div>
-            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
-              <div class="donate-payimg">
-                <img src="/images/donate/wechatpayimg.png" alt="打钱！" title="打钱！" />
-              </div>
-              <p class="text-muted mv">请我喝杯奶茶~</p>
-              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
-            </div>
-          </div>
-          <div class="donate-footer">
-            <ul class="nav nav-tabs nav-justified" role="tablist">
-              <li role="presentation" class="active">
-                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
-              </li>
-              <li role="presentation" class="">
-                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
-              </li>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
             </ul>
-          </div>
+            
+            
+            <div class="post-nav">
+                <hr>
+                
+                    <div class="post-nav-item">上一篇:<a href="/2021/03/08/NginxCrashCourse/" rel="prev" 
+                        title="一篇文章快速上手Nginx服务器">一篇文章快速上手Nginx服务器
+                      </a></div>
+                
+                
+                    <div class="post-nav-item">下一篇:<a href="/2021/02/12/S3Solve/" rel="next" 
+                        title="鼠年的年终总结">鼠年的年终总结</a></div>
+                                
+            </div>   
+                        
+            
+            
+            <div id="vcomments"></div>
+            
         </div>
-      </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/avatar.jpg" height=300 width=300></img>
+                    <p>Legrandk</p>
+                    <span>To live, is to change the world.</span>
+                    <dl>
+                        <dd><a href="https://github.com/legr4ndk" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/legrandk13" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">22 <p>文章</p></a></li>
+                    <li><a href="/categories">8 <p>分类</p></a></li>
+                    <li><a href="/tags">13 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%BE%93%E5%87%BA"><span class="toc-number">1.</span> <span class="toc-text">如何输出</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#string"><span class="toc-number">2.1.</span> <span class="toc-text">string</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5"><span class="toc-number">2.1.1.</span> <span class="toc-text">连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E9%95%BF%E5%BA%A6"><span class="toc-number">2.1.2.</span> <span class="toc-text">获取长度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E5%8F%98%E5%AD%97%E7%AC%A6"><span class="toc-number">2.1.3.</span> <span class="toc-text">转变字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">2.1.4.</span> <span class="toc-text">获取子字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%86%E5%89%B2%E5%88%B0%E6%95%B0%E7%BB%84%E4%B8%AD"><span class="toc-number">2.1.5.</span> <span class="toc-text">将字符串分割到数组中</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#object"><span class="toc-number">2.2.</span> <span class="toc-text">object</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-number">2.2.1.</span> <span class="toc-text">数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.2.2.</span> <span class="toc-text">对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSON"><span class="toc-number">2.2.3.</span> <span class="toc-text">JSON</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">2.3.</span> <span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DOM"><span class="toc-number">3.</span> <span class="toc-text">DOM</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%E5%85%83%E7%B4%A0"><span class="toc-number">3.1.</span> <span class="toc-text">如何选择元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E9%A1%B5%E9%9D%A2%E5%85%83%E7%B4%A0"><span class="toc-number">3.2.</span> <span class="toc-text">删除页面元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E9%A1%B5%E9%9D%A2%E5%85%83%E7%B4%A0"><span class="toc-number">3.3.</span> <span class="toc-text">添加页面元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E4%B8%8E%E7%BC%96%E8%BE%91%E9%A1%B5%E9%9D%A2%E5%85%83%E7%B4%A0%E7%9A%84%E5%86%85%E5%AE%B9%E8%AF%95%E8%AF%95"><span class="toc-number">3.4.</span> <span class="toc-text">获取与编辑页面元素的内容试试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E4%B8%8E%E7%BC%96%E8%BE%91%E9%A1%B5%E9%9D%A2%E5%85%83%E7%B4%A0%E7%9A%84HTML%E5%B1%9E%E6%80%A7%E4%B8%8ECSS%E6%A0%B7%E5%BC%8F"><span class="toc-number">3.5.</span> <span class="toc-text">获取与编辑页面元素的HTML属性与CSS样式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6"><span class="toc-number">4.</span> <span class="toc-text">事件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%E6%B7%BB%E5%8A%A0%E7%9B%91%E5%90%AC%E4%BA%8B%E4%BB%B6"><span class="toc-number">4.1.</span> <span class="toc-text">为一个元素添加监听事件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ending"><span class="toc-number">5.</span> <span class="toc-text">Ending</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
     </div>
-  </div>
 </div>
 
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2021
+        <span class="gradient-text">
+            Legrandk
+        </span>. 
+        <a href="http://beian.miit.gov.cn/" title="浙ICP备20009661号-2" target="_blank" rel="noopener">浙ICP备20009661号-2</a>
+        <br>
+        <span class="gradient-text">
+            本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。
+        </span>
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
 
 
-</main>
-
-  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
-    
-	
-    <ul class="social-links">
-    	
-        <li><a href="https://github.com/legr4ndk" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
-        
-        <li><a href="https://weibo.com/7526194755/profile" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
-        
-        <li><a href="https://twitter.com/legrandk13" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
-        
-        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
-        
-    </ul>
  
-    
-    <div class="copyright">
-        <div class="support">
-            <a target="_blank" rel="noopener" href="https://creativecommons.org"><img src="http://www.legr4ndk.top/img/cc.png" alt="CreativeCommons" /></a>
-            <a target="_blank" rel="noopener" href="https://996.icu"><img src="http://www.legr4ndk.top/img/link-996.icu-red.svg" alt="996.icu" /></a>
-            <br/>
-        </div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+ 
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
 
-    	
-        &copy; 2019-2021 By <a href="http://www.legr4ndk.top">Legrandk</a>
-        
-        
-        <div class="publishby">
-        	Theme based on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+   
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
         </div>
-        <div class="ICP">
-            <a href="http://beian.miit.gov.cn/" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备20009661号-2</a>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
         </div>
     </div>
-</footer>
-  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+</div>
+  
+
 <script>
-window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['To live, is to change the world.', '所以我松开拳头用手握紧笔，作为自己作为人类也作为你。'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
 </script>
 
-<script src="/js/plugin.min.js"></script>
+ 
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 
+<script>
+  var valine = new Valine();
 
-<script src="/js/application.js"></script>
+  function initValine(path) {
+    if (!path) path = window.location.pathname;
+    let language = 'zh-CN';
+    if (!language) {
+      language = 'en';
+    } else {
+      language = language.toLowerCase();
+    }
+    valine.init({
+      el: '#vcomments',
+      appId: 'Mk3cri9aryQ9dJEueK5hrTy5-gzGzoHsz',
+      appKey: 'L0FXbseweKTJxmSu2SoU2wxC',
+      notify: 'false',
+      verify: 'false',
+      avatar: 'mp',
+      placeholder: 'Leave your throughs behind~',
+      visitor: 'true',
+      path: path,
+      lang: language,
+    });
+  }
 
-
-    <script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-            UNTITLED: '(未命名)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
+  $(document).ready(function () {
+    initValine();
+  });
 </script>
 
-<script src="/js/insight.js"></script>
 
 
+ <!-- 例：百度统计 --> <script> var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?your_code"; var s = document.getElementsByTagName("script")[0];  s.parentNode.insertBefore(hm, s); })(); </script> 
 
-
-
-
-   
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-
-
-   
-    
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/valine"></script>
-  <script type="text/javascript">
-  var GUEST = ['nick', 'mail', 'link'];
-  var meta = 'nick,mail,link';
-  meta = meta.split(',').filter(function(item) {
-    return GUEST.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#vcomments',
-    verify: false,
-    notify: false,
-    appId: 'Mk3cri9aryQ9dJEueK5hrTy5-gzGzoHsz',
-    appKey: 'L0FXbseweKTJxmSu2SoU2wxC',
-    placeholder: 'Just go go',
-    avatar: 'mm',
-    meta: meta,
-    pageSize: '10' || 10,
-    visitor: false
-  });
-  </script>
-
-     
-
-
-
-  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
-  <script>
-  //利用 FancyBox 实现点击图片放大
-  $(document).ready(function() {
-    $('article img').not('[hidden]').not('.panel-body img').each(function() {
-      var $image = $(this);
-      var imageCaption = $image.attr('alt');
-      var $imageWrapLink = $image.parent('a');
-      if ($imageWrapLink.length < 1) {
-        var src = this.getAttribute('src');
-        var idx = src.lastIndexOf('?');
-        if (idx != -1) {
-          src = src.substring(0, idx);
-        }
-        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
-      }
-      $imageWrapLink.attr('data-fancybox', 'images');
-      if (imageCaption) {
-        $imageWrapLink.attr('data-caption', imageCaption);
-      }
-    });
-    $().fancybox({
-      selector: '[data-fancybox="images"]',
-      hash: false,
-      loop: false,
-    });
-  });
-  </script>
-
-
-
-
-
-</body>
 </html>
