@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  <meta name="google-site-verification" content="EsvUwzVMQTFU8fJLM8qzjSX2Lzh4msii_Tj8W4EjcSk" />
+  
+  
+  <title>于Ubuntu 18.04上配置Java Server Pages运行环境 | Legrandk&#39;s Qzone</title>
+  <meta name="description" content="更新系统sudo apt update #更新软件源sudo apt upgrade #更新软件包  Web服务器应用Apachesudo apt install apache2 -y #安装apache2sudo &#x2F;etc&#x2F;init.d&#x2F;apache2 start #启动apache2sudo &#x2F;etc&#x2F;init.d&#x2F;apache2 stop #关闭apache2  Java运行时与JDKsud">
+<meta property="og:type" content="article">
+<meta property="og:title" content="于Ubuntu 18.04上配置Java Server Pages运行环境">
+<meta property="og:url" content="http://www.legr4ndk.top/2020/12/11/JSPenvironment/index.html">
+<meta property="og:site_name" content="Legrandk&#39;s Qzone">
+<meta property="og:description" content="更新系统sudo apt update #更新软件源sudo apt upgrade #更新软件包  Web服务器应用Apachesudo apt install apache2 -y #安装apache2sudo &#x2F;etc&#x2F;init.d&#x2F;apache2 start #启动apache2sudo &#x2F;etc&#x2F;init.d&#x2F;apache2 stop #关闭apache2  Java运行时与JDKsud">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-11T10:16:45.000Z">
+<meta property="article:modified_time" content="2021-03-13T04:30:40.076Z">
+<meta property="article:author" content="Legrandk">
+<meta property="article:tag" content="server">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://www.legr4ndk.top/2020/12/11/JSPenvironment/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Legrandk&#39;s Qzone" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/legr4ndk" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Legrandk</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Developer &amp; Student</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Hangzhou, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/legr4ndk" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/7526194755/profile" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/legrandk13" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>当全世界都在沉睡，你的梦想扬帆起航。</p><iframe src="http://music.163.com/outchain/player?type=2&amp;id=18660395&amp;auto=0&amp;height=430" width="100%" height="100%" frameborder="no" marginwidth="0" marginheight="0"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%82%9F/">个人感悟</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%A2%E6%88%B7%E7%AB%AF/">客户端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E7%B1%BB/">工具类</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%8D/">耍</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/JavaScript/" style="font-size: 13px;">JavaScript</a> <a href="/tags/algorithm/" style="font-size: 13.33px;">algorithm</a> <a href="/tags/bootstrap/" style="font-size: 13px;">bootstrap</a> <a href="/tags/cpp/" style="font-size: 13px;">cpp</a> <a href="/tags/csharp/" style="font-size: 13px;">csharp</a> <a href="/tags/ctf/" style="font-size: 13px;">ctf</a> <a href="/tags/git/" style="font-size: 13px;">git</a> <a href="/tags/hexo/" style="font-size: 13px;">hexo</a> <a href="/tags/java/" style="font-size: 13.67px;">java</a> <a href="/tags/markdown/" style="font-size: 13px;">markdown</a> <a href="/tags/misc/" style="font-size: 14px;">misc</a> <a href="/tags/server/" style="font-size: 13.33px;">server</a> <a href="/tags/sql/" style="font-size: 13px;">sql</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/03/13/KnuthShuffle/" class="title">Knuth洗牌算法</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-03-13T04:54:52.000Z" itemprop="datePublished">2021-03-13</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/03/08/NginxCrashCourse/" class="title">一篇文章快速上手Nginx服务器</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-03-08T12:21:10.000Z" itemprop="datePublished">2021-03-08</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/03/07/JavaScriptCrashCourse/" class="title">一篇文章快速上手JavaScript</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-03-07T14:53:45.000Z" itemprop="datePublished">2021-03-07</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%82%9F/">个人感悟</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/02/12/S3Solve/" class="title">鼠年的年终总结</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-02-12T05:43:31.000Z" itemprop="datePublished">2021-02-12</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/02/08/ServletHandleWithChinese/" class="title">解决Servlet页面中文乱码问题</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-02-08T13:44:47.000Z" itemprop="datePublished">2021-02-08</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-JSPenvironment" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      于Ubuntu 18.04上配置Java Server Pages运行环境
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/12/11/JSPenvironment/" class="article-date">
+	  <time datetime="2020-12-11T10:16:45.000Z" itemprop="datePublished">2020-12-11</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/server/" rel="tag">server</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/12/11/JSPenvironment/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 460(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h3 id="更新系统"><a href="#更新系统" class="headerlink" title="更新系统"></a>更新系统</h3><figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">sudo apt update #更新软件源<br>sudo apt<span class="hljs-built_in"> upgrade </span>#更新软件包<br></code></pre></td></tr></table></figure>
+
+<h3 id="Web服务器应用Apache"><a href="#Web服务器应用Apache" class="headerlink" title="Web服务器应用Apache"></a>Web服务器应用Apache</h3><figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">sudo apt install apache2 -y <span class="hljs-comment">#安装apache2</span><br>sudo <span class="hljs-regexp">/etc/i</span>nit.d/apache2 start <span class="hljs-comment">#启动apache2</span><br>sudo <span class="hljs-regexp">/etc/i</span>nit.d/apache2 stop <span class="hljs-comment">#关闭apache2</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Java运行时与JDK"><a href="#Java运行时与JDK" class="headerlink" title="Java运行时与JDK"></a>Java运行时与JDK</h3><figure class="highlight mipsasm"><table><tr><td class="code"><pre><code class="hljs mipsasm">sudo apt <span class="hljs-keyword">install </span>openjdk<span class="hljs-number">-11</span>-<span class="hljs-keyword">jdk-headless </span><span class="hljs-comment">#安装openjdk-11</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Java应用服务器Tomcat"><a href="#Java应用服务器Tomcat" class="headerlink" title="Java应用服务器Tomcat"></a>Java应用服务器Tomcat</h3><figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">sudo apt install git <span class="hljs-comment">#安装git（作为wget的依赖）</span><br>sudo apt install wget <span class="hljs-comment">#有的系统自带wget，就不用装</span><br>wget https:<span class="hljs-regexp">//mi</span>rrors.cnnic.cn<span class="hljs-regexp">/apache/</span>tomcat<span class="hljs-regexp">/tomcat-9/</span>v9.<span class="hljs-number">0.40</span><span class="hljs-regexp">/bin/</span>apache-tomcat-<span class="hljs-number">9.0</span>.<span class="hljs-number">40</span>.tar.gz<br> <span class="hljs-comment">#于cnnic镜像站下载tomcat的预编译二进制文件</span><br>tar -xzvf apache-tomcat-<span class="hljs-number">9.0</span>.<span class="hljs-number">40</span>.tar.gz <span class="hljs-comment">#解压压缩文件</span><br>sudo mv .<span class="hljs-regexp">/apache-tomcat-9.0.40 /u</span>sr<span class="hljs-regexp">/local/</span>tomcat <span class="hljs-comment">#移动所有文件到/usr/local目录下的tomcat文件夹中</span><br>sudo chmod -R <span class="hljs-number">755</span> <span class="hljs-regexp">/usr/</span>local/tomcat <span class="hljs-comment">#赋予权限</span><br>cd <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/tomcat/</span>bin <span class="hljs-comment">#进入存放tomcat的文件夹</span><br>vim ./startup.sh <span class="hljs-comment">#编辑startup.sh脚本</span><br><span class="hljs-comment"># 最后一行加上：</span><br><span class="hljs-comment">#tomcat</span><br>export TOMCAT_HOME=<span class="hljs-regexp">/usr/</span>local/tomcat<br><span class="hljs-comment"># 保存退出</span><br>sudo <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/tomcat/</span>bin/startup.sh <span class="hljs-comment">#启动tomcat</span><br>sudo <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/tomcat/</span>bin/shutdown.sh <span class="hljs-comment">#关闭tomcat</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="数据库MySQL"><a href="#数据库MySQL" class="headerlink" title="数据库MySQL"></a>数据库MySQL</h3><figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">sudo apt-<span class="hljs-builtin-name">get</span> install mysql-server #安装mysql-server<br>sudo mysql -uroot -p #root用户登陆mysql-clinet，默认无密码<br><span class="hljs-comment">#执行以下操作以自订密码</span><br>use mysql;<br>update<span class="hljs-built_in"> user </span><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">authentication_string</span>=PASSWORD(&quot;自定义密码&quot;) where <span class="hljs-attribute">user</span>=<span class="hljs-string">&#x27;root&#x27;</span>;<br>update<span class="hljs-built_in"> user </span><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">plugin</span>=<span class="hljs-string">&quot;mysql_native_password&quot;</span>;<br>flush privileges;<br>quit;<br><span class="hljs-comment">#退出mysql</span><br>sudo /etc/init.d/ mysql start #启动mysql<br>sudo /etc/init.d/ mysql stop #关闭mysql<br>sudo /etc/init.d/ mysql restart #重启mysql<br><br><span class="hljs-comment">#要创建新的mysql用户</span><br>CREATE<span class="hljs-built_in"> USER </span><span class="hljs-string">&#x27;username&#x27;</span>@<span class="hljs-string">&#x27;host&#x27;</span> IDENTIFIED BY <span class="hljs-string">&#x27;password&#x27;</span>;<br><span class="hljs-comment">#username：用户名，host：指定该用户在哪个主机上可以登陆，本地用户用localhost，从任意远程主机登陆，可以使用通配符%，password：用户密码</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<blockquote>
+<p>启动Apache和Tomcat之后可以在80端口看到apache的it works界面，8080端口可以看到位于 <strong>/usr/local/tomcat/webapps/ROOT/</strong> 的网页，可以自己放jsp文件于次文件夹，以对于域名的相对地址访问。</p>
+</blockquote>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://www.legr4ndk.top/2020/12/11/JSPenvironment/" title="于Ubuntu 18.04上配置Java Server Pages运行环境" target="_blank" rel="external">http://www.legr4ndk.top/2020/12/11/JSPenvironment/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="external">CC BY-NC-SA 4.0协议</a> 与 <a href="https://github.com/996icu/996.ICU/blob/master/LICENSE" target="_blank" rel="external">"Anti 996" License</a> 两者合并的<a href="http://www.legr4ndk.top/LICENSE.html" target="_blank" rel="external">许可协议</a>。转载请注明出处。
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/legr4ndk" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/legr4ndk" target="_blank"><span class="text-dark">Legrandk</span><small class="ml-1x">Developer &amp; Student</small></a></h3>
+        <div>活在福尔马林里，也一样是永垂不朽。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2020/12/16/JSPconnectMySQL/" title="在JSP上连接MySQL数据库"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2020/12/09/IncludeBootstrap/" title="在网页文件中引入Bootstrap"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>お金</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone,wechat"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您对我的支持，我会继续努力的!！</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="打钱！" title="打钱！" />
+              </div>
+              <p class="text-muted mv">扫个码，请我喝杯奶茶~</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="打钱！" title="打钱！" />
+              </div>
+              <p class="text-muted mv">扫个码，请我喝杯奶茶~</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+    
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/legr4ndk" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/7526194755/profile" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/legrandk13" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+ 
+    
+    <div class="copyright">
+        <div class="support">
+            <a target="_blank" rel="noopener" href="https://creativecommons.org"><img src="http://www.legr4ndk.top/img/cc.png" alt="CreativeCommons" /></a>
+            <a target="_blank" rel="noopener" href="https://996.icu"><img src="http://www.legr4ndk.top/img/link-996.icu-red.svg" alt="996.icu" /></a>
+            <br/>
+        </div>
+
+    	
+        &copy; 2019-2021 By <a href="http://www.legr4ndk.top">Legrandk</a>
+        
+        
+        <div class="publishby">
+        	Theme based on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+        <div class="ICP">
+            <a href="http://beian.miit.gov.cn/" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备20009661号-2</a>
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'Mk3cri9aryQ9dJEueK5hrTy5-gzGzoHsz',
+    appKey: 'L0FXbseweKTJxmSu2SoU2wxC',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+
+</body>
+</html>

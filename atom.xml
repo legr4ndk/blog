@@ -36,7 +36,7 @@
     
     
     
-    <category term="算法" scheme="http://www.legr4ndk.top/categories/算法/"/>
+    <category term="算法" scheme="http://www.legr4ndk.top/categories/%E7%AE%97%E6%B3%95/"/>
     
     
     <category term="algorithm" scheme="http://www.legr4ndk.top/tags/algorithm/"/>
@@ -48,24 +48,21 @@
     <link href="http://www.legr4ndk.top/2021/03/08/NginxCrashCourse/"/>
     <id>http://www.legr4ndk.top/2021/03/08/NginxCrashCourse/</id>
     <published>2021-03-08T12:21:10.000Z</published>
-    <updated>2021-03-13T04:32:20.679Z</updated>
+    <updated>2021-03-13T11:03:07.976Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>一篇文章解决Nginx基础操作</p><p>本文基于Debian操作系统演示。（不要问我服务器为啥不用CentOS，问就是它无了</p><p>【恶 灵 退 散】前方灵魂画手出没</p></blockquote><h1 id="啥是Nginx"><a href="#啥是Nginx" class="headerlink" title="啥是Nginx"></a>啥是Nginx</h1><p>比如你写了个HTML丢在服务器上，你输入这个服务器的域名去访问，服务器不知道要拿什么给你，也就不能访问到页面。Nginx就跟Apache一样，会监听服务器的80端口（就是http协议浏览器默认端口），有人发请求，它就把它一个特殊文件夹里的网页文件返回回去。也就是说，它是一个Web服务器应用。</p><p>Nginx的并发量非常大，能达到50000左右，是Tomcat的很多倍，在部署JavaWeb服务的时候，一个Tomcat处理的并发量有限，如果想要同时处理更多的请求，就需要有一个中间的服务器作为转发。Nginx很强（它是老毛子写的），它有两个很重要的功能，就是<strong>负载均衡</strong>和<strong>反向代理</strong>。这俩后面再说。</p><h1 id="怎么安装"><a href="#怎么安装" class="headerlink" title="怎么安装"></a>怎么安装</h1><p>我用的Debian。（CentOS变成Red Hat的上游版了，不可能再用了的~）</p><p>这次咱从源代码手动编译出Nginx，相对于直接下载得到的Nginx，自己编译的不容易有依赖问题。</p><p>你需要系统里先有C语言编译器，比如Debian类Linux可以这样：</p><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">apt install build-essential <span class="hljs-comment"># 需要权限，这玩意里面包括了编译要用的一堆东西</span><br></code></pre></td></tr></table></figure><p>先去<a href="http://nginx.org/en/download.html%E4%B8%8B%E8%BD%BDNginx%EF%BC%8C%E6%98%AF%E4%B8%AAtar.gz%E5%8C%85%EF%BC%8C%E7%84%B6%E5%90%8E%E8%A7%A3%E5%8E%8B%EF%BC%9A">http://nginx.org/en/download.html下载Nginx，是个tar.gz包，然后解压：</a></p><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">tar -xzvf nginx-xxx.tar.gz<br></code></pre></td></tr></table></figure><p>解压完进入文件夹：</p><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> nginx-xxx<br><span class="hljs-comment"># 目录结构如下</span><br>drwxr-xr-x 6 1001 1001   4096 Mar  8 16:21 auto<br>-rw-r--r-- 1 1001 1001 302863 Apr 21  2020 CHANGES<br>-rw-r--r-- 1 1001 1001 462213 Apr 21  2020 CHANGES.ru<br>drwxr-xr-x 2 1001 1001   4096 Mar  8 16:21 conf<br>-rwxr-xr-x 1 1001 1001   2502 Apr 21  2020 configure<br>drwxr-xr-x 4 1001 1001   4096 Mar  8 16:21 contrib<br>drwxr-xr-x 2 1001 1001   4096 Mar  8 16:21 html<br>-rw-r--r-- 1 1001 1001   1397 Apr 21  2020 LICENSE<br>drwxr-xr-x 2 1001 1001   4096 Mar  8 16:21 man<br>-rw-r--r-- 1 1001 1001     49 Apr 21  2020 README<br>drwxr-xr-x 9 1001 1001   4096 Mar  8 16:21 src<br></code></pre></td></tr></table></figure><p>执行目录下的configure文件来配置make与依赖，然后使用make来编译、安装：</p><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">./configure<br>make<br>make install<br><br><span class="hljs-comment"># 注意：以下是可能会需要的依赖，make不成功就把下面的也装了（yum包管理器用户自己找去）</span><br>apt install libpcre3 libpcre3-dev<br>apt install openssl libssl-dev<br>apt install zlib1g<br>apt install zlib1g.dev<br></code></pre></td></tr></table></figure><p>然后查找Nginx在哪：</p><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">whereis nginx<br><span class="hljs-comment"># 得到 nginx: /usr/local/nginx</span><br></code></pre></td></tr></table></figure><p>这样就装完了Nginx。</p><h1 id="Nginx文件结构"><a href="#Nginx文件结构" class="headerlink" title="Nginx文件结构"></a>Nginx文件结构</h1><p>我们可以得到以下文件树：</p><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">.<br>├── conf <span class="hljs-comment"># 配置文件目录</span><br>│   ├── fastcgi.conf<br>│   ├── fastcgi.conf.default<br>│   ├── fastcgi_params<br>│   ├── fastcgi_params.default<br>│   ├── koi-utf<br>│   ├── koi-win<br>│   ├── mime.types<br>│   ├── mime.types.default<br>│   ├── nginx.conf<br>│   ├── nginx.conf.default<br>│   ├── scgi_params<br>│   ├── scgi_params.default<br>│   ├── uwsgi_params<br>│   ├── uwsgi_params.default<br>│   └── win-utf<br>├── html <span class="hljs-comment"># 网页文件存放目录</span><br>│   ├── 50x.html<br>│   └── index.html<br>├── logs <span class="hljs-comment"># 日志文件存放目录</span><br>└── sbin <span class="hljs-comment"># 编译所得的nginx二进制文件存放目录</span><br>    └── nginx<br></code></pre></td></tr></table></figure><p>以下介绍一下四大文件夹</p><h2 id="conf-配置文件目录"><a href="#conf-配置文件目录" class="headerlink" title="conf 配置文件目录"></a>conf 配置文件目录</h2><p>主要有一个文件：<code>nginx.conf</code>，已经去除了所有的注释以及一些非必须的内容。</p><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">worker_processes  1; <span class="hljs-comment">#工作进程的数量</span><br><br>events &#123;<br>    worker_connections  1024; <span class="hljs-comment"># 每个工作进程的最大连接数</span><br>&#125;<br><br><span class="hljs-comment"># 代表此处配置的是http规则</span><br>http &#123; <br>    include       mime.types; <span class="hljs-comment"># 定义mine类型</span><br>    default_type  application/octet-stream;<br><br>    sendfile        on; <br>    <span class="hljs-comment"># 是否使用sendfile函数来实现文件输出，一般网页建议为on，下载服务器，可以设置为off来降低系统压力</span><br><br>    keepalive_timeout  65; <span class="hljs-comment"># 响应超时时间</span><br><br>    server &#123;<br>        listen       80; <span class="hljs-comment"># http协议监听端口为80</span><br>        server_name  localhost; <span class="hljs-comment"># 配置访问域名</span><br><br>        location / &#123; <span class="hljs-comment"># 访问 / 路径时展示</span><br>            root   html; <span class="hljs-comment"># 网站的网页存放路径，可以改到别处</span><br>            index  index.html index.htm; <span class="hljs-comment"># 默认主页文件</span><br>        &#125;<br><br>        error_page   500 502 503 504  /50x.html; <span class="hljs-comment"># 错误网页，包含50x的错误</span><br>        location = /50x.html &#123; <span class="hljs-comment"># 50x错误时返回的网页的路径</span><br>            root   html;<br>        &#125;<br><br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure><h2 id="html-网页文件目录"><a href="#html-网页文件目录" class="headerlink" title="html 网页文件目录"></a>html 网页文件目录</h2><p>此目录存放了该服务器受到http请求时返回给浏览器的网页文件，你可以在这边放html、css、js甚至php等网页文件（如果你的系统支持的话），以及服务器报错时显示的文件（比如50x、404等）。</p><h2 id="logs-日志文件目录"><a href="#logs-日志文件目录" class="headerlink" title="logs 日志文件目录"></a>logs 日志文件目录</h2><p>这边会有几个日志文件。</p><p>access.log会记录Nginx每次被访问的信息，包括访问地址，时间、设备、内容等信息。</p><p>error.log会记录Nginx每次出错的时间，内容等信息。</p><p>nginx.pid会记录Nginx在系统中的进程ID（即PID）。</p><h2 id="sbin-二进制文件目录"><a href="#sbin-二进制文件目录" class="headerlink" title="sbin 二进制文件目录"></a>sbin 二进制文件目录</h2><p>这边只有一个文件，执行它，没有任何反应，就代表你启动了Nginx。</p><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo ./nginx<br></code></pre></td></tr></table></figure><p>然后你去用域名或者ip地址什么的访问你的服务器的80端口，就可以看到这个：</p><p><img src="http://www.legr4ndk.top/img/nginx/nginx_op.png" alt="Welcome to nginx!"></p><p>看到这个就说明你成功打开Nginx了。</p><p>关于nginx有一些命令行操作：</p><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">nginx -s stop <span class="hljs-comment"># 立即停止Nginx</span><br>nginx -s quit <span class="hljs-comment"># 关闭Nginx的所有服务再关闭Nginx</span><br>nginx -s reload <span class="hljs-comment">#改变Nginx的配置文件后重新加载配置文件，无需重启Nginx，用户无感操作</span><br>ps aux|grep nginx <span class="hljs-comment"># 查看Nginx的进程</span><br></code></pre></td></tr></table></figure><h1 id="Nginx可以做什么"><a href="#Nginx可以做什么" class="headerlink" title="Nginx可以做什么"></a>Nginx可以做什么</h1><h2 id="直接拿Nginx做PHP应用服务器"><a href="#直接拿Nginx做PHP应用服务器" class="headerlink" title="直接拿Nginx做PHP应用服务器"></a>直接拿Nginx做PHP应用服务器</h2><p>你可以直接在web服务器上安装PHP解释器与MySQL数据库，然后你可以在html内放入你写好的Web程序（包括html、css、js与php文件等）。默认访问这个服务器时，它会自动打开文件里的index.html。若要自动打开PHP文件，你需要在Nginx的配置文件中改动一处：</p><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">location / &#123; <span class="hljs-comment"># 访问 / 路径时展示</span><br>            root   html; <br>            index  index.html index.htm index.php; <span class="hljs-comment"># 默认主页文件，在此处添加index.php</span><br>&#125;<br></code></pre></td></tr></table></figure><h2 id="反向代理（Reverse-Proxy）"><a href="#反向代理（Reverse-Proxy）" class="headerlink" title="反向代理（Reverse Proxy）"></a>反向代理（Reverse Proxy）</h2><p><img src="http://www.legr4ndk.top/img/nginx/proxy.png" alt="Proxy"></p><p>这是正向代理的示意图，客户端无法直接访问到目标服务器的时候，可以使用一个可以访问到目标服务器的中间服务器作为代理，来为客户端提供流量转发的服务。</p><p>那反向代理是怎么回事呢？</p><p>比如我们有3台服务器运行着我们的网站的服务，每个服务器都有着各自不同的ip地址。让我们假设每台服务器最多让100人同时访问。那么，当我们有200人同时访问这个网站时，用户要如何才能知道哪台服务器是有余力处理的，而又有哪台是被挤满了即将宕机的？用户当然没法知道，因为大家访问网站都是用同一个域名，比如百度，大家都只知道baidu.com，可是它实际上有很多很多的服务器架设在各地，每次访问我们都用的是同一个域名，没有人专门去访问百度1号，百度2号等服务器，这就是反向代理的作用。反向代理服务器把客户端的请求分给多个服务器，再由这个代理服务器将应用服务器上的返回包返回给客户。这样，客户只访问了一个域名，却不会导致大家都访问了一个服务器从而把服务器搞炸。示意图如下：</p><p><img src="http://www.legr4ndk.top/img/nginx/reversed.png" alt="Reverse Proxy"></p><p>这就是反向代理的作用，使用反向代理可以很方便的构建服务器集群，而这对于用户来说是无感的。</p><h2 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h2><p>负载均衡就是Nginx反向代理时为后台的Web服务器分配请求的策略。</p><p>Nginx有很多种策略来进行负载均衡，以下简单介绍几种。</p><h3 id="轮询"><a href="#轮询" class="headerlink" title="轮询"></a>轮询</h3><p>轮询适用于在后端的Web服务器的性能都差不多的时候，Nginx会把反向代理的流量均匀分配给后台每一个服务器。像上面反向代理的图片一样，服务器1，2，3号收到的代理的数量大致一样。这样可以确保大量访问到来的时候各个服务器的负载压力都相近，不至于使某个服务器压力过大。</p><h3 id="加权轮询"><a href="#加权轮询" class="headerlink" title="加权轮询"></a>加权轮询</h3><p>理解了上面那个轮询之后，加权轮询就比较好理解了。不同于上面那一个，加权轮询更适用于后端Web服务器的性能有差异的情况下。Nginx会跟据配置文件中设置好的权重比例分配代理流量到不同的服务器上去，以实现不同性能的服务器各司其职都能最大化性能利用的功能。比如上图的1，2，3号服务器，分别最多能负载的请求数为1：2：3，那么在Nginx中配置好后，Nginx会把大约50%的流量转发到服务器3上，大约33%的流量转发到服务器2上，约17%的流量则会被转发到服务器1上。使用加权轮询策略可以尽量使服务器集群的性能最大化。（能力越大，责任越大）</p><h3 id="IP-Hash"><a href="#IP-Hash" class="headerlink" title="IP Hash"></a>IP Hash</h3><p>轮询与流量转发带来的一个很重要的问题就是一个用户两次访问这个网站，他的流量可能会被转发到不同的服务器上，之前在那个服务器上进行过的操作、存留的Session在这个新服务器上并没有，而要实现服务器集群的Session共享又十分麻烦。一个好方法是使用Redis，但是Nginx的内置IP Hash策略其实可以帮我们完美解决一个问题。当第一次你从一个IP地址访问这个网站时，Nginx会算你的IP的Hash值，然后跟据留存的Hash结果，每次来自同一IP的请求，均交给同一个服务器来执行，就可以解决Session不共享的问题了。</p><h2 id="URL重写（rewrite）"><a href="#URL重写（rewrite）" class="headerlink" title="URL重写（rewrite）"></a>URL重写（rewrite）</h2><p>该指令通过正则表达式的使用来改变URL。可以同时存在一个或者多个指令，按照顺序一次对URL进行匹配和处理。该指令可以在<code>server</code>块后者<code>location</code>块中使用<code>rewrite</code>关键字配置。</p><p>  语法：<code>rewrite regex replacement [flag];</code></p><p>定义如下</p><ul><li><strong>rewrite</strong>：指令关键字。 　</li><li><strong>regex</strong>：用来匹配URI的正则表达式。</li><li><strong>replacement</strong>：匹配成功后用来替换URI中被截取内容的字符串，默认情况如果该字符串包含“http://”、”https://“开头，则不会继续向下对URI进行其他处理，直接返回重写的URI给客户端。</li><li><strong>flag</strong>：用来设置rewrite对URI的处理行为,包含如下数据：<ul><li>last：终止在本location块中处理接收到的URI，并将此处重写的URI作为新的URI使用其他location进行处理（只是终止当前location的处理）。</li><li>break：将此处重写的URI作为一个新的URI在当前location中继续执行，并不会将新的URI转向其他location。</li><li>redirect：将重写后的URI返回个客户端，状态码是302，表明临时重定向，主要用在replacement字符串不以“http://”，“ https://”或“ $scheme” 开头。</li><li>permanent    将重写的URI返回客户端，状态码为301,指明是永久重定向。</li></ul></li></ul><h1 id="反向代理与负载均衡的实现"><a href="#反向代理与负载均衡的实现" class="headerlink" title="反向代理与负载均衡的实现"></a>反向代理与负载均衡的实现</h1><p>这边只实现一个最简单的http协议下80端口的反向代理与转发。</p><p>此处假设的情况是于<code>127.0.0.1:8080</code>与<code>127.0.0.1:8081</code>上均运行着同一个WebApp，需要把从<code>80端口</code>入口的流量以1：2的权重转发给这两个服务。</p><p>在<code>nginx.conf</code>文件下进行配置即可。（配置的部分参见上面以及下文代码的注释）</p><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">http &#123; <br>    server &#123;<br>        listen       80; <br>        server_name  localhost; <br><br>        location / &#123; <br>            root   html;<br>            index  index.html index.htm; <br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>这个代码块我省去了外围的全局配置，只留下了http那一块（实际上被我省去的不能删）</p><h3 id="负载均衡的实现"><a href="#负载均衡的实现" class="headerlink" title="负载均衡的实现"></a>负载均衡的实现</h3><p>反向代理的实现需要先实现负载均衡。负载均衡的配置需要在<code>http协议</code>的配置区域内配置，使用关键字<code>upstream</code>:</p><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">http &#123; <br>    <span class="hljs-comment"># 此处使用upstram关键字配置负载均衡，balance1为负载均衡的自定义策略名，可任意指定</span><br>    upstrean balance1&#123;<br>        server 127.0.0.1:8080 weight=1; <span class="hljs-comment"># 每台服务器均使用server关键词声明</span><br>        server 127.0.0.1:8081 weight=1; <span class="hljs-comment"># 使用weight来声明每个服务器的权值，这边实现了轮询</span><br>    &#125;<br>    <span class="hljs-comment"># 这边实现了加权轮询的负载均衡策略，两台服务器收到的请求数大致为1:2</span><br>    upstrean balance2&#123;<br>        server 127.0.0.1:8080 weight=1;<br>        server 127.0.0.1:8081 weight=2;<br>    &#125;<br>    <br>    server &#123;<br>        <span class="hljs-comment"># 节省篇幅，这边省去</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><h3 id="反向代理实现"><a href="#反向代理实现" class="headerlink" title="反向代理实现"></a>反向代理实现</h3><p>反向代理需要在<code>http协议</code>的配置区域的<code>location</code>域内配置，使用关键字<code>proxy pass</code>：</p><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">location / &#123; <br>            root   html;<br>            index  index.html index.htm; <br>            <br>            <span class="hljs-comment"># 此处使用proxy pass关键字进行反向代理，使用上文声明的balance2策略</span><br>            proxy pass http://balance2; <span class="hljs-comment"># 以此方法实现Nginx对80端口的访问 / 目录的流量的反向代理</span><br>&#125;<br></code></pre></td></tr></table></figure><h1 id="URL重写的实现（以http请求转https为例）"><a href="#URL重写的实现（以http请求转https为例）" class="headerlink" title="URL重写的实现（以http请求转https为例）"></a>URL重写的实现（以http请求转https为例）</h1><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">http &#123; <br>    server &#123;<br>        listen       80; <br>        server_name  localhost; <br>        <br>        rewrite ^(.*)$ https://<span class="hljs-variable">$host</span><span class="hljs-variable">$1</span> permanent; <span class="hljs-comment"># 把所有的请求，转发到https的同域名下</span><br>        <span class="hljs-comment"># 或者有另一种写法，使用return实现</span><br>        <span class="hljs-built_in">return</span> 301 https://127.0.0.1<span class="hljs-variable">$request_uri</span>; <span class="hljs-comment"># 发送301 再转新的地址</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="Final"><a href="#Final" class="headerlink" title="Final"></a>Final</h1><p>Nginx是个配置坑。可以配置的地方真的是，太太太太多了，性能调优也有很多骚操作。本文只是帮助你快速理解Nginx的一些工作的原理以及如何用它最主要的功能。很多其他的功能，例如动静分离（提供静态文件服务器）等操作在本文中还没有涉及，希望后面能再自己学学。</p>]]></content>
+    <content type="html"><![CDATA[<p>title: 一篇文章快速上手Nginx服务器<br>date: 2021-03-08 20:21:10<br>tags: server<br>category: 后端</p><hr><blockquote><p>一篇文章解决Nginx基础操作</p><p>本文基于Debian操作系统演示。（不要问我服务器为啥不用CentOS，问就是它无了</p><p>【恶 灵 退 散】前方灵魂画手出没</p></blockquote><h1 id="啥是Nginx"><a href="#啥是Nginx" class="headerlink" title="啥是Nginx"></a>啥是Nginx</h1><p>比如你写了个HTML丢在服务器上，你输入这个服务器的域名去访问，服务器不知道要拿什么给你，也就不能访问到页面。Nginx就跟Apache一样，会监听服务器的80端口（就是http协议浏览器默认端口），有人发请求，它就把它一个特殊文件夹里的网页文件返回回去。也就是说，它是一个Web服务器应用。</p><p>Nginx的并发量非常大，能达到50000左右，是Tomcat的很多倍，在部署JavaWeb服务的时候，一个Tomcat处理的并发量有限，如果想要同时处理更多的请求，就需要有一个中间的服务器作为转发。Nginx很强（它是老毛子写的），它有两个很重要的功能，就是<strong>负载均衡</strong>和<strong>反向代理</strong>。这俩后面再说。</p><h1 id="怎么安装"><a href="#怎么安装" class="headerlink" title="怎么安装"></a>怎么安装</h1><p>我用的Debian。（CentOS变成Red Hat的上游版了，不可能再用了的~）</p><p>这次咱从源代码手动编译出Nginx，相对于直接下载得到的Nginx，自己编译的不容易有依赖问题。</p><p>你需要系统里先有C语言编译器，比如Debian类Linux可以这样：</p><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">apt install build-essential <span class="hljs-comment"># 需要权限，这玩意里面包括了编译要用的一堆东西</span><br></code></pre></td></tr></table></figure><p>先去 <a href="http://nginx.org/en/download.html">http://nginx.org/en/download.html</a> 下载Nginx，是个tar.gz包，然后解压：</p><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">tar -xzvf nginx-xxx.tar.gz<br></code></pre></td></tr></table></figure><p>解压完进入文件夹：</p><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> nginx-xxx<br><span class="hljs-comment"># 目录结构如下</span><br>drwxr-xr-x 6 1001 1001   4096 Mar  8 16:21 auto<br>-rw-r--r-- 1 1001 1001 302863 Apr 21  2020 CHANGES<br>-rw-r--r-- 1 1001 1001 462213 Apr 21  2020 CHANGES.ru<br>drwxr-xr-x 2 1001 1001   4096 Mar  8 16:21 conf<br>-rwxr-xr-x 1 1001 1001   2502 Apr 21  2020 configure<br>drwxr-xr-x 4 1001 1001   4096 Mar  8 16:21 contrib<br>drwxr-xr-x 2 1001 1001   4096 Mar  8 16:21 html<br>-rw-r--r-- 1 1001 1001   1397 Apr 21  2020 LICENSE<br>drwxr-xr-x 2 1001 1001   4096 Mar  8 16:21 man<br>-rw-r--r-- 1 1001 1001     49 Apr 21  2020 README<br>drwxr-xr-x 9 1001 1001   4096 Mar  8 16:21 src<br></code></pre></td></tr></table></figure><p>执行目录下的configure文件来配置make与依赖，然后使用make来编译、安装：</p><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">./configure<br>make<br>make install<br><br><span class="hljs-comment"># 注意：以下是可能会需要的依赖，make不成功就把下面的也装了（yum包管理器用户自己找去）</span><br>apt install libpcre3 libpcre3-dev<br>apt install openssl libssl-dev<br>apt install zlib1g<br>apt install zlib1g.dev<br></code></pre></td></tr></table></figure><p>然后查找Nginx在哪：</p><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">whereis nginx<br><span class="hljs-comment"># 得到 nginx: /usr/local/nginx</span><br></code></pre></td></tr></table></figure><p>这样就装完了Nginx。</p><h1 id="Nginx文件结构"><a href="#Nginx文件结构" class="headerlink" title="Nginx文件结构"></a>Nginx文件结构</h1><p>我们可以得到以下文件树：</p><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">.<br>├── conf <span class="hljs-comment"># 配置文件目录</span><br>│   ├── fastcgi.conf<br>│   ├── fastcgi.conf.default<br>│   ├── fastcgi_params<br>│   ├── fastcgi_params.default<br>│   ├── koi-utf<br>│   ├── koi-win<br>│   ├── mime.types<br>│   ├── mime.types.default<br>│   ├── nginx.conf<br>│   ├── nginx.conf.default<br>│   ├── scgi_params<br>│   ├── scgi_params.default<br>│   ├── uwsgi_params<br>│   ├── uwsgi_params.default<br>│   └── win-utf<br>├── html <span class="hljs-comment"># 网页文件存放目录</span><br>│   ├── 50x.html<br>│   └── index.html<br>├── logs <span class="hljs-comment"># 日志文件存放目录</span><br>└── sbin <span class="hljs-comment"># 编译所得的nginx二进制文件存放目录</span><br>    └── nginx<br></code></pre></td></tr></table></figure><p>以下介绍一下四大文件夹</p><h2 id="conf-配置文件目录"><a href="#conf-配置文件目录" class="headerlink" title="conf 配置文件目录"></a>conf 配置文件目录</h2><p>主要有一个文件：<code>nginx.conf</code>，已经去除了所有的注释以及一些非必须的内容。</p><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">worker_processes  1; <span class="hljs-comment">#工作进程的数量</span><br><br>events &#123;<br>    worker_connections  1024; <span class="hljs-comment"># 每个工作进程的最大连接数</span><br>&#125;<br><br><span class="hljs-comment"># 代表此处配置的是http规则</span><br>http &#123; <br>    include       mime.types; <span class="hljs-comment"># 定义mine类型</span><br>    default_type  application/octet-stream;<br><br>    sendfile        on; <br>    <span class="hljs-comment"># 是否使用sendfile函数来实现文件输出，一般网页建议为on，下载服务器，可以设置为off来降低系统压力</span><br><br>    keepalive_timeout  65; <span class="hljs-comment"># 响应超时时间</span><br><br>    server &#123;<br>        listen       80; <span class="hljs-comment"># http协议监听端口为80</span><br>        server_name  localhost; <span class="hljs-comment"># 配置访问域名</span><br><br>        location / &#123; <span class="hljs-comment"># 访问 / 路径时展示</span><br>            root   html; <span class="hljs-comment"># 网站的网页存放路径，可以改到别处</span><br>            index  index.html index.htm; <span class="hljs-comment"># 默认主页文件</span><br>        &#125;<br><br>        error_page   500 502 503 504  /50x.html; <span class="hljs-comment"># 错误网页，包含50x的错误</span><br>        location = /50x.html &#123; <span class="hljs-comment"># 50x错误时返回的网页的路径</span><br>            root   html;<br>        &#125;<br><br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure><h2 id="html-网页文件目录"><a href="#html-网页文件目录" class="headerlink" title="html 网页文件目录"></a>html 网页文件目录</h2><p>此目录存放了该服务器受到http请求时返回给浏览器的网页文件，你可以在这边放html、css、js甚至php等网页文件（如果你的系统支持的话），以及服务器报错时显示的文件（比如50x、404等）。</p><h2 id="logs-日志文件目录"><a href="#logs-日志文件目录" class="headerlink" title="logs 日志文件目录"></a>logs 日志文件目录</h2><p>这边会有几个日志文件。</p><p>access.log会记录Nginx每次被访问的信息，包括访问地址，时间、设备、内容等信息。</p><p>error.log会记录Nginx每次出错的时间，内容等信息。</p><p>nginx.pid会记录Nginx在系统中的进程ID（即PID）。</p><h2 id="sbin-二进制文件目录"><a href="#sbin-二进制文件目录" class="headerlink" title="sbin 二进制文件目录"></a>sbin 二进制文件目录</h2><p>这边只有一个文件，执行它，没有任何反应，就代表你启动了Nginx。</p><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo ./nginx<br></code></pre></td></tr></table></figure><p>然后你去用域名或者ip地址什么的访问你的服务器的80端口，就可以看到这个：</p><p><img src="http://www.legr4ndk.top/img/nginx/nginx_op.png" alt="Welcome to nginx!"></p><p>看到这个就说明你成功打开Nginx了。</p><p>关于nginx有一些命令行操作：</p><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">nginx -s stop <span class="hljs-comment"># 立即停止Nginx</span><br>nginx -s quit <span class="hljs-comment"># 关闭Nginx的所有服务再关闭Nginx</span><br>nginx -s reload <span class="hljs-comment">#改变Nginx的配置文件后重新加载配置文件，无需重启Nginx，用户无感操作</span><br>ps aux|grep nginx <span class="hljs-comment"># 查看Nginx的进程</span><br></code></pre></td></tr></table></figure><h1 id="Nginx可以做什么"><a href="#Nginx可以做什么" class="headerlink" title="Nginx可以做什么"></a>Nginx可以做什么</h1><h2 id="直接拿Nginx做PHP应用服务器"><a href="#直接拿Nginx做PHP应用服务器" class="headerlink" title="直接拿Nginx做PHP应用服务器"></a>直接拿Nginx做PHP应用服务器</h2><p>你可以直接在web服务器上安装PHP解释器与MySQL数据库，然后你可以在html内放入你写好的Web程序（包括html、css、js与php文件等）。默认访问这个服务器时，它会自动打开文件里的index.html。若要自动打开PHP文件，你需要在Nginx的配置文件中改动一处：</p><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">location / &#123; <span class="hljs-comment"># 访问 / 路径时展示</span><br>            root   html; <br>            index  index.html index.htm index.php; <span class="hljs-comment"># 默认主页文件，在此处添加index.php</span><br>&#125;<br></code></pre></td></tr></table></figure><h2 id="反向代理（Reverse-Proxy）"><a href="#反向代理（Reverse-Proxy）" class="headerlink" title="反向代理（Reverse Proxy）"></a>反向代理（Reverse Proxy）</h2><p><img src="http://www.legr4ndk.top/img/nginx/proxy.png" alt="Proxy"></p><p>这是正向代理的示意图，客户端无法直接访问到目标服务器的时候，可以使用一个可以访问到目标服务器的中间服务器作为代理，来为客户端提供流量转发的服务。</p><p>那反向代理是怎么回事呢？</p><p>比如我们有3台服务器运行着我们的网站的服务，每个服务器都有着各自不同的ip地址。让我们假设每台服务器最多让100人同时访问。那么，当我们有200人同时访问这个网站时，用户要如何才能知道哪台服务器是有余力处理的，而又有哪台是被挤满了即将宕机的？用户当然没法知道，因为大家访问网站都是用同一个域名，比如百度，大家都只知道baidu.com，可是它实际上有很多很多的服务器架设在各地，每次访问我们都用的是同一个域名，没有人专门去访问百度1号，百度2号等服务器，这就是反向代理的作用。反向代理服务器把客户端的请求分给多个服务器，再由这个代理服务器将应用服务器上的返回包返回给客户。这样，客户只访问了一个域名，却不会导致大家都访问了一个服务器从而把服务器搞炸。示意图如下：</p><p><img src="http://www.legr4ndk.top/img/nginx/reversed.png" alt="Reverse Proxy"></p><p>这就是反向代理的作用，使用反向代理可以很方便的构建服务器集群，而这对于用户来说是无感的。</p><h2 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h2><p>负载均衡就是Nginx反向代理时为后台的Web服务器分配请求的策略。</p><p>Nginx有很多种策略来进行负载均衡，以下简单介绍几种。</p><h3 id="轮询"><a href="#轮询" class="headerlink" title="轮询"></a>轮询</h3><p>轮询适用于在后端的Web服务器的性能都差不多的时候，Nginx会把反向代理的流量均匀分配给后台每一个服务器。像上面反向代理的图片一样，服务器1，2，3号收到的代理的数量大致一样。这样可以确保大量访问到来的时候各个服务器的负载压力都相近，不至于使某个服务器压力过大。</p><h3 id="加权轮询"><a href="#加权轮询" class="headerlink" title="加权轮询"></a>加权轮询</h3><p>理解了上面那个轮询之后，加权轮询就比较好理解了。不同于上面那一个，加权轮询更适用于后端Web服务器的性能有差异的情况下。Nginx会跟据配置文件中设置好的权重比例分配代理流量到不同的服务器上去，以实现不同性能的服务器各司其职都能最大化性能利用的功能。比如上图的1，2，3号服务器，分别最多能负载的请求数为1：2：3，那么在Nginx中配置好后，Nginx会把大约50%的流量转发到服务器3上，大约33%的流量转发到服务器2上，约17%的流量则会被转发到服务器1上。使用加权轮询策略可以尽量使服务器集群的性能最大化。（能力越大，责任越大）</p><h3 id="IP-Hash"><a href="#IP-Hash" class="headerlink" title="IP Hash"></a>IP Hash</h3><p>轮询与流量转发带来的一个很重要的问题就是一个用户两次访问这个网站，他的流量可能会被转发到不同的服务器上，之前在那个服务器上进行过的操作、存留的Session在这个新服务器上并没有，而要实现服务器集群的Session共享又十分麻烦。一个好方法是使用Redis，但是Nginx的内置IP Hash策略其实可以帮我们完美解决一个问题。当第一次你从一个IP地址访问这个网站时，Nginx会算你的IP的Hash值，然后跟据留存的Hash结果，每次来自同一IP的请求，均交给同一个服务器来执行，就可以解决Session不共享的问题了。</p><h2 id="URL重写（rewrite）"><a href="#URL重写（rewrite）" class="headerlink" title="URL重写（rewrite）"></a>URL重写（rewrite）</h2><p>该指令通过正则表达式的使用来改变URL。可以同时存在一个或者多个指令，按照顺序一次对URL进行匹配和处理。该指令可以在<code>server</code>块后者<code>location</code>块中使用<code>rewrite</code>关键字配置。</p><p>  语法：<code>rewrite regex replacement [flag];</code></p><p>定义如下</p><ul><li><strong>rewrite</strong>：指令关键字。 　</li><li><strong>regex</strong>：用来匹配URI的正则表达式。</li><li><strong>replacement</strong>：匹配成功后用来替换URI中被截取内容的字符串，默认情况如果该字符串包含“http://”、”https://“开头，则不会继续向下对URI进行其他处理，直接返回重写的URI给客户端。</li><li><strong>flag</strong>：用来设置rewrite对URI的处理行为,包含如下数据：<ul><li>last：终止在本location块中处理接收到的URI，并将此处重写的URI作为新的URI使用其他location进行处理（只是终止当前location的处理）。</li><li>break：将此处重写的URI作为一个新的URI在当前location中继续执行，并不会将新的URI转向其他location。</li><li>redirect：将重写后的URI返回个客户端，状态码是302，表明临时重定向，主要用在replacement字符串不以“http://”，“ https://”或“ $scheme” 开头。</li><li>permanent    将重写的URI返回客户端，状态码为301,指明是永久重定向。</li></ul></li></ul><h1 id="反向代理与负载均衡的实现"><a href="#反向代理与负载均衡的实现" class="headerlink" title="反向代理与负载均衡的实现"></a>反向代理与负载均衡的实现</h1><p>这边只实现一个最简单的http协议下80端口的反向代理与转发。</p><p>此处假设的情况是于<code>127.0.0.1:8080</code>与<code>127.0.0.1:8081</code>上均运行着同一个WebApp，需要把从<code>80端口</code>入口的流量以1：2的权重转发给这两个服务。</p><p>在<code>nginx.conf</code>文件下进行配置即可。（配置的部分参见上面以及下文代码的注释）</p><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">http &#123; <br>    server &#123;<br>        listen       80; <br>        server_name  localhost; <br><br>        location / &#123; <br>            root   html;<br>            index  index.html index.htm; <br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>这个代码块我省去了外围的全局配置，只留下了http那一块（实际上被我省去的不能删）</p><h3 id="负载均衡的实现"><a href="#负载均衡的实现" class="headerlink" title="负载均衡的实现"></a>负载均衡的实现</h3><p>反向代理的实现需要先实现负载均衡。负载均衡的配置需要在<code>http协议</code>的配置区域内配置，使用关键字<code>upstream</code>:</p><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">http &#123; <br>    <span class="hljs-comment"># 此处使用upstram关键字配置负载均衡，balance1为负载均衡的自定义策略名，可任意指定</span><br>    upstrean balance1&#123;<br>        server 127.0.0.1:8080 weight=1; <span class="hljs-comment"># 每台服务器均使用server关键词声明</span><br>        server 127.0.0.1:8081 weight=1; <span class="hljs-comment"># 使用weight来声明每个服务器的权值，这边实现了轮询</span><br>    &#125;<br>    <span class="hljs-comment"># 这边实现了加权轮询的负载均衡策略，两台服务器收到的请求数大致为1:2</span><br>    upstrean balance2&#123;<br>        server 127.0.0.1:8080 weight=1;<br>        server 127.0.0.1:8081 weight=2;<br>    &#125;<br>    <br>    server &#123;<br>        <span class="hljs-comment"># 节省篇幅，这边省去</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><h3 id="反向代理实现"><a href="#反向代理实现" class="headerlink" title="反向代理实现"></a>反向代理实现</h3><p>反向代理需要在<code>http协议</code>的配置区域的<code>location</code>域内配置，使用关键字<code>proxy pass</code>：</p><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">location / &#123; <br>            root   html;<br>            index  index.html index.htm; <br>            <br>            <span class="hljs-comment"># 此处使用proxy pass关键字进行反向代理，使用上文声明的balance2策略</span><br>            proxy pass http://balance2; <span class="hljs-comment"># 以此方法实现Nginx对80端口的访问 / 目录的流量的反向代理</span><br>&#125;<br></code></pre></td></tr></table></figure><h1 id="URL重写的实现（以http请求转https为例）"><a href="#URL重写的实现（以http请求转https为例）" class="headerlink" title="URL重写的实现（以http请求转https为例）"></a>URL重写的实现（以http请求转https为例）</h1><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">http &#123; <br>    server &#123;<br>        listen       80; <br>        server_name  localhost; <br>        <br>        rewrite ^(.*)$ https://<span class="hljs-variable">$host</span><span class="hljs-variable">$1</span> permanent; <span class="hljs-comment"># 把所有的请求，转发到https的同域名下</span><br>        <span class="hljs-comment"># 或者有另一种写法，使用return实现</span><br>        <span class="hljs-built_in">return</span> 301 https://127.0.0.1<span class="hljs-variable">$request_uri</span>; <span class="hljs-comment"># 发送301 再转新的地址</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="Final"><a href="#Final" class="headerlink" title="Final"></a>Final</h1><p>Nginx是个配置坑。可以配置的地方真的是，太太太太多了，性能调优也有很多骚操作。本文只是帮助你快速理解Nginx的一些工作的原理以及如何用它最主要的功能。很多其他的功能，例如动静分离（提供静态文件服务器）等操作在本文中还没有涉及，希望后面能再自己学学。</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;blockquote&gt;
+    <summary type="html">&lt;p&gt;title: 一篇文章快速上手Nginx服务器&lt;br&gt;date: 2021-03-08 20:21:10&lt;br&gt;tags: server&lt;br&gt;category: 后端&lt;/p&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
 &lt;p&gt;一篇文章解决Nginx基础操作&lt;/p&gt;
-&lt;p&gt;本文基于Debian操作系统演示。（不要问我服务器为啥不用CentOS，问就是它无了&lt;/p&gt;
-&lt;p&gt;【恶 灵 退 散】前方灵魂画手出没&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&quot;啥是Nginx</summary>
+&lt;p&gt;本文基于</summary>
       
     
     
-    
-    <category term="后端" scheme="http://www.legr4ndk.top/categories/后端/"/>
     
     
     <category term="server" scheme="http://www.legr4ndk.top/tags/server/"/>
@@ -92,7 +89,7 @@
     
     
     
-    <category term="前端" scheme="http://www.legr4ndk.top/categories/前端/"/>
+    <category term="前端" scheme="http://www.legr4ndk.top/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
     <category term="JavaScript" scheme="http://www.legr4ndk.top/tags/JavaScript/"/>
@@ -116,7 +113,7 @@
     
     
     
-    <category term="个人感悟" scheme="http://www.legr4ndk.top/categories/个人感悟/"/>
+    <category term="个人感悟" scheme="http://www.legr4ndk.top/categories/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%82%9F/"/>
     
     
     <category term="misc" scheme="http://www.legr4ndk.top/tags/misc/"/>
@@ -143,7 +140,7 @@
     
     
     
-    <category term="后端" scheme="http://www.legr4ndk.top/categories/后端/"/>
+    <category term="后端" scheme="http://www.legr4ndk.top/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
     <category term="java" scheme="http://www.legr4ndk.top/tags/java/"/>
@@ -171,7 +168,7 @@
     
     
     
-    <category term="后端" scheme="http://www.legr4ndk.top/categories/后端/"/>
+    <category term="后端" scheme="http://www.legr4ndk.top/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
     <category term="java" scheme="http://www.legr4ndk.top/tags/java/"/>
@@ -195,7 +192,7 @@
     
     
     
-    <category term="后端" scheme="http://www.legr4ndk.top/categories/后端/"/>
+    <category term="后端" scheme="http://www.legr4ndk.top/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
     <category term="java" scheme="http://www.legr4ndk.top/tags/java/"/>
@@ -207,7 +204,7 @@
     <link href="http://www.legr4ndk.top/2020/12/17/HappyCheckinNPUWP/"/>
     <id>http://www.legr4ndk.top/2020/12/17/HappyCheckinNPUWP/</id>
     <published>2020-12-17T15:39:52.000Z</published>
-    <updated>2021-03-13T03:28:06.389Z</updated>
+    <updated>2021-03-13T10:49:23.977Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>本文搬运自我写在别处的文章</p></blockquote><h2 id="题目信息"><a href="#题目信息" class="headerlink" title="题目信息"></a>题目信息</h2><p>题目链接：<a href="https://pan.baidu.com/s/1c_Y0WJmzTdNVyYgjHmUI_Q">https://pan.baidu.com/s/1c_Y0WJmzTdNVyYgjHmUI_Q</a></p><p>提取码: qhh8</p><p>Hint：关注西北工业大学信息安全协会微信公众号NWPUSEC</p><hr><h2 id="解题过程"><a href="#解题过程" class="headerlink" title="解题过程"></a>解题过程</h2><p>下载得到无后缀名的名叫zip的文件，把后缀名改成.zip，提示文件已损坏，故用16进制文件查看器检查文件（本文使用HxD）。</p><p><img src="http://greenhateam.top/wp-content/uploads/2020/05/hcv1.png" alt="img"></p><p>这是此文件的文件头，可见zip文件的文件头标记504B0304不在文件头部，反而是zip文件的目录结束标识（504B0506）在文件头。把从00000000-00000015的部分移动至文件尾，保存重新打开，就可以看到zip文件的文件了。此zip文件带有伪加密，可以通过搜索的方法搜索zip文件头标记504B0102，在其偏移5字节的地方改为00（要改两处）来去除伪加密。</p><p><img src="http://greenhateam.top/wp-content/uploads/2020/05/hcv2.png" alt="img"></p><p>保存解压即可获得一个mp4视频和一个二维码文件。</p><p>视频文件是喜闻乐见的黑人抬棺材的视频，但是在视频中有两个部分被植入了拨号音。截取这段音频降噪，使用dtmf2num工具识别拨号音，得到电话号码13418070885。</p><p>再来看二维码：</p><p><img src="http://greenhateam.top/wp-content/uploads/2020/05/hcv3.png" alt="img"></p><p>这是获取的二维码图像，可见二维码的三个定位符均被抹去，所以无法扫描。通过PS添加三个定位符，得到一个二维码。扫描得到以下文字：</p><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs rawtext">flag&#123;this_is_not_flag&#125;<br>三曳所諳陀怯耶南夜缽得醯怯勝數不知喝盧瑟侄盡遠故隸怯薩不娑羯涅冥伊盧耶諳提度奢道盧冥以朋罰所即栗諳蒙集皤夷夜集諳利顛呐寫無怯依奢竟<br>#￥#%<br>E68BBFE4BD9BE68B89E6A0BCE79A84E5A7BFE58ABFE59CA8E69C80E5908E32333333<br>||<br>254333254242254338254342254231254338254345254432254238254643254236254145254239254441254437254234254232254131254236254245253244253244254343254438254330254341254336254435<br>…sadwq#asdsadasf faf$use$dasdasdafafa_$ba##se64$<br></code></pre></td></tr></table></figure><p>this is not flag 后面的第一部分哪些诡异的文字，是“与佛论禅”编码。最前面加上“佛曰：”，得到一句话：“都说了这不是佛拉格了”。</p><p>第二部分是一段十六进制数，把它转成字符串，得到：“拿佛拉格的姿势在最后”。</p><p>第三段也是一串十六进制数，把它转成字符串，得到：%C3%BB%C8%CB%B1%C8%CE%D2%B8%FC%B6%AE%B9%DA%D7%B4%B2%A1%B6%BE%2D%2D%CC%D8%C0%CA%C6%D5 肉眼可见它是url编码，直接转换，得到一串字符：“没人比我更懂冠状病毒–特朗普”。</p><p>最后一段没啥花头了，就是看到了use base64，是时候把刚刚从拨号音得到的电话号码用BASE64编码发到公众号，得到一段诡异的音频。</p><p><audio controls src="http://greenhateam.top/wp-content/uploads/2020/05/%E9%AB%98%E6%B8%85%E9%87%8D%E7%BD%AE.mp3" style="box-sizing: inherit; display: inline-block; width: 660.25px; min-width: 300px;"></audio><br>这是一段sstv的音频，里面有个图，直接使用软件MMSSTV，播放这段音频给电脑听（推荐电脑内录），你就可以看到孙狗的笑容（天皇遗照）。flag就写在孙🐕的胸上。</p><p><img src="http://greenhateam.top/wp-content/uploads/2020/05/hcv.png" alt="img"></p><hr><p><strong>结束</strong></p>]]></content>
     
@@ -222,10 +219,10 @@
     
     
     
-    <category term="安全" scheme="http://www.legr4ndk.top/categories/安全/"/>
+    <category term="安全" scheme="http://www.legr4ndk.top/categories/%E5%AE%89%E5%85%A8/"/>
     
     
-    <category term="CTF" scheme="http://www.legr4ndk.top/tags/CTF/"/>
+    <category term="ctf" scheme="http://www.legr4ndk.top/tags/ctf/"/>
     
   </entry>
   
@@ -250,7 +247,7 @@
     
     
     
-    <category term="后端" scheme="http://www.legr4ndk.top/categories/后端/"/>
+    <category term="后端" scheme="http://www.legr4ndk.top/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
     <category term="sql" scheme="http://www.legr4ndk.top/tags/sql/"/>
@@ -274,7 +271,7 @@
     
     
     
-    <category term="后端" scheme="http://www.legr4ndk.top/categories/后端/"/>
+    <category term="后端" scheme="http://www.legr4ndk.top/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
     <category term="java" scheme="http://www.legr4ndk.top/tags/java/"/>
@@ -298,7 +295,7 @@
     
     
     
-    <category term="后端" scheme="http://www.legr4ndk.top/categories/后端/"/>
+    <category term="后端" scheme="http://www.legr4ndk.top/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
     <category term="server" scheme="http://www.legr4ndk.top/tags/server/"/>
@@ -325,7 +322,7 @@
     
     
     
-    <category term="前端" scheme="http://www.legr4ndk.top/categories/前端/"/>
+    <category term="前端" scheme="http://www.legr4ndk.top/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
     <category term="bootstrap" scheme="http://www.legr4ndk.top/tags/bootstrap/"/>
@@ -352,7 +349,7 @@
     
     
     
-    <category term="个人感悟" scheme="http://www.legr4ndk.top/categories/个人感悟/"/>
+    <category term="个人感悟" scheme="http://www.legr4ndk.top/categories/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%82%9F/"/>
     
     
     <category term="misc" scheme="http://www.legr4ndk.top/tags/misc/"/>
@@ -380,7 +377,7 @@
     
     
     
-    <category term="耍" scheme="http://www.legr4ndk.top/categories/耍/"/>
+    <category term="耍" scheme="http://www.legr4ndk.top/categories/%E8%80%8D/"/>
     
     
     <category term="misc" scheme="http://www.legr4ndk.top/tags/misc/"/>
@@ -408,7 +405,7 @@
     
     
     
-    <category term="客户端" scheme="http://www.legr4ndk.top/categories/客户端/"/>
+    <category term="客户端" scheme="http://www.legr4ndk.top/categories/%E5%AE%A2%E6%88%B7%E7%AB%AF/"/>
     
     
     <category term="csharp" scheme="http://www.legr4ndk.top/tags/csharp/"/>
@@ -436,7 +433,7 @@
     
     
     
-    <category term="后端" scheme="http://www.legr4ndk.top/categories/后端/"/>
+    <category term="后端" scheme="http://www.legr4ndk.top/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
     <category term="cpp" scheme="http://www.legr4ndk.top/tags/cpp/"/>
@@ -466,7 +463,7 @@
     
     
     
-    <category term="工具" scheme="http://www.legr4ndk.top/categories/工具/"/>
+    <category term="工具" scheme="http://www.legr4ndk.top/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
     <category term="markdown" scheme="http://www.legr4ndk.top/tags/markdown/"/>
@@ -493,7 +490,7 @@
     
     
     
-    <category term="工具类" scheme="http://www.legr4ndk.top/categories/工具类/"/>
+    <category term="工具类" scheme="http://www.legr4ndk.top/categories/%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
     
     
     <category term="hexo" scheme="http://www.legr4ndk.top/tags/hexo/"/>
@@ -519,7 +516,7 @@
     
     
     
-    <category term="算法" scheme="http://www.legr4ndk.top/categories/算法/"/>
+    <category term="算法" scheme="http://www.legr4ndk.top/categories/%E7%AE%97%E6%B3%95/"/>
     
     
     <category term="algorithm" scheme="http://www.legr4ndk.top/tags/algorithm/"/>
@@ -547,7 +544,7 @@
     
     
     
-    <category term="工具" scheme="http://www.legr4ndk.top/categories/工具/"/>
+    <category term="工具" scheme="http://www.legr4ndk.top/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
     <category term="git" scheme="http://www.legr4ndk.top/tags/git/"/>
