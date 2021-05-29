@@ -3,11 +3,11 @@
   <title>Legrandk&#39;s Qzone</title>
   
   
-  <link href="http://www.legr4ndk.top/atom.xml" rel="self"/>
+  <link href="https://www.legr4ndk.top/atom.xml" rel="self"/>
   
-  <link href="http://www.legr4ndk.top/"/>
+  <link href="https://www.legr4ndk.top/"/>
   <updated>2021-03-14T15:26:12.610Z</updated>
-  <id>http://www.legr4ndk.top/</id>
+  <id>https://www.legr4ndk.top/</id>
   
   <author>
     <name>Legrandk</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Knuth洗牌算法</title>
-    <link href="http://www.legr4ndk.top/2021/03/13/KnuthShuffle/"/>
-    <id>http://www.legr4ndk.top/2021/03/13/KnuthShuffle/</id>
+    <link href="https://www.legr4ndk.top/2021/03/13/KnuthShuffle/"/>
+    <id>https://www.legr4ndk.top/2021/03/13/KnuthShuffle/</id>
     <published>2021-03-13T04:54:52.000Z</published>
     <updated>2021-03-14T15:26:12.610Z</updated>
     
@@ -36,17 +36,17 @@
     
     
     
-    <category term="算法" scheme="http://www.legr4ndk.top/categories/%E7%AE%97%E6%B3%95/"/>
+    <category term="算法" scheme="https://www.legr4ndk.top/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-    <category term="algorithm" scheme="http://www.legr4ndk.top/tags/algorithm/"/>
+    <category term="algorithm" scheme="https://www.legr4ndk.top/tags/algorithm/"/>
     
   </entry>
   
   <entry>
     <title>一篇文章快速上手Nginx服务器</title>
-    <link href="http://www.legr4ndk.top/2021/03/08/NginxCrashCourse/"/>
-    <id>http://www.legr4ndk.top/2021/03/08/NginxCrashCourse/</id>
+    <link href="https://www.legr4ndk.top/2021/03/08/NginxCrashCourse/"/>
+    <id>https://www.legr4ndk.top/2021/03/08/NginxCrashCourse/</id>
     <published>2021-03-08T12:21:10.000Z</published>
     <updated>2021-03-14T10:17:28.610Z</updated>
     
@@ -65,17 +65,17 @@
     
     
     
-    <category term="后端" scheme="http://www.legr4ndk.top/categories/%E5%90%8E%E7%AB%AF/"/>
+    <category term="后端" scheme="https://www.legr4ndk.top/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
-    <category term="server" scheme="http://www.legr4ndk.top/tags/server/"/>
+    <category term="server" scheme="https://www.legr4ndk.top/tags/server/"/>
     
   </entry>
   
   <entry>
     <title>一篇文章快速上手JavaScript</title>
-    <link href="http://www.legr4ndk.top/2021/03/07/JavaScriptCrashCourse/"/>
-    <id>http://www.legr4ndk.top/2021/03/07/JavaScriptCrashCourse/</id>
+    <link href="https://www.legr4ndk.top/2021/03/07/JavaScriptCrashCourse/"/>
+    <id>https://www.legr4ndk.top/2021/03/07/JavaScriptCrashCourse/</id>
     <published>2021-03-07T14:53:45.000Z</published>
     <updated>2021-03-14T10:17:28.603Z</updated>
     
@@ -92,17 +92,17 @@
     
     
     
-    <category term="前端" scheme="http://www.legr4ndk.top/categories/%E5%89%8D%E7%AB%AF/"/>
+    <category term="前端" scheme="https://www.legr4ndk.top/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-    <category term="javascript" scheme="http://www.legr4ndk.top/tags/javascript/"/>
+    <category term="javascript" scheme="https://www.legr4ndk.top/tags/javascript/"/>
     
   </entry>
   
   <entry>
     <title>鼠年的年终总结</title>
-    <link href="http://www.legr4ndk.top/2021/02/12/S3Solve/"/>
-    <id>http://www.legr4ndk.top/2021/02/12/S3Solve/</id>
+    <link href="https://www.legr4ndk.top/2021/02/12/S3Solve/"/>
+    <id>https://www.legr4ndk.top/2021/02/12/S3Solve/</id>
     <published>2021-02-12T05:43:31.000Z</published>
     <updated>2021-03-14T10:17:28.612Z</updated>
     
@@ -116,17 +116,17 @@
     
     
     
-    <category term="个人感悟" scheme="http://www.legr4ndk.top/categories/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%82%9F/"/>
+    <category term="个人感悟" scheme="https://www.legr4ndk.top/categories/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%82%9F/"/>
     
     
-    <category term="misc" scheme="http://www.legr4ndk.top/tags/misc/"/>
+    <category term="misc" scheme="https://www.legr4ndk.top/tags/misc/"/>
     
   </entry>
   
   <entry>
     <title>解决Servlet页面中文乱码问题</title>
-    <link href="http://www.legr4ndk.top/2021/02/08/ServletHandleWithChinese/"/>
-    <id>http://www.legr4ndk.top/2021/02/08/ServletHandleWithChinese/</id>
+    <link href="https://www.legr4ndk.top/2021/02/08/ServletHandleWithChinese/"/>
+    <id>https://www.legr4ndk.top/2021/02/08/ServletHandleWithChinese/</id>
     <published>2021-02-08T13:44:47.000Z</published>
     <updated>2021-03-14T10:17:28.613Z</updated>
     
@@ -144,17 +144,17 @@ resp.setContentType(&quot;text/html&quot;);&lt;/</summary>
     
     
     
-    <category term="后端" scheme="http://www.legr4ndk.top/categories/%E5%90%8E%E7%AB%AF/"/>
+    <category term="后端" scheme="https://www.legr4ndk.top/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
-    <category term="java" scheme="http://www.legr4ndk.top/tags/java/"/>
+    <category term="java" scheme="https://www.legr4ndk.top/tags/java/"/>
     
   </entry>
   
   <entry>
     <title>在JSP上使用JavaBean</title>
-    <link href="http://www.legr4ndk.top/2021/01/07/JSPuseJavaBean/"/>
-    <id>http://www.legr4ndk.top/2021/01/07/JSPuseJavaBean/</id>
+    <link href="https://www.legr4ndk.top/2021/01/07/JSPuseJavaBean/"/>
+    <id>https://www.legr4ndk.top/2021/01/07/JSPuseJavaBean/</id>
     <published>2021-01-07T07:54:53.000Z</published>
     <updated>2021-03-14T14:24:38.803Z</updated>
     
@@ -172,17 +172,17 @@ resp.setContentType(&quot;text/html&quot;);&lt;/</summary>
     
     
     
-    <category term="后端" scheme="http://www.legr4ndk.top/categories/%E5%90%8E%E7%AB%AF/"/>
+    <category term="后端" scheme="https://www.legr4ndk.top/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
-    <category term="java" scheme="http://www.legr4ndk.top/tags/java/"/>
+    <category term="java" scheme="https://www.legr4ndk.top/tags/java/"/>
     
   </entry>
   
   <entry>
     <title>JDBC提供的SQL操作API解析</title>
-    <link href="http://www.legr4ndk.top/2020/12/23/JDBCexecuteCourse/"/>
-    <id>http://www.legr4ndk.top/2020/12/23/JDBCexecuteCourse/</id>
+    <link href="https://www.legr4ndk.top/2020/12/23/JDBCexecuteCourse/"/>
+    <id>https://www.legr4ndk.top/2020/12/23/JDBCexecuteCourse/</id>
     <published>2020-12-23T10:55:28.000Z</published>
     <updated>2021-03-14T10:17:28.596Z</updated>
     
@@ -196,17 +196,17 @@ resp.setContentType(&quot;text/html&quot;);&lt;/</summary>
     
     
     
-    <category term="后端" scheme="http://www.legr4ndk.top/categories/%E5%90%8E%E7%AB%AF/"/>
+    <category term="后端" scheme="https://www.legr4ndk.top/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
-    <category term="java" scheme="http://www.legr4ndk.top/tags/java/"/>
+    <category term="java" scheme="https://www.legr4ndk.top/tags/java/"/>
     
   </entry>
   
   <entry>
     <title>NPUCTF HappyCheckInVerification WP</title>
-    <link href="http://www.legr4ndk.top/2020/12/17/HappyCheckinNPUWP/"/>
-    <id>http://www.legr4ndk.top/2020/12/17/HappyCheckinNPUWP/</id>
+    <link href="https://www.legr4ndk.top/2020/12/17/HappyCheckinNPUWP/"/>
+    <id>https://www.legr4ndk.top/2020/12/17/HappyCheckinNPUWP/</id>
     <published>2020-12-17T15:39:52.000Z</published>
     <updated>2021-03-15T14:04:17.810Z</updated>
     
@@ -223,17 +223,17 @@ resp.setContentType(&quot;text/html&quot;);&lt;/</summary>
     
     
     
-    <category term="安全" scheme="http://www.legr4ndk.top/categories/%E5%AE%89%E5%85%A8/"/>
+    <category term="安全" scheme="https://www.legr4ndk.top/categories/%E5%AE%89%E5%85%A8/"/>
     
     
-    <category term="ctf" scheme="http://www.legr4ndk.top/tags/ctf/"/>
+    <category term="ctf" scheme="https://www.legr4ndk.top/tags/ctf/"/>
     
   </entry>
   
   <entry>
     <title>实现网页登陆的逻辑</title>
-    <link href="http://www.legr4ndk.top/2020/12/17/BackEndLoginCourse/"/>
-    <id>http://www.legr4ndk.top/2020/12/17/BackEndLoginCourse/</id>
+    <link href="https://www.legr4ndk.top/2020/12/17/BackEndLoginCourse/"/>
+    <id>https://www.legr4ndk.top/2020/12/17/BackEndLoginCourse/</id>
     <published>2020-12-17T14:46:26.000Z</published>
     <updated>2021-03-14T10:17:28.582Z</updated>
     
@@ -251,17 +251,17 @@ resp.setContentType(&quot;text/html&quot;);&lt;/</summary>
     
     
     
-    <category term="后端" scheme="http://www.legr4ndk.top/categories/%E5%90%8E%E7%AB%AF/"/>
+    <category term="后端" scheme="https://www.legr4ndk.top/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
-    <category term="sql" scheme="http://www.legr4ndk.top/tags/sql/"/>
+    <category term="sql" scheme="https://www.legr4ndk.top/tags/sql/"/>
     
   </entry>
   
   <entry>
     <title>在JSP上连接MySQL数据库</title>
-    <link href="http://www.legr4ndk.top/2020/12/16/JSPconnectMySQL/"/>
-    <id>http://www.legr4ndk.top/2020/12/16/JSPconnectMySQL/</id>
+    <link href="https://www.legr4ndk.top/2020/12/16/JSPconnectMySQL/"/>
+    <id>https://www.legr4ndk.top/2020/12/16/JSPconnectMySQL/</id>
     <published>2020-12-16T12:53:36.000Z</published>
     <updated>2021-03-14T10:17:28.603Z</updated>
     
@@ -275,17 +275,17 @@ resp.setContentType(&quot;text/html&quot;);&lt;/</summary>
     
     
     
-    <category term="后端" scheme="http://www.legr4ndk.top/categories/%E5%90%8E%E7%AB%AF/"/>
+    <category term="后端" scheme="https://www.legr4ndk.top/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
-    <category term="java" scheme="http://www.legr4ndk.top/tags/java/"/>
+    <category term="java" scheme="https://www.legr4ndk.top/tags/java/"/>
     
   </entry>
   
   <entry>
     <title>于Ubuntu 18.04上配置Java Server Pages运行环境</title>
-    <link href="http://www.legr4ndk.top/2020/12/11/JSPenvironment/"/>
-    <id>http://www.legr4ndk.top/2020/12/11/JSPenvironment/</id>
+    <link href="https://www.legr4ndk.top/2020/12/11/JSPenvironment/"/>
+    <id>https://www.legr4ndk.top/2020/12/11/JSPenvironment/</id>
     <published>2020-12-11T10:16:45.000Z</published>
     <updated>2021-03-14T10:17:28.599Z</updated>
     
@@ -300,17 +300,17 @@ sudo apt upgrade #更新软件包&lt;/code&gt;&lt;</summary>
     
     
     
-    <category term="后端" scheme="http://www.legr4ndk.top/categories/%E5%90%8E%E7%AB%AF/"/>
+    <category term="后端" scheme="https://www.legr4ndk.top/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
-    <category term="server" scheme="http://www.legr4ndk.top/tags/server/"/>
+    <category term="server" scheme="https://www.legr4ndk.top/tags/server/"/>
     
   </entry>
   
   <entry>
     <title>在网页文件中引入Bootstrap</title>
-    <link href="http://www.legr4ndk.top/2020/12/09/IncludeBootstrap/"/>
-    <id>http://www.legr4ndk.top/2020/12/09/IncludeBootstrap/</id>
+    <link href="https://www.legr4ndk.top/2020/12/09/IncludeBootstrap/"/>
+    <id>https://www.legr4ndk.top/2020/12/09/IncludeBootstrap/</id>
     <published>2020-12-09T15:27:58.000Z</published>
     <updated>2021-03-14T10:17:28.598Z</updated>
     
@@ -327,17 +327,17 @@ sudo apt upgrade #更新软件包&lt;/code&gt;&lt;</summary>
     
     
     
-    <category term="前端" scheme="http://www.legr4ndk.top/categories/%E5%89%8D%E7%AB%AF/"/>
+    <category term="前端" scheme="https://www.legr4ndk.top/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-    <category term="bootstrap" scheme="http://www.legr4ndk.top/tags/bootstrap/"/>
+    <category term="bootstrap" scheme="https://www.legr4ndk.top/tags/bootstrap/"/>
     
   </entry>
   
   <entry>
     <title>注 入 怨 念</title>
-    <link href="http://www.legr4ndk.top/2020/11/27/EssayP/"/>
-    <id>http://www.legr4ndk.top/2020/11/27/EssayP/</id>
+    <link href="https://www.legr4ndk.top/2020/11/27/EssayP/"/>
+    <id>https://www.legr4ndk.top/2020/11/27/EssayP/</id>
     <published>2020-11-27T15:23:06.000Z</published>
     <updated>2021-03-14T10:17:28.586Z</updated>
     
@@ -354,17 +354,17 @@ sudo apt upgrade #更新软件包&lt;/code&gt;&lt;</summary>
     
     
     
-    <category term="个人感悟" scheme="http://www.legr4ndk.top/categories/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%82%9F/"/>
+    <category term="个人感悟" scheme="https://www.legr4ndk.top/categories/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%82%9F/"/>
     
     
-    <category term="misc" scheme="http://www.legr4ndk.top/tags/misc/"/>
+    <category term="misc" scheme="https://www.legr4ndk.top/tags/misc/"/>
     
   </entry>
   
   <entry>
     <title>马保国日语版</title>
-    <link href="http://www.legr4ndk.top/2020/11/24/masensei/"/>
-    <id>http://www.legr4ndk.top/2020/11/24/masensei/</id>
+    <link href="https://www.legr4ndk.top/2020/11/24/masensei/"/>
+    <id>https://www.legr4ndk.top/2020/11/24/masensei/</id>
     <published>2020-11-24T13:36:30.000Z</published>
     <updated>2021-03-14T10:17:28.616Z</updated>
     
@@ -382,17 +382,17 @@ sudo apt upgrade #更新软件包&lt;/code&gt;&lt;</summary>
     
     
     
-    <category term="耍" scheme="http://www.legr4ndk.top/categories/%E8%80%8D/"/>
+    <category term="耍" scheme="https://www.legr4ndk.top/categories/%E8%80%8D/"/>
     
     
-    <category term="misc" scheme="http://www.legr4ndk.top/tags/misc/"/>
+    <category term="misc" scheme="https://www.legr4ndk.top/tags/misc/"/>
     
   </entry>
   
   <entry>
     <title>C#常见控件（WPF平台）</title>
-    <link href="http://www.legr4ndk.top/2020/11/22/CsharpCommonControls/"/>
-    <id>http://www.legr4ndk.top/2020/11/22/CsharpCommonControls/</id>
+    <link href="https://www.legr4ndk.top/2020/11/22/CsharpCommonControls/"/>
+    <id>https://www.legr4ndk.top/2020/11/22/CsharpCommonControls/</id>
     <published>2020-11-22T10:48:47.000Z</published>
     <updated>2021-03-14T10:17:28.584Z</updated>
     
@@ -410,17 +410,17 @@ sudo apt upgrade #更新软件包&lt;/code&gt;&lt;</summary>
     
     
     
-    <category term="客户端" scheme="http://www.legr4ndk.top/categories/%E5%AE%A2%E6%88%B7%E7%AB%AF/"/>
+    <category term="客户端" scheme="https://www.legr4ndk.top/categories/%E5%AE%A2%E6%88%B7%E7%AB%AF/"/>
     
     
-    <category term="csharp" scheme="http://www.legr4ndk.top/tags/csharp/"/>
+    <category term="csharp" scheme="https://www.legr4ndk.top/tags/csharp/"/>
     
   </entry>
   
   <entry>
     <title>Cpp中的多态</title>
-    <link href="http://www.legr4ndk.top/2020/10/23/CppPolymorphism/"/>
-    <id>http://www.legr4ndk.top/2020/10/23/CppPolymorphism/</id>
+    <link href="https://www.legr4ndk.top/2020/10/23/CppPolymorphism/"/>
+    <id>https://www.legr4ndk.top/2020/10/23/CppPolymorphism/</id>
     <published>2020-10-23T12:02:51.000Z</published>
     <updated>2021-03-14T10:17:28.587Z</updated>
     
@@ -441,17 +441,17 @@ public:
     
     
     
-    <category term="后端" scheme="http://www.legr4ndk.top/categories/%E5%90%8E%E7%AB%AF/"/>
+    <category term="后端" scheme="https://www.legr4ndk.top/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
-    <category term="cpp" scheme="http://www.legr4ndk.top/tags/cpp/"/>
+    <category term="cpp" scheme="https://www.legr4ndk.top/tags/cpp/"/>
     
   </entry>
   
   <entry>
     <title>Markdown语法教程</title>
-    <link href="http://www.legr4ndk.top/2020/10/18/MarkdownCourse/"/>
-    <id>http://www.legr4ndk.top/2020/10/18/MarkdownCourse/</id>
+    <link href="https://www.legr4ndk.top/2020/10/18/MarkdownCourse/"/>
+    <id>https://www.legr4ndk.top/2020/10/18/MarkdownCourse/</id>
     <published>2020-10-18T14:11:22.000Z</published>
     <updated>2021-03-14T10:17:28.605Z</updated>
     
@@ -471,17 +471,17 @@ public:
     
     
     
-    <category term="工具" scheme="http://www.legr4ndk.top/categories/%E5%B7%A5%E5%85%B7/"/>
+    <category term="工具" scheme="https://www.legr4ndk.top/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
-    <category term="markdown" scheme="http://www.legr4ndk.top/tags/markdown/"/>
+    <category term="markdown" scheme="https://www.legr4ndk.top/tags/markdown/"/>
     
   </entry>
   
   <entry>
     <title>用Hexo配合GitHub快速上线自己的个人博客</title>
-    <link href="http://www.legr4ndk.top/2020/10/18/HexoCourse/"/>
-    <id>http://www.legr4ndk.top/2020/10/18/HexoCourse/</id>
+    <link href="https://www.legr4ndk.top/2020/10/18/HexoCourse/"/>
+    <id>https://www.legr4ndk.top/2020/10/18/HexoCourse/</id>
     <published>2020-10-18T09:05:41.000Z</published>
     <updated>2021-03-14T10:17:28.594Z</updated>
     
@@ -498,17 +498,17 @@ public:
     
     
     
-    <category term="工具" scheme="http://www.legr4ndk.top/categories/%E5%B7%A5%E5%85%B7/"/>
+    <category term="工具" scheme="https://www.legr4ndk.top/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
-    <category term="hexo" scheme="http://www.legr4ndk.top/tags/hexo/"/>
+    <category term="hexo" scheme="https://www.legr4ndk.top/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title>C语言数字、指针、布尔值灵活利用的典范</title>
-    <link href="http://www.legr4ndk.top/2020/10/17/TheCLanguageIsSoNB/"/>
-    <id>http://www.legr4ndk.top/2020/10/17/TheCLanguageIsSoNB/</id>
+    <link href="https://www.legr4ndk.top/2020/10/17/TheCLanguageIsSoNB/"/>
+    <id>https://www.legr4ndk.top/2020/10/17/TheCLanguageIsSoNB/</id>
     <published>2020-10-16T16:12:19.000Z</published>
     <updated>2021-03-14T10:17:28.615Z</updated>
     
@@ -524,17 +524,17 @@ public:
     
     
     
-    <category term="算法" scheme="http://www.legr4ndk.top/categories/%E7%AE%97%E6%B3%95/"/>
+    <category term="算法" scheme="https://www.legr4ndk.top/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-    <category term="algorithm" scheme="http://www.legr4ndk.top/tags/algorithm/"/>
+    <category term="algorithm" scheme="https://www.legr4ndk.top/tags/algorithm/"/>
     
   </entry>
   
   <entry>
     <title>Use git to push your code to your Github&#39;s repository</title>
-    <link href="http://www.legr4ndk.top/2020/10/16/GitPushBriefIntroduction/"/>
-    <id>http://www.legr4ndk.top/2020/10/16/GitPushBriefIntroduction/</id>
+    <link href="https://www.legr4ndk.top/2020/10/16/GitPushBriefIntroduction/"/>
+    <id>https://www.legr4ndk.top/2020/10/16/GitPushBriefIntroduction/</id>
     <published>2020-10-16T15:45:05.000Z</published>
     <updated>2021-03-14T10:17:28.589Z</updated>
     
@@ -552,10 +552,10 @@ public:
     
     
     
-    <category term="工具" scheme="http://www.legr4ndk.top/categories/%E5%B7%A5%E5%85%B7/"/>
+    <category term="工具" scheme="https://www.legr4ndk.top/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
-    <category term="git" scheme="http://www.legr4ndk.top/tags/git/"/>
+    <category term="git" scheme="https://www.legr4ndk.top/tags/git/"/>
     
   </entry>
   
