@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  <meta name="google-site-verification" content="EsvUwzVMQTFU8fJLM8qzjSX2Lzh4msii_Tj8W4EjcSk" />
+  
+  
+  <title>Cpp中的多态 | Legrandk&#39;s Qzone</title>
+  <meta name="description" content="多态是面向对象编程内极为重要的一种特征，它能极大的简化我们的代码  先来看一段类的原型 class Animal &#x2F;&#x2F;基类 { public:     void voice()     {         std::cout &lt;&lt; &quot;Voiceless&quot; &lt;&lt; std::endl; &#x2F;&#x2F;不知道该叫啥     }; };  class Dog : public Animal">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cpp中的多态">
+<meta property="og:url" content="https://www.legr4ndk.top/2020/10/23/CppPolymorphism/index.html">
+<meta property="og:site_name" content="Legrandk&#39;s Qzone">
+<meta property="og:description" content="多态是面向对象编程内极为重要的一种特征，它能极大的简化我们的代码  先来看一段类的原型 class Animal &#x2F;&#x2F;基类 { public:     void voice()     {         std::cout &lt;&lt; &quot;Voiceless&quot; &lt;&lt; std::endl; &#x2F;&#x2F;不知道该叫啥     }; };  class Dog : public Animal">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-23T12:02:51.000Z">
+<meta property="article:modified_time" content="2021-03-14T10:17:28.587Z">
+<meta property="article:author" content="Legrandk">
+<meta property="article:tag" content="cpp">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.legr4ndk.top/2020/10/23/CppPolymorphism/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Legrandk&#39;s Qzone" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+<meta name="generator" content="Hexo 5.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/legr4ndk" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Legrandk</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Developer &amp; Student</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Hangzhou, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/legr4ndk" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/7526194755/profile" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/legr4ndk" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://legr4ndk.github.io/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">一言</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                [object Object]
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%82%9F/">个人感悟</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%A2%E6%88%B7%E7%AB%AF/">客户端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%8D/">耍</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 13.33px;">algorithm</a> <a href="/tags/bootstrap/" style="font-size: 13px;">bootstrap</a> <a href="/tags/cpp/" style="font-size: 13px;">cpp</a> <a href="/tags/csharp/" style="font-size: 13px;">csharp</a> <a href="/tags/ctf/" style="font-size: 13px;">ctf</a> <a href="/tags/git/" style="font-size: 13px;">git</a> <a href="/tags/hexo/" style="font-size: 13px;">hexo</a> <a href="/tags/java/" style="font-size: 13.67px;">java</a> <a href="/tags/javascript/" style="font-size: 13px;">javascript</a> <a href="/tags/markdown/" style="font-size: 13px;">markdown</a> <a href="/tags/misc/" style="font-size: 14px;">misc</a> <a href="/tags/server/" style="font-size: 13.33px;">server</a> <a href="/tags/sql/" style="font-size: 13px;">sql</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/03/13/KnuthShuffle/" class="title">Knuth洗牌算法</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-03-13T04:54:52.000Z" itemprop="datePublished">2021-03-13</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/03/08/NginxCrashCourse/" class="title">一篇文章快速上手Nginx服务器</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-03-08T12:21:10.000Z" itemprop="datePublished">2021-03-08</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/03/07/JavaScriptCrashCourse/" class="title">一篇文章快速上手JavaScript</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-03-07T14:53:45.000Z" itemprop="datePublished">2021-03-07</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%82%9F/">个人感悟</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/02/12/S3Solve/" class="title">鼠年的年终总结</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-02-12T05:43:31.000Z" itemprop="datePublished">2021-02-12</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/02/08/ServletHandleWithChinese/" class="title">解决Servlet页面中文乱码问题</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-02-08T13:44:47.000Z" itemprop="datePublished">2021-02-08</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-CppPolymorphism" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Cpp中的多态
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/10/23/CppPolymorphism/" class="article-date">
+	  <time datetime="2020-10-23T12:02:51.000Z" itemprop="datePublished">2020-10-23</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/cpp/" rel="tag">cpp</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/10/23/CppPolymorphism/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.2k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <blockquote>
+<p>多态是面向对象编程内极为重要的一种特征，它能极大的简化我们的代码</p>
+</blockquote>
+<p>先来看一段类的原型</p>
+<pre><code class="c++">class Animal //基类
+{
+public:
+    void voice()
+    {
+        std::cout &lt;&lt; "Voiceless" &lt;&lt; std::endl; //不知道该叫啥
+    };
+};
+
+class Dog : public Animal //狗派生类，继承了Animal
+{
+public:
+    void voice()
+    {
+        std::cout &lt;&lt; "Woof" &lt;&lt; std::endl; //汪汪叫
+    }
+};
+
+class Cat : public Animal //猫派生类，继承了Animal
+{
+public:
+    void voice()
+    {
+        std::cout &lt;&lt; "Meow" &lt;&lt; std::endl; //喵喵叫
+    }
+};</code></pre>
+<p>我们可以看到，基类和派生类中都有函数voice()，它可以让不同的动物发出不同的叫声，其中，Dog类和Cat类的voice()函数是覆写了基类中的同名函数。</p>
+<p>当然，还可以有很多基于Animal类的派生类，都可以有叫声，但是我们如果想统一一下让它们叫的方法，比如用个train函数，传入对象或者它的指针就可以自动调用它的voice函数。虽然Cpp支持重载函数，但是为每个不同的类各写一个这样的函数，工作量不仅大，而且枯燥。多态就是帮我们解决这个问题的。</p>
+<p><strong>多态</strong> <em>Polymorphism</em></p>
+<p>表现方式有两种</p>
+<ul>
+<li>重载多态，比如函数重载（本文不介绍了），属于静态联编</li>
+<li>子类型多态，属于动态联编，就是我接下来要说的那些</li>
+</ul>
+<p>子类型多态有两个要点：</p>
+<ol>
+<li>虚函数</li>
+<li>函数覆写<sub>override</sub></li>
+</ol>
+<p>我们来区分涉及继承链情况下的两种联编：</p>
+<ol>
+<li>通过派生类对象访问同名函数，是静态联编</li>
+<li>通过基类对象的指针访问同名函数，是静态联编</li>
+<li>通过基类对象的指针或引用访问同名虚函数，是动态联编</li>
+</ol>
+<p>那我们现在改一下原来的类的定义让它符合子类型多态的要求</p>
+<pre><code class="c++">class Animal
+{
+public:
+    virtual void voice() //此函数声明为虚函数后，派生类中无须再注明
+    {
+        std::cout &lt;&lt; "Voiceless" &lt;&lt; std::endl;
+    };
+};
+
+class Dog : public Animal
+{
+public:
+    void voice() override //覆写了voice函数
+    {
+        std::cout &lt;&lt; "Woof" &lt;&lt; std::endl;
+    }
+};
+
+class Cat : public Animal
+{
+public:
+    void voice() override //覆写了voice函数
+    {
+        std::cout &lt;&lt; "Meow" &lt;&lt; std::endl;
+    }
+};</code></pre>
+<p>那么还是刚刚那个例子，我们设计一个train函数</p>
+<pre><code class="c++">void train(Animal animal)
+{
+    animal.voice();
+}</code></pre>
+<p>使用这个函数，你会发现无论你往参数里塞了什么阿猫阿狗的对象，输出的永远是“Voiceless”，这便是静态联编的问题了，它使用的是基类的对象而非基类对象的指针或引用，你需要把train修改成这样：</p>
+<pre><code class="c++">void train(Animal&amp; animal)
+{
+    animal.voice();
+}
+//或者这样
+void train(Animal* animal)
+{
+    animal-&gt;voice();
+}</code></pre>
+<p>然后你的子类对象在调用这个train函数之后就可以正常发出正确的声音了</p>
+<p><strong>需要注意的是，如果voice函数不是<em>虚函数</em>，那么即使你用了派生类对象的指针、引用，只要那个进入函数的东西的类型是基类，它就会调用基类的函数</strong></p>
+<p>一句话总结一下，就是：<strong>函数虚，看对象；函数实，看类型。</strong></p>
+<p>但是，这个东西它也有问题，就是你使用基类的指针（或者引用）指向了派生类的对象的时候，你只能调用派生类的虚函数，无法调用非虚函数，例如我改一下Dog类的定义：</p>
+<pre><code class="c++">class Dog : public Animal
+{
+public:
+    void voice() override
+    {
+        std::cout &lt;&lt; "Woof" &lt;&lt; std::endl;
+    }
+    void foo() //这个不是虚函数了
+    {
+        std::cout &lt;&lt; "Foo!" &lt;&lt; std::endl;
+    }
+};</code></pre>
+<p>但是我在main函数里这样定义：</p>
+<pre><code class="c++">Animal ptr;
+Dog dog = new Dog();
+ptr = &amp;dog;
+ptr-&gt;voice(); //调用的是dog对象的voice函数
+ptr-&gt;foo(); //无法调用，No member named foo in Animal</code></pre>
+<p>Animal类的指针虽然指向了dog，但是它将无法调用dog的非虚函数，但是如果我们偏要调用属于子类的非虚函数呢？</p>
+<p><strong>Introducing dynamic_cast!</strong></p>
+<p>Cpp的dynamic_cast&lt;&gt;运算符可以把基类类型的指针转换为派生类的类型的指针，就可以使调用子类的非虚函数称为可能，方法如下</p>
+<pre><code class="c++">ptr-&gt;foo(); //它出了问题
+dynamic_cast&lt;Dog*&gt;(ptr)-&gt;foo(); //正常调用！</code></pre>
+<p>虽然建议在任何基类与派生类间的指针、引用的类型转换都使用dynamic_cast运算符，但是实际上，派生类的指针（引用）转为基类类型的指针（引用）可以不使用该运算符而隐式转换，而基类的指针（引用）转为派生类类型的指针（引用）<strong>必须</strong>显式使用该运算符以完成类型转换。</p>
+<p>比如我们有：</p>
+<pre><code class="c++">Animal animal;
+Animal* pa;
+Cat cat;
+Cat* pc;
+
+pa = &amp;cat; //可以隐式转换（下转上）
+pc = dynamic_cast&lt;Cat*&gt;(animal); //必须显式转换（上转下）</code></pre>
+<p>多态就先写这么多~</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://www.legr4ndk.top/2020/10/23/CppPolymorphism/" title="Cpp中的多态" target="_blank" rel="external">https://www.legr4ndk.top/2020/10/23/CppPolymorphism/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="external">CC BY-NC-SA 4.0协议</a> 与 <a href="https://github.com/996icu/996.ICU/blob/master/LICENSE" target="_blank" rel="external">"Anti 996" License</a> 两者合并的<a href="http://www.legr4ndk.top/LICENSE.html" target="_blank" rel="external">许可协议</a>。转载请注明出处。
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/legr4ndk" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/legr4ndk" target="_blank"><span class="text-dark">Legrandk</span><small class="ml-1x">Developer &amp; Student</small></a></h3>
+        <div>所以我松开拳头用手握紧笔，作为自己作为人类也作为你。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2020/11/22/CsharpCommonControls/" title="C#常见控件（WPF平台）"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2020/10/18/MarkdownCourse/" title="Markdown语法教程"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>￥</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone,wechat"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您对我的支持，我会继续努力的!！</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="打钱！" title="打钱！" />
+              </div>
+              <p class="text-muted mv">请我喝杯奶茶~</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="打钱！" title="打钱！" />
+              </div>
+              <p class="text-muted mv">请我喝杯奶茶~</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+    
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/legr4ndk" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/7526194755/profile" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/legr4ndk" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://legr4ndk.github.io/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+ 
+    
+    <div class="copyright">
+        <div class="support">
+            <a target="_blank" rel="noopener" href="https://creativecommons.org"><img src="http://www.legr4ndk.top/img/cc.png" alt="CreativeCommons" /></a>
+            <a target="_blank" rel="noopener" href="https://996.icu"><img src="http://www.legr4ndk.top/img/link-996.icu-red.svg" alt="996.icu" /></a>
+            <br/>
+        </div>
+
+    	
+        &copy; 2019-2021 By <a href="http://www.legr4ndk.top">Legrandk</a>
+        
+        
+        <div class="publishby">
+        	Theme based on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+        <div class="ICP">
+            <a href="http://beian.miit.gov.cn/" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备20009661号-2</a>
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'Mk3cri9aryQ9dJEueK5hrTy5-gzGzoHsz',
+    appKey: 'L0FXbseweKTJxmSu2SoU2wxC',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+
+</body>
+</html>
