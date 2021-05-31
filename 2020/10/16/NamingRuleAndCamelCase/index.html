@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  <meta name="google-site-verification" content="EsvUwzVMQTFU8fJLM8qzjSX2Lzh4msii_Tj8W4EjcSk" />
+  
+  
+  <title>命名规则与驼峰命名法 | Legrandk&#39;s Qzone</title>
+  <meta name="description" content="还在使用x，y，z，a，b，c等无意义字符做变量名嘛？还因为把变量命名位g，s，b而遭到同学的嘲笑嘛？还因为不知道怎么命名变量能做的更直观嘛？ ——Introducing Camel-Case：驼峰命名法  我们现在先来看看一个例子： 假如我们想要定义一个变量存储我们的名字，该怎么命名呢？ mylastname 构成这个变量名的所有字母都通过小写被粗暴地整合在了一起，很难一眼看清，对吧？这种变量">
+<meta property="og:type" content="article">
+<meta property="og:title" content="命名规则与驼峰命名法">
+<meta property="og:url" content="https://www.legr4ndk.top/2020/10/16/NamingRuleAndCamelCase/index.html">
+<meta property="og:site_name" content="Legrandk&#39;s Qzone">
+<meta property="og:description" content="还在使用x，y，z，a，b，c等无意义字符做变量名嘛？还因为把变量命名位g，s，b而遭到同学的嘲笑嘛？还因为不知道怎么命名变量能做的更直观嘛？ ——Introducing Camel-Case：驼峰命名法  我们现在先来看看一个例子： 假如我们想要定义一个变量存储我们的名字，该怎么命名呢？ mylastname 构成这个变量名的所有字母都通过小写被粗暴地整合在了一起，很难一眼看清，对吧？这种变量">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-16T13:44:37.000Z">
+<meta property="article:modified_time" content="2021-03-14T10:17:28.608Z">
+<meta property="article:author" content="Legrandk">
+<meta property="article:tag" content="misc">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.legr4ndk.top/2020/10/16/NamingRuleAndCamelCase/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Legrandk&#39;s Qzone" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+<meta name="generator" content="Hexo 5.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/legr4ndk" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Legrandk</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Developer &amp; Student</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Hangzhou, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/legr4ndk" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/7526194755/profile" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/legr4ndk" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://legr4ndk.github.io/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">一言</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p id="hitokoto">获取中...</p><script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script><iframe src="https://www.legr4ndk.top/time.html" height="237" width="277"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%82%9F/">个人感悟</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%A2%E6%88%B7%E7%AB%AF/">客户端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%8D/">耍</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 13.33px;">algorithm</a> <a href="/tags/bootstrap/" style="font-size: 13px;">bootstrap</a> <a href="/tags/cpp/" style="font-size: 13px;">cpp</a> <a href="/tags/csharp/" style="font-size: 13px;">csharp</a> <a href="/tags/ctf/" style="font-size: 13px;">ctf</a> <a href="/tags/git/" style="font-size: 13px;">git</a> <a href="/tags/hexo/" style="font-size: 13px;">hexo</a> <a href="/tags/java/" style="font-size: 13.67px;">java</a> <a href="/tags/javascript/" style="font-size: 13px;">javascript</a> <a href="/tags/markdown/" style="font-size: 13px;">markdown</a> <a href="/tags/misc/" style="font-size: 14px;">misc</a> <a href="/tags/server/" style="font-size: 13.33px;">server</a> <a href="/tags/sql/" style="font-size: 13px;">sql</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/03/13/KnuthShuffle/" class="title">Knuth洗牌算法</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-03-13T04:54:52.000Z" itemprop="datePublished">2021-03-13</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/03/08/NginxCrashCourse/" class="title">一篇文章快速上手Nginx服务器</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-03-08T12:21:10.000Z" itemprop="datePublished">2021-03-08</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/03/07/JavaScriptCrashCourse/" class="title">一篇文章快速上手JavaScript</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-03-07T14:53:45.000Z" itemprop="datePublished">2021-03-07</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%82%9F/">个人感悟</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/02/12/S3Solve/" class="title">鼠年的年终总结</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-02-12T05:43:31.000Z" itemprop="datePublished">2021-02-12</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/02/08/ServletHandleWithChinese/" class="title">解决Servlet页面中文乱码问题</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-02-08T13:44:47.000Z" itemprop="datePublished">2021-02-08</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-NamingRuleAndCamelCase" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      命名规则与驼峰命名法
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/10/16/NamingRuleAndCamelCase/" class="article-date">
+	  <time datetime="2020-10-16T13:44:37.000Z" itemprop="datePublished">2020-10-16</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%82%9F/">个人感悟</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/misc/" rel="tag">misc</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/10/16/NamingRuleAndCamelCase/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.6k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 5(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <blockquote>
+<p>还在使用x，y，z，a，b，c等无意义字符做变量名嘛？还因为把变量命名位g，s，b而遭到同学的嘲笑嘛？还因为不知道怎么命名变量能做的更直观嘛？</p>
+<p>——Introducing Camel-Case：驼峰命名法</p>
+</blockquote>
+<p>我们现在先来看看一个例子：</p>
+<p>假如我们想要定义一个变量存储我们的名字，该怎么命名呢？</p>
+<pre><code>mylastname</code></pre>
+<p>构成这个变量名的所有字母都通过小写被粗暴地整合在了一起，很难一眼看清，对吧？这种变量命名方法明显地降低了代码的可读性。要不，我们拆分一下单词？</p>
+<pre><code>my_last_mane</code></pre>
+<p>显而易见地，这个变量名的可读性比上面那种高了很多，我们可以轻易地读出它的各个单词并且很清楚地知道它的意思。但是很显然，这不够紧凑，我们还得多打两个字符（吐槽下这下划线真的不是很好按）。</p>
+<h3 id="驼峰命名法"><a href="#驼峰命名法" class="headerlink" title="驼峰命名法"></a>驼峰命名法</h3><p>驼峰命名法的命名规格极为形象，通过大小写像驼峰一样变换来实现单词的区分，更方便直观地表示变量名。</p>
+<p>那我们来看看驼峰命名法该怎么用：</p>
+<pre><code>myLastName</code></pre>
+<p>相比于前两种，驼峰命名法既直观又紧凑，保证了代码可读性的同时也兼顾了效率。</p>
+<p>驼峰命名法的规则是这样的： 当变量名或函数名是由多个单词连结在一起，构成的唯一识别字时，每一节个单词的首字母都采用大写来区分，单词与单词之间不额外添加下划线。</p>
+<p>而以第一个单词的首字母是否要大写为区分，我们又可以分成大驼峰法和小驼峰法。</p>
+<h4 id="大驼峰法："><a href="#大驼峰法：" class="headerlink" title="大驼峰法："></a>大驼峰法：</h4><p>包括第一个单词在内的所有单词的首字母全部大写，如：</p>
+<ul>
+<li>MyLastName</li>
+<li>DataBaseUser</li>
+</ul>
+<h4 id="小驼峰法："><a href="#小驼峰法：" class="headerlink" title="小驼峰法："></a>小驼峰法：</h4><p>第一个单词的首字母不大写，其余每个单词的首字母均大写，如：</p>
+<ul>
+<li>myLastName</li>
+<li>studentsAverageGrades</li>
+</ul>
+<p>驼峰命名法就介绍到这里。</p>
+<hr>
+<p>接下来再讲讲我使用的一种命名规则。</p>
+<blockquote>
+<p>强烈建议使用英文命名！！！</p>
+</blockquote>
+<h3 id="变量的命名规则"><a href="#变量的命名规则" class="headerlink" title="变量的命名规则"></a>变量的命名规则</h3><p>变量名的命名，首先应该是这个变量要储存的内容的英文意思。借助你强大的英文水平，先把你想好的中文变量名翻译成英文，不会的话就借助翻译软件吧。</p>
+<p>然后，如果你翻译出来的内容仅由1个英文单词构成，请直接以这个单词的<strong>完全小写</strong>的形式命名这个变量。如果是由多个单词组成的词组，应该使用<strong>小驼峰法</strong>的方式为这个变量命名。 记住，它应该是个名词或者名词性词组。 例如：</p>
+<pre><code>salary,tax,carSum,taxRate;</code></pre>
+<p><strong>特殊地，给布尔类型的变量命名，建议使用 is + 属性名的方法，依照具体的语境，也可以用can，have，should等前缀代替is，同样使用小驼峰法。同时要记得避免使用否定词。</strong>例如：</p>
+<pre><code>isReal,isHigh;(√)
+isNotTall,isError;(×)</code></pre>
+<h3 id="常量的命名规则"><a href="#常量的命名规则" class="headerlink" title="常量的命名规则"></a>常量的命名规则</h3><p>常量一般是指使用const关键字修饰定义的数据，有时也只使用预处理宏#define定义的数据。</p>
+<h4 id="使用const关键字定义的常量"><a href="#使用const关键字定义的常量" class="headerlink" title="使用const关键字定义的常量"></a>使用const关键字定义的常量</h4><p>它的命名规则和变量类似，但是要使用<strong>大驼峰法</strong>，即第一个单词的首字母也要大写。例如：</p>
+<pre><code>Line,SavingAccount,Pi;</code></pre>
+<h4 id="使用-define关键字宏定义的常量"><a href="#使用-define关键字宏定义的常量" class="headerlink" title="使用#define关键字宏定义的常量"></a>使用#define关键字宏定义的常量</h4><p>它的所有字母都应该采用<strong>大写</strong>，同时，若是由多个单词组成的变量名，为了区分每个单词，在<strong>每两个单词之间应该添加下划线</strong>。例如：</p>
+<pre><code>PI,MAX_SIZE;</code></pre>
+<h3 id="函数-方法的命名规则"><a href="#函数-方法的命名规则" class="headerlink" title="函数/方法的命名规则"></a>函数/方法的命名规则</h3><p>函数的名称应该是一个动词或者一个动词词组。如果函数名仅由单个单词构成，那么请以这个单词的<strong>完全小写形式</strong>命名这个函数。如果这个函数名是一个动词词组，请以<strong>小驼峰法</strong>的方式命名这个函数。例如：</p>
+<pre><code>getArea,setPath,takeSteps;</code></pre>
+<h3 id="名字空间的命名规则（C-）"><a href="#名字空间的命名规则（C-）" class="headerlink" title="名字空间的命名规则（C++）"></a>名字空间的命名规则（C++）</h3><p>对于名字空间，请以一个英文单词完成对它的命名，而且，应该使用它的<strong>完全小写形式</strong>。例如：</p>
+<pre><code>model,common;</code></pre>
+<h3 id="结构、类（C-）的命名规则"><a href="#结构、类（C-）的命名规则" class="headerlink" title="结构、类（C++）的命名规则"></a>结构、类（C++）的命名规则</h3><p>结构体和类的名称应该是一个名词或者名词性词组。若使用单个单词命名，请首字母大写；若使用词组，应使用<strong>大驼峰法</strong>命名。例如：</p>
+<pre><code>Node,SomeClass;</code></pre>
+<p>但是，命名结构和类形成的实例（结构体和对象）时，应该依照一般的变量的命名法进行命名。</p>
+<h3 id="对于枚举类型（以enum关键词声明）"><a href="#对于枚举类型（以enum关键词声明）" class="headerlink" title="对于枚举类型（以enum关键词声明）"></a>对于枚举类型（以enum关键词声明）</h3><p>同样建议使用名词或者名词性词组，以首字母大写或者大驼峰法命名。</p>
+<p>而对于枚举类型的枚举常量，建议以全部大写字母+下划线分割单词的方式命名,同时应尽量使用共同的类型名作为前缀。</p>
+<p>例如：</p>
+<pre><code>enum Color { COLOR_RED, COLOR_GREEN, COLOR_BLUE };
+enum ColorType { COLOR_TYPE_WARM, COLOR_TYPE_COLD };</code></pre>
+<hr>
+<p><strong>额外再提几个用于命名的关键字以及技巧，让代码更直观</strong></p>
+<ul>
+<li>get应该用在直接取得已设定值的函数中。</li>
+<li>set应该用在直接为变量设定值的函数中。</li>
+<li>compute应该用在用于进行计算的函数中。</li>
+<li>find应该用在用于查找的函数中。</li>
+<li>init/initialize应该使用在用于初始化的函数中。</li>
+<li>在需要标识序号的变量名中，使用No + 序号比较合适。</li>
+<li>布尔变量的命名应使用is，has等前缀，并且尽量避免否定词。</li>
+<li>循环变量建议设置为i，j，k，并且建议优先使用i而把j，k用于循环嵌套。</li>
+<li>对于缩略词我们有两种态度：1、对于那种缩写了人家可能就看不懂了的，比如cmd，init，请不要用缩写代替他们。2、对于那种缩写认识展开别人就看不懂的，比如HTML，CPU，老老实实写缩写。</li>
+</ul>
+<p><strong>另外，对于自己写的头文件的命名，推荐使用大驼峰命名法。例如</strong></p>
+<pre><code>MyClass.h
+CppFunction.h</code></pre>
+<p>OK,有关命名方法先写这么多。</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://www.legr4ndk.top/2020/10/16/NamingRuleAndCamelCase/" title="命名规则与驼峰命名法" target="_blank" rel="external">https://www.legr4ndk.top/2020/10/16/NamingRuleAndCamelCase/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="external">CC BY-NC-SA 4.0协议</a> 与 <a href="https://github.com/996icu/996.ICU/blob/master/LICENSE" target="_blank" rel="external">"Anti 996" License</a> 两者合并的<a href="http://www.legr4ndk.top/LICENSE.html" target="_blank" rel="external">许可协议</a>。转载请注明出处。
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/legr4ndk" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/legr4ndk" target="_blank"><span class="text-dark">Legrandk</span><small class="ml-1x">Developer &amp; Student</small></a></h3>
+        <div>所以我松开拳头用手握紧笔，作为自己作为人类也作为你。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2020/10/16/GitPushBriefIntroduction/" title="Use git to push your code to your Github&#39;s repository"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2020/10/15/HelloWorld/" title="Hello World"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>￥</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone,wechat"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您对我的支持，我会继续努力的!！</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="打钱！" title="打钱！" />
+              </div>
+              <p class="text-muted mv">请我喝杯奶茶~</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="打钱！" title="打钱！" />
+              </div>
+              <p class="text-muted mv">请我喝杯奶茶~</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+    
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/legr4ndk" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/7526194755/profile" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/legr4ndk" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://legr4ndk.github.io/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+ 
+    
+    <div class="copyright">
+        <div class="support">
+            <a target="_blank" rel="noopener" href="https://creativecommons.org"><img src="http://www.legr4ndk.top/img/cc.png" alt="CreativeCommons" /></a>
+            <a target="_blank" rel="noopener" href="https://996.icu"><img src="http://www.legr4ndk.top/img/link-996.icu-red.svg" alt="996.icu" /></a>
+            <br/>
+        </div>
+
+    	
+        &copy; 2019-2021 By <a href="http://www.legr4ndk.top">Legrandk</a>
+        
+        
+        <div class="publishby">
+        	Theme based on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+        <div class="ICP">
+            <a href="http://beian.miit.gov.cn/" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备20009661号-2</a>
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'Mk3cri9aryQ9dJEueK5hrTy5-gzGzoHsz',
+    appKey: 'L0FXbseweKTJxmSu2SoU2wxC',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  <meta name="google-site-verification" content="EsvUwzVMQTFU8fJLM8qzjSX2Lzh4msii_Tj8W4EjcSk" />
+  
+  
+  <title>NPUCTF HappyCheckInVerification WP | Legrandk&#39;s Qzone</title>
+  <meta name="description" content="本文搬运自我写在别处的文章  题目信息题目链接：https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1c_Y0WJmzTdNVyYgjHmUI_Q 提取码: qhh8 Hint：关注西北工业大学信息安全协会微信公众号NWPUSEC  解题过程下载得到无后缀名的名叫zip的文件，把后缀名改成.zip，提示文件已损坏，故用16进制文件查看器检查文件（本文使用HxD）。  这是此文件的文件头，可见zip文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NPUCTF HappyCheckInVerification WP">
+<meta property="og:url" content="https://www.legr4ndk.top/2020/12/17/HappyCheckinNPUWP/index.html">
+<meta property="og:site_name" content="Legrandk&#39;s Qzone">
+<meta property="og:description" content="本文搬运自我写在别处的文章  题目信息题目链接：https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1c_Y0WJmzTdNVyYgjHmUI_Q 提取码: qhh8 Hint：关注西北工业大学信息安全协会微信公众号NWPUSEC  解题过程下载得到无后缀名的名叫zip的文件，把后缀名改成.zip，提示文件已损坏，故用16进制文件查看器检查文件（本文使用HxD）。  这是此文件的文件头，可见zip文">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://greenhateam.top/wp-content/uploads/2020/05/hcv1.png">
+<meta property="og:image" content="http://greenhateam.top/wp-content/uploads/2020/05/hcv2.png">
+<meta property="og:image" content="http://greenhateam.top/wp-content/uploads/2020/05/hcv3.png">
+<meta property="og:image" content="http://greenhateam.top/wp-content/uploads/2020/05/hcv.png">
+<meta property="article:published_time" content="2020-12-17T15:39:52.000Z">
+<meta property="article:modified_time" content="2021-03-15T14:04:17.810Z">
+<meta property="article:author" content="Legrandk">
+<meta property="article:tag" content="ctf">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://greenhateam.top/wp-content/uploads/2020/05/hcv1.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.legr4ndk.top/2020/12/17/HappyCheckinNPUWP/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Legrandk&#39;s Qzone" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+<meta name="generator" content="Hexo 5.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/legr4ndk" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Legrandk</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Developer &amp; Student</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Hangzhou, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/legr4ndk" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/7526194755/profile" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/legr4ndk" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://legr4ndk.github.io/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">一言</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p id="hitokoto">获取中...</p><script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script><iframe src="https://www.legr4ndk.top/time.html" height="237" width="277"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%82%9F/">个人感悟</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%A2%E6%88%B7%E7%AB%AF/">客户端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%8D/">耍</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 13.33px;">algorithm</a> <a href="/tags/bootstrap/" style="font-size: 13px;">bootstrap</a> <a href="/tags/cpp/" style="font-size: 13px;">cpp</a> <a href="/tags/csharp/" style="font-size: 13px;">csharp</a> <a href="/tags/ctf/" style="font-size: 13px;">ctf</a> <a href="/tags/git/" style="font-size: 13px;">git</a> <a href="/tags/hexo/" style="font-size: 13px;">hexo</a> <a href="/tags/java/" style="font-size: 13.67px;">java</a> <a href="/tags/javascript/" style="font-size: 13px;">javascript</a> <a href="/tags/markdown/" style="font-size: 13px;">markdown</a> <a href="/tags/misc/" style="font-size: 14px;">misc</a> <a href="/tags/server/" style="font-size: 13.33px;">server</a> <a href="/tags/sql/" style="font-size: 13px;">sql</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/03/13/KnuthShuffle/" class="title">Knuth洗牌算法</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-03-13T04:54:52.000Z" itemprop="datePublished">2021-03-13</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/03/08/NginxCrashCourse/" class="title">一篇文章快速上手Nginx服务器</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-03-08T12:21:10.000Z" itemprop="datePublished">2021-03-08</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/03/07/JavaScriptCrashCourse/" class="title">一篇文章快速上手JavaScript</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-03-07T14:53:45.000Z" itemprop="datePublished">2021-03-07</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%82%9F/">个人感悟</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/02/12/S3Solve/" class="title">鼠年的年终总结</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-02-12T05:43:31.000Z" itemprop="datePublished">2021-02-12</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/02/08/ServletHandleWithChinese/" class="title">解决Servlet页面中文乱码问题</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-02-08T13:44:47.000Z" itemprop="datePublished">2021-02-08</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-HappyCheckinNPUWP" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      NPUCTF HappyCheckInVerification WP
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/12/17/HappyCheckinNPUWP/" class="article-date">
+	  <time datetime="2020-12-17T15:39:52.000Z" itemprop="datePublished">2020-12-17</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/ctf/" rel="tag">ctf</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/12/17/HappyCheckinNPUWP/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 718(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <blockquote>
+<p>本文搬运自我写在别处的文章</p>
+</blockquote>
+<h2 id="题目信息"><a href="#题目信息" class="headerlink" title="题目信息"></a>题目信息</h2><p>题目链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1c_Y0WJmzTdNVyYgjHmUI_Q">https://pan.baidu.com/s/1c_Y0WJmzTdNVyYgjHmUI_Q</a></p>
+<p>提取码: qhh8</p>
+<p>Hint：关注西北工业大学信息安全协会微信公众号NWPUSEC</p>
+<hr>
+<h2 id="解题过程"><a href="#解题过程" class="headerlink" title="解题过程"></a>解题过程</h2><p>下载得到无后缀名的名叫zip的文件，把后缀名改成.zip，提示文件已损坏，故用16进制文件查看器检查文件（本文使用HxD）。</p>
+<p><img src="http://greenhateam.top/wp-content/uploads/2020/05/hcv1.png" alt="img"></p>
+<p>这是此文件的文件头，可见zip文件的文件头标记504B0304不在文件头部，反而是zip文件的目录结束标识（504B0506）在文件头。把从00000000-00000015的部分移动至文件尾，保存重新打开，就可以看到zip文件的文件了。此zip文件带有伪加密，可以通过搜索的方法搜索zip文件头标记504B0102，在其偏移5字节的地方改为00（要改两处）来去除伪加密。</p>
+<p><img src="http://greenhateam.top/wp-content/uploads/2020/05/hcv2.png" alt="img"></p>
+<p>保存解压即可获得一个mp4视频和一个二维码文件。</p>
+<p>视频文件是喜闻乐见的黑人抬棺材的视频，但是在视频中有两个部分被植入了拨号音。截取这段音频降噪，使用dtmf2num工具识别拨号音，得到电话号码13418070885。</p>
+<p>再来看二维码：</p>
+<p><img src="http://greenhateam.top/wp-content/uploads/2020/05/hcv3.png" alt="img"></p>
+<p>这是获取的二维码图像，可见二维码的三个定位符均被抹去，所以无法扫描。通过PS添加三个定位符，得到一个二维码。扫描得到以下文字：</p>
+<pre><code class="rawtext">flag{this_is_not_flag}
+三曳所諳陀怯耶南夜缽得醯怯勝數不知喝盧瑟侄盡遠故隸怯薩不娑羯涅冥伊盧耶諳提度奢道盧冥以朋罰所即栗諳蒙集皤夷夜集諳利顛呐寫無怯依奢竟
+#￥#%
+E68BBFE4BD9BE68B89E6A0BCE79A84E5A7BFE58ABFE59CA8E69C80E5908E32333333
+||
+254333254242254338254342254231254338254345254432254238254643254236254145254239254441254437254234254232254131254236254245253244253244254343254438254330254341254336254435
+…sadwq#asdsadasf faf$use$dasdasdafafa_$ba##se64$</code></pre>
+<p>this is not flag 后面的第一部分哪些诡异的文字，是“与佛论禅”编码。最前面加上“佛曰：”，得到一句话：“都说了这不是佛拉格了”。</p>
+<p>第二部分是一段十六进制数，把它转成字符串，得到：“拿佛拉格的姿势在最后”。</p>
+<p>第三段也是一串十六进制数，把它转成字符串，得到：%C3%BB%C8%CB%B1%C8%CE%D2%B8%FC%B6%AE%B9%DA%D7%B4%B2%A1%B6%BE%2D%2D%CC%D8%C0%CA%C6%D5 肉眼可见它是url编码，直接转换，得到一串字符：“没人比我更懂冠状病毒–特朗普”。</p>
+<p>最后一段没啥花头了，就是看到了use base64，是时候把刚刚从拨号音得到的电话号码用BASE64编码发到公众号，得到一段诡异的音频。</p>
+<p><audio controls="" src="http://greenhateam.top/wp-content/uploads/2020/05/%E9%AB%98%E6%B8%85%E9%87%8D%E7%BD%AE.mp3" style="box-sizing: inherit; display: inline-block; width: 660.25px; min-width: 300px;"></audio><br>这是一段sstv的音频，里面有个图，直接使用软件MMSSTV，播放这段音频给电脑听（推荐电脑内录），你就可以看到孙狗的笑容（天皇遗照）。flag就写在孙🐕的胸上。</p>
+<p><img src="http://greenhateam.top/wp-content/uploads/2020/05/hcv.png" alt="img"></p>
+<hr>
+<p><strong>结束</strong></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://www.legr4ndk.top/2020/12/17/HappyCheckinNPUWP/" title="NPUCTF HappyCheckInVerification WP" target="_blank" rel="external">https://www.legr4ndk.top/2020/12/17/HappyCheckinNPUWP/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="external">CC BY-NC-SA 4.0协议</a> 与 <a href="https://github.com/996icu/996.ICU/blob/master/LICENSE" target="_blank" rel="external">"Anti 996" License</a> 两者合并的<a href="http://www.legr4ndk.top/LICENSE.html" target="_blank" rel="external">许可协议</a>。转载请注明出处。
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/legr4ndk" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/legr4ndk" target="_blank"><span class="text-dark">Legrandk</span><small class="ml-1x">Developer &amp; Student</small></a></h3>
+        <div>所以我松开拳头用手握紧笔，作为自己作为人类也作为你。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2020/12/23/JDBCexecuteCourse/" title="JDBC提供的SQL操作API解析"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2020/12/17/BackEndLoginCourse/" title="实现网页登陆的逻辑"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>￥</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone,wechat"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您对我的支持，我会继续努力的!！</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="打钱！" title="打钱！" />
+              </div>
+              <p class="text-muted mv">请我喝杯奶茶~</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="打钱！" title="打钱！" />
+              </div>
+              <p class="text-muted mv">请我喝杯奶茶~</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+    
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/legr4ndk" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/7526194755/profile" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/legr4ndk" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://legr4ndk.github.io/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+ 
+    
+    <div class="copyright">
+        <div class="support">
+            <a target="_blank" rel="noopener" href="https://creativecommons.org"><img src="http://www.legr4ndk.top/img/cc.png" alt="CreativeCommons" /></a>
+            <a target="_blank" rel="noopener" href="https://996.icu"><img src="http://www.legr4ndk.top/img/link-996.icu-red.svg" alt="996.icu" /></a>
+            <br/>
+        </div>
+
+    	
+        &copy; 2019-2021 By <a href="http://www.legr4ndk.top">Legrandk</a>
+        
+        
+        <div class="publishby">
+        	Theme based on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+        <div class="ICP">
+            <a href="http://beian.miit.gov.cn/" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备20009661号-2</a>
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'Mk3cri9aryQ9dJEueK5hrTy5-gzGzoHsz',
+    appKey: 'L0FXbseweKTJxmSu2SoU2wxC',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+
+</body>
+</html>
