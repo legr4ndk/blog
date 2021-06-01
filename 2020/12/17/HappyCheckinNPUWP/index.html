@@ -549,7 +549,7 @@ E68BBFE4BD9BE68B89E6A0BCE79A84E5A7BFE58ABFE59CA8E69C80E5908E32333333
                 style="position:absolute;right:60px;top:20px;width:auto;float:left;border:1px solid #000;height:auto;font-size:100%;padding: 8px 8px 8px 8px;transform:rotate(95deg) scale(1.5,1.5);margin:5px 5px 5px 5px;text-align:center;background-color:#000;">
                 <div
                     style="transform:rotate(-70deg) scale(2,2);color: #fff;font:bold 3px A-OTF A1 Mincho Std,Yu Mincho;text-align:bottom">
-                    <b><big><big>一</big></big></b>
+                    <b><big><big id="weekno">一</big></big></b>
                 </div>
             </div>
             <div class="&quot;full" style="position:relative;margin:5px 25px 10px 20px;width:100%">
@@ -558,7 +558,7 @@ E68BBFE4BD9BE68B89E6A0BCE79A84E5A7BFE58ABFE59CA8E69C80E5908E32333333
                         style="position:relative;width:auto;float:left;border:1px solid #000;height:auto;font-size:100%;padding: 8px 8px 8px 8px;transform:rotate(15deg) scale(1.5,2);margin:5px 5px 5px 5px;text-align:center;background-color:#000;">
                         <div
                             style="transform:scale(2,2);color:#fff;font:bold 3px A-OTF A1 Mincho Std,Yu Mincho;text-align:bottom">
-                            <b><big><big>5</big></big></b>
+                            <b><big><big id="monno">5</big></big></b>
                         </div>
                     </div>
                     <div style="clear:both;"></div>
@@ -573,7 +573,7 @@ E68BBFE4BD9BE68B89E6A0BCE79A84E5A7BFE58ABFE59CA8E69C80E5908E32333333
                         style="position:relative;top:18px;left:25px;width:auto;float:left;border:1px solid #000;height:auto;font-size:100%;padding: 8px 8px 8px 8px;transform:rotate(-10deg) scale(2.5,2.5);margin:5px 5px 5px 5px;text-align:center;background-color:#000;">
                         <div
                             style="transform:scale(2.5,2.5);color:#fff;font:bold 9px A-OTF A1 Mincho Std,Yu Mincho;text-align:bottom">
-                            <b><big><big>31</big></big></b>
+                            <b><big><big id="dayno">31</big></big></b>
                         </div>
                     </div>
                 </div>
@@ -703,14 +703,14 @@ E68BBFE4BD9BE68B89E6A0BCE79A84E5A7BFE58ABFE59CA8E69C80E5908E32333333
                                 }
                             </style>
                             <div class="loader" style="color:#fff;font-size:3px;overflow:visible;"><span
-                                    class="span{{#time：N}};"><b>夜</b></span></div>
+                                    class="span{{#time：N}};"><b id="word1">夜</b></span></div>
                         </div>
                     </div>
                     <div
                         style="position:relative;width:auto;float:left;border:1px solid #000;height:auto;font-size:100%;padding: 8px 8px 8px 8px; transform:rotate(-15deg) scale(1.5,1.5);margin:5px 5px 5px 5px;text-align:center;background-color:#000;">
                         <div style="transform:scale(2,2);text-align:bottom">
                             <div class="loader" style="color:#fff;font-size:3px;overflow:visible;"><span
-                                    class="span{{#time：N}};"><b>晚</b></span></div>
+                                    class="span{{#time：N}};"><b id="word2">晚</b></span></div>
                         </div>
                     </div>
                 </div>
@@ -762,6 +762,68 @@ E68BBFE4BD9BE68B89E6A0BCE79A84E5A7BFE58ABFE59CA8E69C80E5908E32333333
             </div><br><br><br>
         </div>
     </div>
+    <script type="text/javascript">
+        let time = new Date();
+        let week = document.querySelector('#weekno');
+        let month = document.querySelector('#monno');
+        let day = document.querySelector('#dayno');
+        let w1 = document.querySelector('#word1');
+        let w2 = document.querySelector('#word2');
+
+        month.innerText = time.getMonth() + 1;
+        day.innerText = time.getDate();
+        
+        d = time.getDay();
+        switch (d) {
+            case 0:
+                week.textContent = '日';
+                break;
+            case 1:
+                week.textContent = '月';
+                break;
+            case 2:
+                week.textContent = '火';
+                break;
+            case 3:
+                week.textContent = '水';
+                break;
+            case 4:
+                week.textContent = '木';
+                break;
+            case 5:
+                week.textContent = '金';
+                break;
+            case 6:
+                week.textContent = '土';
+                break;
+        }
+
+        let h = time.getHours();
+        if (h < 8) {
+            w1.textContent = '朝';
+            w2.textContent = '';
+        } else if (h < 11) {
+            w1.textContent = '午';
+            w2.textContent = '前';
+        }
+        else if (h < 17) {
+            w1.textContent = '午';
+            w2.textContent = '後';
+        }
+        else if (h < 20) {
+            w1.textContent = '夕';
+            w2.textContent = '方';
+        }
+        else {
+            w1.textContent = '夜';
+            w2.textContent = '';
+        }
+
+        if ((d == 0 || d == 6) && (h > 7 && h < 17)) {
+            w1.textContent = '昼';
+            w2.textContent = '間';
+        }
+    </script>
     
 	
     <ul class="social-links">
