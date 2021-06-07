@@ -5549,6 +5549,7 @@ code {
   background: #eee;
   border-radius: 3px;
   font-size: 110%;
+  font-family: monospace;
 }
 
 pre code {
