@@ -20,12 +20,12 @@
   
   
   <title>Cpp中的多态 | Legrandk&#39;s Qzone</title>
-  <meta name="description" content="多态是面向对象编程内极为重要的一种特征，它能极大的简化我们的代码  先来看一段类的原型 class Animal &#x2F;&#x2F;基类 { public:     void voice()     {         std::cout &lt;&lt; &quot;Voiceless&quot; &lt;&lt; std::endl; &#x2F;&#x2F;不知道该叫啥     }; };  class Dog : public Animal">
+  <meta name="description" content="多态是面向对象编程内极为重要的一种特征，它能极大的简化我们的代码  先来看一段类的原型 1234567891011121314151617181920212223242526class Animal &#x2F;&#x2F;基类{public:    void voice()	{        std::cout &lt;&lt; &quot;Voiceless&quot; &lt;&lt; std::endl; &#x2F;&#x2F;不知道该叫啥">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cpp中的多态">
 <meta property="og:url" content="https://www.legr4ndk.top/2020/10/23/CppPolymorphism/index.html">
 <meta property="og:site_name" content="Legrandk&#39;s Qzone">
-<meta property="og:description" content="多态是面向对象编程内极为重要的一种特征，它能极大的简化我们的代码  先来看一段类的原型 class Animal &#x2F;&#x2F;基类 { public:     void voice()     {         std::cout &lt;&lt; &quot;Voiceless&quot; &lt;&lt; std::endl; &#x2F;&#x2F;不知道该叫啥     }; };  class Dog : public Animal">
+<meta property="og:description" content="多态是面向对象编程内极为重要的一种特征，它能极大的简化我们的代码  先来看一段类的原型 1234567891011121314151617181920212223242526class Animal &#x2F;&#x2F;基类{public:    void voice()	{        std::cout &lt;&lt; &quot;Voiceless&quot; &lt;&lt; std::endl; &#x2F;&#x2F;不知道该叫啥">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-10-23T12:02:51.000Z">
 <meta property="article:modified_time" content="2021-03-14T10:17:28.587Z">
@@ -380,32 +380,8 @@
 <p>多态是面向对象编程内极为重要的一种特征，它能极大的简化我们的代码</p>
 </blockquote>
 <p>先来看一段类的原型</p>
-<pre><code class="c++">class Animal //基类
-{
-public:
-    void voice()
-    {
-        std::cout &lt;&lt; "Voiceless" &lt;&lt; std::endl; //不知道该叫啥
-    };
-};
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span> //基类</span><br><span class="hljs-class">{</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">voice</span><span class="hljs-params">()</span></span><br><span class="hljs-function">	</span>{<br>        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Voiceless"</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>; <span class="hljs-comment">//不知道该叫啥</span><br>    };<br>};<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span> :</span> <span class="hljs-keyword">public</span> Animal <span class="hljs-comment">//狗派生类，继承了Animal</span><br>{<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">voice</span><span class="hljs-params">()</span></span><br><span class="hljs-function">	</span>{<br>        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Woof"</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>; <span class="hljs-comment">//汪汪叫</span><br>    }<br>};<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat</span> :</span> <span class="hljs-keyword">public</span> Animal <span class="hljs-comment">//猫派生类，继承了Animal</span><br>{<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">voice</span><span class="hljs-params">()</span></span><br><span class="hljs-function">	</span>{<br>        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Meow"</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>; <span class="hljs-comment">//喵喵叫</span><br>    }<br>};<br></code></pre></td></tr></tbody></table></figure>
 
-class Dog : public Animal //狗派生类，继承了Animal
-{
-public:
-    void voice()
-    {
-        std::cout &lt;&lt; "Woof" &lt;&lt; std::endl; //汪汪叫
-    }
-};
-
-class Cat : public Animal //猫派生类，继承了Animal
-{
-public:
-    void voice()
-    {
-        std::cout &lt;&lt; "Meow" &lt;&lt; std::endl; //喵喵叫
-    }
-};</code></pre>
 <p>我们可以看到，基类和派生类中都有函数voice()，它可以让不同的动物发出不同的叫声，其中，Dog类和Cat类的voice()函数是覆写了基类中的同名函数。</p>
 <p>当然，还可以有很多基于Animal类的派生类，都可以有叫声，但是我们如果想统一一下让它们叫的方法，比如用个train函数，传入对象或者它的指针就可以自动调用它的voice函数。虽然Cpp支持重载函数，但是为每个不同的类各写一个这样的函数，工作量不仅大，而且枯燥。多态就是帮我们解决这个问题的。</p>
 <p><strong>多态</strong> <em>Polymorphism</em></p>
@@ -426,83 +402,32 @@ public:
 <li>通过基类对象的指针或引用访问同名虚函数，是动态联编</li>
 </ol>
 <p>那我们现在改一下原来的类的定义让它符合子类型多态的要求</p>
-<pre><code class="c++">class Animal
-{
-public:
-    virtual void voice() //此函数声明为虚函数后，派生类中无须再注明
-    {
-        std::cout &lt;&lt; "Voiceless" &lt;&lt; std::endl;
-    };
-};
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span></span><br><span class="hljs-class">{</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">voice</span><span class="hljs-params">()</span> <span class="hljs-comment">//此函数声明为虚函数后，派生类中无须再注明</span></span><br><span class="hljs-function">	</span>{<br>        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Voiceless"</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;<br>    };<br>};<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span> :</span> <span class="hljs-keyword">public</span> Animal<br>{<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">voice</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span> <span class="hljs-comment">//覆写了voice函数</span></span><br><span class="hljs-function">	</span>{<br>        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Woof"</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;<br>    }<br>};<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat</span> :</span> <span class="hljs-keyword">public</span> Animal<br>{<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">voice</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span> <span class="hljs-comment">//覆写了voice函数</span></span><br><span class="hljs-function">	</span>{<br>        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Meow"</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;<br>    }<br>};<br></code></pre></td></tr></tbody></table></figure>
 
-class Dog : public Animal
-{
-public:
-    void voice() override //覆写了voice函数
-    {
-        std::cout &lt;&lt; "Woof" &lt;&lt; std::endl;
-    }
-};
-
-class Cat : public Animal
-{
-public:
-    void voice() override //覆写了voice函数
-    {
-        std::cout &lt;&lt; "Meow" &lt;&lt; std::endl;
-    }
-};</code></pre>
 <p>那么还是刚刚那个例子，我们设计一个train函数</p>
-<pre><code class="c++">void train(Animal animal)
-{
-    animal.voice();
-}</code></pre>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">train</span><span class="hljs-params">(Animal animal)</span></span><br><span class="hljs-function"></span>{<br>    animal.voice();<br>}<br></code></pre></td></tr></tbody></table></figure>
+
 <p>使用这个函数，你会发现无论你往参数里塞了什么阿猫阿狗的对象，输出的永远是“Voiceless”，这便是静态联编的问题了，它使用的是基类的对象而非基类对象的指针或引用，你需要把train修改成这样：</p>
-<pre><code class="c++">void train(Animal&amp; animal)
-{
-    animal.voice();
-}
-//或者这样
-void train(Animal* animal)
-{
-    animal-&gt;voice();
-}</code></pre>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">train</span><span class="hljs-params">(Animal&amp; animal)</span></span><br><span class="hljs-function"></span>{<br>    animal.voice();<br>}<br><span class="hljs-comment">//或者这样</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">train</span><span class="hljs-params">(Animal* animal)</span></span><br><span class="hljs-function"></span>{<br>    animal-&gt;voice();<br>}<br></code></pre></td></tr></tbody></table></figure>
+
 <p>然后你的子类对象在调用这个train函数之后就可以正常发出正确的声音了</p>
 <p><strong>需要注意的是，如果voice函数不是<em>虚函数</em>，那么即使你用了派生类对象的指针、引用，只要那个进入函数的东西的类型是基类，它就会调用基类的函数</strong></p>
 <p>一句话总结一下，就是：<strong>函数虚，看对象；函数实，看类型。</strong></p>
 <p>但是，这个东西它也有问题，就是你使用基类的指针（或者引用）指向了派生类的对象的时候，你只能调用派生类的虚函数，无法调用非虚函数，例如我改一下Dog类的定义：</p>
-<pre><code class="c++">class Dog : public Animal
-{
-public:
-    void voice() override
-    {
-        std::cout &lt;&lt; "Woof" &lt;&lt; std::endl;
-    }
-    void foo() //这个不是虚函数了
-    {
-        std::cout &lt;&lt; "Foo!" &lt;&lt; std::endl;
-    }
-};</code></pre>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span> :</span> <span class="hljs-keyword">public</span> Animal<br>{<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">voice</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span></span><br><span class="hljs-function">	</span>{<br>        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Woof"</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;<br>    }<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">foo</span><span class="hljs-params">()</span> <span class="hljs-comment">//这个不是虚函数了</span></span><br><span class="hljs-function">    </span>{<br>        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Foo!"</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;<br>    }<br>};<br></code></pre></td></tr></tbody></table></figure>
+
 <p>但是我在main函数里这样定义：</p>
-<pre><code class="c++">Animal ptr;
-Dog dog = new Dog();
-ptr = &amp;dog;
-ptr-&gt;voice(); //调用的是dog对象的voice函数
-ptr-&gt;foo(); //无法调用，No member named foo in Animal</code></pre>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++">Animal ptr;<br>Dog dog = <span class="hljs-keyword">new</span> Dog();<br>ptr = &amp;dog;<br>ptr-&gt;voice(); <span class="hljs-comment">//调用的是dog对象的voice函数</span><br>ptr-&gt;foo(); <span class="hljs-comment">//无法调用，No member named foo in Animal</span><br></code></pre></td></tr></tbody></table></figure>
+
 <p>Animal类的指针虽然指向了dog，但是它将无法调用dog的非虚函数，但是如果我们偏要调用属于子类的非虚函数呢？</p>
 <p><strong>Introducing dynamic_cast!</strong></p>
 <p>Cpp的dynamic_cast&lt;&gt;运算符可以把基类类型的指针转换为派生类的类型的指针，就可以使调用子类的非虚函数称为可能，方法如下</p>
-<pre><code class="c++">ptr-&gt;foo(); //它出了问题
-dynamic_cast&lt;Dog*&gt;(ptr)-&gt;foo(); //正常调用！</code></pre>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++">ptr-&gt;foo(); <span class="hljs-comment">//它出了问题</span><br><span class="hljs-keyword">dynamic_cast</span>&lt;Dog*&gt;(ptr)-&gt;foo(); <span class="hljs-comment">//正常调用！</span><br></code></pre></td></tr></tbody></table></figure>
+
 <p>虽然建议在任何基类与派生类间的指针、引用的类型转换都使用dynamic_cast运算符，但是实际上，派生类的指针（引用）转为基类类型的指针（引用）可以不使用该运算符而隐式转换，而基类的指针（引用）转为派生类类型的指针（引用）<strong>必须</strong>显式使用该运算符以完成类型转换。</p>
 <p>比如我们有：</p>
-<pre><code class="c++">Animal animal;
-Animal* pa;
-Cat cat;
-Cat* pc;
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++">Animal animal;<br>Animal* pa;<br>Cat cat;<br>Cat* pc;<br><br>pa = &amp;cat; <span class="hljs-comment">//可以隐式转换（下转上）</span><br>pc = <span class="hljs-keyword">dynamic_cast</span>&lt;Cat*&gt;(animal); <span class="hljs-comment">//必须显式转换（上转下）</span><br></code></pre></td></tr></tbody></table></figure>
 
-pa = &amp;cat; //可以隐式转换（下转上）
-pc = dynamic_cast&lt;Cat*&gt;(animal); //必须显式转换（上转下）</code></pre>
 <p>多态就先写这么多~</p>
 
       
@@ -894,15 +819,18 @@ pc = dynamic_cast&lt;Cat*&gt;(animal); //必须显式转换（上转下）</code
         if (h < 8) {
             w1.textContent = '朝';
             w2.textContent = '';
-        } else if (h < 11) {
+        } else if (h < 12) {
             w1.textContent = '午';
             w2.textContent = '前';
+        } else if (h < 13) {
+            w1.textContent = '午';
+            w2.textContent = '間';
         }
         else if (h < 17) {
             w1.textContent = '午';
             w2.textContent = '後';
         }
-        else if (h < 20) {
+        else if (h < 19) {
             w1.textContent = '夕';
             w2.textContent = '方';
         }

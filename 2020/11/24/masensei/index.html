@@ -870,15 +870,18 @@
         if (h < 8) {
             w1.textContent = '朝';
             w2.textContent = '';
-        } else if (h < 11) {
+        } else if (h < 12) {
             w1.textContent = '午';
             w2.textContent = '前';
+        } else if (h < 13) {
+            w1.textContent = '午';
+            w2.textContent = '間';
         }
         else if (h < 17) {
             w1.textContent = '午';
             w2.textContent = '後';
         }
-        else if (h < 20) {
+        else if (h < 19) {
             w1.textContent = '夕';
             w2.textContent = '方';
         }

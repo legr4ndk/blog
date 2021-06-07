@@ -391,7 +391,8 @@
 <h3 id="Put-your-codes-to-a-folder-and-initialize"><a href="#Put-your-codes-to-a-folder-and-initialize" class="headerlink" title="Put your codes to a folder and initialize"></a>Put your codes to a folder and initialize</h3><p>Now you can copy+paste all your code that need to be pushed to the Github in your new folder.Then run a terminal in this folder.</p>
 <p>Using <strong>git init</strong> to initial your local repository.</p>
 <p>And do not forget to add a new repository in your Github account.Once you added a new repository to your Github,you will get a repository-link just like this:</p>
-<pre><code>https://github.com/YourGithubID/YourRepoName.git</code></pre>
+<figure class="highlight awk"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/YourGithubID/</span>YourRepoName.git<br></code></pre></td></tr></tbody></table></figure>
+
 <p>Now,run <strong>git remote add origin $YourRepoLink</strong> to link your remote repository to the local one.</p>
 <h3 id="Add-your-files-to-staging-area"><a href="#Add-your-files-to-staging-area" class="headerlink" title="Add your files to staging area"></a>Add your files to staging area</h3><p>Use <strong>git add $Filename</strong> to add the files you need to staging area. Or you can use <strong>git add .</strong> (THERE IS A DOT AT THE END) to add all your files。</p>
 <p>Then run <strong>git status</strong> to check the files in your local repository.</p>
@@ -791,15 +792,18 @@
         if (h < 8) {
             w1.textContent = '朝';
             w2.textContent = '';
-        } else if (h < 11) {
+        } else if (h < 12) {
             w1.textContent = '午';
             w2.textContent = '前';
+        } else if (h < 13) {
+            w1.textContent = '午';
+            w2.textContent = '間';
         }
         else if (h < 17) {
             w1.textContent = '午';
             w2.textContent = '後';
         }
-        else if (h < 20) {
+        else if (h < 19) {
             w1.textContent = '夕';
             w2.textContent = '方';
         }

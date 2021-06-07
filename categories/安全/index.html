@@ -327,11 +327,11 @@
           
           <li><a href="/categories/客户端/">客户端</a></li>
           
-          <li><a href="/categories/个人感悟/">个人感悟</a></li>
-          
           <li><a href="/categories/工具/">工具</a></li>
           
           <li><a href="/categories/安全/">安全</a></li>
+          
+          <li><a href="/categories/个人感悟/">个人感悟</a></li>
           
           <li><a href="/categories/前端/">前端</a></li>
           
@@ -636,15 +636,18 @@
         if (h < 8) {
             w1.textContent = '朝';
             w2.textContent = '';
-        } else if (h < 11) {
+        } else if (h < 12) {
             w1.textContent = '午';
             w2.textContent = '前';
+        } else if (h < 13) {
+            w1.textContent = '午';
+            w2.textContent = '間';
         }
         else if (h < 17) {
             w1.textContent = '午';
             w2.textContent = '後';
         }
-        else if (h < 20) {
+        else if (h < 19) {
             w1.textContent = '夕';
             w2.textContent = '方';
         }

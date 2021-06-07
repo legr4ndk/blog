@@ -366,7 +366,7 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/12/16/JSPconnectMySQL/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 982(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 986(字)</span>
 	
 	
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4(分)</span>
@@ -379,101 +379,20 @@
         <h2 id="驱动准备"><a href="#驱动准备" class="headerlink" title="驱动准备"></a>驱动准备</h2><p>你需要下载Java Database Connector for MySQL，本文提供一个来自于菜鸟教程的jar包，版本号为5.1.39。点击<a target="_blank" rel="noopener" href="http://static.runoob.com/download/mysql-connector-java-5.1.39-bin.jar">此处</a>下载。将此文件放入tomcat目录的lib文件夹中。</p>
 <h2 id="配置Tomcat的连接池"><a href="#配置Tomcat的连接池" class="headerlink" title="配置Tomcat的连接池"></a>配置Tomcat的连接池</h2><p>不配置连接池，在使用驱动包的时候tomcat会返回500 Internal Server Error，提示ClassNotFoundException（异常：找不到类），可以通过配置它的连接池来解决问题。</p>
 <h3 id="修改server-xml"><a href="#修改server-xml" class="headerlink" title="修改server.xml"></a>修改server.xml</h3><p>修改位于tomcat目录下的conf/server.xml,找到<code>&lt;GlobalNamingResources&gt;</code>标签，在此标签内我们需要添加内容。</p>
-<pre><code class="xml">&lt;!--这个标签是已经存在的，找到它然后编辑即可--&gt;
-&lt;GlobalNamingResources&gt;
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!--这个标签是已经存在的，找到它然后编辑即可--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">GlobalNamingResources</span>&gt;</span><br>    <br>    <span class="hljs-comment">&lt;!--这部分为文件自带内容，不作改动--&gt;</span><br>             <span class="hljs-tag">&lt;<span class="hljs-name">Resource</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"UserDatabase"</span> <span class="hljs-attr">auth</span>=<span class="hljs-string">"Container"</span></span><br><span class="hljs-tag">              <span class="hljs-attr">type</span>=<span class="hljs-string">"org.apache.catalina.UserDatabase"</span></span><br><span class="hljs-tag">              <span class="hljs-attr">description</span>=<span class="hljs-string">"User database that can be updated and saved"</span></span><br><span class="hljs-tag">              <span class="hljs-attr">factory</span>=<span class="hljs-string">"org.apache.catalina.users.MemoryUserDatabaseFactory"</span></span><br><span class="hljs-tag">              <span class="hljs-attr">pathname</span>=<span class="hljs-string">"conf/tomcat-users.xml"</span> /&gt;</span><br><br>    <span class="hljs-comment">&lt;!--配置mysql数据库的连接池, 需要做的额外步骤是将mysql的Java驱动类放到tomcat的lib目录下--&gt;</span><br>             <span class="hljs-tag">&lt;<span class="hljs-name">Resource</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"jdbc/mysqlds"</span> </span><br><span class="hljs-tag">                       <span class="hljs-attr">auth</span>=<span class="hljs-string">"Container"</span> </span><br><span class="hljs-tag">                       <span class="hljs-attr">type</span>=<span class="hljs-string">"javax.sql.DataSource"</span> </span><br><span class="hljs-tag">                       <span class="hljs-attr">username</span>=<span class="hljs-string">"$UNAME"</span></span><br><span class="hljs-tag">                       <span class="hljs-attr">password</span>=<span class="hljs-string">"$PWD"</span> </span><br><span class="hljs-tag">                       <span class="hljs-attr">maxIdle</span>=<span class="hljs-string">"30"</span> </span><br><span class="hljs-tag">                       <span class="hljs-attr">maxWait</span>=<span class="hljs-string">"10000"</span> </span><br><span class="hljs-tag">                       <span class="hljs-attr">maxActive</span>=<span class="hljs-string">"100"</span></span><br><span class="hljs-tag">                       <span class="hljs-attr">driverClassName</span>=<span class="hljs-string">"com.mysql.jdbc.Driver"</span></span><br><span class="hljs-tag">                       <span class="hljs-attr">url</span>=<span class="hljs-string">"jdbc:mysql://localhost:3306/$DBNAME"</span> /&gt;</span>	<br>    <br><span class="hljs-tag">&lt;/<span class="hljs-name">GlobalNamingResources</span>&gt;</span>  <br></code></pre></td></tr></tbody></table></figure>
 
-    &lt;!--这部分为文件自带内容，不作改动--&gt;
-             &lt;Resource name="UserDatabase" auth="Container"
-              type="org.apache.catalina.UserDatabase"
-              description="User database that can be updated and saved"
-              factory="org.apache.catalina.users.MemoryUserDatabaseFactory"
-              pathname="conf/tomcat-users.xml" /&gt;
-
-    &lt;!--配置mysql数据库的连接池, 需要做的额外步骤是将mysql的Java驱动类放到tomcat的lib目录下--&gt;
-             &lt;Resource name="jdbc/mysqlds" 
-                       auth="Container" 
-                       type="javax.sql.DataSource" 
-                       username="$UNAME"
-                       password="$PWD" 
-                       maxIdle="30" 
-                       maxWait="10000" 
-                       maxActive="100"
-                       driverClassName="com.mysql.jdbc.Driver"
-                       url="jdbc:mysql://localhost:3306/$DBNAME" /&gt;    
-
-&lt;/GlobalNamingResources&gt;  </code></pre>
 <p>其中 <code>$DBNAME</code>位置放你的数据库名，<code>$UNAME</code>位置放置你的数据库用户名，<code>$PWD</code>位置放置你的数据库密码</p>
 <h3 id="修改context-xml"><a href="#修改context-xml" class="headerlink" title="修改context.xml"></a>修改context.xml</h3><p>修改位于tomcat目录下的conf/context.xml，在<code>&lt;Context&gt;</code>标签内我们需要添加内容。</p>
-<pre><code class="xml">&lt;Context&gt;
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">Context</span>&gt;</span><br>    <br>    <span class="hljs-comment">&lt;!--这部分为文件自带内容，不作改动--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">WatchedResource</span>&gt;</span>WEB-INF/web.xml<span class="hljs-tag">&lt;/<span class="hljs-name">WatchedResource</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">WatchedResource</span>&gt;</span>WEB-INF/tomcat-web.xml<span class="hljs-tag">&lt;/<span class="hljs-name">WatchedResource</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">WatchedResource</span>&gt;</span>${catalina.base}/conf/web.xml<span class="hljs-tag">&lt;/<span class="hljs-name">WatchedResource</span>&gt;</span><br>    <br>    <span class="hljs-comment">&lt;!--以下为在本文件中的添加内容--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ResourceLink</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"jdbc/mysqlds"</span> <span class="hljs-attr">global</span>=<span class="hljs-string">"jdbc/mysqlds"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"javax.sql.DataSource"</span>/&gt;</span><br>    <br><span class="hljs-tag">&lt;/<span class="hljs-name">Context</span>&gt;</span><br></code></pre></td></tr></tbody></table></figure>
 
-    &lt;!--这部分为文件自带内容，不作改动--&gt;
-    &lt;WatchedResource&gt;WEB-INF/web.xml&lt;/WatchedResource&gt;
-    &lt;WatchedResource&gt;WEB-INF/tomcat-web.xml&lt;/WatchedResource&gt;
-    &lt;WatchedResource&gt;${catalina.base}/conf/web.xml&lt;/WatchedResource&gt;
-
-    &lt;!--以下为在本文件中的添加内容--&gt;
-    &lt;ResourceLink name="jdbc/mysqlds" global="jdbc/mysqlds" type="javax.sql.DataSource"/&gt;
-
-&lt;/Context&gt;</code></pre>
 <h3 id="修改web-xml"><a href="#修改web-xml" class="headerlink" title="修改web.xml"></a>修改web.xml</h3><p>修改位于tomcat目录下的网页项目文件夹下的WEB-INF/web.xml文件，在</p>
 <p><code>&lt;web-app&gt;</code>内我们需要添加内容。</p>
-<pre><code class="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
-         version="4.0"&gt;
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">web-app</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://xmlns.jcp.org/xml/ns/javaee"</span></span><br><span class="hljs-tag">         <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="hljs-tag">         <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"</span></span><br><span class="hljs-tag">         <span class="hljs-attr">version</span>=<span class="hljs-string">"4.0"</span>&gt;</span><br>    <br>    <span class="hljs-comment">&lt;!--以下为在本文件中的添加内容--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">resource-ref</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">description</span>&gt;</span>mysql数据库连接池<span class="hljs-tag">&lt;/<span class="hljs-name">description</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">res-ref-name</span>&gt;</span>jdbc/mysqlds<span class="hljs-tag">&lt;/<span class="hljs-name">res-ref-name</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">res-type</span>&gt;</span>javax.sql.DataSource<span class="hljs-tag">&lt;/<span class="hljs-name">res-type</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">res-auth</span>&gt;</span>Container<span class="hljs-tag">&lt;/<span class="hljs-name">res-auth</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">res-sharing-scope</span>&gt;</span>Shareable<span class="hljs-tag">&lt;/<span class="hljs-name">res-sharing-scope</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">resource-ref</span>&gt;</span><br>    <br><span class="hljs-tag">&lt;/<span class="hljs-name">web-app</span>&gt;</span><br></code></pre></td></tr></tbody></table></figure>
 
-    &lt;!--以下为在本文件中的添加内容--&gt;
-    &lt;resource-ref&gt;
-        &lt;description&gt;mysql数据库连接池&lt;/description&gt;
-        &lt;res-ref-name&gt;jdbc/mysqlds&lt;/res-ref-name&gt;
-        &lt;res-type&gt;javax.sql.DataSource&lt;/res-type&gt;
-        &lt;res-auth&gt;Container&lt;/res-auth&gt;
-        &lt;res-sharing-scope&gt;Shareable&lt;/res-sharing-scope&gt;
-    &lt;/resource-ref&gt;
-
-&lt;/web-app&gt;</code></pre>
 <p>配置之后，<strong>需重启tomcat</strong>。之后连接数据库的时候就不会出现ClassNotFoundException了。</p>
 <h2 id="JSP连接数据库"><a href="#JSP连接数据库" class="headerlink" title="JSP连接数据库"></a>JSP连接数据库</h2><p>给出一段DEMO：</p>
-<pre><code class="jsp">&lt;%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%&gt;
-&lt;%@ page import="java.sql.*"%&gt;
+<figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs jsp">&lt;%@ page language=<span class="hljs-string">"java"</span> contentType=<span class="hljs-string">"text/html; charset=UTF-8"</span> pageEncoding=<span class="hljs-string">"UTF-8"</span>%&gt;<br>&lt;%@ page <span class="hljs-keyword">import</span>=<span class="hljs-string">"java.sql.*"</span>%&gt;<br><br>&lt;html&gt;<br>    &lt;head&gt;<br>        &lt;title&gt;通过JSP打开数据表&lt;/title&gt;<br>    &lt;/head&gt;<br>    &lt;body&gt;<br><br>        &lt;%<br>            Class.forName(<span class="hljs-string">"com.mysql.jdbc.Driver"</span>);  <span class="hljs-comment">//驱动程序名</span><br>            String url = <span class="hljs-string">"jdbc:mysql://localhost:3306/$DBNAME"</span>; <span class="hljs-comment">//数据库名</span><br>            String username = <span class="hljs-string">"$UNAME"</span>;  <span class="hljs-comment">//数据库用户名</span><br>            String password = <span class="hljs-string">"$PWD"</span>;  <span class="hljs-comment">//数据库用户密码</span><br>            Connection conn = DriverManager.getConnection(url, username, password);  <span class="hljs-comment">//连接数据库并返回连接状态</span><br><br>            <span class="hljs-keyword">if</span>(conn != <span class="hljs-keyword">null</span>){<br>                out.print(<span class="hljs-string">"数据库连接成功！"</span>);<br>                out.print(<span class="hljs-string">"&lt;br /&gt;"</span>);<br>                Statement stmt = <span class="hljs-keyword">null</span>;<br>                ResultSet rs = <span class="hljs-keyword">null</span>;<br>                String sql = <span class="hljs-string">"SELECT * FROM $TABLENAME;"</span>;  <span class="hljs-comment">//查询语句</span><br>                stmt = conn.createStatement();<br>                rs = stmt.executeQuery(sql);<br>                out.print(<span class="hljs-string">"查询结果："</span>);<br>                out.print(<span class="hljs-string">"&lt;br /&gt;"</span>);<br>                out.println(<span class="hljs-string">"id"</span>+<span class="hljs-string">"  "</span>+<span class="hljs-string">"uname"</span>+<span class="hljs-string">"  "</span>+<span class="hljs-string">"pwd"</span>);<br>                out.print(<span class="hljs-string">"&lt;br /&gt;"</span>);<br>                <span class="hljs-keyword">while</span> (rs.next()) {<br>                    out.println(rs.getString(<span class="hljs-string">"id"</span>)+<span class="hljs-string">" "</span>+rs.getString(<span class="hljs-string">"uname"</span>)+<span class="hljs-string">" "</span>+rs.getString(<span class="hljs-string">"passwd"</span>)+<span class="hljs-string">"&lt;br /&gt;"</span>); <span class="hljs-comment">//将查询结输出</span><br>                }<br>            }<br>            <span class="hljs-keyword">else</span>{<br>                out.print(<span class="hljs-string">"连接失败！"</span>);<br>            }<br><br>        %&gt;<br>    &lt;/body&gt;<br>&lt;/html&gt;<br></code></pre></td></tr></tbody></table></figure>
 
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;title&gt;通过JSP打开数据表&lt;/title&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-
-        &lt;%
-            Class.forName("com.mysql.jdbc.Driver");  //驱动程序名
-            String url = "jdbc:mysql://localhost:3306/$DBNAME"; //数据库名
-            String username = "$UNAME";  //数据库用户名
-            String password = "$PWD";  //数据库用户密码
-            Connection conn = DriverManager.getConnection(url, username, password);  //连接数据库并返回连接状态
-
-            if(conn != null){
-                out.print("数据库连接成功！");
-                out.print("&lt;br /&gt;");
-                Statement stmt = null;
-                ResultSet rs = null;
-                String sql = "SELECT * FROM $TABLENAME;";  //查询语句
-                stmt = conn.createStatement();
-                rs = stmt.executeQuery(sql);
-                out.print("查询结果：");
-                out.print("&lt;br /&gt;");
-                out.println("id"+"  "+"uname"+"  "+"pwd");
-                out.print("&lt;br /&gt;");
-                while (rs.next()) {
-                    out.println(rs.getString("id")+" "+rs.getString("uname")+" "+rs.getString("passwd")+"&lt;br /&gt;"); //将查询结输出
-                }
-            }
-            else{
-                out.print("连接失败！");
-            }
-
-        %&gt;
-    &lt;/body&gt;
-&lt;/html&gt;</code></pre>
 <p>其中 <code>$DBNAME</code>位置放你的数据库名，<code>$UNAME</code>位置放置你的数据库用户名，<code>$PWD</code>位置放置你的数据库密码，<code>$TABLENAME</code>位置放置你操作的数据表表名。</p>
 <p>ResultSet.getString()函数接受字段名作为参数返回对应一条记录的该字段的值，可以以此读取信息。</p>
 <p>上方Demo实现了读取一个数据表中id、uname、pwd字段的所有数据的JSP代码。</p>
@@ -868,15 +787,18 @@
         if (h < 8) {
             w1.textContent = '朝';
             w2.textContent = '';
-        } else if (h < 11) {
+        } else if (h < 12) {
             w1.textContent = '午';
             w2.textContent = '前';
+        } else if (h < 13) {
+            w1.textContent = '午';
+            w2.textContent = '間';
         }
         else if (h < 17) {
             w1.textContent = '午';
             w2.textContent = '後';
         }
-        else if (h < 20) {
+        else if (h < 19) {
             w1.textContent = '夕';
             w2.textContent = '方';
         }

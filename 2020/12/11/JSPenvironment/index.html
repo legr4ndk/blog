@@ -20,12 +20,12 @@
   
   
   <title>于Ubuntu 18.04上配置Java Server Pages运行环境 | Legrandk&#39;s Qzone</title>
-  <meta name="description" content="更新系统sudo apt update #更新软件源 sudo apt upgrade #更新软件包 Web服务器应用Apachesudo apt install apache2 -y #安装apache2 sudo &#x2F;etc&#x2F;init.d&#x2F;apache2 start #启动apache2 sudo &#x2F;etc&#x2F;init.d&#x2F;apache2 stop #关闭apache2 Java运行时与JDKsu">
+  <meta name="description" content="更新系统12sudo apt update #更新软件源sudo apt upgrade #更新软件包  Web服务器应用Apache123sudo apt install apache2 -y #安装apache2sudo &#x2F;etc&#x2F;init.d&#x2F;apache2 start #启动apache2sudo &#x2F;etc&#x2F;init.d&#x2F;apache2 stop #关闭apache2  Java运行时与J">
 <meta property="og:type" content="article">
 <meta property="og:title" content="于Ubuntu 18.04上配置Java Server Pages运行环境">
 <meta property="og:url" content="https://www.legr4ndk.top/2020/12/11/JSPenvironment/index.html">
 <meta property="og:site_name" content="Legrandk&#39;s Qzone">
-<meta property="og:description" content="更新系统sudo apt update #更新软件源 sudo apt upgrade #更新软件包 Web服务器应用Apachesudo apt install apache2 -y #安装apache2 sudo &#x2F;etc&#x2F;init.d&#x2F;apache2 start #启动apache2 sudo &#x2F;etc&#x2F;init.d&#x2F;apache2 stop #关闭apache2 Java运行时与JDKsu">
+<meta property="og:description" content="更新系统12sudo apt update #更新软件源sudo apt upgrade #更新软件包  Web服务器应用Apache123sudo apt install apache2 -y #安装apache2sudo &#x2F;etc&#x2F;init.d&#x2F;apache2 start #启动apache2sudo &#x2F;etc&#x2F;init.d&#x2F;apache2 stop #关闭apache2  Java运行时与J">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-12-11T10:16:45.000Z">
 <meta property="article:modified_time" content="2021-03-14T10:17:28.599Z">
@@ -366,7 +366,7 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/12/11/JSPenvironment/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 460(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 448(字)</span>
 	
 	
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2(分)</span>
@@ -376,43 +376,16 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h3 id="更新系统"><a href="#更新系统" class="headerlink" title="更新系统"></a>更新系统</h3><pre><code>sudo apt update #更新软件源
-sudo apt upgrade #更新软件包</code></pre>
-<h3 id="Web服务器应用Apache"><a href="#Web服务器应用Apache" class="headerlink" title="Web服务器应用Apache"></a>Web服务器应用Apache</h3><pre><code>sudo apt install apache2 -y #安装apache2
-sudo /etc/init.d/apache2 start #启动apache2
-sudo /etc/init.d/apache2 stop #关闭apache2</code></pre>
-<h3 id="Java运行时与JDK"><a href="#Java运行时与JDK" class="headerlink" title="Java运行时与JDK"></a>Java运行时与JDK</h3><pre><code>sudo apt install openjdk-11-jdk-headless #安装openjdk-11</code></pre>
-<h3 id="Java应用服务器Tomcat"><a href="#Java应用服务器Tomcat" class="headerlink" title="Java应用服务器Tomcat"></a>Java应用服务器Tomcat</h3><pre><code>sudo apt install git #安装git（作为wget的依赖）
-sudo apt install wget #有的系统自带wget，就不用装
-wget https://mirrors.cnnic.cn/apache/tomcat/tomcat-9/v9.0.40/bin/apache-tomcat-9.0.40.tar.gz
- #于cnnic镜像站下载tomcat的预编译二进制文件
-tar -xzvf apache-tomcat-9.0.40.tar.gz #解压压缩文件
-sudo mv ./apache-tomcat-9.0.40 /usr/local/tomcat #移动所有文件到/usr/local目录下的tomcat文件夹中
-sudo chmod -R 755 /usr/local/tomcat #赋予权限
-cd /usr/local/tomcat/bin #进入存放tomcat的文件夹
-vim ./startup.sh #编辑startup.sh脚本
-# 最后一行加上：
-#tomcat
-export TOMCAT_HOME=/usr/local/tomcat
-# 保存退出
-sudo /usr/local/tomcat/bin/startup.sh #启动tomcat
-sudo /usr/local/tomcat/bin/shutdown.sh #关闭tomcat</code></pre>
-<h3 id="数据库MySQL"><a href="#数据库MySQL" class="headerlink" title="数据库MySQL"></a>数据库MySQL</h3><pre><code>sudo apt-get install mysql-server #安装mysql-server
-sudo mysql -uroot -p #root用户登陆mysql-clinet，默认无密码
-#执行以下操作以自订密码
-use mysql;
-update user set authentication_string=PASSWORD("自定义密码") where user='root';
-update user set plugin="mysql_native_password";
-flush privileges;
-quit;
-#退出mysql
-sudo /etc/init.d/ mysql start #启动mysql
-sudo /etc/init.d/ mysql stop #关闭mysql
-sudo /etc/init.d/ mysql restart #重启mysql
+        <h3 id="更新系统"><a href="#更新系统" class="headerlink" title="更新系统"></a>更新系统</h3><figure class="highlight routeros"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros">sudo apt update #更新软件源<br>sudo apt<span class="hljs-built_in"> upgrade </span>#更新软件包<br></code></pre></td></tr></tbody></table></figure>
 
-#要创建新的mysql用户
-CREATE USER 'username'@'host' IDENTIFIED BY 'password';
-#username：用户名，host：指定该用户在哪个主机上可以登陆，本地用户用localhost，从任意远程主机登陆，可以使用通配符%，password：用户密码</code></pre>
+<h3 id="Web服务器应用Apache"><a href="#Web服务器应用Apache" class="headerlink" title="Web服务器应用Apache"></a>Web服务器应用Apache</h3><figure class="highlight awk"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">sudo apt install apache2 -y <span class="hljs-comment">#安装apache2</span><br>sudo <span class="hljs-regexp">/etc/i</span>nit.d/apache2 start <span class="hljs-comment">#启动apache2</span><br>sudo <span class="hljs-regexp">/etc/i</span>nit.d/apache2 stop <span class="hljs-comment">#关闭apache2</span><br></code></pre></td></tr></tbody></table></figure>
+
+<h3 id="Java运行时与JDK"><a href="#Java运行时与JDK" class="headerlink" title="Java运行时与JDK"></a>Java运行时与JDK</h3><figure class="highlight mipsasm"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">sudo apt <span class="hljs-keyword">install </span>openjdk<span class="hljs-number">-11</span>-<span class="hljs-keyword">jdk-headless </span><span class="hljs-comment">#安装openjdk-11</span><br></code></pre></td></tr></tbody></table></figure>
+
+<h3 id="Java应用服务器Tomcat"><a href="#Java应用服务器Tomcat" class="headerlink" title="Java应用服务器Tomcat"></a>Java应用服务器Tomcat</h3><figure class="highlight awk"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs awk">sudo apt install git <span class="hljs-comment">#安装git（作为wget的依赖）</span><br>sudo apt install wget <span class="hljs-comment">#有的系统自带wget，就不用装</span><br>wget https:<span class="hljs-regexp">//mi</span>rrors.cnnic.cn<span class="hljs-regexp">/apache/</span>tomcat<span class="hljs-regexp">/tomcat-9/</span>v9.<span class="hljs-number">0.40</span><span class="hljs-regexp">/bin/</span>apache-tomcat-<span class="hljs-number">9.0</span>.<span class="hljs-number">40</span>.tar.gz<br> <span class="hljs-comment">#于cnnic镜像站下载tomcat的预编译二进制文件</span><br>tar -xzvf apache-tomcat-<span class="hljs-number">9.0</span>.<span class="hljs-number">40</span>.tar.gz <span class="hljs-comment">#解压压缩文件</span><br>sudo mv .<span class="hljs-regexp">/apache-tomcat-9.0.40 /u</span>sr<span class="hljs-regexp">/local/</span>tomcat <span class="hljs-comment">#移动所有文件到/usr/local目录下的tomcat文件夹中</span><br>sudo chmod -R <span class="hljs-number">755</span> <span class="hljs-regexp">/usr/</span>local/tomcat <span class="hljs-comment">#赋予权限</span><br>cd <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/tomcat/</span>bin <span class="hljs-comment">#进入存放tomcat的文件夹</span><br>vim ./startup.sh <span class="hljs-comment">#编辑startup.sh脚本</span><br><span class="hljs-comment"># 最后一行加上：</span><br><span class="hljs-comment">#tomcat</span><br>export TOMCAT_HOME=<span class="hljs-regexp">/usr/</span>local/tomcat<br><span class="hljs-comment"># 保存退出</span><br>sudo <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/tomcat/</span>bin/startup.sh <span class="hljs-comment">#启动tomcat</span><br>sudo <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/tomcat/</span>bin/shutdown.sh <span class="hljs-comment">#关闭tomcat</span><br></code></pre></td></tr></tbody></table></figure>
+
+<h3 id="数据库MySQL"><a href="#数据库MySQL" class="headerlink" title="数据库MySQL"></a>数据库MySQL</h3><figure class="highlight routeros"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs routeros">sudo apt-<span class="hljs-builtin-name">get</span> install mysql-server #安装mysql-server<br>sudo mysql -uroot -p #root用户登陆mysql-clinet，默认无密码<br><span class="hljs-comment">#执行以下操作以自订密码</span><br>use mysql;<br>update<span class="hljs-built_in"> user </span><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">authentication_string</span>=PASSWORD("自定义密码") where <span class="hljs-attribute">user</span>=<span class="hljs-string">'root'</span>;<br>update<span class="hljs-built_in"> user </span><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">plugin</span>=<span class="hljs-string">"mysql_native_password"</span>;<br>flush privileges;<br>quit;<br><span class="hljs-comment">#退出mysql</span><br>sudo /etc/init.d/ mysql start #启动mysql<br>sudo /etc/init.d/ mysql stop #关闭mysql<br>sudo /etc/init.d/ mysql restart #重启mysql<br><br><span class="hljs-comment">#要创建新的mysql用户</span><br>CREATE<span class="hljs-built_in"> USER </span><span class="hljs-string">'username'</span>@<span class="hljs-string">'host'</span> IDENTIFIED BY <span class="hljs-string">'password'</span>;<br><span class="hljs-comment">#username：用户名，host：指定该用户在哪个主机上可以登陆，本地用户用localhost，从任意远程主机登陆，可以使用通配符%，password：用户密码</span><br></code></pre></td></tr></tbody></table></figure>
+
 <hr>
 <blockquote>
 <p>启动Apache和Tomcat之后可以在80端口看到apache的it works界面，8080端口可以看到位于 <strong>/usr/local/tomcat/webapps/ROOT/</strong> 的网页，可以自己放jsp文件于次文件夹，以对于域名的相对地址访问。</p>
@@ -807,15 +780,18 @@ CREATE USER 'username'@'host' IDENTIFIED BY 'password';
         if (h < 8) {
             w1.textContent = '朝';
             w2.textContent = '';
-        } else if (h < 11) {
+        } else if (h < 12) {
             w1.textContent = '午';
             w2.textContent = '前';
+        } else if (h < 13) {
+            w1.textContent = '午';
+            w2.textContent = '間';
         }
         else if (h < 17) {
             w1.textContent = '午';
             w2.textContent = '後';
         }
-        else if (h < 20) {
+        else if (h < 19) {
             w1.textContent = '夕';
             w2.textContent = '方';
         }
