@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>编译原理实验报告与实验文件</title>
+      <link href="2021/07/04/CompilerPrincipalReport/"/>
+      <url>2021/07/04/CompilerPrincipalReport/</url>
+      
+        <content type="html"><![CDATA[<h2 id="实验代码"><a href="#实验代码" class="headerlink" title="实验代码"></a>实验代码</h2><p><a href="https://gitee.com/legrandk/cpe">CompilerPrincipalExperiment: 杭电计算机编译原理课程实验</a></p><p>实验有四个，输入均是用命令行参数指明输入文件，输出默认在输入文件同文件夹。</p><h3 id="LexicalAnalysis-cc"><a href="#LexicalAnalysis-cc" class="headerlink" title="LexicalAnalysis.cc"></a>LexicalAnalysis.cc</h3><p>词法分析程序，把源代码分解成二元组，可以有效识别非法字符和两类注释并且在对应报错位置予以提出。</p><h3 id="RegexParser-cc"><a href="#RegexParser-cc" class="headerlink" title="RegexParser.cc"></a>RegexParser.cc</h3><p>正规表达式解析程序，可以把正规表达式解析成后缀表达式然后输出可以生成对应的NFA的dot语言的源代码，源代码再经dot工具可以得到使用MYT算法得到的对应正规表达式的NFA。</p><p><strong>注意，它的输入是单纯正规表达式</strong></p><h3 id="RecursiveDownParsing-cc"><a href="#RecursiveDownParsing-cc" class="headerlink" title="RecursiveDownParsing.cc"></a>RecursiveDownParsing.cc</h3><p>递归下降子程序，可以实现LL(1)文法的语句的合法性的鉴别，具体文法见测试样例。</p><p><strong>注意，它的输入是经词法分析处理的表达式的二元组</strong></p><h3 id="LL1Parser-cc"><a href="#LL1Parser-cc" class="headerlink" title="LL1Parser.cc"></a>LL1Parser.cc</h3><p>LL(1)分析程序，可以实现LL(1)文法的语句的合法性的鉴别，具体文法见测试样例。</p><p><strong>注意，它的输入是经词法分析处理的表达式的二元组</strong></p><h2 id="实验报告"><a href="#实验报告" class="headerlink" title="实验报告"></a>实验报告</h2><p>&lt;embed src=”<a href="https://www.legr4ndk.top/docs/CPReport.pdf&quot;">https://www.legr4ndk.top/docs/CPReport.pdf"</a> style=width: 100%; height:60%&gt;</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> study </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Knuth洗牌算法</title>
       <link href="2021/03/13/KnuthShuffle/"/>
       <url>2021/03/13/KnuthShuffle/</url>

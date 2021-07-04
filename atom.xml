@@ -6,7 +6,7 @@
   <link href="https://www.legr4ndk.top/atom.xml" rel="self"/>
   
   <link href="https://www.legr4ndk.top/"/>
-  <updated>2021-03-14T15:26:12.610Z</updated>
+  <updated>2021-07-04T03:28:34.873Z</updated>
   <id>https://www.legr4ndk.top/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>编译原理实验报告与实验文件</title>
+    <link href="https://www.legr4ndk.top/2021/07/04/CompilerPrincipalReport/"/>
+    <id>https://www.legr4ndk.top/2021/07/04/CompilerPrincipalReport/</id>
+    <published>2021-07-04T03:20:41.000Z</published>
+    <updated>2021-07-04T03:28:34.873Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="实验代码"><a href="#实验代码" class="headerlink" title="实验代码"></a>实验代码</h2><p><a href="https://gitee.com/legrandk/cpe">CompilerPrincipalExperiment: 杭电计算机编译原理课程实验</a></p><p>实验有四个，输入均是用命令行参数指明输入文件，输出默认在输入文件同文件夹。</p><h3 id="LexicalAnalysis-cc"><a href="#LexicalAnalysis-cc" class="headerlink" title="LexicalAnalysis.cc"></a>LexicalAnalysis.cc</h3><p>词法分析程序，把源代码分解成二元组，可以有效识别非法字符和两类注释并且在对应报错位置予以提出。</p><h3 id="RegexParser-cc"><a href="#RegexParser-cc" class="headerlink" title="RegexParser.cc"></a>RegexParser.cc</h3><p>正规表达式解析程序，可以把正规表达式解析成后缀表达式然后输出可以生成对应的NFA的dot语言的源代码，源代码再经dot工具可以得到使用MYT算法得到的对应正规表达式的NFA。</p><p><strong>注意，它的输入是单纯正规表达式</strong></p><h3 id="RecursiveDownParsing-cc"><a href="#RecursiveDownParsing-cc" class="headerlink" title="RecursiveDownParsing.cc"></a>RecursiveDownParsing.cc</h3><p>递归下降子程序，可以实现LL(1)文法的语句的合法性的鉴别，具体文法见测试样例。</p><p><strong>注意，它的输入是经词法分析处理的表达式的二元组</strong></p><h3 id="LL1Parser-cc"><a href="#LL1Parser-cc" class="headerlink" title="LL1Parser.cc"></a>LL1Parser.cc</h3><p>LL(1)分析程序，可以实现LL(1)文法的语句的合法性的鉴别，具体文法见测试样例。</p><p><strong>注意，它的输入是经词法分析处理的表达式的二元组</strong></p><h2 id="实验报告"><a href="#实验报告" class="headerlink" title="实验报告"></a>实验报告</h2><p>&lt;embed src=”<a href="https://www.legr4ndk.top/docs/CPReport.pdf&quot;">https://www.legr4ndk.top/docs/CPReport.pdf"</a> style=width: 100%; height:60%&gt;</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;实验代码&quot;&gt;&lt;a href=&quot;#实验代码&quot; class=&quot;headerlink&quot; title=&quot;实验代码&quot;&gt;&lt;/a&gt;实验代码&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://gitee.com/legrandk/cpe&quot;&gt;CompilerPrincipalExpe</summary>
+      
+    
+    
+    
+    <category term="学习" scheme="https://www.legr4ndk.top/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="study" scheme="https://www.legr4ndk.top/tags/study/"/>
+    
+  </entry>
   
   <entry>
     <title>Knuth洗牌算法</title>
@@ -523,34 +547,6 @@
     
     
     <category term="algorithm" scheme="https://www.legr4ndk.top/tags/algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Use git to push your code to your Github&#39;s repository</title>
-    <link href="https://www.legr4ndk.top/2020/10/16/GitPushBriefIntroduction/"/>
-    <id>https://www.legr4ndk.top/2020/10/16/GitPushBriefIntroduction/</id>
-    <published>2020-10-16T15:45:05.000Z</published>
-    <updated>2021-03-14T10:17:28.589Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>First things first,install git.</p><p>——Stop BBing if you have not even installed the git.</p></blockquote><h3 id="Install-git-may-need-root-permission"><a href="#Install-git-may-need-root-permission" class="headerlink" title="Install git(may need root permission)"></a>Install git(may need root permission)</h3><ul><li>Ubuntu/Debian/Deepin: <strong>apt install git</strong></li><li>Arch/Manjaro:<strong>pacman -S git</strong></li><li>Free BSD:<strong>pkg install git</strong></li><li>macOS:<strong>brew install git</strong></li><li>Windows:Click <a href="https://git-scm.com/downloads">HERE</a> to download the installer</li></ul><p>Run <strong>git –version</strong> to make sure that git is installed on your device.</p><h3 id="Put-your-codes-to-a-folder-and-initialize"><a href="#Put-your-codes-to-a-folder-and-initialize" class="headerlink" title="Put your codes to a folder and initialize"></a>Put your codes to a folder and initialize</h3><p>Now you can copy+paste all your code that need to be pushed to the Github in your new folder.Then run a terminal in this folder.</p><p>Using <strong>git init</strong> to initial your local repository.</p><p>And do not forget to add a new repository in your Github account.Once you added a new repository to your Github,you will get a repository-link just like this:</p><figure class="highlight awk"><table><tbody><tr><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/YourGithubID/</span>YourRepoName.git<br></code></pre></td></tr></tbody></table></figure><p>Now,run <strong>git remote add origin $YourRepoLink</strong> to link your remote repository to the local one.</p><h3 id="Add-your-files-to-staging-area"><a href="#Add-your-files-to-staging-area" class="headerlink" title="Add your files to staging area"></a>Add your files to staging area</h3><p>Use <strong>git add $Filename</strong> to add the files you need to staging area. Or you can use <strong>git add .</strong> (THERE IS A DOT AT THE END) to add all your files。</p><p>Then run <strong>git status</strong> to check the files in your local repository.</p><p>Run <strong>git commit -m ‘$YourCommits’</strong> to add some commits to this submit.</p><h3 id="Push-your-code-to-Github"><a href="#Push-your-code-to-Github" class="headerlink" title="Push your code to Github"></a>Push your code to Github</h3><p>First of all,use <strong>git pull origin master</strong> to pull your online repository.</p><p>Use <strong>git push origin master</strong> to submit your files to Github.</p><p>There are some cases that you will meet the ERROR that <em>refusing to merge unrelated histories</em> when you pull.You can try <strong>git pull origin master –allow-unrelated-histories</strong> to allow merging two unrelated branches.(At the first time,the online repository is empty but the local one have some files,so of course they are unrelated).</p><p>Now you can check your new repository on the Github.</p><p>Done,enjoy.</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;First things first,install git.&lt;/p&gt;
-&lt;p&gt;——Stop BBing if you have not even installed the git.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;Instal</summary>
-      
-    
-    
-    
-    <category term="工具" scheme="https://www.legr4ndk.top/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-    <category term="git" scheme="https://www.legr4ndk.top/tags/git/"/>
     
   </entry>
   
