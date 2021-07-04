@@ -6,7 +6,7 @@
   <link href="https://www.legr4ndk.top/atom.xml" rel="self"/>
   
   <link href="https://www.legr4ndk.top/"/>
-  <updated>2021-07-04T03:34:40.100Z</updated>
+  <updated>2021-07-04T03:42:00.519Z</updated>
   <id>https://www.legr4ndk.top/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>当代大学牲的正义演讲（日语版）</title>
+    <link href="https://www.legr4ndk.top/2021/07/04/origay/"/>
+    <id>https://www.legr4ndk.top/2021/07/04/origay/</id>
+    <published>2021-07-04T03:40:18.000Z</published>
+    <updated>2021-07-04T03:42:00.519Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>也许，我可以整个好活？</p></blockquote><p>俺(おれ)たちはどんな困難(こんなん)あっても</p><p>恐(おそ)れないで</p><p>笑(わら)って迎(むか)え</p><p>恐怖(きょうふ)を取り除(のぞ)く最良(さいりょう)の方法(ほうほう)は</p><p>恐怖(きょうふ)に立(た)ち向(む)かうことだ</p><p>堅持(けんじ)はこそ勝利(しょうり)だ</p><p>頑張(がんば)ろう！オーリゲー！！！😫</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;也许，我可以整个好活？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;俺(おれ)たちはどんな困難(こんなん)あっても&lt;/p&gt;
+&lt;p&gt;恐(おそ)れないで&lt;/p&gt;
+&lt;p&gt;笑(わら)って迎(むか)え&lt;/p&gt;
+&lt;p&gt;恐怖(きょうふ)を取り除(のぞ)く最良(さい</summary>
+      
+    
+    
+    
+    <category term="耍" scheme="https://www.legr4ndk.top/categories/%E8%80%8D/"/>
+    
+    
+    <category term="misc" scheme="https://www.legr4ndk.top/tags/misc/"/>
+    
+  </entry>
   
   <entry>
     <title>编译原理实验报告与实验文件</title>
@@ -521,32 +551,6 @@
     
     
     <category term="hexo" scheme="https://www.legr4ndk.top/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C语言数字、指针、布尔值灵活利用的典范</title>
-    <link href="https://www.legr4ndk.top/2020/10/17/TheCLanguageIsSoNB/"/>
-    <id>https://www.legr4ndk.top/2020/10/17/TheCLanguageIsSoNB/</id>
-    <published>2020-10-16T16:12:19.000Z</published>
-    <updated>2021-03-14T10:17:28.615Z</updated>
-    
-    <content type="html"><![CDATA[<p>先思考这个问题，假设我有一组数，我需要在每两个数字中间加入一个空格然后再输出出来，末尾和头部都没有空格，应该如何实现。</p><p>实现方法很简单，加个if就可以实现了，比如我想输出1 2 3 4 5 6，就可以这样：</p><figure class="highlight c"><table><tbody><tr><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>{<br>    <span class="hljs-keyword">int</span> arr[<span class="hljs-number">6</span>] = { <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span> };<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">6</span>; i++)<br>    {<br>        <span class="hljs-keyword">if</span> (i == <span class="hljs-number">5</span>) <span class="hljs-comment">//输出到最后一个数字了</span><br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d"</span>, arr[i]);<br>        <span class="hljs-keyword">else</span><br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d "</span>, arr[i]);<br>    }<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></tbody></table></figure><p>我们利用一个if语句来判断是否输出到最后一个数字，来选择是否输出占位的空格。事实上，也可以对第一个数字特殊对待，然后剩余数据输出时附带一个空格。</p><p><strong>但是如果我们这么做呢：</strong></p><figure class="highlight c"><table><tbody><tr><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>{<br>    <span class="hljs-keyword">int</span> arr[<span class="hljs-number">6</span>] = { <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span> };<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">6</span>; i++)<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">" %d"</span> + !i, arr[i]);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></tbody></table></figure><p>极其简单的几句话完成了我们之前要的操作，一气呵成。</p><p>我详细叙述下它的过程：</p><p>玄机在于printf语句的那个加法上。C语言的字符串常量作参数，实际上是一个指向常量池中该字符串的指针，也就是可以进行运算。然后就是一个!i，这是把C语言中的整型数据当布尔值来看待，对他取非。当循环第一趟时，i=0，0在C语言中是false，非i得到true，默认为1，当那个指针+1，指针就从原来的指向空格，变成指向“%d”，那么就不会输出空格。而当之后几轮时，i均为非0数，C语言中为true，那么取非则得到false，即0，那么原指针+0，就是它本身，也就会正常输出空格，最后达到我们的要求。</p><p>这种写法说实话有很大局限性，可读性也极差，但是却很好的体现了C语言的灵活之处。C语言对数据和内存的操作极为灵活，这就要求使用者有很高的水平。这种写法不推荐在正式的程序设计中使用，但是对于开拓思维、优化程序是很有帮助的。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;先思考这个问题，假设我有一组数，我需要在每两个数字中间加入一个空格然后再输出出来，末尾和头部都没有空格，应该如何实现。&lt;/p&gt;
-&lt;p&gt;实现方法很简单，加个if就可以实现了，比如我想输出1 2 3 4 5 6，就可以这样：&lt;/p&gt;
-&lt;figure class=&quot;highlig</summary>
-      
-    
-    
-    
-    <category term="算法" scheme="https://www.legr4ndk.top/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-    <category term="algorithm" scheme="https://www.legr4ndk.top/tags/algorithm/"/>
     
   </entry>
   
