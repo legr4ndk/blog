@@ -1,757 +1,239 @@
-<!doctype html>
-<html>
-<head>
-<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
-<title>LICENSE</title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
-html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
-body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
-iframe { margin: auto; }
-a.url { word-break: break-all; }
-a:active, a:hover { outline: 0px; }
-.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
-#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
-#write.first-line-indent p { text-indent: 2em; }
-#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
-#write.first-line-indent li { margin-left: 2em; }
-.for-image #write { padding-left: 8px; padding-right: 8px; }
-body.typora-export { padding-left: 30px; padding-right: 30px; }
-.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
-@media screen and (max-width: 500px) {
-  body.typora-export { padding-left: 0px; padding-right: 0px; }
-  #write { padding-left: 20px; padding-right: 20px; }
-  .CodeMirror-sizer { margin-left: 0px !important; }
-  .CodeMirror-gutters { display: none !important; }
-}
-#write li > figure:last-child { margin-bottom: 0.5rem; }
-#write ol, #write ul { position: relative; }
-img { max-width: 100%; vertical-align: middle; }
-button, input, select, textarea { color: inherit; font: inherit; }
-input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
-*, ::after, ::before { box-sizing: border-box; }
-#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
-#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
-p { line-height: inherit; }
-h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
-p { orphans: 4; }
-h1 { font-size: 2rem; }
-h2 { font-size: 1.8rem; }
-h3 { font-size: 1.6rem; }
-h4 { font-size: 1.4rem; }
-h5 { font-size: 1.2rem; }
-h6 { font-size: 1rem; }
-.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
-.hidden { display: none; }
-.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
-a { cursor: pointer; }
-sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
-sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
-#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
-figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
-figure > table { margin: 0px !important; }
-tr { break-inside: avoid; break-after: auto; }
-thead { display: table-header-group; }
-table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
-table.md-table td { min-width: 32px; }
-.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
-.CodeMirror-linenumber { user-select: none; }
-.CodeMirror { text-align: left; }
-.CodeMirror-placeholder { opacity: 0.3; }
-.CodeMirror pre { padding: 0px 4px; }
-.CodeMirror-lines { padding: 0px; }
-div.hr:focus { cursor: none; }
-#write pre { white-space: pre-wrap; }
-#write.fences-no-line-wrapping pre { white-space: pre; }
-#write pre.ty-contain-cm { white-space: normal; }
-.CodeMirror-gutters { margin-right: 4px; }
-.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
-.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
-#write .md-fences.mock-cm { white-space: pre-wrap; }
-.md-fences.md-fences-with-lineno { padding-left: 0px; }
-#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
-.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
-.CodeMirror-line, twitterwidget { break-inside: avoid; }
-.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
-.footnotes + .footnotes { margin-top: 0px; }
-.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
-li div { padding-top: 0px; }
-blockquote { margin: 1rem 0px; }
-li .mathjax-block, li p { margin: 0.5rem 0px; }
-li { margin: 0px; position: relative; }
-blockquote > :last-child { margin-bottom: 0px; }
-blockquote > :first-child, li > :first-child { margin-top: 0px; }
-.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
-#write .footnote-line { white-space: pre-wrap; }
-@media print {
-  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; }
-  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
-  .typora-export * { -webkit-print-color-adjust: exact; }
-  html.blink-to-pdf { font-size: 13px; }
-  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
-  .typora-export #write::after { height: 0px; }
-}
-.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
-a img, img a { cursor: pointer; }
-pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
-p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
-p > .md-image:only-child { display: inline-block; width: 100%; }
-#write .MathJax_Display { margin: 0.8em 0px 0px; }
-.md-math-block { width: 100%; }
-.md-math-block:not(:empty)::after { display: none; }
-[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: 0px; box-shadow: none; }
-.md-task-list-item { position: relative; list-style-type: none; }
-.task-list-item.md-task-list-item { padding-left: 0px; }
-.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
-.math { font-size: 1rem; }
-.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
-.md-toc-content { position: relative; margin-left: 0px; }
-.md-toc-content::after, .md-toc::after { display: none; }
-.md-toc-item { display: block; color: rgb(65, 131, 196); }
-.md-toc-item a { text-decoration: none; }
-.md-toc-inner:hover { text-decoration: underline; }
-.md-toc-inner { display: inline-block; cursor: pointer; }
-.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
-.md-toc-h2 .md-toc-inner { margin-left: 2em; }
-.md-toc-h3 .md-toc-inner { margin-left: 4em; }
-.md-toc-h4 .md-toc-inner { margin-left: 6em; }
-.md-toc-h5 .md-toc-inner { margin-left: 8em; }
-.md-toc-h6 .md-toc-inner { margin-left: 10em; }
-@media screen and (max-width: 48em) {
-  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
-  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
-  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
-  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
-}
-a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
-.footnote-line a:not(.reversefootnote) { color: inherit; }
-.md-attr { display: none; }
-.md-fn-count::after { content: "."; }
-code, pre, samp, tt { font-family: var(--monospace); }
-kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
-.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
-code { text-align: left; vertical-align: initial; }
-a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
-.md-inline-math .MathJax_SVG .noError { display: none !important; }
-.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
-.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
-.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
-.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
-.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
-.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
-.MathJax_SVG * { transition: none 0s ease 0s; }
-.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
-.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
-.md-diagram-panel > svg { max-width: 100%; }
-[lang="mermaid"] svg, [lang="flow"] svg { max-width: 100%; height: auto; }
-[lang="mermaid"] .node text { font-size: 1rem; }
-table tr th { border-bottom: 0px; }
-video { max-width: 100%; display: block; margin: 0px auto; }
-iframe { max-width: 100%; width: 100%; border: none; }
-.highlight td, .highlight tr { border: 0px; }
-svg[id^="mermaidChart"] { line-height: 1em; }
-mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
-.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
-mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+<p>Attribution-NonCommercial-ShareAlike 4.0 International</p>
+<p>=======================================================================</p>
+<p>Creative Commons Corporation (“Creative Commons”) is not a law firm and<br>does not provide legal services or legal advice. Distribution of<br>Creative Commons public licenses does not create a lawyer-client or<br>other relationship. Creative Commons makes its licenses and related<br>information available on an “as-is” basis. Creative Commons gives no<br>warranties regarding its licenses, any material licensed under their<br>terms and conditions, or any related information. Creative Commons<br>disclaims all liability for damages resulting from their use to the<br>fullest extent possible.</p>
+<p>Using Creative Commons Public Licenses</p>
+<p>Creative Commons public licenses provide a standard set of terms and<br>conditions that creators and other rights holders may use to share<br>original works of authorship and other material subject to copyright<br>and certain other rights specified in the public license below. The<br>following considerations are for informational purposes only, are not<br>exhaustive, and do not form part of our licenses.</p>
+<pre><code> Considerations for licensors: Our public licenses are
+ intended for use by those authorized to give the public
+ permission to use material in ways otherwise restricted by
+ copyright and certain other rights. Our licenses are
+ irrevocable. Licensors should read and understand the terms
+ and conditions of the license they choose before applying it.
+ Licensors should also secure all rights necessary before
+ applying our licenses so that the public can reuse the
+ material as expected. Licensors should clearly mark any
+ material not subject to the license. This includes other CC-
+ licensed material, or material used under an exception or
+ limitation to copyright. More considerations for licensors:
+wiki.creativecommons.org/Considerations_for_licensors
 
+ Considerations for the public: By using one of our public
+ licenses, a licensor grants the public permission to use the
+ licensed material under specified terms and conditions. If
+ the licensor&#39;s permission is not necessary for any reason--for
+ example, because of any applicable exception or limitation to
+ copyright--then that use is not regulated by the license. Our
+ licenses grant only permissions under copyright and certain
+ other rights that a licensor has authority to grant. Use of
+ the licensed material may still be restricted for other
+ reasons, including because others have copyright or other
+ rights in the material. A licensor may make special requests,
+ such as asking that all changes be marked or described.
+ Although not required by our licenses, you are encouraged to
+ respect those requests where reasonable. More_considerations
+ for the public: 
+wiki.creativecommons.org/Considerations_for_licensees</code></pre>
+<p>=======================================================================</p>
+<p>Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International<br>Public License</p>
+<p>By exercising the Licensed Rights (defined below), You accept and agree<br>to be bound by the terms and conditions of this Creative Commons<br>Attribution-NonCommercial-ShareAlike 4.0 International Public License<br>(“Public License”). To the extent this Public License may be<br>interpreted as a contract, You are granted the Licensed Rights in<br>consideration of Your acceptance of these terms and conditions, and the<br>Licensor grants You such rights in consideration of benefits the<br>Licensor receives from making the Licensed Material available under<br>these terms and conditions.</p>
+<p>Section 1 – Definitions.</p>
+<p>  a. Adapted Material means material subject to Copyright and Similar<br>     Rights that is derived from or based upon the Licensed Material<br>     and in which the Licensed Material is translated, altered,<br>     arranged, transformed, or otherwise modified in a manner requiring<br>     permission under the Copyright and Similar Rights held by the<br>     Licensor. For purposes of this Public License, where the Licensed<br>     Material is a musical work, performance, or sound recording,<br>     Adapted Material is always produced where the Licensed Material is<br>     synched in timed relation with a moving image.</p>
+<p>  b. Adapter’s License means the license You apply to Your Copyright<br>     and Similar Rights in Your contributions to Adapted Material in<br>     accordance with the terms and conditions of this Public License.</p>
+<p>  c. BY-NC-SA Compatible License means a license listed at<br>     creativecommons.org/compatiblelicenses, approved by Creative<br>     Commons as essentially the equivalent of this Public License.</p>
+<p>  d. Copyright and Similar Rights means copyright and/or similar rights<br>     closely related to copyright including, without limitation,<br>     performance, broadcast, sound recording, and Sui Generis Database<br>     Rights, without regard to how the rights are labeled or<br>     categorized. For purposes of this Public License, the rights<br>     specified in Section 2(b)(1)-(2) are not Copyright and Similar<br>     Rights.</p>
+<p>  e. Effective Technological Measures means those measures that, in the<br>     absence of proper authority, may not be circumvented under laws<br>     fulfilling obligations under Article 11 of the WIPO Copyright<br>     Treaty adopted on December 20, 1996, and/or similar international<br>     agreements.</p>
+<p>  f. Exceptions and Limitations means fair use, fair dealing, and/or<br>     any other exception or limitation to Copyright and Similar Rights<br>     that applies to Your use of the Licensed Material.</p>
+<p>  g. License Elements means the license attributes listed in the name<br>     of a Creative Commons Public License. The License Elements of this<br>     Public License are Attribution, NonCommercial, and ShareAlike.</p>
+<p>  h. Licensed Material means the artistic or literary work, database,<br>     or other material to which the Licensor applied this Public<br>     License.</p>
+<p>  i. Licensed Rights means the rights granted to You subject to the<br>     terms and conditions of this Public License, which are limited to<br>     all Copyright and Similar Rights that apply to Your use of the<br>     Licensed Material and that the Licensor has authority to license.</p>
+<p>  j. Licensor means the individual(s) or entity(ies) granting rights<br>     under this Public License.</p>
+<p>  k. NonCommercial means not primarily intended for or directed towards<br>     commercial advantage or monetary compensation. For purposes of<br>     this Public License, the exchange of the Licensed Material for<br>     other material subject to Copyright and Similar Rights by digital<br>     file-sharing or similar means is NonCommercial provided there is<br>     no payment of monetary compensation in connection with the<br>     exchange.</p>
+<p>  l. Share means to provide material to the public by any means or<br>     process that requires permission under the Licensed Rights, such<br>     as reproduction, public display, public performance, distribution,<br>     dissemination, communication, or importation, and to make material<br>     available to the public including in ways that members of the<br>     public may access the material from a place and at a time<br>     individually chosen by them.</p>
+<p>  m. Sui Generis Database Rights means rights other than copyright<br>     resulting from Directive 96/9/EC of the European Parliament and of<br>     the Council of 11 March 1996 on the legal protection of databases,<br>     as amended and/or succeeded, as well as other essentially<br>     equivalent rights anywhere in the world.</p>
+<p>  n. You means the individual or entity exercising the Licensed Rights<br>     under this Public License. Your has a corresponding meaning.</p>
+<p>Section 2 – Scope.</p>
+<p>  a. License grant.</p>
+<pre><code>   1. Subject to the terms and conditions of this Public License,
+      the Licensor hereby grants You a worldwide, royalty-free,
+      non-sublicensable, non-exclusive, irrevocable license to
+      exercise the Licensed Rights in the Licensed Material to:
 
-.CodeMirror { height: auto; }
-.CodeMirror.cm-s-inner { background: inherit; }
-.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
-.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
-.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
-.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
-.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
-.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
-.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
-.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
-.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
-.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
-.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
-.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
-.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
-.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
-.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
-.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
-.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
-.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
-.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
-.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
-.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
-.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
-.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
-.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
-.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
-.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
-.cm-negative { color: rgb(221, 68, 68); }
-.cm-positive { color: rgb(34, 153, 34); }
-.cm-header, .cm-strong { font-weight: 700; }
-.cm-del { text-decoration: line-through; }
-.cm-em { font-style: italic; }
-.cm-link { text-decoration: underline; }
-.cm-error { color: red; }
-.cm-invalidchar { color: red; }
-.cm-constant { color: rgb(38, 139, 210); }
-.cm-defined { color: rgb(181, 137, 0); }
-div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
-div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
-.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
-.CodeMirror { position: relative; overflow: hidden; }
-.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
-.CodeMirror-sizer { position: relative; }
-.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; }
-.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
-.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: hidden; }
-.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
-.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
-.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
-.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
-.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
-.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
-.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
-.CodeMirror-lines { cursor: text; }
-.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
-.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
-.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
-.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
-.CodeMirror-linebackground { position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 0; }
-.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
-.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
-.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
-.CodeMirror-measure pre { position: static; }
-.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
-.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
-.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
-.cm-searching { background: rgba(255, 255, 0, 0.4); }
-@media print {
-  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
-}
+        a. reproduce and Share the Licensed Material, in whole or
+           in part, for NonCommercial purposes only; and
 
+        b. produce, reproduce, and Share Adapted Material for
+           NonCommercial purposes only.
 
-:root {
-    --side-bar-bg-color: #fafafa;
-    --control-text-color: #777;
-}
+   2. Exceptions and Limitations. For the avoidance of doubt, where
+      Exceptions and Limitations apply to Your use, this Public
+      License does not apply, and You do not need to comply with
+      its terms and conditions.
 
-@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+   3. Term. The term of this Public License is specified in Section
+      6(a).
 
-html {
-    font-size: 16px;
-}
+   4. Media and formats; technical modifications allowed. The
+      Licensor authorizes You to exercise the Licensed Rights in
+      all media and formats whether now known or hereafter created,
+      and to make technical modifications necessary to do so. The
+      Licensor waives and/or agrees not to assert any right or
+      authority to forbid You from making technical modifications
+      necessary to exercise the Licensed Rights, including
+      technical modifications necessary to circumvent Effective
+      Technological Measures. For purposes of this Public License,
+      simply making modifications authorized by this Section 2(a)
+      (4) never produces Adapted Material.
 
-body {
-    font-family: "Open Sans","Clear Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-    color: rgb(51, 51, 51);
-    line-height: 1.6;
-}
+   5. Downstream recipients.
 
-#write {
-    max-width: 860px;
-  	margin: 0 auto;
-  	padding: 30px;
-    padding-bottom: 100px;
-}
-#write > ul:first-child,
-#write > ol:first-child{
-    margin-top: 30px;
-}
+        a. Offer from the Licensor -- Licensed Material. Every
+           recipient of the Licensed Material automatically
+           receives an offer from the Licensor to exercise the
+           Licensed Rights under the terms and conditions of this
+           Public License.
 
-a {
-    color: #4183C4;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    position: relative;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
-    line-height: 1.4;
-    cursor: text;
-}
-h1:hover a.anchor,
-h2:hover a.anchor,
-h3:hover a.anchor,
-h4:hover a.anchor,
-h5:hover a.anchor,
-h6:hover a.anchor {
-    text-decoration: none;
-}
-h1 tt,
-h1 code {
-    font-size: inherit;
-}
-h2 tt,
-h2 code {
-    font-size: inherit;
-}
-h3 tt,
-h3 code {
-    font-size: inherit;
-}
-h4 tt,
-h4 code {
-    font-size: inherit;
-}
-h5 tt,
-h5 code {
-    font-size: inherit;
-}
-h6 tt,
-h6 code {
-    font-size: inherit;
-}
-h1 {
-    padding-bottom: .3em;
-    font-size: 2.25em;
-    line-height: 1.2;
-    border-bottom: 1px solid #eee;
-}
-h2 {
-   padding-bottom: .3em;
-    font-size: 1.75em;
-    line-height: 1.225;
-    border-bottom: 1px solid #eee;
-}
-h3 {
-    font-size: 1.5em;
-    line-height: 1.43;
-}
-h4 {
-    font-size: 1.25em;
-}
-h5 {
-    font-size: 1em;
-}
-h6 {
-   font-size: 1em;
-    color: #777;
-}
-p,
-blockquote,
-ul,
-ol,
-dl,
-table{
-    margin: 0.8em 0;
-}
-li>ol,
-li>ul {
-    margin: 0 0;
-}
-hr {
-    height: 2px;
-    padding: 0;
-    margin: 16px 0;
-    background-color: #e7e7e7;
-    border: 0 none;
-    overflow: hidden;
-    box-sizing: content-box;
-}
+        b. Additional offer from the Licensor -- Adapted Material.
+           Every recipient of Adapted Material from You
+           automatically receives an offer from the Licensor to
+           exercise the Licensed Rights in the Adapted Material
+           under the conditions of the Adapter&#39;s License You apply.
 
-li p.first {
-    display: inline-block;
-}
-ul,
-ol {
-    padding-left: 30px;
-}
-ul:first-child,
-ol:first-child {
-    margin-top: 0;
-}
-ul:last-child,
-ol:last-child {
-    margin-bottom: 0;
-}
-blockquote {
-    border-left: 4px solid #dfe2e5;
-    padding: 0 15px;
-    color: #777777;
-}
-blockquote blockquote {
-    padding-right: 0;
-}
-table {
-    padding: 0;
-    word-break: initial;
-}
-table tr {
-    border-top: 1px solid #dfe2e5;
-    margin: 0;
-    padding: 0;
-}
-table tr:nth-child(2n),
-thead {
-    background-color: #f8f8f8;
-}
-table tr th {
-    font-weight: bold;
-    border: 1px solid #dfe2e5;
-    border-bottom: 0;
-    margin: 0;
-    padding: 6px 13px;
-}
-table tr td {
-    border: 1px solid #dfe2e5;
-    margin: 0;
-    padding: 6px 13px;
-}
-table tr th:first-child,
-table tr td:first-child {
-    margin-top: 0;
-}
-table tr th:last-child,
-table tr td:last-child {
-    margin-bottom: 0;
-}
+        c. No downstream restrictions. You may not offer or impose
+           any additional or different terms or conditions on, or
+           apply any Effective Technological Measures to, the
+           Licensed Material if doing so restricts exercise of the
+           Licensed Rights by any recipient of the Licensed
+           Material.
 
-.CodeMirror-lines {
-    padding-left: 4px;
-}
+   6. No endorsement. Nothing in this Public License constitutes or
+      may be construed as permission to assert or imply that You
+      are, or that Your use of the Licensed Material is, connected
+      with, or sponsored, endorsed, or granted official status by,
+      the Licensor or others designated to receive attribution as
+      provided in Section 3(a)(1)(A)(i).</code></pre>
+<p>  b. Other rights.</p>
+<pre><code>   1. Moral rights, such as the right of integrity, are not
+      licensed under this Public License, nor are publicity,
+      privacy, and/or other similar personality rights; however, to
+      the extent possible, the Licensor waives and/or agrees not to
+      assert any such rights held by the Licensor to the limited
+      extent necessary to allow You to exercise the Licensed
+      Rights, but not otherwise.
 
-.code-tooltip {
-    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
-    border-top: 1px solid #eef2f2;
-}
+   2. Patent and trademark rights are not licensed under this
+      Public License.
 
-.md-fences,
-code,
-tt {
-    border: 1px solid #e7eaed;
-    background-color: #f8f8f8;
-    border-radius: 3px;
-    padding: 0;
-    padding: 2px 4px 0px 4px;
-    font-size: 0.9em;
-}
+   3. To the extent possible, the Licensor waives any right to
+      collect royalties from You for the exercise of the Licensed
+      Rights, whether directly or through a collecting society
+      under any voluntary or waivable statutory or compulsory
+      licensing scheme. In all other cases the Licensor expressly
+      reserves any right to collect such royalties, including when
+      the Licensed Material is used other than for NonCommercial
+      purposes.</code></pre>
+<p>Section 3 – License Conditions.</p>
+<p>Your exercise of the Licensed Rights is expressly made subject to the<br>following conditions.</p>
+<p>  a. Attribution.</p>
+<pre><code>   1. If You Share the Licensed Material (including in modified
+      form), You must:
 
-code {
-    background-color: #f3f4f4;
-    padding: 0 2px 0 2px;
-}
+        a. retain the following if it is supplied by the Licensor
+           with the Licensed Material:
 
-.md-fences {
-    margin-bottom: 15px;
-    margin-top: 15px;
-    padding-top: 8px;
-    padding-bottom: 6px;
-}
+             i. identification of the creator(s) of the Licensed
+                Material and any others designated to receive
+                attribution, in any reasonable manner requested by
+                the Licensor (including by pseudonym if
+                designated);
 
+            ii. a copyright notice;
 
-.md-task-list-item > input {
-  margin-left: -1.3em;
-}
+           iii. a notice that refers to this Public License;
 
-@media print {
-    html {
-        font-size: 13px;
-    }
-    table,
-    pre {
-        page-break-inside: avoid;
-    }
-    pre {
-        word-wrap: break-word;
-    }
-}
+            iv. a notice that refers to the disclaimer of
+                warranties;
 
-.md-fences {
-	background-color: #f8f8f8;
-}
-#write pre.md-meta-block {
-	padding: 1rem;
-    font-size: 85%;
-    line-height: 1.45;
-    background-color: #f7f7f7;
-    border: 0;
-    border-radius: 3px;
-    color: #777777;
-    margin-top: 0 !important;
-}
+             v. a URI or hyperlink to the Licensed Material to the
+                extent reasonably practicable;
 
-.mathjax-block>.code-tooltip {
-	bottom: .375rem;
-}
+        b. indicate if You modified the Licensed Material and
+           retain an indication of any previous modifications; and
 
-.md-mathjax-midline {
-    background: #fafafa;
-}
+        c. indicate the Licensed Material is licensed under this
+           Public License, and include the text of, or the URI or
+           hyperlink to, this Public License.
 
-#write>h3.md-focus:before{
-	left: -1.5625rem;
-	top: .375rem;
-}
-#write>h4.md-focus:before{
-	left: -1.5625rem;
-	top: .285714286rem;
-}
-#write>h5.md-focus:before{
-	left: -1.5625rem;
-	top: .285714286rem;
-}
-#write>h6.md-focus:before{
-	left: -1.5625rem;
-	top: .285714286rem;
-}
-.md-image>.md-meta {
-    /*border: 1px solid #ddd;*/
-    border-radius: 3px;
-    padding: 2px 0px 0px 4px;
-    font-size: 0.9em;
-    color: inherit;
-}
+   2. You may satisfy the conditions in Section 3(a)(1) in any
+      reasonable manner based on the medium, means, and context in
+      which You Share the Licensed Material. For example, it may be
+      reasonable to satisfy the conditions by providing a URI or
+      hyperlink to a resource that includes the required
+      information.
+   3. If requested by the Licensor, You must remove any of the
+      information required by Section 3(a)(1)(A) to the extent
+      reasonably practicable.</code></pre>
+<p>  b. ShareAlike.</p>
+<pre><code> In addition to the conditions in Section 3(a), if You Share
+ Adapted Material You produce, the following conditions also apply.
 
-.md-tag {
-    color: #a7a7a7;
-    opacity: 1;
-}
+   1. The Adapter&#39;s License You apply must be a Creative Commons
+      license with the same License Elements, this version or
+      later, or a BY-NC-SA Compatible License.
 
-.md-toc { 
-    margin-top:20px;
-    padding-bottom:20px;
-}
+   2. You must include the text of, or the URI or hyperlink to, the
+      Adapter&#39;s License You apply. You may satisfy this condition
+      in any reasonable manner based on the medium, means, and
+      context in which You Share Adapted Material.
 
-.sidebar-tabs {
-    border-bottom: none;
-}
+   3. You may not offer or impose any additional or different terms
+      or conditions on, or apply any Effective Technological
+      Measures to, Adapted Material that restrict exercise of the
+      rights granted under the Adapter&#39;s License You apply.</code></pre>
+<p>Section 4 – Sui Generis Database Rights.</p>
+<p>Where the Licensed Rights include Sui Generis Database Rights that<br>apply to Your use of the Licensed Material:</p>
+<p>  a. for the avoidance of doubt, Section 2(a)(1) grants You the right<br>     to extract, reuse, reproduce, and Share all or a substantial<br>     portion of the contents of the database for NonCommercial purposes<br>     only;</p>
+<p>  b. if You include all or a substantial portion of the database<br>     contents in a database in which You have Sui Generis Database<br>     Rights, then the database in which You have Sui Generis Database<br>     Rights (but not its individual contents) is Adapted Material,<br>     including for purposes of Section 3(b); and</p>
+<p>  c. You must comply with the conditions in Section 3(a) if You Share<br>     all or a substantial portion of the contents of the database.</p>
+<p>For the avoidance of doubt, this Section 4 supplements and does not<br>replace Your obligations under this Public License where the Licensed<br>Rights include other Copyright and Similar Rights.</p>
+<p>Section 5 – Disclaimer of Warranties and Limitation of Liability.</p>
+<p>  a. UNLESS OTHERWISE SEPARATELY UNDERTAKEN BY THE LICENSOR, TO THE<br>     EXTENT POSSIBLE, THE LICENSOR OFFERS THE LICENSED MATERIAL AS-IS<br>     AND AS-AVAILABLE, AND MAKES NO REPRESENTATIONS OR WARRANTIES OF<br>     ANY KIND CONCERNING THE LICENSED MATERIAL, WHETHER EXPRESS,<br>     IMPLIED, STATUTORY, OR OTHER. THIS INCLUDES, WITHOUT LIMITATION,<br>     WARRANTIES OF TITLE, MERCHANTABILITY, FITNESS FOR A PARTICULAR<br>     PURPOSE, NON-INFRINGEMENT, ABSENCE OF LATENT OR OTHER DEFECTS,<br>     ACCURACY, OR THE PRESENCE OR ABSENCE OF ERRORS, WHETHER OR NOT<br>     KNOWN OR DISCOVERABLE. WHERE DISCLAIMERS OF WARRANTIES ARE NOT<br>     ALLOWED IN FULL OR IN PART, THIS DISCLAIMER MAY NOT APPLY TO YOU.</p>
+<p>  b. TO THE EXTENT POSSIBLE, IN NO EVENT WILL THE LICENSOR BE LIABLE<br>     TO YOU ON ANY LEGAL THEORY (INCLUDING, WITHOUT LIMITATION,<br>     NEGLIGENCE) OR OTHERWISE FOR ANY DIRECT, SPECIAL, INDIRECT,<br>     INCIDENTAL, CONSEQUENTIAL, PUNITIVE, EXEMPLARY, OR OTHER LOSSES,<br>     COSTS, EXPENSES, OR DAMAGES ARISING OUT OF THIS PUBLIC LICENSE OR<br>     USE OF THE LICENSED MATERIAL, EVEN IF THE LICENSOR HAS BEEN<br>     ADVISED OF THE POSSIBILITY OF SUCH LOSSES, COSTS, EXPENSES, OR<br>     DAMAGES. WHERE A LIMITATION OF LIABILITY IS NOT ALLOWED IN FULL OR<br>     IN PART, THIS LIMITATION MAY NOT APPLY TO YOU.</p>
+<p>  c. The disclaimer of warranties and limitation of liability provided<br>     above shall be interpreted in a manner that, to the extent<br>     possible, most closely approximates an absolute disclaimer and<br>     waiver of all liability.</p>
+<p>Section 6 – Term and Termination.</p>
+<p>  a. This Public License applies for the term of the Copyright and<br>     Similar Rights licensed here. However, if You fail to comply with<br>     this Public License, then Your rights under this Public License<br>     terminate automatically.</p>
+<p>  b. Where Your right to use the Licensed Material has terminated under<br>     Section 6(a), it reinstates:</p>
+<pre><code>   1. automatically as of the date the violation is cured, provided
+      it is cured within 30 days of Your discovery of the
+      violation; or
 
-#typora-quick-open {
-    border: 1px solid #ddd;
-    background-color: #f8f8f8;
-}
+   2. upon express reinstatement by the Licensor.
 
-#typora-quick-open-item {
-    background-color: #FAFAFA;
-    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
-    border-style: solid;
-    border-width: 1px;
-}
-
-/** focus mode */
-.on-focus-mode blockquote {
-    border-left-color: rgba(85, 85, 85, 0.12);
-}
-
-header, .context-menu, .megamenu-content, footer{
-    font-family: "Segoe UI", "Arial", sans-serif;
-}
-
-.file-node-content:hover .file-node-icon,
-.file-node-content:hover .file-node-open-state{
-    visibility: visible;
-}
-
-.mac-seamless-mode #typora-sidebar {
-    background-color: #fafafa;
-    background-color: var(--side-bar-bg-color);
-}
-
-.md-lang {
-    color: #b4654d;
-}
-
-.html-for-mac .context-menu {
-    --item-hover-bg-color: #E6F0FE;
-}
-
-#md-notification .btn {
-    border: 0;
-}
-
-.dropdown-menu .divider {
-    border-color: #e5e5e5;
-}
-
-.ty-preferences .window-content {
-    background-color: #fafafa;
-}
-
-.ty-preferences .nav-group-item.active {
-    color: white;
-    background: #999;
-}
-
-
-</style>
-</head>
-<body class='typora-export os-windows' >
-<div  id='write'  class = 'is-node'><h3>Attribution-NonCommercial-ShareAlike 4.0 International</h3><p><span>=======================================================================</span></p><p><span>Creative Commons Corporation (&quot;Creative Commons&quot;) is not a law firm and</span>
-<span>does not provide legal services or legal advice. Distribution of</span>
-<span>Creative Commons public licenses does not create a lawyer-client or</span>
-<span>other relationship. Creative Commons makes its licenses and related</span>
-<span>information available on an &quot;as-is&quot; basis. Creative Commons gives no</span>
-<span>warranties regarding its licenses, any material licensed under their</span>
-<span>terms and conditions, or any related information. Creative Commons</span>
-<span>disclaims all liability for damages resulting from their use to the</span>
-<span>fullest extent possible.</span></p><p><span>Using Creative Commons Public Licenses</span></p><p><span>Creative Commons public licenses provide a standard set of terms and</span>
-<span>conditions that creators and other rights holders may use to share</span>
-<span>original works of authorship and other material subject to copyright</span>
-<span>and certain other rights specified in the public license below. The</span>
-<span>following considerations are for informational purposes only, are not</span>
-<span>exhaustive, and do not form part of our licenses.</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="" style="break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> Considerations for licensors: Our public licenses are</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> intended for use by those authorized to give the public</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> permission to use material in ways otherwise restricted by</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> copyright and certain other rights. Our licenses are</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> irrevocable. Licensors should read and understand the terms</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> and conditions of the license they choose before applying it.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> Licensors should also secure all rights necessary before</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> applying our licenses so that the public can reuse the</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> material as expected. Licensors should clearly mark any</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> material not subject to the license. This includes other CC-</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> licensed material, or material used under an exception or</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> limitation to copyright. More considerations for licensors:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">wiki.creativecommons.org/Considerations_for_licensors</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> Considerations for the public: By using one of our public</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> licenses, a licensor grants the public permission to use the</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> licensed material under specified terms and conditions. If</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> the licensor's permission is not necessary for any reason--for</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> example, because of any applicable exception or limitation to</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> copyright--then that use is not regulated by the license. Our</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> licenses grant only permissions under copyright and certain</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> other rights that a licensor has authority to grant. Use of</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> the licensed material may still be restricted for other</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> reasons, including because others have copyright or other</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> rights in the material. A licensor may make special requests,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> such as asking that all changes be marked or described.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> Although not required by our licenses, you are encouraged to</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> respect those requests where reasonable. More_considerations</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> for the public: </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">wiki.creativecommons.org/Considerations_for_licensees</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 690px;"></div><div class="CodeMirror-gutters" style="display: none; height: 690px;"></div></div></div></pre><p><span>=======================================================================</span></p><p><span>Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</span>
-<span>Public License</span></p><p><span>By exercising the Licensed Rights (defined below), You accept and agree</span>
-<span>to be bound by the terms and conditions of this Creative Commons</span>
-<span>Attribution-NonCommercial-ShareAlike 4.0 International Public License</span>
-<span>(&quot;Public License&quot;). To the extent this Public License may be</span>
-<span>interpreted as a contract, You are granted the Licensed Rights in</span>
-<span>consideration of Your acceptance of these terms and conditions, and the</span>
-<span>Licensor grants You such rights in consideration of benefits the</span>
-<span>Licensor receives from making the Licensed Material available under</span>
-<span>these terms and conditions.</span></p><p><span>Section 1 -- Definitions.</span></p><p><span>  a. Adapted Material means material subject to Copyright and Similar</span>
-<span>     Rights that is derived from or based upon the Licensed Material</span>
-<span>     and in which the Licensed Material is translated, altered,</span>
-<span>     arranged, transformed, or otherwise modified in a manner requiring</span>
-<span>     permission under the Copyright and Similar Rights held by the</span>
-<span>     Licensor. For purposes of this Public License, where the Licensed</span>
-<span>     Material is a musical work, performance, or sound recording,</span>
-<span>     Adapted Material is always produced where the Licensed Material is</span>
-<span>     synched in timed relation with a moving image.</span></p><p><span>  b. Adapter&#39;s License means the license You apply to Your Copyright</span>
-<span>     and Similar Rights in Your contributions to Adapted Material in</span>
-<span>     accordance with the terms and conditions of this Public License.</span></p><p><span>  c. BY-NC-SA Compatible License means a license listed at</span>
-<span>     creativecommons.org/compatiblelicenses, approved by Creative</span>
-<span>     Commons as essentially the equivalent of this Public License.</span></p><p><span>  d. Copyright and Similar Rights means copyright and/or similar rights</span>
-<span>     closely related to copyright including, without limitation,</span>
-<span>     performance, broadcast, sound recording, and Sui Generis Database</span>
-<span>     Rights, without regard to how the rights are labeled or</span>
-<span>     categorized. For purposes of this Public License, the rights</span>
-<span>     specified in Section 2(b)(1)-(2) are not Copyright and Similar</span>
-<span>     Rights.</span></p><p><span>  e. Effective Technological Measures means those measures that, in the</span>
-<span>     absence of proper authority, may not be circumvented under laws</span>
-<span>     fulfilling obligations under Article 11 of the WIPO Copyright</span>
-<span>     Treaty adopted on December 20, 1996, and/or similar international</span>
-<span>     agreements.</span></p><p><span>  f. Exceptions and Limitations means fair use, fair dealing, and/or</span>
-<span>     any other exception or limitation to Copyright and Similar Rights</span>
-<span>     that applies to Your use of the Licensed Material.</span></p><p><span>  g. License Elements means the license attributes listed in the name</span>
-<span>     of a Creative Commons Public License. The License Elements of this</span>
-<span>     Public License are Attribution, NonCommercial, and ShareAlike.</span></p><p><span>  h. Licensed Material means the artistic or literary work, database,</span>
-<span>     or other material to which the Licensor applied this Public</span>
-<span>     License.</span></p><p><span>  i. Licensed Rights means the rights granted to You subject to the</span>
-<span>     terms and conditions of this Public License, which are limited to</span>
-<span>     all Copyright and Similar Rights that apply to Your use of the</span>
-<span>     Licensed Material and that the Licensor has authority to license.</span></p><p><span>  j. Licensor means the individual(s) or entity(ies) granting rights</span>
-<span>     under this Public License.</span></p><p><span>  k. NonCommercial means not primarily intended for or directed towards</span>
-<span>     commercial advantage or monetary compensation. For purposes of</span>
-<span>     this Public License, the exchange of the Licensed Material for</span>
-<span>     other material subject to Copyright and Similar Rights by digital</span>
-<span>     file-sharing or similar means is NonCommercial provided there is</span>
-<span>     no payment of monetary compensation in connection with the</span>
-<span>     exchange.</span></p><p><span>  l. Share means to provide material to the public by any means or</span>
-<span>     process that requires permission under the Licensed Rights, such</span>
-<span>     as reproduction, public display, public performance, distribution,</span>
-<span>     dissemination, communication, or importation, and to make material</span>
-<span>     available to the public including in ways that members of the</span>
-<span>     public may access the material from a place and at a time</span>
-<span>     individually chosen by them.</span></p><p><span>  m. Sui Generis Database Rights means rights other than copyright</span>
-<span>     resulting from Directive 96/9/EC of the European Parliament and of</span>
-<span>     the Council of 11 March 1996 on the legal protection of databases,</span>
-<span>     as amended and/or succeeded, as well as other essentially</span>
-<span>     equivalent rights anywhere in the world.</span></p><p><span>  n. You means the individual or entity exercising the Licensed Rights</span>
-<span>     under this Public License. Your has a corresponding meaning.</span></p><p><span>Section 2 -- Scope.</span></p><p><span>  a. License grant.</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="" style="break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; 1. Subject to the terms and conditions of this Public License,</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  the Licensor hereby grants You a worldwide, royalty-free,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  non-sublicensable, non-exclusive, irrevocable license to</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  exercise the Licensed Rights in the Licensed Material to:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  a. reproduce and Share the Licensed Material, in whole or</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; in part, for NonCommercial purposes only; and</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  b. produce, reproduce, and Share Adapted Material for</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; NonCommercial purposes only.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; 2. Exceptions and Limitations. For the avoidance of doubt, where</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  Exceptions and Limitations apply to Your use, this Public</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  License does not apply, and You do not need to comply with</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  its terms and conditions.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; 3. Term. The term of this Public License is specified in Section</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  6(a).</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; 4. Media and formats; technical modifications allowed. The</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  Licensor authorizes You to exercise the Licensed Rights in</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  all media and formats whether now known or hereafter created,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  and to make technical modifications necessary to do so. The</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  Licensor waives and/or agrees not to assert any right or</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  authority to forbid You from making technical modifications</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  necessary to exercise the Licensed Rights, including</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  technical modifications necessary to circumvent Effective</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  Technological Measures. For purposes of this Public License,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  simply making modifications authorized by this Section 2(a)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  (4) never produces Adapted Material.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; 5. Downstream recipients.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  a. Offer from the Licensor -- Licensed Material. Every</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; recipient of the Licensed Material automatically</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; receives an offer from the Licensor to exercise the</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Licensed Rights under the terms and conditions of this</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Public License.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  b. Additional offer from the Licensor -- Adapted Material.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Every recipient of Adapted Material from You</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; automatically receives an offer from the Licensor to</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; exercise the Licensed Rights in the Adapted Material</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; under the conditions of the Adapter's License You apply.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  c. No downstream restrictions. You may not offer or impose</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; any additional or different terms or conditions on, or</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; apply any Effective Technological Measures to, the</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Licensed Material if doing so restricts exercise of the</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Licensed Rights by any recipient of the Licensed</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Material.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; 6. No endorsement. Nothing in this Public License constitutes or</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  may be construed as permission to assert or imply that You</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  are, or that Your use of the Licensed Material is, connected</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  with, or sponsored, endorsed, or granted official status by,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  the Licensor or others designated to receive attribution as</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  provided in Section 3(a)(1)(A)(i).</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 1334px;"></div><div class="CodeMirror-gutters" style="display: none; height: 1334px;"></div></div></div></pre><p><span>  b. Other rights.</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="" style="break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; 1. Moral rights, such as the right of integrity, are not</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  licensed under this Public License, nor are publicity,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  privacy, and/or other similar personality rights; however, to</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  the extent possible, the Licensor waives and/or agrees not to</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  assert any such rights held by the Licensor to the limited</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  extent necessary to allow You to exercise the Licensed</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  Rights, but not otherwise.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; 2. Patent and trademark rights are not licensed under this</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  Public License.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; 3. To the extent possible, the Licensor waives any right to</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  collect royalties from You for the exercise of the Licensed</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  Rights, whether directly or through a collecting society</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  under any voluntary or waivable statutory or compulsory</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  licensing scheme. In all other cases the Licensor expressly</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  reserves any right to collect such royalties, including when</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  the Licensed Material is used other than for NonCommercial</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  purposes.</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 437px;"></div><div class="CodeMirror-gutters" style="display: none; height: 437px;"></div></div></div></pre><p><span>Section 3 -- License Conditions.</span></p><p><span>Your exercise of the Licensed Rights is expressly made subject to the</span>
-<span>following conditions.</span></p><p><span>  a. Attribution.</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="" style="break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; 1. If You Share the Licensed Material (including in modified</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  form), You must:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  a. retain the following if it is supplied by the Licensor</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; with the Licensed Material:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; i. identification of the creator(s) of the Licensed</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Material and any others designated to receive</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  attribution, in any reasonable manner requested by</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  the Licensor (including by pseudonym if</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  designated);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  ii. a copyright notice;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; iii. a notice that refers to this Public License;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  iv. a notice that refers to the disclaimer of</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  warranties;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; v. a URI or hyperlink to the Licensed Material to the</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  extent reasonably practicable;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  b. indicate if You modified the Licensed Material and</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; retain an indication of any previous modifications; and</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  c. indicate the Licensed Material is licensed under this</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Public License, and include the text of, or the URI or</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; hyperlink to, this Public License.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; 2. You may satisfy the conditions in Section 3(a)(1) in any</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  reasonable manner based on the medium, means, and context in</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  which You Share the Licensed Material. For example, it may be</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  reasonable to satisfy the conditions by providing a URI or</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  hyperlink to a resource that includes the required</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  information.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; 3. If requested by the Licensor, You must remove any of the</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  information required by Section 3(a)(1)(A) to the extent</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  reasonably practicable.</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 874px;"></div><div class="CodeMirror-gutters" style="display: none; height: 874px;"></div></div></div></pre><p><span>  b. ShareAlike.</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="" style="break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> In addition to the conditions in Section 3(a), if You Share</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> Adapted Material You produce, the following conditions also apply.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; 1. The Adapter's License You apply must be a Creative Commons</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  license with the same License Elements, this version or</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  later, or a BY-NC-SA Compatible License.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; 2. You must include the text of, or the URI or hyperlink to, the</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  Adapter's License You apply. You may satisfy this condition</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  in any reasonable manner based on the medium, means, and</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  context in which You Share Adapted Material.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; 3. You may not offer or impose any additional or different terms</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  or conditions on, or apply any Effective Technological</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  Measures to, Adapted Material that restrict exercise of the</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  rights granted under the Adapter's License You apply.</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 368px;"></div><div class="CodeMirror-gutters" style="display: none; height: 368px;"></div></div></div></pre><p><span>Section 4 -- Sui Generis Database Rights.</span></p><p><span>Where the Licensed Rights include Sui Generis Database Rights that</span>
-<span>apply to Your use of the Licensed Material:</span></p><p><span>  a. for the avoidance of doubt, Section 2(a)(1) grants You the right</span>
-<span>     to extract, reuse, reproduce, and Share all or a substantial</span>
-<span>     portion of the contents of the database for NonCommercial purposes</span>
-<span>     only;</span></p><p><span>  b. if You include all or a substantial portion of the database</span>
-<span>     contents in a database in which You have Sui Generis Database</span>
-<span>     Rights, then the database in which You have Sui Generis Database</span>
-<span>     Rights (but not its individual contents) is Adapted Material,</span>
-<span>     including for purposes of Section 3(b); and</span></p><p><span>  c. You must comply with the conditions in Section 3(a) if You Share</span>
-<span>     all or a substantial portion of the contents of the database.</span></p><p><span>For the avoidance of doubt, this Section 4 supplements and does not</span>
-<span>replace Your obligations under this Public License where the Licensed</span>
-<span>Rights include other Copyright and Similar Rights.</span></p><p><span>Section 5 -- Disclaimer of Warranties and Limitation of Liability.</span></p><p><span>  a. UNLESS OTHERWISE SEPARATELY UNDERTAKEN BY THE LICENSOR, TO THE</span>
-<span>     EXTENT POSSIBLE, THE LICENSOR OFFERS THE LICENSED MATERIAL AS-IS</span>
-<span>     AND AS-AVAILABLE, AND MAKES NO REPRESENTATIONS OR WARRANTIES OF</span>
-<span>     ANY KIND CONCERNING THE LICENSED MATERIAL, WHETHER EXPRESS,</span>
-<span>     IMPLIED, STATUTORY, OR OTHER. THIS INCLUDES, WITHOUT LIMITATION,</span>
-<span>     WARRANTIES OF TITLE, MERCHANTABILITY, FITNESS FOR A PARTICULAR</span>
-<span>     PURPOSE, NON-INFRINGEMENT, ABSENCE OF LATENT OR OTHER DEFECTS,</span>
-<span>     ACCURACY, OR THE PRESENCE OR ABSENCE OF ERRORS, WHETHER OR NOT</span>
-<span>     KNOWN OR DISCOVERABLE. WHERE DISCLAIMERS OF WARRANTIES ARE NOT</span>
-<span>     ALLOWED IN FULL OR IN PART, THIS DISCLAIMER MAY NOT APPLY TO YOU.</span></p><p><span>  b. TO THE EXTENT POSSIBLE, IN NO EVENT WILL THE LICENSOR BE LIABLE</span>
-<span>     TO YOU ON ANY LEGAL THEORY (INCLUDING, WITHOUT LIMITATION,</span>
-<span>     NEGLIGENCE) OR OTHERWISE FOR ANY DIRECT, SPECIAL, INDIRECT,</span>
-<span>     INCIDENTAL, CONSEQUENTIAL, PUNITIVE, EXEMPLARY, OR OTHER LOSSES,</span>
-<span>     COSTS, EXPENSES, OR DAMAGES ARISING OUT OF THIS PUBLIC LICENSE OR</span>
-<span>     USE OF THE LICENSED MATERIAL, EVEN IF THE LICENSOR HAS BEEN</span>
-<span>     ADVISED OF THE POSSIBILITY OF SUCH LOSSES, COSTS, EXPENSES, OR</span>
-<span>     DAMAGES. WHERE A LIMITATION OF LIABILITY IS NOT ALLOWED IN FULL OR</span>
-<span>     IN PART, THIS LIMITATION MAY NOT APPLY TO YOU.</span></p><p><span>  c. The disclaimer of warranties and limitation of liability provided</span>
-<span>     above shall be interpreted in a manner that, to the extent</span>
-<span>     possible, most closely approximates an absolute disclaimer and</span>
-<span>     waiver of all liability.</span></p><p><span>Section 6 -- Term and Termination.</span></p><p><span>  a. This Public License applies for the term of the Copyright and</span>
-<span>     Similar Rights licensed here. However, if You fail to comply with</span>
-<span>     this Public License, then Your rights under this Public License</span>
-<span>     terminate automatically.</span></p><p><span>  b. Where Your right to use the Licensed Material has terminated under</span>
-<span>     Section 6(a), it reinstates:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; 1. automatically as of the date the violation is cured, provided</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  it is cured within 30 days of Your discovery of the</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;  violation; or</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; 2. upon express reinstatement by the Licensor.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> For the avoidance of doubt, this Section 6(b) does not affect any</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> right the Licensor may have to seek remedies for Your violations</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> of this Public License.</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 207px;"></div><div class="CodeMirror-gutters" style="display: none; height: 207px;"></div></div></div></pre><p><span>  c. For the avoidance of doubt, the Licensor may also offer the</span>
-<span>     Licensed Material under separate terms or conditions or stop</span>
-<span>     distributing the Licensed Material at any time; however, doing so</span>
-<span>     will not terminate this Public License.</span></p><p><span>  d. Sections 1, 5, 6, 7, and 8 survive termination of this Public</span>
-<span>     License.</span></p><p><span>Section 7 -- Other Terms and Conditions.</span></p><p><span>  a. The Licensor shall not be bound by any additional or different</span>
-<span>     terms or conditions communicated by You unless expressly agreed.</span></p><p><span>  b. Any arrangements, understandings, or agreements regarding the</span>
-<span>     Licensed Material not stated herein are separate from and</span>
-<span>     independent of the terms and conditions of this Public License.</span></p><p><span>Section 8 -- Interpretation.</span></p><p><span>  a. For the avoidance of doubt, this Public License does not, and</span>
-<span>     shall not be interpreted to, reduce, limit, restrict, or impose</span>
-<span>     conditions on any use of the Licensed Material that could lawfully</span>
-<span>     be made without permission under this Public License.</span></p><p><span>  b. To the extent possible, if any provision of this Public License is</span>
-<span>     deemed unenforceable, it shall be automatically reformed to the</span>
-<span>     minimum extent necessary to make it enforceable. If the provision</span>
-<span>     cannot be reformed, it shall be severed from this Public License</span>
-<span>     without affecting the enforceability of the remaining terms and</span>
-<span>     conditions.</span></p><p><span>  c. No term or condition of this Public License will be waived and no</span>
-<span>     failure to comply consented to unless expressly agreed to by the</span>
-<span>     Licensor.</span></p><p><span>  d. Nothing in this Public License constitutes or may be interpreted</span>
-<span>     as a limitation upon, or waiver of, any privileges and immunities</span>
-<span>     that apply to the Licensor or You, including from the legal</span>
-<span>     processes of any jurisdiction or authority.</span></p><p><span>=======================================================================</span></p><p><span>Creative Commons is not a party to its public</span>
-<span>licenses. Notwithstanding, Creative Commons may elect to apply one of</span>
-<span>its public licenses to material it publishes and in those instances</span>
-<span>will be considered the “Licensor.” The text of the Creative Commons</span>
-<span>public licenses is dedicated to the public domain under the CC0 Public</span>
-<span>Domain Dedication. Except for the limited purpose of indicating that</span>
-<span>material is shared under a Creative Commons public license or as</span>
-<span>otherwise permitted by the Creative Commons policies published at</span>
-<span>creativecommons.org/policies, Creative Commons does not authorize the</span>
-<span>use of the trademark &quot;Creative Commons&quot; or any other trademark or logo</span>
-<span>of Creative Commons without its prior written consent including,</span>
-<span>without limitation, in connection with any unauthorized modifications</span>
-<span>to any of its public licenses or any other arrangements,</span>
-<span>understandings, or agreements concerning use of licensed material. For</span>
-<span>the avoidance of doubt, this paragraph does not form part of the</span>
-<span>public licenses.</span></p><p><span>Creative Commons may be contacted at creativecommons.org.</span></p><hr /><h3><span>&quot;Anti 996&quot; License Version 1.0 (Draft)</span></h3><p><span>Permission is hereby granted to any individual or legal entity</span>
-<span>obtaining a copy of this licensed work (including the source code,</span>
-<span>documentation and/or related items, hereinafter collectively referred</span>
-<span>to as the &quot;licensed work&quot;), free of charge, to deal with the licensed</span>
-<span>work for any purpose, including without limitation, the rights to use,</span>
-<span>reproduce, modify, prepare derivative works of, distribute, publish</span>
-<span>and sublicense the licensed work, subject to the following conditions:</span></p><ol start='' ><li><span>The individual or the legal entity must conspicuously display,</span>
-<span>without modification, this License and the notice on each redistributed</span>
-<span>or derivative copy of the Licensed Work.</span></li><li><span>The individual or the legal entity must strictly comply with all</span>
-<span>applicable laws, regulations, rules and standards of the jurisdiction</span>
-<span>relating to labor and employment where the individual is physically</span>
-<span>located or where the individual was born or naturalized; or where the</span>
-<span>legal entity is registered or is operating (whichever is stricter). In</span>
-<span>case that the jurisdiction has no such laws, regulations, rules and</span>
-<span>standards or its laws, regulations, rules and standards are</span>
-<span>unenforceable, the individual or the legal entity are required to</span>
-<span>comply with Core International Labor Standards.</span></li><li><span>The individual or the legal entity shall not induce, suggest or force</span>
-<span>its employee(s), whether full-time or part-time, or its independent</span>
-<span>contractor(s), in any methods, to agree in oral or written form, to</span>
-<span>directly or indirectly restrict, weaken or relinquish his or her</span>
-<span>rights or remedies under such laws, regulations, rules and standards</span>
-<span>relating to labor and employment as mentioned above, no matter whether</span>
-<span>such written or oral agreements are enforceable under the laws of the</span>
-<span>said jurisdiction, nor shall such individual or the legal entity</span>
-<span>limit, in any methods, the rights of its employee(s) or independent</span>
-<span>contractor(s) from reporting or complaining to the copyright holder or</span>
-<span>relevant authorities monitoring the compliance of the license about</span>
-<span>its violation(s) of the said license.</span></li></ol><p><span>THE LICENSED WORK IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,</span>
-<span>EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF</span>
-<span>MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.</span>
-<span>IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM,</span>
-<span>DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR</span>
-<span>OTHERWISE, ARISING FROM, OUT OF OR IN ANY WAY CONNECTION WITH THE</span>
-<span>LICENSED WORK OR THE USE OR OTHER DEALINGS IN THE LICENSED WORK.</span></p></div>
-</body>
-</html>
+ For the avoidance of doubt, this Section 6(b) does not affect any
+ right the Licensor may have to seek remedies for Your violations
+ of this Public License.</code></pre>
+<p>  c. For the avoidance of doubt, the Licensor may also offer the<br>     Licensed Material under separate terms or conditions or stop<br>     distributing the Licensed Material at any time; however, doing so<br>     will not terminate this Public License.</p>
+<p>  d. Sections 1, 5, 6, 7, and 8 survive termination of this Public<br>     License.</p>
+<p>Section 7 – Other Terms and Conditions.</p>
+<p>  a. The Licensor shall not be bound by any additional or different<br>     terms or conditions communicated by You unless expressly agreed.</p>
+<p>  b. Any arrangements, understandings, or agreements regarding the<br>     Licensed Material not stated herein are separate from and<br>     independent of the terms and conditions of this Public License.</p>
+<p>Section 8 – Interpretation.</p>
+<p>  a. For the avoidance of doubt, this Public License does not, and<br>     shall not be interpreted to, reduce, limit, restrict, or impose<br>     conditions on any use of the Licensed Material that could lawfully<br>     be made without permission under this Public License.</p>
+<p>  b. To the extent possible, if any provision of this Public License is<br>     deemed unenforceable, it shall be automatically reformed to the<br>     minimum extent necessary to make it enforceable. If the provision<br>     cannot be reformed, it shall be severed from this Public License<br>     without affecting the enforceability of the remaining terms and<br>     conditions.</p>
+<p>  c. No term or condition of this Public License will be waived and no<br>     failure to comply consented to unless expressly agreed to by the<br>     Licensor.</p>
+<p>  d. Nothing in this Public License constitutes or may be interpreted<br>     as a limitation upon, or waiver of, any privileges and immunities<br>     that apply to the Licensor or You, including from the legal<br>     processes of any jurisdiction or authority.</p>
+<p>=======================================================================</p>
+<p>Creative Commons is not a party to its public<br>licenses. Notwithstanding, Creative Commons may elect to apply one of<br>its public licenses to material it publishes and in those instances<br>will be considered the “Licensor.” The text of the Creative Commons<br>public licenses is dedicated to the public domain under the CC0 Public<br>Domain Dedication. Except for the limited purpose of indicating that<br>material is shared under a Creative Commons public license or as<br>otherwise permitted by the Creative Commons policies published at<br>creativecommons.org/policies, Creative Commons does not authorize the<br>use of the trademark “Creative Commons” or any other trademark or logo<br>of Creative Commons without its prior written consent including,<br>without limitation, in connection with any unauthorized modifications<br>to any of its public licenses or any other arrangements,<br>understandings, or agreements concerning use of licensed material. For<br>the avoidance of doubt, this paragraph does not form part of the<br>public licenses.</p>
+<p>Creative Commons may be contacted at creativecommons.org.</p>
+<hr>
+<p>Copyright (c) 2021 Legrandk</p>
+<p>“Anti 996” License Version 1.0 (Draft)</p>
+<p>Permission is hereby granted to any individual or legal entity<br>obtaining a copy of this licensed work (including the source code,<br>documentation and/or related items, hereinafter collectively referred<br>to as the “licensed work”), free of charge, to deal with the licensed<br>work for any purpose, including without limitation, the rights to use,<br>reproduce, modify, prepare derivative works of, distribute, publish<br>and sublicense the licensed work, subject to the following conditions:</p>
+<ol>
+<li><p>The individual or the legal entity must conspicuously display,<br>without modification, this License and the notice on each redistributed<br>or derivative copy of the Licensed Work.</p>
+</li>
+<li><p>The individual or the legal entity must strictly comply with all<br>applicable laws, regulations, rules and standards of the jurisdiction<br>relating to labor and employment where the individual is physically<br>located or where the individual was born or naturalized; or where the<br>legal entity is registered or is operating (whichever is stricter). In<br>case that the jurisdiction has no such laws, regulations, rules and<br>standards or its laws, regulations, rules and standards are<br>unenforceable, the individual or the legal entity are required to<br>comply with Core International Labor Standards.</p>
+</li>
+<li><p>The individual or the legal entity shall not induce, suggest or force<br>its employee(s), whether full-time or part-time, or its independent<br>contractor(s), in any methods, to agree in oral or written form, to<br>directly or indirectly restrict, weaken or relinquish his or her<br>rights or remedies under such laws, regulations, rules and standards<br>relating to labor and employment as mentioned above, no matter whether<br>such written or oral agreements are enforceable under the laws of the<br>said jurisdiction, nor shall such individual or the legal entity<br>limit, in any methods, the rights of its employee(s) or independent<br>contractor(s) from reporting or complaining to the copyright holder or<br>relevant authorities monitoring the compliance of the license about<br>its violation(s) of the said license.</p>
+</li>
+</ol>
+<p>THE LICENSED WORK IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND,<br>EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF<br>MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.<br>IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM,<br>DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR<br>OTHERWISE, ARISING FROM, OUT OF OR IN ANY WAY CONNECTION WITH THE<br>LICENSED WORK OR THE USE OR OTHER DEALINGS IN THE LICENSED WORK.</p>
