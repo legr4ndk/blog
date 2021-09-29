@@ -29,6 +29,31 @@
     
     
     <entry>
+      <title>计算机网络笔记-1</title>
+      <link href="2021/09/28/net-intro/"/>
+      <url>2021/09/28/net-intro/</url>
+      
+        <content type="html"><![CDATA[<h1 id="名词们"><a href="#名词们" class="headerlink" title="名词们"></a>名词们</h1><ul><li><em>protocol</em> 协议：可以理解成由厂商、组织约定的规范，规定了行为或者内容的格式。</li><li><em>network edge</em> 网络边缘：即“因特网的边缘”，端系统正因位于网络边缘而得名。</li><li><em>network core</em> 网络核心：由端系统的分组交换机与链路构成的网状网络。</li></ul><h1 id="网络边缘"><a href="#网络边缘" class="headerlink" title="网络边缘"></a>网络边缘</h1><h2 id="接入网"><a href="#接入网" class="headerlink" title="接入网"></a>接入网</h2><h3 id="数字用户线-Digital-Subscriber-Line"><a href="#数字用户线-Digital-Subscriber-Line" class="headerlink" title="数字用户线 (Digital Subscriber Line)"></a>数字用户线 (<em>Digital Subscriber Line</em>)</h3><p>DSL有点类似早期的拨号上网。早期的拨号上网使用电话线连接到<strong>调制解调器</strong>(<em>Modem</em>)上然后向ISP拨号上网，速率只有<em>56Kbps</em>，难以接受，而且<strong>上网和打电话无法同时进行</strong>。使用DSL时，DSL的Modem使用现有的电话线(双绞铜线，<em>Twisted-Pair Copper Wire</em>)与位于电话公司（此时也是他的ISP）的<strong>数字用户线接入复用器</strong>(<em>Digital Subscriber Line Access Multiplexer, DSLAM</em>)进行数据交换与模数转换。DSL使用分频的思想进行数据传输，以同时承载数据和传统电话的信号，不同信号在不同频率上被编码。DSL传输的网络速度受到本地中心局(<em>Local Center Office</em>)的距离限制。</p><blockquote><ul><li>A high-speed downstream channel, in the 50 kHz to 1 MHz band（下行频段）</li><li>A medium-speed upstream channel, in the 4 kHz to 50 kHz band（上行频段）</li><li>An ordinary two-way telephone channel, in the 0 to 4 kHz band（双向电话频段）</li></ul></blockquote><h3 id="电缆因特网接入-Cable-Internet-Access"><a href="#电缆因特网接入-Cable-Internet-Access" class="headerlink" title="电缆因特网接入 (Cable Internet Access)"></a>电缆因特网接入 (<em>Cable Internet Access</em>)</h3><p>电缆因特网和DSL不同的一点在于，它不使用用户的有线电话线，而使用现有的有线电视基础设施，有线电视公司此时成为了用户的ISP。光缆将电缆头连接到地区枢纽，然后地区枢纽再通过同轴电缆连接各个用户。CIA需要特殊的Modem，即<strong>电缆调制解调器</strong>(<em>Cable Modem</em>)，对应的，它也有个类似于DSLAM的东西叫做<strong>电缆调制解调器端接系统</strong>(<em>Cable Modem Termination System</em>)，用来把下行用户的模拟信号转换为数字信号。CIA与DSL一样，Cable Modem会把系统分为上行信道与下行信道。一般上行信道的速率都不如下行信道。因为整个系统运用了光纤与电缆，它也被称为<strong>混合光纤同轴</strong>(<em>Hybrid Fiber Coax, HFC</em>)系统。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> os </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>奔三异闻录</title>
       <link href="2021/07/30/20thAnniversaryRecord/"/>
       <url>2021/07/30/20thAnniversaryRecord/</url>
