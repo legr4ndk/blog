@@ -20,17 +20,17 @@
   
   
   <title>操作系统笔记1-中断 | Legrandk&#39;s Qzone</title>
-  <meta name="description" content="待补完">
+  <meta name="description" content="中断的分类中断又称外中断，由处理机外部事件引起。又根据能否屏蔽外中断可以细分为可屏蔽中断与不可屏蔽中断。要屏蔽中断可以通过置0标志寄存器EFLAG的中断标志位(Interrupt Flag, IF)或者使用中断屏蔽寄存器IMR来实现。外中断一般是异步的。触发这种中断的指令在执行完毕后才进行中断响应。 俘获又称内中断、软中断，由处理机内部事件引起。在x86中也称为异常。内中断一般是同步的。这种中断不">
 <meta property="og:type" content="article">
 <meta property="og:title" content="操作系统笔记1-中断">
 <meta property="og:url" content="https://www.legr4ndk.top/2021/09/29/os-interrupt/index.html">
 <meta property="og:site_name" content="Legrandk&#39;s Qzone">
-<meta property="og:description" content="待补完">
+<meta property="og:description" content="中断的分类中断又称外中断，由处理机外部事件引起。又根据能否屏蔽外中断可以细分为可屏蔽中断与不可屏蔽中断。要屏蔽中断可以通过置0标志寄存器EFLAG的中断标志位(Interrupt Flag, IF)或者使用中断屏蔽寄存器IMR来实现。外中断一般是异步的。触发这种中断的指令在执行完毕后才进行中断响应。 俘获又称内中断、软中断，由处理机内部事件引起。在x86中也称为异常。内中断一般是同步的。这种中断不">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://z3.ax1x.com/2021/09/29/4hodl6.jpg">
 <meta property="og:image" content="https://z3.ax1x.com/2021/09/29/4hoaSx.jpg">
 <meta property="article:published_time" content="2021-09-29T10:12:35.000Z">
-<meta property="article:modified_time" content="2021-09-29T10:31:38.415Z">
+<meta property="article:modified_time" content="2021-09-29T11:49:11.264Z">
 <meta property="article:author" content="Legrandk">
 <meta property="article:tag" content="os">
 <meta name="twitter:card" content="summary">
@@ -369,7 +369,7 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/09/29/os-interrupt/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 560(字)</span>
 	
 	
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
@@ -379,7 +379,31 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>待补完<br><img src="https://z3.ax1x.com/2021/09/29/4hodl6.jpg" alt="Figure1"><br><img src="https://z3.ax1x.com/2021/09/29/4hoaSx.jpg" alt="Figure2"></p>
+        <h1 id="中断的分类"><a href="#中断的分类" class="headerlink" title="中断的分类"></a>中断的分类</h1><h2 id="中断"><a href="#中断" class="headerlink" title="中断"></a>中断</h2><p>又称<strong>外中断</strong>，由处理机<strong>外部</strong>事件引起。又根据能否屏蔽外中断可以细分为<strong>可屏蔽中断</strong>与<strong>不可屏蔽中断</strong>。要屏蔽中断可以通过置0标志寄存器<em>EFLAG</em>的中断标志位(<em>Interrupt Flag, IF</em>)或者使用中断屏蔽寄存器<em>IMR</em>来实现。外中断一般是异步的。触发这种中断的指令在执行完毕后才进行中断响应。</p>
+<h2 id="俘获"><a href="#俘获" class="headerlink" title="俘获"></a>俘获</h2><p>又称<strong>内中断</strong>、<strong>软中断</strong>，由处理机<strong>内部</strong>事件引起。在x86中也称为<strong>异常</strong>。内中断一般是同步的。这种中断不等当前指令执行完便进行中断响应。</p>
+<hr>
+<blockquote>
+<p>Tip：按中断功能分类</p>
+<ol>
+<li>输入输出中断 I/O传输结束或出错中断</li>
+<li>外中断 时钟中断、操作员控制台中断、通信中断等</li>
+<li>机器故障中断 电源故障、主存取指令错等</li>
+<li><strong>程序性中断 定点溢出、用户态下用核态指令、非法操作</strong></li>
+<li><strong>访管中断 对操作系统提出某种需求时所发出的中断</strong></li>
+</ol>
+</blockquote>
+<p>中断响应结束后，IRET指令将PS和PC恢复。</p>
+<h1 id="中断描述符表（Interrupt-Descriptor-Table）"><a href="#中断描述符表（Interrupt-Descriptor-Table）" class="headerlink" title="中断描述符表（Interrupt Descriptor Table）"></a>中断描述符表（<strong>Interrupt Descriptor Table</strong>）</h1><blockquote>
+<p>x86下PC寄存器的实现为CS与IP两个寄存器做段地址偏移实现</p>
+</blockquote>
+<p>IDT中的每个表项为一个中断处理程序的入口地址。</p>
+<p>实模式下，IDT从内存的0x0地址开始用1KB的大小用于存放中断向量表。每个表项占<strong>4B</strong>，为2B的段地址与2B的偏移量（CS，IP）。一共256个中断向量。</p>
+<p>保护模式下，IDT从IDTR指向的内存地址开始，每个表项占8B，CS与IP各需要4B的大小。</p>
+<h1 id="中断响应的完整过程"><a href="#中断响应的完整过程" class="headerlink" title="中断响应的完整过程"></a>中断响应的完整过程</h1><p><img src="https://z3.ax1x.com/2021/09/29/4hodl6.jpg" alt="Figure1"></p>
+<p>每个中断处理程序的编号（中断号）即为右图中N的值，在实模式下使用此方法获取中断处理程序的入口地址。</p>
+<h1 id="中断响应的例子"><a href="#中断响应的例子" class="headerlink" title="中断响应的例子"></a>中断响应的例子</h1><p><img src="https://z3.ax1x.com/2021/09/29/4hoaSx.jpg" alt="Figure2"></p>
+<p>INT指令即为中断指令，后面给出的立即数即是中断向量表中中断处理函数的编号，也就是前一张图里的N。</p>
+<p>IRET指令会将中断前压入栈的PSW和PC恢复，以继续执行操作。</p>
 
       
     </div>
