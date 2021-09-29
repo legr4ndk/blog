@@ -6,7 +6,7 @@
   <link href="https://www.legr4ndk.top/atom.xml" rel="self"/>
   
   <link href="https://www.legr4ndk.top/"/>
-  <updated>2021-07-12T07:59:14.281Z</updated>
+  <updated>2021-09-29T10:25:36.177Z</updated>
   <id>https://www.legr4ndk.top/</id>
   
   <author>
@@ -17,31 +17,22 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>致2023年后的你</title>
-    <link href="https://www.legr4ndk.top/2023/05/24/Tango2023/"/>
-    <id>https://www.legr4ndk.top/2023/05/24/Tango2023/</id>
-    <published>2023-05-24T09:17:07.000Z</published>
-    <updated>2021-07-12T07:59:14.281Z</updated>
+    <title>操作系统笔记1-中断</title>
+    <link href="https://www.legr4ndk.top/2021/09/29/os-interrupt/"/>
+    <id>https://www.legr4ndk.top/2021/09/29/os-interrupt/</id>
+    <published>2021-09-29T10:12:35.000Z</published>
+    <updated>2021-09-29T10:25:36.177Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>从泥土中来<br>到橱窗里去<br>有时满意<br>有时想远远逃离</p></blockquote><p>2019读的大学，到2021年，正好读完了一半，在大学时光还有一半的时候，我想给自己立几个🚩</p><ul><li><input disabled="" type="checkbox"> 大三继续看CMU-CSAPP和MIT-LA</li><li><input disabled="" type="checkbox"> 到2022.7通过 JLPT N2 等级考试</li><li><input disabled="" type="checkbox"> 到2022.8考到 TOEFL 80+ Score</li><li><input disabled="" type="checkbox"> 继续学2D/3D Rendering</li><li><input disabled="" type="checkbox"> 拼搏百天，我要上***</li></ul><p>看我最后到2023年的夏天能完成几件吧</p><p>插Flag不拔也不是个事，不如插得明显，引众人监督</p><p>共勉</p>]]></content>
+    <content type="html"><![CDATA[<p>待补完<br><img src="https://z3.ax1x.com/2021/09/29/4hodl6.jpg" alt="Figure1"><br><img src="https://z3.ax1x.com/2021/09/29/4hoaSx.jpg" alt="Figure2"></p>]]></content>
     
     
       
       
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;从泥土中来&lt;br&gt;到橱窗里去&lt;br&gt;有时满意&lt;br&gt;有时想远远逃离&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;2019读的大学，到2021年，正好读完了一半，在大学时光还有一半的时候，我想给自己立几个🚩&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;input d</summary>
+    <summary type="html">&lt;p&gt;待补完&lt;br&gt;&lt;img src=&quot;https://z3.ax1x.com/2021/09/29/4hodl6.jpg&quot; alt=&quot;Figure1&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://z3.ax1x.com/2021/09/29/4hoaSx.jpg&quot; alt=&quot;F</summary>
       
     
     
     
-    <category term="个人感悟" scheme="https://www.legr4ndk.top/categories/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%82%9F/"/>
-    
-    
-    <category term="misc" scheme="https://www.legr4ndk.top/tags/misc/"/>
     
   </entry>
   
@@ -177,6 +168,35 @@
     
     
     <category term="study" scheme="https://www.legr4ndk.top/tags/study/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>致2023年后的你</title>
+    <link href="https://www.legr4ndk.top/2021/05/24/Tango2023/"/>
+    <id>https://www.legr4ndk.top/2021/05/24/Tango2023/</id>
+    <published>2021-05-24T09:17:07.000Z</published>
+    <updated>2021-09-29T10:25:23.177Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>从泥土中来<br>到橱窗里去<br>有时满意<br>有时想远远逃离</p></blockquote><p>2019读的大学，到2021年，正好读完了一半，在大学时光还有一半的时候，我想给自己立几个🚩</p><ul><li><input disabled="" type="checkbox"> 大三继续看CMU-CSAPP和MIT-LA</li><li><input disabled="" type="checkbox"> 到2022.7通过 JLPT N2 等级考试</li><li><input disabled="" type="checkbox"> 到2022.8考到 TOEFL 80+ Score</li><li><input disabled="" type="checkbox"> 继续学2D/3D Rendering</li><li><input disabled="" type="checkbox"> 拼搏百天，做交大秧歌Star!</li></ul><p>看我最后到2023年的夏天能完成几件吧</p><p>插Flag不拔也不是个事，不如插得明显，引众人监督</p><p>共勉</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;从泥土中来&lt;br&gt;到橱窗里去&lt;br&gt;有时满意&lt;br&gt;有时想远远逃离&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;2019读的大学，到2021年，正好读完了一半，在大学时光还有一半的时候，我想给自己立几个🚩&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input d</summary>
+      
+    
+    
+    
+    <category term="个人感悟" scheme="https://www.legr4ndk.top/categories/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%82%9F/"/>
+    
+    
+    <category term="misc" scheme="https://www.legr4ndk.top/tags/misc/"/>
     
   </entry>
   
@@ -517,34 +537,6 @@
     
     
     <category term="个人感悟" scheme="https://www.legr4ndk.top/categories/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%82%9F/"/>
-    
-    
-    <category term="misc" scheme="https://www.legr4ndk.top/tags/misc/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>马保国日语版</title>
-    <link href="https://www.legr4ndk.top/2020/11/24/masensei/"/>
-    <id>https://www.legr4ndk.top/2020/11/24/masensei/</id>
-    <published>2020-11-24T13:36:30.000Z</published>
-    <updated>2021-03-14T10:17:28.616Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>原视频见于<a href="https://www.bilibili.com/video/BV1QV411a75M">Bilibili</a></p><p>此处只是靠听力和字幕扒取了台词</p><p>止增笑耳</p></blockquote><p>こんにちは</p><p>俺(おれ)は太極(たいきょく)マスター</p><p>马(mǎ) 保(bǎo) 国(guó)</p><p>今(いま)　友達(ともだち)が「先生(せんせい)どうしたの」と</p><p>俺(おれ)は「何(なに)が」と</p><p>写真(しゃしん)が何枚来(なんまいき)た</p><p>俺見(おれみ)たと</p><p>お！</p><p>それは昨日(きのう)</p><p>二人(ふたり)の若(わか)もん</p><p>３０ぐらい</p><p>一人体重(ひとりたいじゅう)９０キロ</p><p>一人体重(ひとりたいじゅう)８０キロ</p><p>彼(かれ)ら</p><p>一人(ひとり)</p><p>「俺(おれ)、ジム(じむ)で運動(うんどう)、首(くび)がひねった、馬先生(うませんせい)、太極(たいきょく)を気功(きこう)を、教(おし)えてくれない？」</p><p>俺(おれ)は「いい」と</p><p>おれは「君(きみ)の筋(きん)トレ效(き)かない」</p><p>彼(かれ)は不満(ふまん)</p><p>俺(おれ)は「子供(こども)よ、両手(りょうて)で俺(おれ)の指(ゆび)を折(お)ってみ」</p><p>折(お)れない</p><p>彼(かれ)は「役立(やくだ)てない」と</p><p>俺(おれ)は「役立(やくだ)てる」と</p><p>これ「化力(かりょく)」</p><p>カンフー技(わざ)</p><p>四両(よんりょう)で千斤(せんきん)を制(せい)する</p><p>２００斤(きん)の英国力士(えいこくりきし)</p><p>俺(おれ)の指(ゆび)に勝(か)てない</p><p>あ！</p><p>彼(かれ)はやってみみと</p><p>俺(おれ)はオッケーと</p><p>そして彼(かれ)ガーと立(た)て</p><p>速(はや)いあ！</p><p>そして続(つづ)いて</p><p>先ず左蹴(ひだりしゅう) 「ん」</p><p>次右(つぎみぎ)サイド</p><p>最後左(さいごひだり)ジャブ</p><p>俺全部(おれぜんぶ)ガードした</p><p>ガードした！</p><p>ガードしてもちろん伝統(でんとう)カンフーは切磋(せっさ)だけ  </p><p>右手鼻(みぎてはな)につけて</p><p>打(う)たない</p><p>俺笑(おれわら)って</p><p>手(て)を引(ひ)こうと</p><p>だからここで</p><p>伝統(でんとう)カンフーの切磋琢磨(せっさたくま)で</p><p>彼(かれ)はすでに負(ま)けた</p><p>もし力(ちから)いれたら</p><p>ワンパンチで彼(かれ)の鼻(はな)を折(お)った</p><p>鼻(はな)につけて打(う)たない</p><p>かれ認(みと)め</p><p>俺(おれ)は彼(かれ)の顔(かお)に行(い)った</p><p>彼(かれ)は鼻(はな)がつけられたのを知(し)らずに</p><p>俺(おれ)は顔(かお)に行ったと認(みと)めた</p><p>俺(おれ)は手(て)を引(ひ)いてやめた</p><p>彼(かれ)は不意打(ふいう)ち</p><p>左(ひだり)ジャブ俺(おれ)の顔(かお)を</p><p>俺油断(おれゆだん)したら、「迷(まよ)うさ」<strong>（没有闪）</strong></p><p>彼(かれ)の左(ひだり)パンチ俺(おれ)の目(め)…</p><p>右目(みぎめ)に擦(す)った</p><p>でも大丈夫(だいじょうぶ)</p><p>彼(かれ)も写真(しゃしん)で言(い)った</p><p>二分(にふん)ほど以降(いこう)</p><p>その場(ば)で涙出(なみだで)た</p><p>目(め)を覆(おお)って</p><p>俺(おれ)は「止(や)めて」と</p><p>二(に)分(ふん)以(い)ほ…二(に)分(ふん)以(い)降(こう)</p><p>治(なお)った</p><p>俺(おれ)はガキお前(まえ)</p><p>ジャブじゃ無駄(むだ)</p><p>しぶとう</p><p>彼(かれ)は「馬先生(ませんせい)御免御免(ごめんごめん)、俺(おれ)は素人(しろうと)」</p><p>「俺(おれ)は無鉄砲(むてっぽう)」と</p><p>彼(かれ)は無鉄砲(むてっぽう)じゃないんだ</p><p>前(まえ)キック、サイドキック</p><p>左(ひだり)パンチ、練(ね)れ者(もの)</p><p>あとで彼(かれ)は三(さん)四(よん)年(ねん)</p><p>タイ拳(こぶし)お習(なら)った</p><p>やはり　準備万端(じゅんびばんたん)<strong>（有bear来）</strong></p><p>これら　若造(わかぞう)</p><p>無駄無駄(むだむだ)<strong>（不讲武德）</strong></p><p>だ～ます</p><p>不(ふ)意(い)～打(う)ち</p><p>六(ろく)十(じゅう)九(きゅう)歳(さい)の老(ろう)人(じん)</p><p>いいのか？よくない</p><p>小(こ)僧(ぞう)　よくお前(まえ)は</p><p>恥(は)ず忘(わす)<strong>（耗子尾汁）</strong>れてます</p><p>今後(こんご)</p><p>このようなずる</p><p>小賢(こざか)しい</p><p>武林(ぶりん)は和(わ)を大事(だいじ)</p><p>ようじゃ無駄(むだ)<strong>（要讲武德）</strong></p><p>八百(はっぴゃく)るな～俺(おれ)と<strong>（不要搞窝里斗）</strong></p><p>ありがとうね！</p><hr><p>已经更新完了，还加了汉字的假名注音hh</p><p>可以拿去照着这个台本配音玩了</p><p>有部分是字幕里有但是那人没念出来的，我就给删了</p><p><strong>不是标准日语，很多语法错误，但是读着好玩就是了😂</strong></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;原视频见于&lt;a href=&quot;https://www.bilibili.com/video/BV1QV411a75M&quot;&gt;Bilibili&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;此处只是靠听力和字幕扒取了台词&lt;/p&gt;
-&lt;p&gt;止增笑耳&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-      
-    
-    
-    
-    <category term="耍" scheme="https://www.legr4ndk.top/categories/%E8%80%8D/"/>
     
     
     <category term="misc" scheme="https://www.legr4ndk.top/tags/misc/"/>
